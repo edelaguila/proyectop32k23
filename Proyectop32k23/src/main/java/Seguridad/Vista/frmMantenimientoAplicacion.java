@@ -35,7 +35,6 @@ public class frmMantenimientoAplicacion extends javax.swing.JInternalFrame {
         modelo.addColumn("nombre");
         modelo.addColumn("Estatus");
         clsAplicacion aplicacion = new clsAplicacion();
-        //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsAplicacion> listaAplicaciones = aplicacion.getListadoAplicaciones();
         tablaUsuarios.setModel(modelo);
         String[] dato = new String[3];
@@ -128,7 +127,6 @@ public class frmMantenimientoAplicacion extends javax.swing.JInternalFrame {
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtNombre.setOpaque(false);
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,11 +141,11 @@ public class frmMantenimientoAplicacion extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID Vendedor", "ID Empleado", "Correo", "Telefono", "Direccion", "Porcentaje", "Comision"
+                "ID Aplicacion", "Nombre Aplicacion", "Estatus"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true, true
+                false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -158,7 +156,6 @@ public class frmMantenimientoAplicacion extends javax.swing.JInternalFrame {
 
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtContrasena.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("Estatus");
