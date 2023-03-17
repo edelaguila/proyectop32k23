@@ -1,11 +1,11 @@
     package Seguridad.Modelo;
 
 import java.sql.*;
-
+//William mayen, error con xampp para conectar a base de datos//
 public class Conexion {
 private static final String JDBC_URL = "jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC";    
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASS = "1LL3sc@s";
+    private static final String JDBC_PASS = "william"; //cambio contrasena//
    
     
     public static Connection getConnection() throws SQLException {
