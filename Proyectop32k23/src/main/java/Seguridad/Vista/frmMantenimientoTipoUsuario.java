@@ -6,6 +6,7 @@
 package Seguridad.Vista;
 
 
+import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsTipoUsuario;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import Seguridad.Vista.frmLogin;
 
 /**
  *
@@ -20,6 +22,8 @@ import javax.swing.JOptionPane;
  */
 public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
 
+    int codigoAplicacion = 112;
+    
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -275,6 +279,10 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
         limpiarTextos();
+        // Registro de Bitacora
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -286,6 +294,10 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
         limpiarTextos();
+        // Registro de Bitacora
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -297,6 +309,10 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
         System.out.println("Usuario retornado:" + tipou);        
         txtNombre.setText(tipou.getNombreTipoUsuario());
         txtContrasena.setText(tipou.getEstatusTipoUsuario());
+        // Registro de Bitacora
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -310,11 +326,16 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
         limpiarTextos();
+        // Registro de Bitacora
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarTextos();
         habilitarBotones();
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
