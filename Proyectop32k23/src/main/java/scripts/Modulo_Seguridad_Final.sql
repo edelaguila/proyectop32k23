@@ -1,4 +1,3 @@
-
 CREATE SCHEMA IF NOT EXISTS `proyectop312023` DEFAULT CHARACTER SET utf8 ;
 USE `proyectop312023` ;
 
@@ -24,6 +23,7 @@ CREATE TABLE IF NOT EXISTS tbl_usuario (
     FOREIGN KEY (tipuid) REFERENCES tbl_tipousuario (tipuid)
     )
 ENGINE = InnoDB CHARACTER SET = latin1;
+
 CREATE TABLE IF NOT EXISTS tbl_perfil (
     perid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     pernombre VARCHAR(30) NOT NULL,
@@ -86,5 +86,3 @@ CREATE TABLE IF NOT EXISTS tbl_bitacora (
 	FOREIGN KEY (aplid) references tbl_aplicacion (aplid),
 	FOREIGN KEY (usuid) references tbl_usuario (usuid)    
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;	
-
-

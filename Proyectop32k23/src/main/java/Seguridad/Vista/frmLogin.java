@@ -9,6 +9,8 @@ import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
 import javax.swing.JOptionPane;
+import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Controlador.clsBitacora;
 
 /**
  *
@@ -19,7 +21,9 @@ public class frmLogin extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    int codigoAplicacion = 1;    
     public frmLogin() {
+        
         initComponents();
         setLocationRelativeTo(null);
         setSize(300, 200);
@@ -140,8 +144,16 @@ public class frmLogin extends javax.swing.JFrame {
                     txtUsuario.getText().equals(usuario.getNombreUsuario())) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al SISTEMA\n", 
                     "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
-
-                    MdiGeneral menuGeneral = new MdiGeneral();
+                    // registrando usuario conectado
+                    clsUsuarioConectado usuarioRegistrado = new clsUsuarioConectado();
+                    usuarioRegistrado.setIdUsuario(usuario.getIdUsuario());
+                    usuarioRegistrado.setNombreUsuario(usuario.getNombreUsuario());
+                    // Registro de Bitacora
+                    int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(usuarioRegistrado.getIdUsuario(), codigoAplicacion, "BEG");
+                    // Menu general
+                    MdiSeguridad menuGeneral = new MdiSeguridad();
                     menuGeneral.setVisible(true);
                     this.dispose();
 
