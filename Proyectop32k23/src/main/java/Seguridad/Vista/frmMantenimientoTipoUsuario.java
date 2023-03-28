@@ -8,6 +8,7 @@ package Seguridad.Vista;
 
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsTipoUsuario;
+import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -282,7 +283,7 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
         // Registro de Bitacora
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -297,7 +298,7 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
         // Registro de Bitacora
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -312,7 +313,7 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
         // Registro de Bitacora
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -329,7 +330,7 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
         // Registro de Bitacora
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(tipou.getIdTipoUsuario(), codigoAplicacion, "BEG");
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "BEG");
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
