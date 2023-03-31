@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsPerfil;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -54,7 +57,7 @@ public class frmMantenimientoBitacora extends javax.swing.JInternalFrame {
     public void buscaraplicacion() {
 
     }
-      public void buscarfechas() {
+      public void buscarfechas() throws ParseException {
           String Primerafecha= txtNombre.getText();
           String Segundafecha= txtEstado.getText();
         
@@ -245,8 +248,12 @@ public class frmMantenimientoBitacora extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        buscarfechas();
+        try {
+            // TODO add your handling code here:
+            buscarfechas();
+        } catch (ParseException ex) {
+            Logger.getLogger(frmMantenimientoBitacora.class.getName()).log(Level.SEVERE, null, ex);
+        }
      
     }//GEN-LAST:event_btnBuscarActionPerformed
 
