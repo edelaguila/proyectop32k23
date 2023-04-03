@@ -41,7 +41,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
         tblperfilesasignados = new javax.swing.JTextArea();
         jLabelPerfilesDisp = new javax.swing.JLabel();
         btnQuitar = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbUsuarios = new javax.swing.JComboBox<>();
 
         setTitle("Mantenimiento Perfil Usuario");
 
@@ -77,7 +77,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
 
         btnQuitar.setText("<");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario 1", "Usuario 2", "Usuario 3", "Usuario 4" }));
+        cbUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario 1", "Usuario 2", "Usuario 3", "Usuario 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,7 +116,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
                         .addComponent(jLabelPerfilesDisp)
                         .addGap(477, 477, 477))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(315, 315, 315))))
         );
         layout.setVerticalGroup(
@@ -125,7 +125,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabelUsuarioSeleccionado)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -168,7 +168,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnQuitar;
     private javax.swing.JButton btnQuitarTodo;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cbUsuarios;
     private javax.swing.JLabel jLabelAsignar;
     private javax.swing.JLabel jLabelPerfilAsignado;
     private javax.swing.JLabel jLabelPerfilesDisp;
