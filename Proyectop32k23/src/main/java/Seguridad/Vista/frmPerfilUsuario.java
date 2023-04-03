@@ -30,7 +30,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        tblperfilesasignados = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
 
         setTitle("Mantenimiento Perfil Usuario");
@@ -41,9 +41,9 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel2.setText("Aplicaciones Asignadas");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        tblperfilesasignados.setColumns(20);
+        tblperfilesasignados.setRows(5);
+        jScrollPane1.setViewportView(tblperfilesasignados);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel3.setText("Aplicaciones Disponibles");
@@ -90,6 +90,6 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea tblperfilesasignados;
     // End of variables declaration//GEN-END:variables
 }
