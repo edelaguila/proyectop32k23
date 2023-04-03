@@ -65,7 +65,7 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
 
         tblperfilesdisponibles.setColumns(20);
         tblperfilesdisponibles.setRows(5);
-        tblperfilesdisponibles.setText("Cajero\nContador\nAdministrador\nVendedor");
+        tblperfilesdisponibles.setText("Cajero\nContador\nAdministrador\nVendedor\nCliente");
         jScrollPane2.setViewportView(tblperfilesdisponibles);
 
         tblperfilesasignados.setColumns(20);
