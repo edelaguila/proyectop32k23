@@ -50,6 +50,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mantenimientoModulos = new javax.swing.JCheckBoxMenuItem();
         mantenimientoPerfiles = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoUsuarios = new javax.swing.JCheckBoxMenuItem();
+        ModuloCompras = new javax.swing.JMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         mnuConsultas = new javax.swing.JMenu();
         consultaBitacora = new javax.swing.JCheckBoxMenuItem();
@@ -150,6 +151,14 @@ public class MdiSeguridad extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientos.add(mantenimientoTipoUsuarios);
+
+        ModuloCompras.setText("Modulo de compras");
+        ModuloCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModuloComprasActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientos.add(ModuloCompras);
 
         mnuCatalogos.add(mnuCatalogosMantenimientos);
 
@@ -278,6 +287,15 @@ public class MdiSeguridad extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
 
+    private void ModuloComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModuloComprasActionPerformed
+        // TODO add your handling code here:
+        frmModuloCompras ventana = new frmModuloCompras();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_ModuloComprasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -317,6 +335,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ModuloCompras;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDesktopPane1;
