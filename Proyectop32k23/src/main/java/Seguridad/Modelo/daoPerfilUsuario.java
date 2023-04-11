@@ -8,219 +8,122 @@
 //Meyglin del Rosario Rosales Ochoa Carne: 9959-21-4490
 package Seguridad.Modelo;
 
-import Seguridad.Controlador.clsPerfil;
+import Seguridad.Controlador.clsPerfilUsuario;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author visitante
  */
-public class daoPerfil {
+public class daoPerfilUsuario {
 
+    public ArrayList<String> obtenerNombresUsuarios() {
+    ArrayList<String> nombresUsuarios = new ArrayList<>();
 
-    private static final String SQL_SELECT = "SELECT perid, pernombre, perestatus FROM tbl_perfil";
-    private static final String SQL_INSERT = "INSERT INTO tbl_perfil(pernombre, perestatus) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_perfil SET pernombre=?, perestatus=? WHERE perid = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_perfil WHERE perid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT perid, pernombre, perestatus FROM tbl_perfil WHERE pernombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT perid, pernombre, perestatus FROM tbl_perfil WHERE perid = ?";    
+    try {
+        // 1. Conectar a la base de datos
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
 
-    public List<clsPerfil> consultaPerfil() {
+        // 2. Crear el objeto Statement
+        Statement stmt = con.createStatement();
 
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        
+        // 3. Ejecutar la consulta SQL
+        String sql = "SELECT usunombre FROM tbl_usuario";
+        ResultSet rs = stmt.executeQuery(sql);
 
-        List<clsPerfil> perfiles = new ArrayList<>();
-
-        try {
-            conn = Conexion.getConnection();
-            stmt = conn.prepareStatement(SQL_SELECT);
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-
-                int id = rs.getInt("perid");
-                String nombre = rs.getString("pernombre");
-                String estatus = rs.getString("perestatus");
-                clsPerfil perfil = new clsPerfil();
-                perfil.setIdPerfil(id);
-                perfil.setNombrePerfil(nombre);
-                perfil.setEstatusPerfil(estatus);
-                perfiles.add(perfil);
-
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(rs);
-            Conexion.close(stmt);
-            Conexion.close(conn);
+        // 4. Recuperar los resultados
+        while (rs.next()) {
+            // 5. Agregar los elementos al ArrayList
+            nombresUsuarios.add(rs.getString("usunombre"));
         }
 
-        return perfiles;
+        // 6. Cerrar la conexión
+        rs.close();
+        stmt.close();
+        con.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
 
-    public int ingresaPerfil(clsPerfil perfil) {
+    return nombresUsuarios;
+}
+public void cargarTabla(DefaultTableModel modelo) {
+    try {
+        // 1. Conectar a la base de datos
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
 
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        int rows = 0;
-        try {
-            conn = Conexion.getConnection();
-            stmt = conn.prepareStatement(SQL_INSERT);
+        // 2. Crear el objeto Statement
+        Statement stmt = con.createStatement();
 
-            stmt.setString(1, perfil.getNombrePerfil());
-            stmt.setString(2, perfil.getEstatusPerfil());
+        // 3. Ejecutar la consulta SQL
+        String sql = "SELECT pernombre FROM tbl_perfil";
+        ResultSet rs = stmt.executeQuery(sql);
 
-
-            System.out.println("ejecutando query:" + SQL_INSERT);
-            rows = stmt.executeUpdate();
-            System.out.println("Registros afectados:" + rows);
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(stmt);
-            Conexion.close(conn);
+        // 5. Recuperar los resultados y agregarlos al modelo de datos
+        while (rs.next()) {
+            Object[] fila = new Object[1];
+            fila[0] = rs.getString("pernombre");
+            modelo.addRow(fila);
         }
 
-        return rows;
+        // 6. Cerrar la conexión
+        rs.close();
+        stmt.close();
+        con.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+
+
+public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
+    ArrayList<String> perfilesUsuario = new ArrayList<>();
+
+    try {
+        // 1. Conectar a la base de datos
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+
+        // 2. Crear el objeto Statement
+        Statement stmt = con.createStatement();
+
+        // 3. Obtener el usuid del usuario seleccionado en el combo box
+        String sql = "SELECT usuid FROM tbl_usuario WHERE usunombre='" + usuario + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        int usuid = rs.getInt("usuid");
+
+        // 4. Ejecutar la consulta SQL para obtener los perfiles asociados al usuario
+        sql = "SELECT pernombre FROM tbl_perfilusuario pu INNER JOIN tbl_perfil p ON pu.perid=p.perid WHERE pu.usuid=" + usuid;
+        rs = stmt.executeQuery(sql);
+
+        // 5. Recuperar los resultados
+        while (rs.next()) {
+            perfilesUsuario.add(rs.getString("pernombre"));
+        }
+
+        // 6. Cerrar la conexión
+        rs.close();
+        stmt.close();
+        con.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
 
-
-    public int actualizaPerfil(clsPerfil perfil) {
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        int rows = 0;
-        try {
-            conn = Conexion.getConnection();
-            System.out.println("ejecutando query: " + SQL_UPDATE);
-            stmt = conn.prepareStatement(SQL_UPDATE);
-
-            stmt.setString(1, perfil.getNombrePerfil());
-            stmt.setString(2, perfil.getEstatusPerfil());
-            stmt.setInt(3, perfil.getIdPerfil());
+    return perfilesUsuario;
+}
 
 
-            rows = stmt.executeUpdate();
-            System.out.println("Registros actualizado:" + rows);
-
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(stmt);
-            Conexion.close(conn);
-        }
-
-        return rows;
-    }
 
 
-    public int borrarPerfil(clsPerfil perfil) {
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        int rows = 0;
-
-        try {
-            conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_DELETE);
-            stmt = conn.prepareStatement(SQL_DELETE);
-
-            stmt.setInt(1, perfil.getIdPerfil());
-
-            rows = stmt.executeUpdate();
-            System.out.println("Registros eliminados:" + rows);
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(stmt);
-            Conexion.close(conn);
-        }
-
-        return rows;
-    }
 
 
-    public clsPerfil consultaPerfilPorNombre(clsPerfil perfil) {
 
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            conn = Conexion.getConnection();
-
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + perfil);
-            stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            //stmt.setInt(1, perfil.getIdPerfil());            
-            stmt.setString(1, perfil.getNombrePerfil());
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("perid");
-                String nombre = rs.getString("pernombre");
-                String estatus = rs.getString("perestatus");
-
-                //perfil = new clsPerfil();
-                perfil.setIdPerfil(id);
-                perfil.setNombrePerfil(nombre);
-                perfil.setEstatusPerfil(estatus);
-                System.out.println(" registro consultado: " + perfil);                
-
-            }
-            //System.out.println("Registros buscado:" + persona);
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(rs);
-            Conexion.close(stmt);
-            Conexion.close(conn);
-        }
-
-        //return personas;  // Si se utiliza un ArrayList
-
-        return perfil;
-    }
-    public clsPerfil consultaPerfilPorId(clsPerfil perfil) {
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            conn = Conexion.getConnection();
-
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + perfil);
-            stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, perfil.getIdPerfil());            
-            //stmt.setString(1, perfil.getNombrePerfil());
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("perid");
-                String nombre = rs.getString("pernombre");
-                String estatus = rs.getString("perestatus");
-
-                //perfil = new clsPerfil();
-                perfil.setIdPerfil(id);
-                perfil.setNombrePerfil(nombre);
-                perfil.setEstatusPerfil(estatus);
-                System.out.println(" registro consultado: " + perfil);                
-
-            }
-            //System.out.println("Registros buscado:" + persona);
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(rs);
-            Conexion.close(stmt);
-            Conexion.close(conn);
-        }
-
-        //return personas;  // Si se utiliza un ArrayList
-
-        return perfil;
-
-    }    
 }

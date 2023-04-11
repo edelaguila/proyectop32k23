@@ -3,20 +3,101 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+//Carlos Emanuel Hernandez Garcia
+//9959-21-363
 package Seguridad.Vista;
+
+import Seguridad.Controlador.clsPerfilUsuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
+
 
 /**
  *
- * @author Javier
+ * @author visitante
  */
-public class frmPerfilUsuario extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form frmPerfilUsuario
-     */
-    public frmPerfilUsuario() {
+
+public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
+
+
+    
+
+
+
+
+    public frmMantenimientoPerfilUsuario() {
         initComponents();
+        cargarTabla();
+        cargarComboBox();
+
+        
+        comboBox.addActionListener((ActionEvent event) -> {
+            // Obtener el usuario seleccionado en el combo box
+            String usuario = comboBox.getSelectedItem().toString();
+            
+            // Cargar la tabla con los perfiles asociados al usuario seleccionado
+            cargarTabla2(usuario);
+            
+            // Repintar la tabla
+            jTable2.repaint();
+        });
+        
+        
+
+
     }
+    
+private void cargarComboBox() {
+    clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
+    ArrayList<String> nombresUsuarios = perfilUsuario.obtenerNombresUsuarios();
+
+    nombresUsuarios.forEach(nombreUsuario -> {
+        comboBox.addItem(nombreUsuario);
+        });
+}
+
+private void cargarTabla() {
+        clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Perfiles Disponibles");
+        jTable1.setModel(modelo);
+        perfilUsuario.cargarTabla(modelo);
+    }
+
+
+
+
+
+private void cargarTabla2(String usuario) {
+    clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
+    ArrayList<String> perfiles = perfilUsuario.obtenerPerfilesUsuario(usuario);
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("Perfiles Asignados");
+    perfiles.forEach(perfil -> {
+        Object[] fila = new Object[1];
+        fila[0] = perfil;
+        modelo.addRow(fila);
+    });
+    jTable2.setModel(modelo);
+}
+
+
+
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,156 +108,133 @@ public class frmPerfilUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnEditar = new javax.swing.JButton();
-        jLabelAsignar = new javax.swing.JLabel();
-        jLabelQuitar = new javax.swing.JLabel();
-        btnAsignarTodo = new javax.swing.JButton();
-        btnAsignar = new javax.swing.JButton();
-        jLabelUsuarioSeleccionado = new javax.swing.JLabel();
-        btnQuitarTodo = new javax.swing.JButton();
-        jLabelPerfilAsignado = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblperfilesdisponibles = new javax.swing.JTextArea();
+        lb2 = new javax.swing.JLabel();
+        lbusu = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblperfilesasignados = new javax.swing.JTextArea();
-        jLabelPerfilesDisp = new javax.swing.JLabel();
-        btnQuitar = new javax.swing.JButton();
-        cbUsuarios = new javax.swing.JComboBox<>();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        comboBox = new javax.swing.JComboBox<>();
+        btnAsignar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnAsignarTodo = new javax.swing.JButton();
+        btnEliminarTodo = new javax.swing.JButton();
 
-        setTitle("Mantenimiento Perfil Usuario");
+        lb2.setForeground(new java.awt.Color(204, 204, 204));
+        lb2.setText(".");
 
-        btnEditar.setText("Editar");
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Mantenimiento Perfiles");
+        setVisible(true);
 
-        jLabelAsignar.setText("Asignar");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        jLabelQuitar.setText("Quitar");
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        btnAsignarTodo.setText(">>");
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        btnAsignar.setText(">");
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
-        jLabelUsuarioSeleccionado.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabelUsuarioSeleccionado.setText("Usuario Seleccionado ");
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
 
-        btnQuitarTodo.setText("<<");
+        btnAsignar.setText("Asignar");
 
-        jLabelPerfilAsignado.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabelPerfilAsignado.setText("Perfiles Asignados");
+        btnEliminar.setText("Eliminar");
 
-        tblperfilesdisponibles.setColumns(20);
-        tblperfilesdisponibles.setRows(5);
-        tblperfilesdisponibles.setText("Cajero\nContador\nAdministrador\nVendedor");
-        jScrollPane2.setViewportView(tblperfilesdisponibles);
+        btnAsignarTodo.setText("Asignar Todo");
 
-        tblperfilesasignados.setColumns(20);
-        tblperfilesasignados.setRows(5);
-        jScrollPane1.setViewportView(tblperfilesasignados);
-
-        jLabelPerfilesDisp.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabelPerfilesDisp.setText("Perfiles Disponibles");
-
-        btnQuitar.setText("<");
-
-        cbUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario 1", "Usuario 2", "Usuario 3", "Usuario 4" }));
+        btnEliminarTodo.setText("Eliminar Todo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(118, 118, 118)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEditar)
-                            .addComponent(btnQuitarTodo)
-                            .addComponent(btnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabelQuitar)
-                                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAsignarTodo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelAsignar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelPerfilAsignado)
-                        .addGap(89, 89, 89))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAsignar)
+                                .addGap(95, 95, 95))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnEliminarTodo)
+                                    .addComponent(btnAsignarTodo))
+                                .addGap(79, 79, 79)))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
             .addGroup(layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(jLabelUsuarioSeleccionado)
+                .addGap(446, 446, 446)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelPerfilesDisp)
-                        .addGap(477, 477, 477))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(315, 315, 315))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelUsuarioSeleccionado)
-                .addGap(18, 18, 18)
-                .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelPerfilAsignado)
-                                .addGap(25, 25, 25)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelPerfilesDisp)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelAsignar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAsignarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelQuitar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnQuitarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
+                        .addGap(109, 109, 109)
+                        .addComponent(btnAsignar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAsignarTodo)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnEliminar)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnEliminarTodo)))
+                .addGap(363, 363, 363))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignar;
     private javax.swing.JButton btnAsignarTodo;
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnQuitar;
-    private javax.swing.JButton btnQuitarTodo;
-    private javax.swing.JComboBox<String> cbUsuarios;
-    private javax.swing.JLabel jLabelAsignar;
-    private javax.swing.JLabel jLabelPerfilAsignado;
-    private javax.swing.JLabel jLabelPerfilesDisp;
-    private javax.swing.JLabel jLabelQuitar;
-    private javax.swing.JLabel jLabelUsuarioSeleccionado;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnEliminarTodo;
+    private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea tblperfilesasignados;
-    private javax.swing.JTextArea tblperfilesdisponibles;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lb2;
+    private javax.swing.JLabel lbusu;
     // End of variables declaration//GEN-END:variables
 }
