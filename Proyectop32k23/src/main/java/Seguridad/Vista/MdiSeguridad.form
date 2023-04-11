@@ -110,6 +110,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mantenimientoTipoUsuariosActionPerformed"/>
                   </Events>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mantenimientoPerfilUsuario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Mantenimiento Perfil Usuario"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mantenimientoPerfilUsuarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
               </SubComponents>
             </Menu>
           </SubComponents>
