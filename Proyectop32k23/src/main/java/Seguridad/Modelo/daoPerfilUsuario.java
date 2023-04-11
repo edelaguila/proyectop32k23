@@ -27,7 +27,7 @@ public class daoPerfilUsuario {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -56,7 +56,7 @@ public class daoPerfilUsuario {
 public void cargarTabla(DefaultTableModel modelo) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -88,7 +88,7 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
