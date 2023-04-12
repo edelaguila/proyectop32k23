@@ -19,6 +19,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -161,10 +163,20 @@ private void cargarTabla2(String usuario) {
         btnAsignar.setText("Asignar");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAsignarTodo.setText("Asignar Todo");
 
         btnEliminarTodo.setText("Eliminar Todo");
+        btnEliminarTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarTodoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,6 +233,23 @@ private void cargarTabla2(String usuario) {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       
+        // boTon de eliminar  
+        
+        DefaultTableModel  tabla = (DefaultTableModel)
+                jTable2.getModel();
+        int quitar;
+        quitar = jTable2.getSelectedRow();
+        tabla.removeRow(quitar); 
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEliminarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTodoActionPerformed
+        // Eliminar todo
+        
+        
+    }//GEN-LAST:event_btnEliminarTodoActionPerformed
  
     
 
