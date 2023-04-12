@@ -229,10 +229,12 @@ private void cargarTabla2(String usuario) {
 
     private void btnAsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTodoActionPerformed
         // TODO add your handling code here:
-                               
+        
+    // declarar los modelos de origen y de destino, es util para no eliminar datos de la tabla de origen                           
     DefaultTableModel modeloOrigen = (DefaultTableModel) jTable1.getModel();
     DefaultTableModel modeloDestino = (DefaultTableModel) jTable2.getModel();
     
+    //declaramos el ciclo for, para recorrer las filas de la tabla de origen y es agregada a la tabla destino
     for (int i = 0; i < modeloOrigen.getRowCount(); i++) {
         Object[] fila = new Object[modeloOrigen.getColumnCount()];
         for (int j = 0; j < modeloOrigen.getColumnCount(); j++) {
@@ -240,6 +242,7 @@ private void cargarTabla2(String usuario) {
         }
         modeloDestino.addRow(fila);
     }
+    // asignamos el modelo de la tabla destino 
     jTable2.setModel(modeloDestino);
                                                   
 
