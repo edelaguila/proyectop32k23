@@ -86,3 +86,33 @@ CREATE TABLE IF NOT EXISTS tbl_bitacora (
 	FOREIGN KEY (aplid) references tbl_aplicacion (aplid),
 	FOREIGN KEY (usuid) references tbl_usuario (usuid)    
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;	
+
+CREATE TABLE IF NOT EXISTS tbl_Clientes (
+	clId int auto_increment,
+    clFecha datetime NULL, 
+    clNombre VARCHAR(40) NOT NULL,
+    clNit varchar (25) NOT NULL,
+    clDebe VARCHAR (25) NOT NULL,
+    clHaber VARCHAR (25) NOT NULL,
+    clNoFactura varchar (25) NOT NULL,
+    PRIMARY KEY(clId)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Proveedores (
+	prId int auto_increment,
+    prFecha datetime NULL, 
+    prNombre VARCHAR(40) NOT NULL,
+    prNit varchar (25) NOT NULL,
+    prSaldo VARCHAR (25) NOT NULL,
+    prDeuda VARCHAR (25) NOT NULL,
+    PRIMARY KEY(prId)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_cCorrientes (
+	ccId int auto_increment,
+    ccNoFactura VARCHAR (25) NOT NULL,
+    ccTotalFactura VARCHAR (25) NOT NULL,
+    ccSaldo VARCHAR (25) NOT NULL,
+    ccDeuda VARCHAR (25) NOT NULL,
+    PRIMARY KEY(ccId)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
