@@ -5,7 +5,7 @@
  */
 package Seguridad.Controlador;
 import java.util.List;
-import Seguridad.Modelo.daoAplicacion;
+import Seguridad.Modelo.daoAplicaciónPerfil;
 /**
  *
  * @author visitante
@@ -13,7 +13,10 @@ import Seguridad.Modelo.daoAplicacion;
 public class clsAplicacionPerfil {
     private int IdAplicacionPerfil;
     private String NombreAplicacionPerfil;
-    private String EstatusAplicacionPerfil;
+    private String EditarApPerfil;
+    private String IngresarApPerfil;
+    private String EliminarApPerfil;
+    private String VerApPerfil;
 
     public int getIdAplicacionPerfil() {
         return IdAplicacionPerfil;
@@ -31,18 +34,66 @@ public class clsAplicacionPerfil {
         this.NombreAplicacionPerfil = NombreAplicacionPerfil;
     }
 
-    public String getEstatusAplicacionPerfil() {
-        return EstatusAplicacionPerfil;
+    public String getEditarApPerfil() {
+        return EditarApPerfil;
     }
 
-    public void setEstatusAplicacionPerfil(String EstatusAplicacionPerfil) {
-        this.EstatusAplicacionPerfil = EstatusAplicacionPerfil;
+    public void setEditarApPerfil(String EditarApPerfil) {
+        this.EditarApPerfil = EditarApPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EstatusAplicacionPerfil) {
+    public String getIngresarApPerfil() {
+        return IngresarApPerfil;
+    }
+
+    public void setIngresarApPerfil(String IngresarApPerfil) {
+        this.IngresarApPerfil = IngresarApPerfil;
+    }
+
+    public String getEliminarApPerfil() {
+        return EliminarApPerfil;
+    }
+
+    public void setEliminarApPerfil(String EliminarApPerfil) {
+        this.EliminarApPerfil = EliminarApPerfil;
+    }
+
+    public String getVerApPerfil() {
+        return VerApPerfil;
+    }
+
+    public void setVerApPerfil(String VerApPerfil) {
+        this.VerApPerfil = VerApPerfil;
+    }
+
+    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil, String VerApPerfil) {
         this.IdAplicacionPerfil = IdAplicacionPerfil;
         this.NombreAplicacionPerfil = NombreAplicacionPerfil;
-        this.EstatusAplicacionPerfil = EstatusAplicacionPerfil;
+        this.EditarApPerfil = EditarApPerfil;
+        this.IngresarApPerfil = IngresarApPerfil;
+        this.EliminarApPerfil = EliminarApPerfil;
+        this.VerApPerfil = VerApPerfil;
+    }
+
+    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil) {
+        this.IdAplicacionPerfil = IdAplicacionPerfil;
+        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+        this.EditarApPerfil = EditarApPerfil;
+        this.IngresarApPerfil = IngresarApPerfil;
+        this.EliminarApPerfil = EliminarApPerfil;
+    }
+
+    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil) {
+        this.IdAplicacionPerfil = IdAplicacionPerfil;
+        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+        this.EditarApPerfil = EditarApPerfil;
+        this.IngresarApPerfil = IngresarApPerfil;
+    }
+
+    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil) {
+        this.IdAplicacionPerfil = IdAplicacionPerfil;
+        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+        this.EditarApPerfil = EditarApPerfil;
     }
 
     public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil) {
@@ -58,36 +109,37 @@ public class clsAplicacionPerfil {
     }
 
     
+    
     //Metodos de acceso a la capa controlador
     public clsAplicacionPerfil getBuscarInformacionAplicacionPorNombre(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorNombre(aplicacionPerfil);
+        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
+        return daoAplicaciónPerfil.consultaAplicacionPorNombre(aplicacionPerfil);
     }
     public clsAplicacionPerfil getBuscarInformacionAplicacionPorId(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorId(aplicacionPerfil);
+        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
+        return daoAplicaciónPerfil.consultaAplicacionPorId(aplicacionPerfil);
     }    
     public List<clsAplicacionPerfil> getListadoAplicaciones()
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        List<clsAplicacionPerfil> listadoUsuarios = daoAplicacion.consultaAplicacion();
+        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
+        List<clsAplicacionPerfil> listadoUsuarios = daoAplicaciónPerfil.consultaAplicacion();
         return listadoUsuarios;
     }
     public int setBorrarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.borrarAplicacion(aplicacionPerfil);
+        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
+        return daoAplicaciónPerfil.borrarAplicacion(aplicacionPerfil);
     }          
     public int setIngresarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.ingresaAplicacion(aplicacionPerfil);
+        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
+        return daoAplicaciónPerfil.ingresaAplicacion(aplicacionPerfil);
     }              
     public int setModificarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.actualizaAplicacion(aplicacionPerfil);
+        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
+        return daoAplicaciónPerfil.actualizaAplicacion(aplicacionPerfil);
     }              
 }
