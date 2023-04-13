@@ -158,7 +158,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
         mnuProcesos.setText("Procesos");
 
-        jMenuItem3.setText("Perfil Usuario");
+        jMenuItem3.setText("Aplicacion Perfil");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -290,7 +290,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        frmProcesoPerfilUsuario ventana = new frmProcesoPerfilUsuario();
+        frmProcesoAplicacionPerfil ventana = new frmProcesoAplicacionPerfil();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
