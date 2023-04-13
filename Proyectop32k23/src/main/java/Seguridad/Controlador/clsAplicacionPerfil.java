@@ -58,14 +58,6 @@ public class clsAplicacionPerfil {
         this.EliminarApPerfil = EliminarApPerfil;
     }
 
-    public String getVerApPerfil() {
-        return VerApPerfil;
-    }
-
-    public void setVerApPerfil(String VerApPerfil) {
-        this.VerApPerfil = VerApPerfil;
-    }
-
     public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil, String VerApPerfil) {
         this.IdAplicacionPerfil = IdAplicacionPerfil;
         this.NombreAplicacionPerfil = NombreAplicacionPerfil;
@@ -107,14 +99,12 @@ public class clsAplicacionPerfil {
 
     public clsAplicacionPerfil() {
     }
-
-    
     
     //Metodos de acceso a la capa controlador
     public clsAplicacionPerfil getBuscarInformacionAplicacionPorNombre(clsAplicacionPerfil aplicacionPerfil)
     {
         daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        return daoAplicaciónPerfil.consultaAplicacionPorNombre(aplicacionPerfil);
+        return daoAplicaciónPerfil.consultaPerfilAplicacionPorNombre(aplicacionPerfil);
     }
     public clsAplicacionPerfil getBuscarInformacionAplicacionPorId(clsAplicacionPerfil aplicacionPerfil)
     {
