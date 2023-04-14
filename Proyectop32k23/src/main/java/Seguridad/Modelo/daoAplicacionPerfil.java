@@ -170,4 +170,45 @@ public class daoAplicacionPerfil {
         //return personas;  // Si se utiliza un ArrayList
         return perfilaplicacion;
     }
+    
+    public clsAplicacionPerfil consultaPerfilAplicacionPorId(clsAplicacionPerfil perfilaplicacion) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + perfilaplicacion);
+            stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
+            //stmt.setInt(1, aplicacion.getIdAplicacion());            
+            stmt.setInt(1, perfilaplicacion.getIdAplicacionPerfil());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("aplid");
+                String nombre = rs.getString("perid");
+                String editar = rs.getString("perEditar");
+                String ingresar = rs.getString("perIngresar");
+                String eliminar = rs.getString("perEliminar");
+                String ver = rs.getString("perVer");
+
+                //aplicacion = new clsAplicacion();
+                perfilaplicacion.setIdAplicacionPerfil(id);
+                perfilaplicacion.setNombreAplicacionPerfil(nombre);
+                perfilaplicacion.setEditarApPerfil(editar);
+                perfilaplicacion.setIngresarApPerfil(ingresar);
+                perfilaplicacion.setEliminarApPerfil(eliminar);
+                perfilaplicacion.setVerApPerfil(ver);
+                System.out.println(" registro consultado: " + perfilaplicacion);                
+            }
+            //System.out.println("Registros buscado:" + persona);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        //return personas;  // Si se utiliza un ArrayList
+        return perfilaplicacion;
+    }
 }
