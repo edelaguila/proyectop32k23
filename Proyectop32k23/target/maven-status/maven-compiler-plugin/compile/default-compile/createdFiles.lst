@@ -26,6 +26,9 @@ Seguridad\Modelo\daoAplicacion.class
 Seguridad\Vista\frmMantenimientoTipoUsuario.class
 Seguridad\Vista\frmMantenimientoPerfil$2.class
 Seguridad\Vista\frmMantenimientoPerfilUsuario.class
+
+Seguridad\Vista\frmMantenimientoPerfilUsuario$3.class
+
 Seguridad\Vista\MdiSeguridad.class
 Seguridad\Vista\MdiSeguridad$12.class
 Seguridad\Vista\frmLogin$4.class
@@ -42,6 +45,7 @@ Seguridad\Modelo\daoBitacora.class
 Seguridad\Vista\MdiSeguridad$4.class
 Seguridad\Modelo\daoModulo.class
 Seguridad\Vista\frmMantenimientoBitacora$1.class
+Seguridad\Vista\frmMantenimientoPerfilUsuario$2.class
 Seguridad\Vista\frmMantenimientoUsuario.class
 Seguridad\Vista\frmMantenimientoAplicacion$2.class
 Seguridad\Vista\frmMantenimientoModulos$5.class
