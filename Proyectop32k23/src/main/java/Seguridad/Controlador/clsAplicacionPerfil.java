@@ -5,7 +5,8 @@
  */
 package Seguridad.Controlador;
 import java.util.List;
-import Seguridad.Modelo.daoAplicaciónPerfil;
+import Seguridad.Modelo.daoAplicacionPerfil;
+import Seguridad.Modelo.daoAplicacion;
 /**
  *
  * @author visitante
@@ -57,6 +58,14 @@ public class clsAplicacionPerfil {
     public void setEliminarApPerfil(String EliminarApPerfil) {
         this.EliminarApPerfil = EliminarApPerfil;
     }
+    
+    public String getVerApPerfil() {
+        return VerApPerfil;
+    }
+
+    public void setVerApPerfil(String VerApPerfil) {
+        this.VerApPerfil = VerApPerfil;
+    }
 
     public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil, String VerApPerfil) {
         this.IdAplicacionPerfil = IdAplicacionPerfil;
@@ -101,35 +110,35 @@ public class clsAplicacionPerfil {
     }
     
     //Metodos de acceso a la capa controlador
-    public clsAplicacionPerfil getBuscarInformacionAplicacionPorNombre(clsAplicacionPerfil aplicacionPerfil)
+    public clsAplicacion getBuscarInformacionAplicacionPorNombre(clsAplicacion aplicacion)
     {
-        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        return daoAplicaciónPerfil.consultaPerfilAplicacionPorNombre(aplicacionPerfil);
+        daoAplicacion daoAplicacion = new daoAplicacion();
+        return daoAplicacion.consultaAplicacionPorNombre(aplicacion);
     }
-    public clsAplicacionPerfil getBuscarInformacionAplicacionPorId(clsAplicacionPerfil aplicacionPerfil)
+    public clsAplicacion getBuscarInformacionAplicacionPorId(clsAplicacion aplicacion)
     {
-        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        return daoAplicaciónPerfil.consultaAplicacionPorId(aplicacionPerfil);
+        daoAplicacion daoAplicacion = new daoAplicacion();
+        return daoAplicacion.consultaAplicacionPorId(aplicacion);
     }    
     public List<clsAplicacionPerfil> getListadoAplicaciones()
     {
-        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        List<clsAplicacionPerfil> listadoUsuarios = daoAplicaciónPerfil.consultaAplicacion();
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        List<clsAplicacionPerfil> listadoUsuarios = daoAplicacionPerfil.consultaPerfilAplicacion();
         return listadoUsuarios;
     }
     public int setBorrarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        return daoAplicaciónPerfil.borrarAplicacion(aplicacionPerfil);
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        return daoAplicacionPerfil.borrarPerfilAplicacion(aplicacionPerfil);
     }          
     public int setIngresarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        return daoAplicaciónPerfil.ingresaAplicacion(aplicacionPerfil);
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        return daoAplicacionPerfil.ingresaPerfilAplicacion(aplicacionPerfil);
     }              
     public int setModificarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicaciónPerfil daoAplicaciónPerfil = new daoAplicaciónPerfil();
-        return daoAplicaciónPerfil.actualizaAplicacion(aplicacionPerfil);
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        return daoAplicacionPerfil.actualizaPerfilAplicacion(aplicacionPerfil);
     }              
 }
