@@ -26,7 +26,9 @@ Seguridad\Modelo\daoAplicacion.class
 Seguridad\Vista\frmMantenimientoTipoUsuario.class
 Seguridad\Vista\frmMantenimientoPerfil$2.class
 Seguridad\Vista\frmMantenimientoPerfilUsuario.class
+
 Seguridad\Vista\frmMantenimientoPerfilUsuario$3.class
+
 Seguridad\Vista\MdiSeguridad.class
 Seguridad\Vista\MdiSeguridad$12.class
 Seguridad\Vista\frmLogin$4.class
@@ -61,7 +63,6 @@ Seguridad\Vista\frmMantenimientoPerfil$7.class
 Seguridad\Vista\frmMantenimientoAplicacion$6.class
 Seguridad\Vista\frmMantenimientoModulos$1.class
 Seguridad\Vista\frmMantenimientoTipoUsuario$2.class
-.netbeans_automatic_build
 Seguridad\Controlador\clsUsuarioConectado.class
 Seguridad\Vista\frmMantenimientoPerfilUsuario$1.class
 Seguridad\Controlador\clsBitacora.class

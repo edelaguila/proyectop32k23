@@ -164,9 +164,13 @@ private void cargarTabla2(String usuario) {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+
+
+=======
                 {null},
                 {null},
                 {null}
+
             },
             new String [] {
                 " Disponible"
@@ -180,6 +184,11 @@ private void cargarTabla2(String usuario) {
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
 
         btnAsignar.setText("Asignar");
+        btnAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -202,6 +211,56 @@ private void cargarTabla2(String usuario) {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(163, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(68, 68, 68)
+                                        .addComponent(btnEliminar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnAsignarTodo)
+                                            .addComponent(btnEliminarTodo))))
+                                .addGap(54, 54, 54))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAsignar)
+                                .addGap(66, 66, 66)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(312, 312, 312)
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(226, 226, 226)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(btnAsignar)
+                            .addGap(51, 51, 51)
+                            .addComponent(btnAsignarTodo)
+                            .addGap(27, 27, 27)
+                            .addComponent(btnEliminar)
+                            .addGap(44, 44, 44)
+                            .addComponent(btnEliminarTodo))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
+
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,10 +307,39 @@ private void cargarTabla2(String usuario) {
                                 .addGap(34, 34, 34)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(575, 575, 575))
+
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    // María José Véliz Ochoa 9959-21-5909
+    private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    DefaultTableModel modelo1 = (DefaultTableModel) jTable1.getModel();
+    DefaultTableModel modelo2 = (DefaultTableModel) jTable2.getModel();
+    int FilaSeleccionada= jTable1.getSelectedRow();
+    Object [] fila=new Object[1];
+       fila[0]= modelo1.getValueAt(FilaSeleccionada,0);
+     modelo2.addRow(fila);  
+    jTable2.setModel(modelo2);
+
+    
+   //DefaultTableModel modelo = (DefaultTableModel) 
+    //jTable1.getModel();
+       
+    //Object [] fila=new Object[1];
+    //int FilaSeleccionada= jTable1.getSelectedRow();
+    //fila[0]= jTable1;
+       
+    //modelo.addRow(fila);
+    //jTable2.setModel(modelo);
+                                  
+    }//GEN-LAST:event_btnAsignarActionPerformed
 
 
     private void btnAsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTodoActionPerformed
@@ -293,6 +381,7 @@ private void cargarTabla2(String usuario) {
         
         
     }//GEN-LAST:event_btnEliminarTodoActionPerformed
+
 
  
     
