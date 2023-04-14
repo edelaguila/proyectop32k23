@@ -38,7 +38,10 @@ public class clsPerfilUsuario {
     return dao.obtenerPerfilesUsuario(usuario);
 }
 
-
+public void eliminarPerfilesUsuario(DefaultTableModel modelo, String usuario) {
+        daoPerfilUsuario dao = new daoPerfilUsuario();
+        dao.eliminarPerfilesUsuario(modelo, usuario);
+    }
 
 
      

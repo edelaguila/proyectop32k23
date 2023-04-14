@@ -9,7 +9,9 @@
 //9959-21-363
 package Seguridad.Vista;
 
+import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsPerfilUsuario;
+import Seguridad.Controlador.clsUsuarioConectado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -31,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
 
-
+int codigoAplicacion = 41;
     
 
 
@@ -42,18 +44,24 @@ public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
         cargarTabla();
         cargarComboBox();
 
-        
+        //ComboBox trabajado por Carlos Hernandez y Carlos Sandoval
         comboBox.addActionListener((ActionEvent event) -> {
             // Obtener el usuario seleccionado en el combo box
+            int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
             String usuario = comboBox.getSelectedItem().toString();
             
             // Cargar la tabla con los perfiles asociados al usuario seleccionado
             cargarTabla2(usuario);
             
+            
+            
             // Repintar la tabla
             jTable2.repaint();
         });
         
+        //Boton asignar trabajado por Maria Jose Veliz
         btnAsignar.addActionListener((ActionEvent e) -> {
             // Obtener el perfil seleccionado en la tabla 1
             int filaSeleccionada = jTable1.getSelectedRow();
@@ -65,7 +73,7 @@ public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
             
             try {
                 // Conectar a la base de datos
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
                 
                 // Obtener el perid del perfil seleccionado
                 PreparedStatement stmt = con.prepareStatement("SELECT perid FROM tbl_perfil WHERE pernombre=?");
@@ -101,6 +109,7 @@ public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
             }
         });
         
+        //Boton Eliminar trabajado por Carlos Hernandez
         btnEliminar.addActionListener((ActionEvent event) -> {
     // Obtener el perfil seleccionado en la tabla
     int filaSeleccionada = jTable2.getSelectedRow();
@@ -108,7 +117,7 @@ public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
     
     try {
         // Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
         
         // Obtener el perid del perfil seleccionado
         Statement stmt = con.createStatement();
@@ -147,11 +156,13 @@ public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
         ex.printStackTrace();
     }
 });
+        
+        //Boton asignar Todo trabajado por Meyglin Rosales
         btnAsignarTodo.addActionListener((ActionEvent event) -> {
     
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Obtener el usuario seleccionado en el combo box
         String usuario = comboBox.getSelectedItem().toString();
@@ -193,50 +204,19 @@ public class frmMantenimientoPerfilUsuario extends javax.swing.JInternalFrame {
     
    
 });
+
+        //Boton Eliminar todo trabajado por Carlos Sandoval
         btnEliminarTodo.addActionListener((ActionEvent event) -> {
-    
+     clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();       
     String usuario = comboBox.getSelectedItem().toString();
-
-    try {
-        // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
-
-        // 2. Crear el objeto Statement
-        Statement stmt = con.createStatement();
-
-        // 3. Obtener el usuid del usuario seleccionado en el combo box
-        String sql = "SELECT usuid FROM tbl_usuario WHERE usunombre='" + usuario + "'";
-        ResultSet rs = stmt.executeQuery(sql);
-        rs.next();
-        int usuid = rs.getInt("usuid");
-
-        // 4. Recorrer la tabla 2 y eliminar los perfiles asociados al usuario
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        for (int i = 0; i < modelo.getRowCount(); i++) {
-            String pernombre = modelo.getValueAt(i, 0).toString();
-            sql = "SELECT perid FROM tbl_perfil WHERE pernombre='" + pernombre + "'";
-            rs = stmt.executeQuery(sql);
-            rs.next();
-            int perid = rs.getInt("perid");
-            sql = "DELETE FROM tbl_perfilusuario WHERE usuid=" + usuid + " AND perid=" + perid;
-            stmt.executeUpdate(sql);
-        }
-
-        // 5. Cerrar la conexión
-        rs.close();
-        stmt.close();
-        con.close();
-
-        // 6. Actualizar la tabla 2
-        cargarTabla2(usuario);
-
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    }
+    DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+    perfilUsuario.eliminarPerfilesUsuario(modelo, usuario);
+    int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
+    cargarTabla2(usuario);
+        });
     
-   
-});
-
 
     }
     
@@ -261,7 +241,7 @@ private void cargarTabla() {
 
 
 
-private void cargarTabla2(String usuario) {
+public void cargarTabla2(String usuario) {
     clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
     ArrayList<String> perfiles = perfilUsuario.obtenerPerfilesUsuario(usuario);
     DefaultTableModel modelo = new DefaultTableModel();
@@ -273,6 +253,7 @@ private void cargarTabla2(String usuario) {
     });
     jTable2.setModel(modelo);
 }
+
 
 
 

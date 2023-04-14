@@ -9,6 +9,7 @@
 package Seguridad.Modelo;
 
 import Seguridad.Controlador.clsPerfilUsuario;
+import Seguridad.Vista.frmMantenimientoPerfilUsuario;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author visitante
  */
+
+
+//Conexion de tablas y combo Box a base de datos trabajado por Carlos Sandoval
 public class daoPerfilUsuario {
 
     public ArrayList<String> obtenerNombresUsuarios() {
@@ -27,7 +31,7 @@ public class daoPerfilUsuario {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -53,10 +57,11 @@ public class daoPerfilUsuario {
 
     return nombresUsuarios;
 }
+    
 public void cargarTabla(DefaultTableModel modelo) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -88,7 +93,7 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -120,6 +125,45 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
     return perfilesUsuario;
 }
 
+ //Boton Eliminar todo trabajado por Carlos Sandoval
+public static void eliminarPerfilesUsuario(DefaultTableModel modelo, String usuario) {
+    try {
+        // 1. Conectar a la base de datos
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
+
+        // 2. Crear el objeto Statement
+        Statement stmt = con.createStatement();
+
+        // 3. Obtener el usuid del usuario seleccionado en el combo box
+        String sql = "SELECT usuid FROM tbl_usuario WHERE usunombre='" + usuario + "'";
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        int usuid = rs.getInt("usuid");
+
+        // 4. Recorrer la tabla 2 y eliminar los perfiles asociados al usuario
+        
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            String pernombre = modelo.getValueAt(i, 0).toString();
+            sql = "SELECT perid FROM tbl_perfil WHERE pernombre='" + pernombre + "'";
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            int perid = rs.getInt("perid");
+            sql = "DELETE FROM tbl_perfilusuario WHERE usuid=" + usuid + " AND perid=" + perid;
+            stmt.executeUpdate(sql);
+        }
+
+        // 5. Cerrar la conexión
+        rs.close();
+        stmt.close();
+        con.close();
+
+        // 6. Actualizar la tabla 2
+
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
 
 
 
