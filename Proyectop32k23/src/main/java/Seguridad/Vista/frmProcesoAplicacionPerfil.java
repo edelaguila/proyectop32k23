@@ -22,6 +22,8 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
      */
     public frmProcesoAplicacionPerfil() {
         initComponents();
+        llenadoDeTabla1();
+        llenadoDeTabla2();
     }
 
     /**
@@ -41,7 +43,7 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         rbEliminar = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         rbImprimir = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        AsignarTodo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         AsignarUnaAp = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -50,13 +52,15 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblApsDisponibles = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        BotonQuitaruno = new javax.swing.JButton();
         btnLimpiarPerfil = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtIdPerfil = new javax.swing.JTextField();
         txtNombrePerfil = new javax.swing.JTextField();
         btnBuscarPerfil = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -89,14 +93,15 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         buttonGroup1.add(rbImprimir);
         rbImprimir.setText("Imprimir");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText(">>");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AsignarTodo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AsignarTodo.setText(">>");
+        AsignarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AsignarTodoActionPerformed(evt);
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Permisos");
 
         AsignarUnaAp.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -144,11 +149,11 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         ));
         jScrollPane4.setViewportView(tblApsDisponibles);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("<");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BotonQuitaruno.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotonQuitaruno.setText("<");
+        BotonQuitaruno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BotonQuitarunoActionPerformed(evt);
             }
         });
 
@@ -170,6 +175,10 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setText("Aplicaciones Asignadas");
+
+        jLabel8.setText("Aplicaciones Disponibles");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,86 +186,99 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(36, 36, 36)
-                        .addComponent(txtIdPerfil))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBuscarPerfil)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                                .addComponent(btnLimpiarPerfil))
-                            .addComponent(txtNombrePerfil))))
-                .addGap(276, 276, 276))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(rbInsertar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rbEditar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rbEliminar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rbImprimir))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(83, 83, 83)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(AsignarUnaAp, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel4))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(11, 11, 11)
-                                            .addComponent(jLabel3)))
-                                    .addGap(80, 80, 80)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(108, 108, 108))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(171, 171, 171)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuscarPerfil)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addComponent(btnLimpiarPerfil))
+                    .addComponent(txtNombrePerfil)
+                    .addComponent(txtIdPerfil)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(320, 320, 320))))
+                        .addGap(56, 56, 56)))
+                .addGap(291, 291, 291))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(244, 244, 244))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rbInsertar)
+                            .addGap(18, 18, 18)
+                            .addComponent(rbEditar)
+                            .addGap(18, 18, 18)
+                            .addComponent(rbEliminar)
+                            .addGap(18, 18, 18)
+                            .addComponent(rbImprimir)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AsignarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AsignarUnaAp, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonQuitaruno, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel3)))
+                        .addGap(65, 65, 65)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombrePerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscarPerfil)
-                    .addComponent(btnLimpiarPerfil))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
+                                .addComponent(txtNombrePerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnBuscarPerfil)
+                                    .addComponent(btnLimpiarPerfil))
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AsignarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(AsignarUnaAp, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -264,23 +286,21 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(27, 27, 27))
+                                .addComponent(BotonQuitaruno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)))))
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbInsertar)
+                            .addComponent(rbEditar)
+                            .addComponent(rbEliminar)
+                            .addComponent(rbImprimir))
+                        .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton7)
-                        .addGap(37, 37, 37)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbInsertar)
-                    .addComponent(rbEditar)
-                    .addComponent(rbEliminar)
-                    .addComponent(rbImprimir))
-                .addGap(38, 38, 38))
+                        .addGap(27, 27, 27))))
         );
 
         pack();
@@ -324,9 +344,54 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         }   
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarTodoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //REALIZADO POR MONICA GABRIELA PEREZ VELÁSQUEZ, 9959-21-1840
+        String is=txtIdPerfil.getText();
+        if(is.length()>0){
+            if(rbInsertar.isSelected()||rbEditar.isSelected()||rbEliminar.isSelected()||rbImprimir.isSelected()){
+                DefaultTableModel modeloOrigen = (DefaultTableModel)tblApsDisponibles.getModel(), modeloDestino = (DefaultTableModel)tblApsAsignadas.getModel();
+                for (int i=0;i<tblApsDisponibles.getRowCount(); i++) {
+                    Object fila [] = new Object [tblApsDisponibles.getColumnCount()];
+                    for (int j=0; j<tblApsDisponibles.getColumnCount(); j++){
+                        fila[j] = tblApsDisponibles.getValueAt(i,j);
+                        String idAplicacion= tblApsDisponibles.getValueAt(i,j).toString();
+                    }
+                    String idAplicacion= tblApsDisponibles.getValueAt(i,0).toString();
+                    clsAplicacionPerfil aplicacionPerfil = new clsAplicacionPerfil();
+                    aplicacionPerfil.setIdAplicacion(Integer.parseInt(idAplicacion));
+                    aplicacionPerfil.setIdPerfil(Integer.parseInt(txtIdPerfil.getText()));
+                    if(rbInsertar.isSelected()){
+                        aplicacionPerfil.setIngresarApPerfil("1");
+                    }else{
+                        aplicacionPerfil.setIngresarApPerfil("0");
+                    }if(rbEditar.isSelected()){
+                        aplicacionPerfil.setEditarApPerfil("1");
+                    }else{
+                        aplicacionPerfil.setEditarApPerfil("0");
+                    }if(rbEliminar.isSelected()){
+                        aplicacionPerfil.setEliminarApPerfil("1");
+                    }else{
+                        aplicacionPerfil.setEliminarApPerfil("0");
+                    }if(rbImprimir.isSelected()){
+                        aplicacionPerfil.setVerApPerfil("1");
+                    }else{
+                        aplicacionPerfil.setVerApPerfil("0");
+                    }
+                    aplicacionPerfil.setIngresarAplicacion(aplicacionPerfil);
+                    JOptionPane.showMessageDialog(null, "Registro Ingresado\n","Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+                    modeloDestino.addRow(fila);
+                    llenadoDeTabla2();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Debe seleccionar por lo menos un permiso");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe ingresar el ID del Perfil que Desea buscar");
+        }
+
+
+    }//GEN-LAST:event_AsignarTodoActionPerformed
 
     private void AsignarUnaApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarUnaApActionPerformed
         // TODO add your handling code here:
@@ -382,9 +447,31 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BotonQuitarunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonQuitarunoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        String is=txtIdPerfil.getText();
+        if(is.length()>0){
+            DefaultTableModel model = (DefaultTableModel)
+            tblApsAsignadas.getModel();
+            clsAplicacionPerfil aplicacionperfil = new clsAplicacionPerfil();
+            aplicacionperfil.setIdPerfil(Integer.parseInt(txtIdPerfil.getText()));
+            int s = tblApsAsignadas.getSelectedRow();
+            if (s<0){
+                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla" );
+            }else {
+                int aid=Integer.parseInt(tblApsAsignadas.getValueAt(s, 0).toString());
+                aplicacionperfil.setIdPerfil(aid);
+                int confirmar=JOptionPane.showConfirmDialog(null,"¿Seguro que quiere eliminar esta aplicacion Perfil? ");
+                if(JOptionPane.OK_OPTION==confirmar) {
+                    aplicacionperfil.setBorrarAplicacion(aplicacionperfil);
+                    model.removeRow(s);
+                    JOptionPane.showMessageDialog(null,"La aplicacion para el perfil se a Eliminado exitosamente" );
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe ingresar el ID del Perfil");
+        }
+    }//GEN-LAST:event_BotonQuitarunoActionPerformed
 
     private void btnLimpiarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarPerfilActionPerformed
         // TODO add your handling code here:
@@ -437,13 +524,13 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AsignarTodo;
     private javax.swing.JButton AsignarUnaAp;
+    private javax.swing.JButton BotonQuitaruno;
     private javax.swing.JButton btnBuscarPerfil;
     private javax.swing.JButton btnLimpiarPerfil;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -451,6 +538,8 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JRadioButton rbEditar;
