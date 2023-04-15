@@ -22,6 +22,8 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
      */
     public frmProcesoAplicacionPerfil() {
         initComponents();
+        llenadoDeTabla1();
+        llenadoDeTabla2();
     }
 
     /**
