@@ -12,27 +12,27 @@ import Seguridad.Modelo.daoAplicacion;
  * @author visitante
  */
 public class clsAplicacionPerfil {
-    private int IdAplicacionPerfil;
-    private String NombreAplicacionPerfil;
+    private int IdAplicacion;
+    private int  IdPerfil;
     private String EditarApPerfil;
     private String IngresarApPerfil;
     private String EliminarApPerfil;
     private String VerApPerfil;
 
-    public int getIdAplicacionPerfil() {
-        return IdAplicacionPerfil;
+    public int getIdAplicacion() {
+        return IdAplicacion;
     }
 
-    public void setIdAplicacionPerfil(int IdAplicacionPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
+    public void setIdAplicacion(int IdAplicacion) {
+        this.IdAplicacion = IdAplicacion;
     }
 
-    public String getNombreAplicacionPerfil() {
-        return NombreAplicacionPerfil;
+    public int getIdPerfil() {
+        return IdPerfil;
     }
 
-    public void setNombreAplicacionPerfil(String NombreAplicacionPerfil) {
-        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+    public void setIdPerfil(int IdPerfil) {
+        this.IdPerfil = IdPerfil;
     }
 
     public String getEditarApPerfil() {
@@ -58,7 +58,7 @@ public class clsAplicacionPerfil {
     public void setEliminarApPerfil(String EliminarApPerfil) {
         this.EliminarApPerfil = EliminarApPerfil;
     }
-    
+
     public String getVerApPerfil() {
         return VerApPerfil;
     }
@@ -67,64 +67,66 @@ public class clsAplicacionPerfil {
         this.VerApPerfil = VerApPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil, String VerApPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
-        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+    public clsAplicacionPerfil(int IdAplicacion, int IdPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil, String VerApPerfil) {
+        this.IdAplicacion = IdAplicacion;
+        this.IdPerfil = IdPerfil;
         this.EditarApPerfil = EditarApPerfil;
         this.IngresarApPerfil = IngresarApPerfil;
         this.EliminarApPerfil = EliminarApPerfil;
         this.VerApPerfil = VerApPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
-        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+    public clsAplicacionPerfil(int IdAplicacion, int IdPerfil, String EditarApPerfil, String IngresarApPerfil, String EliminarApPerfil) {
+        this.IdAplicacion = IdAplicacion;
+        this.IdPerfil = IdPerfil;
         this.EditarApPerfil = EditarApPerfil;
         this.IngresarApPerfil = IngresarApPerfil;
         this.EliminarApPerfil = EliminarApPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil, String IngresarApPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
-        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+    public clsAplicacionPerfil(int IdAplicacion, int IdPerfil, String EditarApPerfil, String IngresarApPerfil) {
+        this.IdAplicacion = IdAplicacion;
+        this.IdPerfil = IdPerfil;
         this.EditarApPerfil = EditarApPerfil;
         this.IngresarApPerfil = IngresarApPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil, String EditarApPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
-        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+    public clsAplicacionPerfil(int IdAplicacion, int IdPerfil, String EditarApPerfil) {
+        this.IdAplicacion = IdAplicacion;
+        this.IdPerfil = IdPerfil;
         this.EditarApPerfil = EditarApPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil, String NombreAplicacionPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
-        this.NombreAplicacionPerfil = NombreAplicacionPerfil;
+    public clsAplicacionPerfil(int IdAplicacion, int IdPerfil) {
+        this.IdAplicacion = IdAplicacion;
+        this.IdPerfil = IdPerfil;
     }
 
-    public clsAplicacionPerfil(int IdAplicacionPerfil) {
-        this.IdAplicacionPerfil = IdAplicacionPerfil;
+    public clsAplicacionPerfil(int IdAplicacion) {
+        this.IdAplicacion = IdAplicacion;
     }
 
     public clsAplicacionPerfil() {
     }
+
+    
     
     //Metodos de acceso a la capa controlador
-    public clsAplicacion getBuscarInformacionAplicacionPorNombre(clsAplicacion aplicacion)
+    /*public clsAplicacionPerfil getBuscarInformacionAplicacionPorNombre(clsAplicacion aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorNombre(aplicacion);
-    }
-    public clsAplicacion getBuscarInformacionAplicacionPorId(clsAplicacion aplicacion)
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        return daoAplicacionPerfil.consultaAplicacionPerfilPorNombre(aplicacionPerfil);
+    }*/
+    public clsAplicacionPerfil getBuscarInformacionAplicacionPerfilPorId(clsAplicacionPerfil aplicacionPerfil)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorId(aplicacion);
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        return daoAplicacionPerfil.consultaPerfilAplicacionPorId(aplicacionPerfil);
     }    
     public List<clsAplicacionPerfil> getListadoAplicaciones()
     {
         daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
-        List<clsAplicacionPerfil> listadoUsuarios = daoAplicacionPerfil.consultaPerfilAplicacion();
-        return listadoUsuarios;
+        List<clsAplicacionPerfil> listadoPerfiles = daoAplicacionPerfil.consultaPerfilAplicacion();
+        return listadoPerfiles;
     }
     public int setBorrarAplicacion(clsAplicacionPerfil aplicacionPerfil)
     {
@@ -140,5 +142,13 @@ public class clsAplicacionPerfil {
     {
         daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
         return daoAplicacionPerfil.actualizaPerfilAplicacion(aplicacionPerfil);
-    }              
+    }
+    
+    public int setBorrarTodoAplicacion(clsAplicacionPerfil aplicacionPerfil)
+    {
+        daoAplicacionPerfil daoAplicacionPerfil = new daoAplicacionPerfil();
+        return daoAplicacionPerfil.borrarTodoAplicacion(aplicacionPerfil);
+    }
+
 }
+
