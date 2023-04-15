@@ -59,6 +59,8 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
         txtIdPerfil = new javax.swing.JTextField();
         txtNombrePerfil = new javax.swing.JTextField();
         btnBuscarPerfil = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -173,6 +175,10 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setText("Aplicaciones Disponibles");
+
+        jLabel8.setText("Aplicaciones Asignadas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +192,7 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBuscarPerfil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLimpiarPerfil))
                     .addComponent(txtNombrePerfil)
                     .addComponent(txtIdPerfil)
@@ -231,6 +237,12 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(128, 128, 128))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +267,11 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnBuscarPerfil)
                                     .addComponent(btnLimpiarPerfil))
-                                .addGap(43, 43, 43)
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -433,6 +449,29 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
 
     private void QuitarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarUnoActionPerformed
         // TODO add your handling code here:
+        //Daniel Alexander Hall Alvarez; 9959-21-1395
+        String is=txtIdPerfil.getText();
+        if(is.length()>0){
+            DefaultTableModel model = (DefaultTableModel)
+            tblApsAsignadas.getModel();
+            clsAplicacionPerfil aplicacionperfil = new clsAplicacionPerfil();
+            aplicacionperfil.setIdPerfil(Integer.parseInt(txtIdPerfil.getText()));
+            int s = tblApsAsignadas.getSelectedRow();
+            if (s<0){
+                JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla" );
+            }else {
+                int aid=Integer.parseInt(tblApsAsignadas.getValueAt(s, 0).toString());
+                aplicacionperfil.setIdPerfil(aid);
+                int confirmar=JOptionPane.showConfirmDialog(null,"¿Seguro que quiere eliminar esta aplicacion Perfil? ");
+                if(JOptionPane.OK_OPTION==confirmar) {
+                    aplicacionperfil.setBorrarAplicacion(aplicacionperfil);
+                    model.removeRow(s);
+                    JOptionPane.showMessageDialog(null,"La aplicacion para el perfil se a Eliminado exitosamente" );
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Debe ingresar el ID del Perfil");
+        }
     }//GEN-LAST:event_QuitarUnoActionPerformed
 
     private void btnLimpiarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarPerfilActionPerformed
@@ -447,6 +486,7 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
     
     private void btnBuscarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPerfilActionPerformed
         // TODO add your handling code here:
+        //Alan Abimael Galicia Ruano; 9959-21-3632
        clsPerfil perfil = new clsPerfil();
         //usuario.setNombreUsuario(txtbuscado.getText());
         perfil.setIdPerfil(Integer.parseInt(txtIdPerfil.getText()));
@@ -479,6 +519,7 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
     }  
     
     public void limpiarTextos()
+            //Alan Abimael Galicia Ruano; 9959-21-3632
     {
         txtNombrePerfil.setText("");
         txtIdPerfil.setText("");
@@ -500,6 +541,8 @@ public class frmProcesoAplicacionPerfil extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JRadioButton rbEditar;
