@@ -165,9 +165,42 @@ public static void eliminarPerfilesUsuario(DefaultTableModel modelo, String usua
     }
 }
 
-
-
-
-
-
+ //Boton Asignar un perfil, trabajado por María José Véliz Ochoa
+public static void asignarunPerfilesUsuario(String pernombre, String usuario) {   
+            
+            try {
+               // Conectar a la base de datos
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
+                
+                 // 2. Crear el objeto Statement
+                PreparedStatement stmt = con.prepareStatement("SELECT perid FROM tbl_perfil WHERE pernombre=?");
+                stmt.setString(1, pernombre);
+                ResultSet rs = stmt.executeQuery();
+                rs.next();
+                int perid = rs.getInt("perid");
+                
+                // Obtener el usuid del usuario seleccionado en el combo box
+                stmt = con.prepareStatement("SELECT usuid FROM tbl_usuario WHERE usunombre=?");
+                stmt.setString(1, usuario);
+                rs = stmt.executeQuery();
+                rs.next();
+                int usuid = rs.getInt("usuid");
+                
+                // Insertar el nuevo registro en tbl_perfilusuario
+                stmt = con.prepareStatement("INSERT INTO tbl_perfilusuario (perid, usuid) VALUES (?, ?)");
+                stmt.setInt(1, perid);
+                stmt.setInt(2, usuid);
+                stmt.executeUpdate();
+                
+                // Cerrar la conexión
+                rs.close();
+                stmt.close();
+                con.close();
+     
+                
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+         
+}
 }
