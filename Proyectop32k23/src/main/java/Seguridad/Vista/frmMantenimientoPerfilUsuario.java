@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -63,80 +64,71 @@ int codigoAplicacion = 41;
         });
         
         //Boton asignar trabajado por Maria Jose Veliz
-        btnAsignar.addActionListener((ActionEvent e) -> {
-            // Obtener el perfil seleccionado en la tabla 1
-            int filaSeleccionada = jTable1.getSelectedRow();
-            if (filaSeleccionada == -1) {
-                // No se ha seleccionado ninguna fila
-                return;
-                
-            }
-            String pernombre = jTable1.getValueAt(filaSeleccionada, 0).toString();
-            
-            clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
-            String usuario = comboBox.getSelectedItem().toString();
-            DefaultTableModel modelo  = (DefaultTableModel) jTable2.getModel();
-           perfilUsuario.asignarunPerfilesUsuario(pernombre, usuario);
-         
-        int resultadoBitacora=0;
+btnAsignar.addActionListener((ActionEvent e) -> {
+    // Obtener el perfil seleccionado en la tabla 1
+    int filaSeleccionada = jTable1.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        // No se ha seleccionado ninguna fila
+        return;
+
+    }
+    String pernombre = jTable1.getValueAt(filaSeleccionada, 0).toString();
+
+    // Mostrar ventana de confirmación
+    Object[] options = { "Sí", "No" };
+    int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres asignar este perfil?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    if (respuesta == JOptionPane.YES_OPTION) {
+        // Continuar con la acción del botón
+        clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
+        String usuario = comboBox.getSelectedItem().toString();
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        perfilUsuario.asignarunPerfilesUsuario(pernombre, usuario);
+
+        int resultadoBitacora = 0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora (clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
-          cargarTabla2(usuario);
-        });
-        
-        //Boton Eliminar trabajado por Carlos Hernandez
- 
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
+        cargarTabla2(usuario);
+    } else {
+        // No hacer nada
+        return;
+    }
+});
+
+
+
          //Boton Eliminar trabajado por Carlos Hernandez
         btnEliminar.addActionListener((ActionEvent event) -> {
     // Obtener el perfil seleccionado en la tabla
     int filaSeleccionada = jTable2.getSelectedRow();
     String pernombre = jTable2.getValueAt(filaSeleccionada, 0).toString();
-    
-    try {
-        // Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
-        
-        // Obtener el perid del perfil seleccionado
-        Statement stmt = con.createStatement();
-        String sql = "SELECT perid FROM tbl_perfil WHERE pernombre='" + pernombre + "'";
-        ResultSet rs = stmt.executeQuery(sql);
-        rs.next();
-        int perid = rs.getInt("perid");
-        rs.close();
-        stmt.close();
-        
-        // Obtener el usuid del usuario seleccionado en el combo box
-        String usuario = comboBox.getSelectedItem().toString();
-        stmt = con.createStatement();
-        sql = "SELECT usuid FROM tbl_usuario WHERE usunombre='" + usuario + "'";
-        rs = stmt.executeQuery(sql);
-        rs.next();
-        int usuid = rs.getInt("usuid");
-        rs.close();
-        stmt.close();
-        
-        // Eliminar el registro de la tabla tbl_perfilusuario
-        PreparedStatement pstmt = con.prepareStatement("DELETE FROM tbl_perfilusuario WHERE usuid=? AND perid=?");
-        pstmt.setInt(1, usuid);
-        pstmt.setInt(2, perid);
-        pstmt.executeUpdate();
-        pstmt.close();
-        
-        // Cargar la tabla nuevamente para reflejar los cambios
-        cargarTabla2(usuario);
-        jTable2.repaint();
-        
-        // Cerrar la conexión
-        con.close();
-        
-    } catch (SQLException ex) {
-        ex.printStackTrace();
+    if (filaSeleccionada == -1) {
+                // No se ha seleccionado ninguna fila
+                return;
+                
+            }   
+    Object[] options = { "Sí", "No" };
+    int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres eliminar este perfil?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    if (respuesta == JOptionPane.YES_OPTION) {
+            clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
+            String usuario = comboBox.getSelectedItem().toString();
+           perfilUsuario.eliminarunPerfilesUsuario(pernombre, usuario);
+         
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora (clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
+          cargarTabla2(usuario);
+          } else {
+        // No hacer nada
+        return;
     }
 });
         
 
         //Boton Eliminar todo trabajado por Carlos Sandoval
         btnEliminarTodo.addActionListener((ActionEvent event) -> {
+            Object[] options = { "Sí", "No" };
+    int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres eliminar todos los perfiles?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    if (respuesta == JOptionPane.YES_OPTION) {
      clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();       
     String usuario = comboBox.getSelectedItem().toString();
     DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
@@ -145,10 +137,17 @@ int codigoAplicacion = 41;
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
     cargarTabla2(usuario);
+    } else {
+        // No hacer nada
+        return;
+    }
         });
     
 
         btnAsignarTodo.addActionListener((ActionEvent event) -> {
+            Object[] options = { "Sí", "No" };
+    int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres asignar todos los perfiles?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    if (respuesta == JOptionPane.YES_OPTION) {
          clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();  
          String usuario = comboBox.getSelectedItem().toString();
           DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
@@ -160,6 +159,10 @@ int codigoAplicacion = 41;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
     cargarTabla2(usuario);
+    } else {
+        // No hacer nada
+        return;
+    }
         });
     }
     

@@ -31,7 +31,7 @@ public class daoPerfilUsuario {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -61,7 +61,7 @@ public class daoPerfilUsuario {
 public void cargarTabla(DefaultTableModel modelo) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -93,7 +93,7 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -128,7 +128,7 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
 public static void asignartodoPerfilesUsuario(DefaultTableModel modelo, String usuario) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Obtener el usuario seleccionado en el combo box
 
@@ -176,7 +176,7 @@ public static void asignartodoPerfilesUsuario(DefaultTableModel modelo, String u
 public static void eliminarPerfilesUsuario(DefaultTableModel modelo, String usuario) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -217,7 +217,7 @@ public static void asignarunPerfilesUsuario(String pernombre, String usuario) {
             
             try {
                // Conectar a la base de datos
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
                 
                  // 2. Crear el objeto Statement
                 PreparedStatement stmt = con.prepareStatement("SELECT perid FROM tbl_perfil WHERE pernombre=?");
@@ -254,7 +254,7 @@ public static void eliminarunPerfilesUsuario(String pernombre, String usuario) {
             
             try {
         // Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
         
         // Obtener el perid del perfil seleccionado
         Statement stmt = con.createStatement();
@@ -264,6 +264,7 @@ public static void eliminarunPerfilesUsuario(String pernombre, String usuario) {
         int perid = rs.getInt("perid");
         rs.close();
         stmt.close();
+
         
         // Obtener el usuid del usuario seleccionado en el combo box
         stmt = con.createStatement();
@@ -273,6 +274,7 @@ public static void eliminarunPerfilesUsuario(String pernombre, String usuario) {
         int usuid = rs.getInt("usuid");
         rs.close();
         stmt.close();
+
         
         // Eliminar el registro de la tabla tbl_perfilusuario
         PreparedStatement pstmt = con.prepareStatement("DELETE FROM tbl_perfilusuario WHERE usuid=? AND perid=?");
@@ -280,6 +282,8 @@ public static void eliminarunPerfilesUsuario(String pernombre, String usuario) {
         pstmt.setInt(2, perid);
         pstmt.executeUpdate();
         pstmt.close();
+
+        stmt.close();
         
         // Cerrar la conexión
         con.close();
