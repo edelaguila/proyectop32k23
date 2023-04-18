@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import seguridad.controlador.clsSeguridad;
 
 /**
  *
@@ -426,6 +427,7 @@ public class frmMantenimientoUsuario extends javax.swing.JInternalFrame {
         clsUsuario usuario = new clsUsuario();
         clsSeguridad c = new clsSeguridad();
         usuario.setNombreUsuario(txtNombre.getText());
+        //se agrego el encriptado
         usuario.setContrasenaUsuario(c.encode(txtContrasena.getText())); 
         usuario.setUltimaSesionUsuario(txtUltimaSesion.getText());
         usuario.setEstatusUsuario(txtEstatus.getText());
@@ -465,6 +467,7 @@ public class frmMantenimientoUsuario extends javax.swing.JInternalFrame {
         clsSeguridad c = new clsSeguridad();
         usuario.setIdUsuario(Integer.parseInt(txtbuscado.getText()));
         usuario.setNombreUsuario(txtNombre.getText());
+        //se agrego el encriptar
         usuario.setContrasenaUsuario(c.encode(txtContrasena.getText()));
         usuario.setUltimaSesionUsuario(txtUltimaSesion.getText());
         usuario.setEstatusUsuario(txtEstatus.getText());
