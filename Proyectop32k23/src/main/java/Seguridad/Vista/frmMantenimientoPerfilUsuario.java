@@ -85,10 +85,16 @@ int codigoAplicacion = 41;
         });
         
         //Boton Eliminar trabajado por Carlos Hernandez
+ 
         btnEliminar.addActionListener((ActionEvent event) -> {
     // Obtener el perfil seleccionado en la tabla
     int filaSeleccionada = jTable2.getSelectedRow();
     String pernombre = jTable2.getValueAt(filaSeleccionada, 0).toString();
+    
+    //ingreso la funcion de Bitacora
+    int resultadoBitacora=0;
+    clsBitacora bitacoraRegistro = new clsBitacora();
+    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
     
     try {
         // Conectar a la base de datos
@@ -271,6 +277,11 @@ public void cargarTabla2(String usuario) {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAsignarTodo.setText("Asignar Todo");
         btnAsignarTodo.addActionListener(new java.awt.event.ActionListener() {
@@ -335,6 +346,7 @@ public void cargarTabla2(String usuario) {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     private void btnAsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTodoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAsignarTodoActionPerformed
