@@ -85,10 +85,9 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4.setText("Mantenimiento");
 
         cboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ventas", "Compras", "Bancos", "Cuentas corrientes" }));
-<<<<<<< HEAD
+
         cboOpciones.setToolTipText("");
-=======
->>>>>>> f6a372ea73df4955b9842b99cf5fadc0dff76457
+
         cboOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
