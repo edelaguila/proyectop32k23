@@ -47,12 +47,12 @@ int codigoAplicacion = 41;
 
         
         //ComboBox trabajado por Carlos Hernandez y Carlos Sandoval
-        comboBox.addActionListener((ActionEvent event) -> {
+        comboBoxPerfilUsuario.addActionListener((ActionEvent event) -> {
             // Obtener el usuario seleccionado en el combo box
             int resultadoBitacora=0;
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
-            String usuario = comboBox.getSelectedItem().toString();
+            String usuario = comboBoxPerfilUsuario.getSelectedItem().toString();
             
             // Cargar la tabla con los perfiles asociados al usuario seleccionado
             cargarTabla2(usuario);
@@ -60,19 +60,19 @@ int codigoAplicacion = 41;
             
             
             // Repintar la tabla
-            jTable2.repaint();
+            jTablePerfilUsuarioAsignado.repaint();
         });
         
         //Boton asignar trabajado por Maria Jose Veliz
-btnAsignar.addActionListener((ActionEvent e) -> {
+btnAsignarPerfilUsuario.addActionListener((ActionEvent e) -> {
     // Obtener el perfil seleccionado en la tabla 1
-    int filaSeleccionada = jTable1.getSelectedRow();
+    int filaSeleccionada = jTablePerfilUsuarioDisponible.getSelectedRow();
     if (filaSeleccionada == -1) {
         // No se ha seleccionado ninguna fila
         return;
 
     }
-    String pernombre = jTable1.getValueAt(filaSeleccionada, 0).toString();
+    String pernombre = jTablePerfilUsuarioDisponible.getValueAt(filaSeleccionada, 0).toString();
 
     // Mostrar ventana de confirmación
     Object[] options = { "Sí", "No" };
@@ -80,8 +80,8 @@ btnAsignar.addActionListener((ActionEvent e) -> {
     if (respuesta == JOptionPane.YES_OPTION) {
         // Continuar con la acción del botón
         clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
-        String usuario = comboBox.getSelectedItem().toString();
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        String usuario = comboBoxPerfilUsuario.getSelectedItem().toString();
+        DefaultTableModel modelo = (DefaultTableModel) jTablePerfilUsuarioAsignado.getModel();
         perfilUsuario.asignarunPerfilesUsuario(pernombre, usuario);
 
         int resultadoBitacora = 0;
@@ -97,10 +97,10 @@ btnAsignar.addActionListener((ActionEvent e) -> {
 
 
          //Boton Eliminar trabajado por Carlos Hernandez
-        btnEliminar.addActionListener((ActionEvent event) -> {
+        btnEliminarPerfilUsuario.addActionListener((ActionEvent event) -> {
     // Obtener el perfil seleccionado en la tabla
-    int filaSeleccionada = jTable2.getSelectedRow();
-    String pernombre = jTable2.getValueAt(filaSeleccionada, 0).toString();
+    int filaSeleccionada = jTablePerfilUsuarioAsignado.getSelectedRow();
+    String pernombre = jTablePerfilUsuarioAsignado.getValueAt(filaSeleccionada, 0).toString();
     if (filaSeleccionada == -1) {
                 // No se ha seleccionado ninguna fila
                 return;
@@ -110,7 +110,7 @@ btnAsignar.addActionListener((ActionEvent e) -> {
     int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres eliminar este perfil?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
     if (respuesta == JOptionPane.YES_OPTION) {
             clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
-            String usuario = comboBox.getSelectedItem().toString();
+            String usuario = comboBoxPerfilUsuario.getSelectedItem().toString();
            perfilUsuario.eliminarunPerfilesUsuario(pernombre, usuario);
          
         int resultadoBitacora=0;
@@ -125,13 +125,13 @@ btnAsignar.addActionListener((ActionEvent e) -> {
         
 
         //Boton Eliminar todo trabajado por Carlos Sandoval
-        btnEliminarTodo.addActionListener((ActionEvent event) -> {
+        btnEliminarTodoPerfilUsuario.addActionListener((ActionEvent event) -> {
             Object[] options = { "Sí", "No" };
     int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres eliminar todos los perfiles?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
     if (respuesta == JOptionPane.YES_OPTION) {
      clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();       
-    String usuario = comboBox.getSelectedItem().toString();
-    DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+    String usuario = comboBoxPerfilUsuario.getSelectedItem().toString();
+    DefaultTableModel modelo = (DefaultTableModel) jTablePerfilUsuarioAsignado.getModel();
     perfilUsuario.eliminarPerfilesUsuario(modelo, usuario);
     int resultadoBitacora=0;
                     clsBitacora bitacoraRegistro = new clsBitacora();
@@ -144,15 +144,15 @@ btnAsignar.addActionListener((ActionEvent e) -> {
         });
     
 
-        btnAsignarTodo.addActionListener((ActionEvent event) -> {
+        btnAsignarTodoPerfilUsuario.addActionListener((ActionEvent event) -> {
             Object[] options = { "Sí", "No" };
     int respuesta = JOptionPane.showOptionDialog(null, "¿Seguro que quieres asignar todos los perfiles?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
     if (respuesta == JOptionPane.YES_OPTION) {
          clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();  
-         String usuario = comboBox.getSelectedItem().toString();
-          DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-         cargarTabla2(comboBox.getSelectedItem().toString());
-        jTable2.repaint();
+         String usuario = comboBoxPerfilUsuario.getSelectedItem().toString();
+          DefaultTableModel modelo = (DefaultTableModel) jTablePerfilUsuarioDisponible.getModel();
+         cargarTabla2(comboBoxPerfilUsuario.getSelectedItem().toString());
+        jTablePerfilUsuarioAsignado.repaint();
           perfilUsuario.asignartodoPerfilesUsuario(modelo, usuario);
 
         int resultadoBitacora=0; 
@@ -171,7 +171,7 @@ private void cargarComboBox() {
     ArrayList<String> nombresUsuarios = perfilUsuario.obtenerNombresUsuarios();
 
     nombresUsuarios.forEach(nombreUsuario -> {
-        comboBox.addItem(nombreUsuario);
+        comboBoxPerfilUsuario.addItem(nombreUsuario);
         });
 }
 
@@ -179,7 +179,7 @@ private void cargarTabla() {
         clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Perfiles Disponibles");
-        jTable1.setModel(modelo);
+        jTablePerfilUsuarioDisponible.setModel(modelo);
         perfilUsuario.cargarTabla(modelo);
     }
 
@@ -197,7 +197,7 @@ public void cargarTabla2(String usuario) {
         fila[0] = perfil;
         modelo.addRow(fila);
     });
-    jTable2.setModel(modelo);
+    jTablePerfilUsuarioAsignado.setModel(modelo);
 }
 
 
@@ -218,15 +218,15 @@ public void cargarTabla2(String usuario) {
 
         lb2 = new javax.swing.JLabel();
         lbusu = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        comboBox = new javax.swing.JComboBox<>();
-        btnAsignar = new javax.swing.JButton();
-        btnAsignarTodo = new javax.swing.JButton();
-        btnEliminarTodo = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        jScrollPanePerfilUsuario1 = new javax.swing.JScrollPane();
+        jTablePerfilUsuarioDisponible = new javax.swing.JTable();
+        jScrollPanePerfilUsuario2 = new javax.swing.JScrollPane();
+        jTablePerfilUsuarioAsignado = new javax.swing.JTable();
+        comboBoxPerfilUsuario = new javax.swing.JComboBox<>();
+        btnAsignarPerfilUsuario = new javax.swing.JButton();
+        btnAsignarTodoPerfilUsuario = new javax.swing.JButton();
+        btnEliminarTodoPerfilUsuario = new javax.swing.JButton();
+        btnEliminarPerfilUsuario = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -235,10 +235,10 @@ public void cargarTabla2(String usuario) {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Perfiles");
+        setTitle("Asignación Perfiles a Usuarios");
         setVisible(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePerfilUsuarioDisponible.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -249,9 +249,9 @@ public void cargarTabla2(String usuario) {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPanePerfilUsuario1.setViewportView(jTablePerfilUsuarioDisponible);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePerfilUsuarioAsignado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -262,17 +262,17 @@ public void cargarTabla2(String usuario) {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPanePerfilUsuario2.setViewportView(jTablePerfilUsuarioAsignado);
 
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
+        comboBoxPerfilUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
 
-        btnAsignar.setText("Asignar");
+        btnAsignarPerfilUsuario.setText("Asignar");
 
-        btnAsignarTodo.setText("Asignar Todo");
+        btnAsignarTodoPerfilUsuario.setText("Asignar Todo");
 
-        btnEliminarTodo.setText("Eliminar Todo");
+        btnEliminarTodoPerfilUsuario.setText("Eliminar Todo");
 
-        btnEliminar.setText("Eliminar");
+        btnEliminarPerfilUsuario.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,47 +280,47 @@ public void cargarTabla2(String usuario) {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPanePerfilUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAsignar)
+                        .addComponent(btnAsignarPerfilUsuario)
                         .addGap(95, 95, 95))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminarTodo)
-                            .addComponent(btnAsignarTodo))
+                            .addComponent(btnEliminarTodoPerfilUsuario)
+                            .addComponent(btnAsignarTodoPerfilUsuario))
                         .addGap(79, 79, 79))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnEliminar)
+                        .addComponent(btnEliminarPerfilUsuario)
                         .addGap(91, 91, 91)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPanePerfilUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
             .addGroup(layout.createSequentialGroup()
                 .addGap(446, 446, 446)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(66, Short.MAX_VALUE)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPanePerfilUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPanePerfilUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(btnAsignar)
+                        .addComponent(btnAsignarPerfilUsuario)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAsignarTodo)
+                        .addComponent(btnAsignarTodoPerfilUsuario)
                         .addGap(50, 50, 50)
-                        .addComponent(btnEliminar)
+                        .addComponent(btnEliminarPerfilUsuario)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminarTodo)))
+                        .addComponent(btnEliminarTodoPerfilUsuario)))
                 .addGap(363, 363, 363))
         );
 
@@ -330,15 +330,15 @@ public void cargarTabla2(String usuario) {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAsignar;
-    private javax.swing.JButton btnAsignarTodo;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnEliminarTodo;
-    private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JButton btnAsignarPerfilUsuario;
+    private javax.swing.JButton btnAsignarTodoPerfilUsuario;
+    private javax.swing.JButton btnEliminarPerfilUsuario;
+    private javax.swing.JButton btnEliminarTodoPerfilUsuario;
+    private javax.swing.JComboBox<String> comboBoxPerfilUsuario;
+    private javax.swing.JScrollPane jScrollPanePerfilUsuario1;
+    private javax.swing.JScrollPane jScrollPanePerfilUsuario2;
+    private javax.swing.JTable jTablePerfilUsuarioAsignado;
+    private javax.swing.JTable jTablePerfilUsuarioDisponible;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     // End of variables declaration//GEN-END:variables
