@@ -69,45 +69,19 @@ int codigoAplicacion = 41;
             if (filaSeleccionada == -1) {
                 // No se ha seleccionado ninguna fila
                 return;
+                
             }
             String pernombre = jTable1.getValueAt(filaSeleccionada, 0).toString();
             
-            try {
-                // Conectar a la base de datos
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
-                
-                // Obtener el perid del perfil seleccionado
-                PreparedStatement stmt = con.prepareStatement("SELECT perid FROM tbl_perfil WHERE pernombre=?");
-                stmt.setString(1, pernombre);
-                ResultSet rs = stmt.executeQuery();
-                rs.next();
-                int perid = rs.getInt("perid");
-                
-                // Obtener el usuid del usuario seleccionado en el combo box
-                String usunombre = comboBox.getSelectedItem().toString();
-                stmt = con.prepareStatement("SELECT usuid FROM tbl_usuario WHERE usunombre=?");
-                stmt.setString(1, usunombre);
-                rs = stmt.executeQuery();
-                rs.next();
-                int usuid = rs.getInt("usuid");
-                
-                // Insertar el nuevo registro en tbl_perfilusuario
-                stmt = con.prepareStatement("INSERT INTO tbl_perfilusuario (perid, usuid) VALUES (?, ?)");
-                stmt.setInt(1, perid);
-                stmt.setInt(2, usuid);
-                stmt.executeUpdate();
-                
-                // Cerrar la conexión
-                rs.close();
-                stmt.close();
-                con.close();
-                
-                // Actualizar la tabla 2 con los perfiles asociados al usuario seleccionado
-                cargarTabla2(usunombre);
-                
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();
+            String usuario = comboBox.getSelectedItem().toString();
+            DefaultTableModel modelo  = (DefaultTableModel) jTable2.getModel();
+           perfilUsuario.asignarunPerfilesUsuario(pernombre, usuario);
+         
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora (clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INSERT");
+          cargarTabla2(usuario);
         });
         
         //Boton Eliminar trabajado por Carlos Hernandez
@@ -290,6 +264,11 @@ public void cargarTabla2(String usuario) {
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
 
         btnAsignar.setText("Asignar");
+        btnAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -307,20 +286,23 @@ public void cargarTabla2(String usuario) {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+
                         .addGap(92, 92, 92)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addComponent(btnEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnAsignar)
-                                .addGap(95, 95, 95))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnEliminarTodo)
                                     .addComponent(btnAsignarTodo))
@@ -348,12 +330,11 @@ public void cargarTabla2(String usuario) {
                         .addComponent(btnEliminar)
                         .addGap(30, 30, 30)
                         .addComponent(btnEliminarTodo)))
-                .addGap(363, 363, 363))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void btnAsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTodoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAsignarTodoActionPerformed
