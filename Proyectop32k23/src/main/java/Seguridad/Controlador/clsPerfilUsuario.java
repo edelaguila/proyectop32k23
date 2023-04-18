@@ -52,7 +52,10 @@ public void asignartodoPerfilesUsuario(DefaultTableModel modelo, String usuario)
         dao.asignartodoPerfilesUsuario(modelo, usuario);
     }
 
-   
+   public void eliminarunPerfilesUsuario(String pernombre, String usuario) {
+        daoPerfilUsuario dao = new daoPerfilUsuario();
+      dao.asignarunPerfilesUsuario(pernombre, usuario);
+    }
 
    
 

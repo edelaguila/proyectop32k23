@@ -39,7 +39,7 @@ int codigoAplicacion = 41;
 
 
 
-    public frmMantenimientoPerfilUsuario() {
+        public frmMantenimientoPerfilUsuario() {
         initComponents();
         cargarTabla();
         cargarComboBox();
@@ -80,25 +80,21 @@ int codigoAplicacion = 41;
          
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora (clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INSERT");
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora (clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
           cargarTabla2(usuario);
         });
         
         //Boton Eliminar trabajado por Carlos Hernandez
  
+         //Boton Eliminar trabajado por Carlos Hernandez
         btnEliminar.addActionListener((ActionEvent event) -> {
     // Obtener el perfil seleccionado en la tabla
     int filaSeleccionada = jTable2.getSelectedRow();
     String pernombre = jTable2.getValueAt(filaSeleccionada, 0).toString();
     
-    //ingreso la funcion de Bitacora
-    int resultadoBitacora=0;
-    clsBitacora bitacoraRegistro = new clsBitacora();
-    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
-    
     try {
         // Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "root", "123456");
         
         // Obtener el perid del perfil seleccionado
         Statement stmt = con.createStatement();
@@ -138,21 +134,6 @@ int codigoAplicacion = 41;
     }
 });
         
-        //Boton asignar Todo trabajado por Meyglin Rosales 
-        btnAsignarTodo.addActionListener((ActionEvent event) -> {
-        clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();  
-        String usuario = comboBox.getSelectedItem().toString();
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        cargarTabla2(comboBox.getSelectedItem().toString());
-        jTable2.repaint();
-        perfilUsuario.asignartodoPerfilesUsuario(modelo, usuario);
-        
-        int resultadoBitacora=0; 
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
-    cargarTabla2(usuario);
-        });
-        
 
         //Boton Eliminar todo trabajado por Carlos Sandoval
         btnEliminarTodo.addActionListener((ActionEvent event) -> {
@@ -167,6 +148,19 @@ int codigoAplicacion = 41;
         });
     
 
+        btnAsignarTodo.addActionListener((ActionEvent event) -> {
+         clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();  
+         String usuario = comboBox.getSelectedItem().toString();
+          DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+         cargarTabla2(comboBox.getSelectedItem().toString());
+        jTable2.repaint();
+          perfilUsuario.asignartodoPerfilesUsuario(modelo, usuario);
+
+        int resultadoBitacora=0; 
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
+    cargarTabla2(usuario);
+        });
     }
     
 private void cargarComboBox() {
@@ -227,9 +221,9 @@ public void cargarTabla2(String usuario) {
         jTable2 = new javax.swing.JTable();
         comboBox = new javax.swing.JComboBox<>();
         btnAsignar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         btnAsignarTodo = new javax.swing.JButton();
         btnEliminarTodo = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -270,86 +264,65 @@ public void cargarTabla2(String usuario) {
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
 
         btnAsignar.setText("Asignar");
-        btnAsignar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAsignarActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
 
         btnAsignarTodo.setText("Asignar Todo");
-        btnAsignarTodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAsignarTodoActionPerformed(evt);
-            }
-        });
 
         btnEliminarTodo.setText("Eliminar Todo");
+
+        btnEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(118, 118, 118)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-
-                        .addGap(92, 92, 92)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-
+                        .addComponent(btnAsignar)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addComponent(btnEliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnEliminarTodo)
-                                    .addComponent(btnAsignarTodo))
-                                .addGap(79, 79, 79))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)))))
+                            .addComponent(btnEliminarTodo)
+                            .addComponent(btnAsignarTodo))
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnEliminar)
+                        .addGap(91, 91, 91)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(446, 446, 446)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
                         .addComponent(btnAsignar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAsignarTodo)
-                        .addGap(38, 38, 38)
+                        .addGap(50, 50, 50)
                         .addComponent(btnEliminar)
-                        .addGap(30, 30, 30)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEliminarTodo)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(363, 363, 363))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTodoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAsignarTodoActionPerformed
  
     
 
