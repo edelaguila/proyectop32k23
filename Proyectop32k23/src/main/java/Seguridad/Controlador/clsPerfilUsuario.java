@@ -47,6 +47,15 @@ public void asignarunPerfilesUsuario(String pernombre, String usuario) {
       dao.asignarunPerfilesUsuario(pernombre, usuario);
     }
 
+public void asignartodoPerfilesUsuario(DefaultTableModel modelo, String usuario) {
+        daoPerfilUsuario dao = new daoPerfilUsuario();
+        dao.asignartodoPerfilesUsuario(modelo, usuario);
+    }
+
+   
+
+   
+
 
      
 

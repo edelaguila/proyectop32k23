@@ -44,6 +44,7 @@ int codigoAplicacion = 41;
         cargarTabla();
         cargarComboBox();
 
+        
         //ComboBox trabajado por Carlos Hernandez y Carlos Sandoval
         comboBox.addActionListener((ActionEvent event) -> {
             // Obtener el usuario seleccionado en el combo box
@@ -131,53 +132,21 @@ int codigoAplicacion = 41;
     }
 });
         
-        //Boton asignar Todo trabajado por Meyglin Rosales
+        //Boton asignar Todo trabajado por Meyglin Rosales 
         btnAsignarTodo.addActionListener((ActionEvent event) -> {
-    
-    try {
-        // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", "UsuPrueba", "123456");
-
-        // 2. Obtener el usuario seleccionado en el combo box
+        clsPerfilUsuario perfilUsuario = new clsPerfilUsuario();  
         String usuario = comboBox.getSelectedItem().toString();
-
-        // 3. Obtener el usuid del usuario seleccionado en el combo box
-        String sql = "SELECT usuid FROM tbl_usuario WHERE usunombre='" + usuario + "'";
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        rs.next();
-        int usuid = rs.getInt("usuid");
-
-        // 4. Recorrer los perfiles disponibles en la tabla jTable1
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        int filas = modelo.getRowCount();
-        for (int i = 0; i < filas; i++) {
-            String pernombre = modelo.getValueAt(i, 0).toString();
-
-            // 5. Obtener el perid del perfil
-            sql = "SELECT perid FROM tbl_perfil WHERE pernombre='" + pernombre + "'";
-            rs = stmt.executeQuery(sql);
-            rs.next();
-            int perid = rs.getInt("perid");
-
-            // 6. Insertar el registro en tbl_perfilusuario
-            sql = "INSERT INTO tbl_perfilusuario (perid, usuid) VALUES (" + perid + ", " + usuid + ")";
-            stmt.executeUpdate(sql);
-        }
-
-        // 7. Cerrar la conexión y actualizar la tabla jTable2
-        rs.close();
-        stmt.close();
-        con.close();
-        cargarTabla2(usuario);
+        cargarTabla2(comboBox.getSelectedItem().toString());
         jTable2.repaint();
-
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    }
-    
-   
-});
+        perfilUsuario.asignartodoPerfilesUsuario(modelo, usuario);
+        
+        int resultadoBitacora=0; 
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
+    cargarTabla2(usuario);
+        });
+        
 
         //Boton Eliminar todo trabajado por Carlos Sandoval
         btnEliminarTodo.addActionListener((ActionEvent event) -> {
@@ -304,6 +273,11 @@ public void cargarTabla2(String usuario) {
         btnEliminar.setText("Eliminar");
 
         btnAsignarTodo.setText("Asignar Todo");
+        btnAsignarTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarTodoActionPerformed(evt);
+            }
+        });
 
         btnEliminarTodo.setText("Eliminar Todo");
 
@@ -315,7 +289,13 @@ public void cargarTabla2(String usuario) {
                 .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                        .addGap(92, 92, 92)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(92, 92, 92)
@@ -324,34 +304,25 @@ public void cargarTabla2(String usuario) {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnAsignar)
-                                        .addGap(95, 95, 95))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnEliminarTodo)
-                                            .addComponent(btnAsignarTodo))
-                                        .addGap(79, 79, 79)))))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(328, 328, 328)
-                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(156, 156, 156))
+                                    .addComponent(btnEliminarTodo)
+                                    .addComponent(btnAsignarTodo))
+                                .addGap(79, 79, 79))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)))))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120)
                         .addComponent(btnAsignar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAsignarTodo)
@@ -364,10 +335,9 @@ public void cargarTabla2(String usuario) {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
+    private void btnAsignarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarTodoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAsignarActionPerformed
+    }//GEN-LAST:event_btnAsignarTodoActionPerformed
  
     
 
