@@ -20,7 +20,6 @@ public class daoAplicacionUsuario {
     private static final String SQL_INSERT = "INSERT INTO tbl_aplicacionusuario(aplid, usuid, ins, upd, del, pri) VALUES(?, ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE tbl_aplicacionusuario SET aplid=?,  ins=?, upd=?, del=?, pri=?  WHERE usuid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_aplicacionusuario WHERE aplid=? AND usuid=?";
-    //private static final String SQL_SELECT_NOMBRE = "SELECT aplid, usuid, ins, upd, del, pri FROM tbl_usuario WHERE aplid = ?";
     private static final String SQL_SELECT_ID = "SELECT aplid, usuid, ins, upd, del, pri FROM tbl_aplicacionusuario WHERE usuid = ?";        
     private static final String SQL_DETELE_ALL = "DELETE FROM tbl_aplicacionusuario WHERE  usuid=?";
     
@@ -139,40 +138,6 @@ public class daoAplicacionUsuario {
         return rows;
     }
 
-    /*public clsAplicacion consultaAplicacionPorNombre(clsAplicacion aplicacion) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        try {
-            conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + aplicacion);
-            stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            //stmt.setInt(1, aplicacion.getIdAplicacion());            
-            stmt.setString(1, aplicacion.getNombreAplicacion());
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("aplid");
-                String nombre = rs.getString("aplnombre");
-                String estatus = rs.getString("aplestatus");
-
-                //aplicacion = new clsAplicacion();
-                aplicacion.setIdAplicacion(id);
-                aplicacion.setNombreAplicacion(nombre);
-                aplicacion.setEstatusAplicacion(estatus);
-                System.out.println(" registro consultado: " + aplicacion);                
-            }
-            //System.out.println("Registros buscado:" + persona);
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(rs);
-            Conexion.close(stmt);
-            Conexion.close(conn);
-        }
-
-        //return personas;  // Si se utiliza un ArrayList
-        return aplicacion;
-    }*/
     public clsAplicacionUsuario consultaAplicacionUsuarioPorId(clsAplicacionUsuario aplicacionusuario) {
         Connection conn = null;
         PreparedStatement stmt = null;
