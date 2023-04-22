@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmAplicacionUsuario extends javax.swing.JInternalFrame {
-    
+    int codigoAplicacion= 12;
 //int codigoAplicacion=preguntar;
 
     public void llenadoDeCombos() {
@@ -76,7 +76,6 @@ public void llenadoDeTabla1() {
         }   
     }
     
-    int codigoAplicacion= 12;
     public frmAplicacionUsuario() {
         initComponents();
         llenadoDeTabla1();
@@ -386,7 +385,6 @@ public void llenadoDeTabla1() {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         clsUsuario usuario = new clsUsuario();
-        //usuario.setNombreUsuario(txtbuscado.getText());
         usuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
         usuario = usuario.getBuscarInformacionUsuarioPorId(usuario);
         System.out.println("Usuario retornado:" + usuario);
