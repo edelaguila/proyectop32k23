@@ -611,8 +611,21 @@ public void llenadoDeTabla1() {
         // TODO add your handling code here:
         clsUsuario usuario = new clsUsuario();
         List<clsUsuario> listaUsuarios = usuario.getListadoUsuarios();
-        for(clsUsuario usu : listaUsuarios){
-            cbUsuarios.addItem(String.valueOf(usu.getIdUsuario()));
+        String[] dato = new String[10];
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            dato[0] = Integer.toString(listaUsuarios.get(i).getIdUsuario());
+            dato[1] = listaUsuarios.get(i).getNombreUsuario();
+            dato[2] = listaUsuarios.get(i).getContrasenaUsuario();
+            dato[3] = listaUsuarios.get(i).getUltimaSesionUsuario();
+            dato[4] = listaUsuarios.get(i).getEstatusUsuario();
+            dato[5] = listaUsuarios.get(i).getNombreRealUsuario();
+            dato[6] = listaUsuarios.get(i).getCorreoUsuario();
+            dato[7] = listaUsuarios.get(i).getTelefonoUsuario();
+            dato[8] = listaUsuarios.get(i).getDireccionUsuario();
+            dato[9] = Integer.toString(listaUsuarios.get(i).getTipoUsuario());
+            if(dato[0].equals(txtIdUsuario)){
+                cbUsuarios.addItem(dato[0]);
+            }
         }
     }//GEN-LAST:event_cbUsuariosActionPerformed
     public void limpiarTextos()
