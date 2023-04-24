@@ -13,7 +13,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import Seguridad.Controlador.clsBitacora;
-import Seguridad.Controlador.clsPerfil;
+
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

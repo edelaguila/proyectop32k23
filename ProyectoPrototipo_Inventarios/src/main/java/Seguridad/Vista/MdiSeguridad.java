@@ -21,7 +21,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setExtendedState(MdiSeguridad.MAXIMIZED_BOTH);
-        this.setTitle("Ejemplo Capas");
+        this.setTitle("Hector Ronaldo Rosales Perez - 9959-20-3188");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -231,29 +231,17 @@ public class MdiSeguridad extends javax.swing.JFrame {
 
     private void mantenimientoAplicacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoAplicacionesActionPerformed
         // TODO add your handling code here:
-        frmMantenimientoAplicacion ventana = new frmMantenimientoAplicacion();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+       
     }//GEN-LAST:event_mantenimientoAplicacionesActionPerformed
 
     private void mantenimientoModulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoModulosActionPerformed
         // TODO add your handling code here:
-        frmMantenimientoModulos ventana = new frmMantenimientoModulos();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+       
     }//GEN-LAST:event_mantenimientoModulosActionPerformed
 
     private void mantenimientoPerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoPerfilesActionPerformed
         // TODO add your handling code here:
-        frmMantenimientoPerfil ventana = new frmMantenimientoPerfil();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);        
+       
     }//GEN-LAST:event_mantenimientoPerfilesActionPerformed
 
     private void mantenimientoTipoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoUsuariosActionPerformed
