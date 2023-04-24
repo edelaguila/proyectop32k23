@@ -7,7 +7,7 @@ private static final String JDBC_URL = "jdbc:mysql://localhost/proyectop312023?u
     private static final String JDBC_USER = "root";
 
  
-    private static final String JDBC_PASS = "Avalos21";
+    private static final String JDBC_PASS = "rosales2811";
 
 
    
