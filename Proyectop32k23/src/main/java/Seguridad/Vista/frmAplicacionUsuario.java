@@ -428,7 +428,7 @@ public void llenadoDeTabla1() {
             }   
 
         } */
-        clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
+        /*clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
         aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
         aplicacionusuario = aplicacionusuario.getBuscarInformacionAplicacionUsuarioPorId(aplicacionusuario);
         DefaultTableModel model = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
@@ -447,6 +447,28 @@ public void llenadoDeTabla1() {
             //}else{
             //JOptionPane.showMessageDialog(null, "El usuario no existe.");
             //}
+        }*/
+        clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
+        aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+        List<clsAplicacionUsuario> aplicaciones = aplicacionusuario.getListadoAplicacionUsuario();
+        DefaultTableModel model = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
+        String[] dato = new String[6];
+        if (aplicaciones != null && !aplicaciones.isEmpty()) {
+            for(clsAplicacionUsuario app : aplicaciones){
+                // Rellenar el array con los datos del usuario
+                dato[0] = Integer.toString(app.getIdAplicacion());
+                dato[1] = Integer.toString(app.getIdUsuario());
+                dato[2] = app.getRegAplUsu();
+                dato[3] = app.getEliAplUsu();
+                dato[4] = app.getEliAplUsu();
+                dato[5] = app.getImpAplUsu();
+                if(dato[1].equals(txtIdUsuario)){
+                    // Agregar el array a la tabla
+                    model.addRow(dato);
+                }else{
+                    //JOptionPane.showMessageDialog(null, "El usuario no existe.");
+                }
+            }
         }
         
         //Agregando bitácora 
