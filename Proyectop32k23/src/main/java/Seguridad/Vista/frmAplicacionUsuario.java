@@ -36,6 +36,11 @@ public class frmAplicacionUsuario extends javax.swing.JInternalFrame {
         for (int i = 0; i < empleados.size(); i++) {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
+        clsUsuario usuario = new clsUsuario();
+        List<clsUsuario> listaUsuarios = usuario.getListadoUsuarios();
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            cbUsuarios.addItem(String.valueOf(listaUsuarios.get(i).getIdUsuario()));
+        }
     }
 
 public void llenadoDeTabla1() {
@@ -121,6 +126,7 @@ public void llenadoDeTabla1() {
         rbImprimir = new javax.swing.JRadioButton();
         btnActualizar = new javax.swing.JButton();
         cbUsuarios = new javax.swing.JComboBox<>();
+        label8 = new javax.swing.JLabel();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -259,6 +265,9 @@ public void llenadoDeTabla1() {
             }
         });
 
+        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label8.setText("ID de usuarios disponibles:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -282,12 +291,14 @@ public void llenadoDeTabla1() {
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
+                                .addGap(63, 63, 63)
+                                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
                                 .addComponent(btnActualizar)))
-                        .addContainerGap(362, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -329,7 +340,8 @@ public void llenadoDeTabla1() {
                             .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(btnLimpiar)
-                            .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label3)
@@ -372,7 +384,7 @@ public void llenadoDeTabla1() {
                     .addComponent(rbModificar)
                     .addComponent(rbEliminar)
                     .addComponent(rbImprimir))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -637,22 +649,6 @@ public void llenadoDeTabla1() {
 
     private void cbUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUsuariosActionPerformed
         // TODO add your handling code here:
-        clsUsuario usuario = new clsUsuario();
-        List<clsUsuario> listaUsuarios = usuario.getListadoUsuarios();
-        String[] dato = new String[10];
-        for (int i = 0; i < listaUsuarios.size(); i++) {
-            dato[0] = Integer.toString(listaUsuarios.get(i).getIdUsuario());
-            dato[1] = listaUsuarios.get(i).getNombreUsuario();
-            dato[2] = listaUsuarios.get(i).getContrasenaUsuario();
-            dato[3] = listaUsuarios.get(i).getUltimaSesionUsuario();
-            dato[4] = listaUsuarios.get(i).getEstatusUsuario();
-            dato[5] = listaUsuarios.get(i).getNombreRealUsuario();
-            dato[6] = listaUsuarios.get(i).getCorreoUsuario();
-            dato[7] = listaUsuarios.get(i).getTelefonoUsuario();
-            dato[8] = listaUsuarios.get(i).getDireccionUsuario();
-            dato[9] = Integer.toString(listaUsuarios.get(i).getTipoUsuario());
-            cbUsuarios.addItem(dato[0]);
-        }
     }//GEN-LAST:event_cbUsuariosActionPerformed
     public void limpiarTextos()
     {
@@ -693,6 +689,7 @@ public void llenadoDeTabla1() {
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
+    private javax.swing.JLabel label8;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JRadioButton rbEliminar;
