@@ -396,80 +396,30 @@ public void llenadoDeTabla1() {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        /*limpiarTabla2();
         clsUsuario usuario = new clsUsuario();
         usuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
         usuario = usuario.getBuscarInformacionUsuarioPorId(usuario);
         System.out.println("Usuario retornado:" + usuario);
         txtNombre.setText(usuario.getNombreUsuario());
         txtTipoUsuario.setText(Integer.toString(usuario.getTipoUsuario()));
-        /*
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID Aplicacion");
-        modelo.addColumn("ID Usuario");
-        modelo.addColumn("INS");
-        modelo.addColumn("UPD");
-        modelo.addColumn("DEL");
-        modelo.addColumn("PRI"); 
         clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-        List<clsAplicacionUsuario> listaAplicacionUsuarios = aplicacionusuario.getListadoAplicacionUsuario();
-        tablaAplicacionesAsignadas.setModel(modelo);
-        String[] dato = new String[6];
-        for (int i = 0; i < listaAplicacionUsuarios.size(); i++) {
-            dato[0] = Integer.toString(listaAplicacionUsuarios.get(i).getIdAplicacion());
-            dato[1] = Integer.toString(listaAplicacionUsuarios.get(i).getIdUsuario());
-            dato[2] = listaAplicacionUsuarios.get(i).getRegAplUsu();
-            dato[3] = listaAplicacionUsuarios.get(i).getModAplUsu();
-            dato[4] = listaAplicacionUsuarios.get(i).getEliAplUsu();
-            dato[5] = listaAplicacionUsuarios.get(i).getImpAplUsu();
-            if(dato[1].equals(txtIdUsuario)){
-                modelo.addRow(dato);
-            }else{
-            JOptionPane.showMessageDialog(null, "El usuario no existe.");
-            }   
-
-        } */
-        /*clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
         aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
         aplicacionusuario = aplicacionusuario.getBuscarInformacionAplicacionUsuarioPorId(aplicacionusuario);
-        DefaultTableModel model = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
-        String[] dato = new String[6];
-        if (aplicacionusuario != null && aplicacionusuario.getIdAplicacion() > 0 && aplicacionusuario.getIdUsuario() > 0) {
+        List<clsAplicacionUsuario> aplicaciones = aplicacionusuario.getListadoAplicacionUsuario();
+        DefaultTableModel modelo = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
+        String[] dato = new String[6]; 
+        for (int i=0;i<=aplicaciones.size();i++) {     
             // Rellenar el array con los datos del usuario
             dato[0] = Integer.toString(aplicacionusuario.getIdAplicacion());
             dato[1] = Integer.toString(aplicacionusuario.getIdUsuario());
             dato[2] = aplicacionusuario.getRegAplUsu();
-            dato[3] = aplicacionusuario.getEliAplUsu();
+            dato[3] = aplicacionusuario.getModAplUsu();
             dato[4] = aplicacionusuario.getEliAplUsu();
             dato[5] = aplicacionusuario.getImpAplUsu();
             // Agregar el array a la tabla
-            //if(dato[1].equals(txtIdUsuario)){
-                model.addRow(dato);
-            //}else{
-            //JOptionPane.showMessageDialog(null, "El usuario no existe.");
-            //}
+            modelo.addRow(dato);
         }*/
-        clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-        aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
-        List<clsAplicacionUsuario> aplicaciones = aplicacionusuario.getListadoAplicacionUsuario();
-        DefaultTableModel model = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
-        String[] dato = new String[6];
-        if (aplicaciones != null && !aplicaciones.isEmpty()) {
-            for(clsAplicacionUsuario app : aplicaciones){
-                // Rellenar el array con los datos del usuario
-                dato[0] = Integer.toString(app.getIdAplicacion());
-                dato[1] = Integer.toString(app.getIdUsuario());
-                dato[2] = app.getRegAplUsu();
-                dato[3] = app.getEliAplUsu();
-                dato[4] = app.getEliAplUsu();
-                dato[5] = app.getImpAplUsu();
-                if(dato[1].equals(txtIdUsuario)){
-                    // Agregar el array a la tabla
-                    model.addRow(dato);
-                }else{
-                    //JOptionPane.showMessageDialog(null, "El usuario no existe.");
-                }
-            }
-        }
         
         //Agregando bitácora 
         
@@ -677,6 +627,13 @@ public void llenadoDeTabla1() {
         txtNombre.setText("");
         txtIdUsuario.setText("");
         txtTipoUsuario.setText("");
+    }
+    public void limpiarTabla2(){
+        DefaultTableModel model = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
+        int a = tablaAplicacionesAsignadas.getRowCount();
+        for(int i=a-1; i>=0; i--){
+            model.removeRow(i);
+        } 
     }
     /*public void habilitarBotones()
     {
