@@ -30,12 +30,6 @@ public class frmAplicacionUsuario extends javax.swing.JInternalFrame {
 //int codigoAplicacion=preguntar;
 
     public void llenadoDeCombos() {
-        /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-        List<Empleado> empleados = empleadoDAO.select();
-        cbox_empleado.addItem("Seleccione una opción");
-        for (int i = 0; i < empleados.size(); i++) {
-            cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
-        } */
         clsUsuario usuario = new clsUsuario();
         List<clsUsuario> listaUsuarios = usuario.getListadoUsuarios();
         for (int i = 0; i < listaUsuarios.size(); i++) {
