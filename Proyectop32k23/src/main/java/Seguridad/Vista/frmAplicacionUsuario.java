@@ -98,8 +98,6 @@ public void llenadoDeTabla1() {
         txtNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAplicacionesAsignadas = new javax.swing.JTable();
-        txtIdUsuario = new javax.swing.JTextField();
-        label5 = new javax.swing.JLabel();
         label4 = new javax.swing.JLabel();
         label6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -120,7 +118,6 @@ public void llenadoDeTabla1() {
         rbImprimir = new javax.swing.JRadioButton();
         btnActualizar = new javax.swing.JButton();
         cbUsuarios = new javax.swing.JComboBox<>();
-        label8 = new javax.swing.JLabel();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -144,18 +141,6 @@ public void llenadoDeTabla1() {
 
         tablaAplicacionesAsignadas.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(tablaAplicacionesAsignadas);
-
-        txtIdUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtIdUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtIdUsuario.setOpaque(false);
-        txtIdUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdUsuarioActionPerformed(evt);
-            }
-        });
-
-        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("ID Usuario:");
 
         label4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label4.setText("Permisos a registrar:");
@@ -259,9 +244,6 @@ public void llenadoDeTabla1() {
             }
         });
 
-        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label8.setText("ID de usuarios disponibles:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -272,11 +254,9 @@ public void llenadoDeTabla1() {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(label3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                            .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdUsuario)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,12 +265,10 @@ public void llenadoDeTabla1() {
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(70, 70, 70)
                                 .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
+                                .addGap(84, 84, 84)
                                 .addComponent(btnActualizar)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -326,17 +304,9 @@ public void llenadoDeTabla1() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label5)
-                            .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar)
-                            .addComponent(btnLimpiar)
-                            .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -344,14 +314,17 @@ public void llenadoDeTabla1() {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label7)
                             .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnActualizar)
-                        .addGap(27, 27, 27)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label1)
-                    .addComponent(label6))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label1)
+                            .addComponent(label6)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnLimpiar)
+                            .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnActualizar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -384,35 +357,33 @@ public void llenadoDeTabla1() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdUsuarioActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         limpiarTabla2();
         clsUsuario usuario = new clsUsuario();
-        usuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+        usuario.setIdUsuario(Integer.parseInt(cbUsuarios.getSelectedItem().toString()));
         usuario = usuario.getBuscarInformacionUsuarioPorId(usuario);
         System.out.println("Usuario retornado:" + usuario);
         txtNombre.setText(usuario.getNombreUsuario());
         txtTipoUsuario.setText(Integer.toString(usuario.getTipoUsuario()));
         clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-        aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+        aplicacionusuario.setIdUsuario(Integer.parseInt(cbUsuarios.getSelectedItem().toString()));
         aplicacionusuario = aplicacionusuario.getBuscarInformacionAplicacionUsuarioPorId(aplicacionusuario);
         List<clsAplicacionUsuario> aplicaciones = aplicacionusuario.getListadoAplicacionUsuario();
         DefaultTableModel modelo = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
+        //rellena el array con los datos del usuario
+        for (clsAplicacionUsuario aplicacion : aplicaciones) {
+         if (aplicacion.getIdUsuario() == usuario.getIdUsuario()) {
         String[] dato = new String[6];
-        while(aplicaciones.isEmpty()){      
-            // Rellenar el array con los datos del usuario
-            dato[0] = Integer.toString(aplicacionusuario.getIdAplicacion());
-            dato[1] = Integer.toString(aplicacionusuario.getIdUsuario());
-            dato[2] = aplicacionusuario.getRegAplUsu();
-            dato[3] = aplicacionusuario.getModAplUsu();
-            dato[4] = aplicacionusuario.getEliAplUsu();
-            dato[5] = aplicacionusuario.getImpAplUsu();
-            // Agregar el array a la tabla
-            modelo.addRow(dato);
+        dato[0] = Integer.toString(aplicacion.getIdAplicacion());
+        dato[1] = Integer.toString(aplicacion.getIdUsuario());
+        dato[2] = aplicacion.getRegAplUsu();
+        dato[3] = aplicacion.getModAplUsu();
+        dato[4] = aplicacion.getEliAplUsu();
+        dato[5] = aplicacion.getImpAplUsu();
+        //Agregar el array a la tabla
+        modelo.addRow(dato);
+    }
         }
         
         //Agregando bitácora 
@@ -443,12 +414,12 @@ public void llenadoDeTabla1() {
     private void btnQuitarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarUnoActionPerformed
         // TODO add your handling code here:
         //Acción realizada por Karla Gómez
-        String is=txtIdUsuario.getText();
+        String is=cbUsuarios.getSelectedItem().toString();
         if(is.length()>0){
             DefaultTableModel model = (DefaultTableModel)
             tablaAplicacionesAsignadas.getModel();
             clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-            aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+            aplicacionusuario.setIdUsuario(Integer.parseInt(cbUsuarios.getSelectedItem().toString()));
             int s = tablaAplicacionesAsignadas.getSelectedRow();
             if (s<0){
                 JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla" );
@@ -476,17 +447,21 @@ public void llenadoDeTabla1() {
     private void btnQuitarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarTodosActionPerformed
         // TODO add your handling code here:
         //Acción realizada por Nelson Pineda
-        String is=txtIdUsuario.getText();
+        String is=cbUsuarios.getSelectedItem().toString();
         if(is.length()>0){
             DefaultTableModel modeloDestino = (DefaultTableModel)tablaAplicacionesAsignadas.getModel();
             tablaAplicacionesAsignadas.getModel();{        
                 clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-                aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                aplicacionusuario.setIdUsuario(Integer.parseInt(cbUsuarios.getSelectedItem().toString()));
                 int a = tablaAplicacionesAsignadas.getRowCount();
                 for(int i=a-1; i>=0; i--){
-                    aplicacionusuario.setBorrarTodoAplicacion(aplicacionusuario);
-                    modeloDestino.removeRow(i);  
-                }  
+                    String idusuariotabla = modeloDestino.getValueAt(i, 1).toString(); 
+                    if(idusuariotabla.equals(is)) {
+                    aplicacionusuario.setBorrarTodoAplicacion(aplicacionusuario); 
+                     modeloDestino.removeRow(i);
+                      }
+                  
+                }      
                 JOptionPane.showMessageDialog(null,"Aplicaciones para el usuario Eliminada exitosamente");
             }   
         }else{
@@ -503,12 +478,12 @@ public void llenadoDeTabla1() {
     private void btnAgregarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUnoActionPerformed
         // TODO add your handling code here:
         // Acción realizada por Alyson Rodríguez y Carlos González
-        String is=txtIdUsuario.getText();
+        String is=cbUsuarios.getSelectedItem().toString();
         if(is.length()>0){
             if(rbRegistrar.isSelected()||rbModificar.isSelected()||rbEliminar.isSelected()||rbImprimir.isSelected()){
                 int FilaSeleccionada= tablaAplicacionesDisponibles.getSelectedRow();
                 if(FilaSeleccionada !=-1){
-                    String idAplicacion, idUsuario=txtIdUsuario.getText();
+                    String idAplicacion, idUsuario=cbUsuarios.getSelectedItem().toString();
                     idAplicacion= tablaAplicacionesDisponibles.getValueAt(FilaSeleccionada,0).toString();
                     idUsuario= tablaAplicacionesDisponibles.getValueAt(FilaSeleccionada,1).toString();
 
@@ -517,7 +492,7 @@ public void llenadoDeTabla1() {
                     modeloAplicacionesAsignadas.addRow(datos);
                     clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
                     aplicacionusuario.setIdAplicacion(Integer.parseInt(idAplicacion));
-                    aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                    aplicacionusuario.setIdUsuario(Integer.parseInt(cbUsuarios.getSelectedItem().toString()));
                     if(rbRegistrar.isSelected()){
                         aplicacionusuario.setRegAplUsu("T");
                     }else{
@@ -558,7 +533,7 @@ public void llenadoDeTabla1() {
     private void btnAgregarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTodosActionPerformed
         // TODO add your handling code here:
         //Acción realizada por Alyson Rodriguez y Carlos González
-        String is=txtIdUsuario.getText();
+        String is=cbUsuarios.getSelectedItem().toString();
         if(is.length()>0){
             if(rbRegistrar.isSelected()||rbModificar.isSelected()||rbEliminar.isSelected()||rbImprimir.isSelected()){
                 DefaultTableModel modeloOrigen = (DefaultTableModel)tablaAplicacionesDisponibles.getModel(), modeloDestino = (DefaultTableModel)tablaAplicacionesAsignadas.getModel();
@@ -571,7 +546,7 @@ public void llenadoDeTabla1() {
                     String idAplicacion= tablaAplicacionesDisponibles.getValueAt(i,0).toString();
                     clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
                     aplicacionusuario.setIdAplicacion(Integer.parseInt(idAplicacion));
-                    aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                    aplicacionusuario.setIdUsuario(Integer.parseInt(cbUsuarios.getSelectedItem().toString()));
                     if(rbRegistrar.isSelected()){
                         aplicacionusuario.setRegAplUsu("T");
                     }else{
@@ -619,7 +594,7 @@ public void llenadoDeTabla1() {
     public void limpiarTextos()
     {
         txtNombre.setText("");
-        txtIdUsuario.setText("");
+        
         txtTipoUsuario.setText("");
     }
     public void limpiarTabla2(){
@@ -659,10 +634,8 @@ public void llenadoDeTabla1() {
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
-    private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
-    private javax.swing.JLabel label8;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JRadioButton rbEliminar;
@@ -671,7 +644,6 @@ public void llenadoDeTabla1() {
     private javax.swing.JRadioButton rbRegistrar;
     private javax.swing.JTable tablaAplicacionesAsignadas;
     private javax.swing.JTable tablaAplicacionesDisponibles;
-    private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTipoUsuario;
     // End of variables declaration//GEN-END:variables
