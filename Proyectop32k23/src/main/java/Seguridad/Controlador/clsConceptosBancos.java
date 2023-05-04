@@ -5,44 +5,44 @@
  */
 package Seguridad.Controlador;
 import java.util.List;
-import Seguridad.Modelo.daoConceptos;
+import Seguridad.Modelo.daoConceptosBancos;
 /**
  *
  * @author visitante
  */
-public class clsConceptos {
+public class clsConceptosBancos {
     private int IdConcepto;
     private String nombreConcepto;
     private String descripcionConcepto;
     private String efectoConcepto;
     private String estatusConcepto;
 
-    public clsConceptos() {
+    public clsConceptosBancos() {
     }
 
-    public clsConceptos(int IdConcepto) {
+    public clsConceptosBancos(int IdConcepto) {
         this.IdConcepto = IdConcepto;
     }
 
-    public clsConceptos(int IdConcepto, String nombreConcepto) {
+    public clsConceptosBancos(int IdConcepto, String nombreConcepto) {
         this.IdConcepto = IdConcepto;
         this.nombreConcepto = nombreConcepto;
     }
 
-    public clsConceptos(int IdConcepto, String nombreConcepto, String descripcionConcepto) {
+    public clsConceptosBancos(int IdConcepto, String nombreConcepto, String descripcionConcepto) {
         this.IdConcepto = IdConcepto;
         this.nombreConcepto = nombreConcepto;
         this.descripcionConcepto = descripcionConcepto;
     }
 
-    public clsConceptos(int IdConcepto, String nombreConcepto, String descripcionConcepto, String efectoConcepto) {
+    public clsConceptosBancos(int IdConcepto, String nombreConcepto, String descripcionConcepto, String efectoConcepto) {
         this.IdConcepto = IdConcepto;
         this.nombreConcepto = nombreConcepto;
         this.descripcionConcepto = descripcionConcepto;
         this.efectoConcepto = efectoConcepto;
     }
 
-    public clsConceptos(int IdConcepto, String nombreConcepto, String descripcionConcepto, String efectoConcepto, String estatusConcepto) {
+    public clsConceptosBancos(int IdConcepto, String nombreConcepto, String descripcionConcepto, String efectoConcepto, String estatusConcepto) {
         this.IdConcepto = IdConcepto;
         this.nombreConcepto = nombreConcepto;
         this.descripcionConcepto = descripcionConcepto;
@@ -95,35 +95,35 @@ public class clsConceptos {
         return "clsConcepto{" + "IdConcepto=" + IdConcepto + ", nombreConcepto=" + nombreConcepto + ", descripcionConcepto=" + descripcionConcepto + ", efectoConcepto=" + efectoConcepto + ", estatusConcepto=" + estatusConcepto +'}';
     }
     //Metodos de acceso a la capa controlador
-    public clsConceptos getBuscarInformacionConceptoPorNombre(clsConceptos concepto)
+    public clsConceptosBancos getBuscarInformacionConceptoPorNombre(clsConceptosBancos concepto)
     {
-        daoConceptos daoconcepto = new daoConceptos();
+        daoConceptosBancos daoconcepto = new daoConceptosBancos();
         return daoconcepto.consultaConceptoPorNombre(concepto);
     }
-    public clsConceptos getBuscarInformacionConceptoPorId(clsConceptos concepto)
+    public clsConceptosBancos getBuscarInformacionConceptoPorId(clsConceptosBancos concepto)
     {
-        daoConceptos daoconcepto = new daoConceptos();
+        daoConceptosBancos daoconcepto = new daoConceptosBancos();
         return daoconcepto.consultaConceptoPorId(concepto);
     }    
-    public List<clsConceptos> getListadoConceptos()
+    public List<clsConceptosBancos> getListadoConceptos()
     {
-        daoConceptos daoconcepto = new daoConceptos();
-        List<clsConceptos> listadoClsConceptos = daoconcepto.consultaConcepto();
+        daoConceptosBancos daoconcepto = new daoConceptosBancos();
+        List<clsConceptosBancos> listadoClsConceptos = daoconcepto.consultaConcepto();
         return listadoClsConceptos;
     }
-    public int setBorrarConcepto(clsConceptos concepto)
+    public int setBorrarConcepto(clsConceptosBancos concepto)
     {
-        daoConceptos daoconcepto = new daoConceptos();
+        daoConceptosBancos daoconcepto = new daoConceptosBancos();
         return daoconcepto.borrarConcepto(concepto);
     }          
-    public int setIngresarConcepto(clsConceptos concepto)
+    public int setIngresarConcepto(clsConceptosBancos concepto)
     {
-        daoConceptos daoconcepto = new daoConceptos();
+        daoConceptosBancos daoconcepto = new daoConceptosBancos();
         return daoconcepto.ingresaConcepto(concepto);
     }              
-    public int setModificarConcepto(clsConceptos concepto)
+    public int setModificarConcepto(clsConceptosBancos concepto)
     {
-        daoConceptos daoconcepto = new daoConceptos();
+        daoConceptosBancos daoconcepto = new daoConceptosBancos();
         return daoconcepto.actualizaConcepto(concepto);
     }              
 }

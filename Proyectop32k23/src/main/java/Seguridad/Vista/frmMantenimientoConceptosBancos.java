@@ -7,7 +7,7 @@ package Seguridad.Vista;
 
 
 import Seguridad.Controlador.clsBitacora;
-import Seguridad.Controlador.clsConceptos;
+import Seguridad.Controlador.clsConceptosBancos;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
-public class frmMantenimientoConceptos extends javax.swing.JInternalFrame {
+public class frmMantenimientoConceptosBancos extends javax.swing.JInternalFrame {
     
 int codigoAplicacion=1001;
 
@@ -41,9 +41,9 @@ int codigoAplicacion=1001;
         modelo.addColumn("Descripcion");
         modelo.addColumn("Efecto");
         modelo.addColumn("Estatus");
-        clsConceptos concepto = new clsConceptos();
+        clsConceptosBancos concepto = new clsConceptosBancos();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsConceptos> listaConcepto = concepto.getListadoConceptos();
+        List<clsConceptosBancos> listaConcepto = concepto.getListadoConceptos();
         tablaConceptos.setModel(modelo);
         String[] dato = new String[5];
         for (int i = 0; i < listaConcepto.size(); i++) {
@@ -56,7 +56,7 @@ int codigoAplicacion=1001;
         }       
     }
 
-    public frmMantenimientoConceptos() {
+    public frmMantenimientoConceptosBancos() {
         initComponents();
         llenadoDeTablas();
         llenadoDeCombos();
@@ -345,7 +345,7 @@ int codigoAplicacion=1001;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsConceptos concepto = new clsConceptos();
+        clsConceptosBancos concepto = new clsConceptosBancos();
         concepto.setIdConcepto(Integer.parseInt(txtbuscado.getText()));
         registrosBorrados=concepto.setBorrarConcepto(concepto);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
@@ -360,7 +360,7 @@ int codigoAplicacion=1001;
     }//GEN-LAST:event_btnEliminarActionPerformed
     int contador=0; 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsConceptos concepto = new clsConceptos();
+        clsConceptosBancos concepto = new clsConceptosBancos();
         concepto.setIdConcepto(Integer.parseInt(txtId.getText()));
         concepto.setNombreConcepto(txtNombre.getText());
         concepto.setDescripcionConcepto(txtDescripcion.getText());
@@ -378,7 +378,7 @@ int codigoAplicacion=1001;
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
             // TODO add your handling code here:
-        clsConceptos concepto = new clsConceptos();
+        clsConceptosBancos concepto = new clsConceptosBancos();
         //usuario.setNombreUsuario(txtbuscado.getText());        
         concepto.setIdConcepto(Integer.parseInt(txtbuscado.getText()));        
         concepto = concepto.getBuscarInformacionConceptoPorId(concepto);
@@ -394,7 +394,7 @@ int codigoAplicacion=1001;
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        clsConceptos concepto = new clsConceptos();
+        clsConceptosBancos concepto = new clsConceptosBancos();
         concepto.setIdConcepto(Integer.parseInt(txtbuscado.getText()));
         concepto.setNombreConcepto(txtNombre.getText());
         concepto.setDescripcionConcepto(txtDescripcion.getText());

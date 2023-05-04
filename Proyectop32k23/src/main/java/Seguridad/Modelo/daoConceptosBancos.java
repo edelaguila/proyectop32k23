@@ -5,7 +5,7 @@
  */
 package Seguridad.Modelo;
 
-import Seguridad.Controlador.clsConceptos;
+import Seguridad.Controlador.clsConceptosBancos;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author visitante
  */
-public class daoConceptos {
+public class daoConceptosBancos {
 
     private static final String SQL_SELECT = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptos";
     private static final String SQL_INSERT = "INSERT INTO tbl_conceptos(concId, concNombre, concDescripcion, concEfecto, concEstatus) VALUES(?, ?, ?, ?, ?)";
@@ -24,12 +24,12 @@ public class daoConceptos {
     private static final String SQL_SELECT_ID = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptos WHERE concId = ?";
      
 
-    public List<clsConceptos> consultaConcepto() {
+    public List<clsConceptosBancos> consultaConcepto() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<clsConceptos> conceptos = new ArrayList<>();
+        List<clsConceptosBancos> conceptos = new ArrayList<>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
@@ -40,7 +40,7 @@ public class daoConceptos {
                 String descripcion = rs.getString("concDescripcion");
                 String efecto = rs.getString("concEfecto");
 		String estatus = rs.getString("concEstatus");
-                clsConceptos concepto = new clsConceptos();
+                clsConceptosBancos concepto = new clsConceptosBancos();
                 concepto.setIdConcepto(id);
                 concepto.setNombreConcepto(nombre);
                 concepto.setDescripcionConcepto(descripcion);
@@ -58,7 +58,7 @@ public class daoConceptos {
         return conceptos;
     }
 
-    public int ingresaConcepto(clsConceptos concepto) {
+    public int ingresaConcepto(clsConceptosBancos concepto) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -83,7 +83,7 @@ public class daoConceptos {
         return rows;
     }
 
-    public int actualizaConcepto(clsConceptos concepto) {
+    public int actualizaConcepto(clsConceptosBancos concepto) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -110,7 +110,7 @@ public class daoConceptos {
         return rows;
     }
 
-    public int borrarConcepto(clsConceptos concepto) {
+    public int borrarConcepto(clsConceptosBancos concepto) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -132,7 +132,7 @@ public class daoConceptos {
         return rows;
     }
 
-    public clsConceptos consultaConceptoPorNombre(clsConceptos concepto) {
+    public clsConceptosBancos consultaConceptoPorNombre(clsConceptosBancos concepto) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -169,7 +169,7 @@ public class daoConceptos {
         //return personas;  // Si se utiliza un ArrayList
         return concepto;
     }
-    public clsConceptos consultaConceptoPorId(clsConceptos concepto) {
+    public clsConceptosBancos consultaConceptoPorId(clsConceptosBancos concepto) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
