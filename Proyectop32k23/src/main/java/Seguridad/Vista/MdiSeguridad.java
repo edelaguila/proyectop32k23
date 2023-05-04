@@ -51,6 +51,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mantenimientoPerfiles = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoUsuarios = new javax.swing.JCheckBoxMenuItem();
         mantenimientoConceptosBancos = new javax.swing.JCheckBoxMenuItem();
+        mantenimientoTipoPersonaBancos = new javax.swing.JMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
@@ -161,6 +162,14 @@ public class MdiSeguridad extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientos.add(mantenimientoConceptosBancos);
+
+        mantenimientoTipoPersonaBancos.setText("Mantenimiento Tipo Persona Bancos");
+        mantenimientoTipoPersonaBancos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mantenimientoTipoPersonaBancosActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientos.add(mantenimientoTipoPersonaBancos);
 
         mnuCatalogos.add(mnuCatalogosMantenimientos);
 
@@ -316,6 +325,15 @@ public class MdiSeguridad extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mantenimientoConceptosBancosActionPerformed
 
+    private void mantenimientoTipoPersonaBancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoPersonaBancosActionPerformed
+        // TODO add your handling code here:
+         frmMantenimientoTipoPersonaBancos ventana = new frmMantenimientoTipoPersonaBancos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mantenimientoTipoPersonaBancosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,6 +385,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem mantenimientoConceptosBancos;
     private javax.swing.JCheckBoxMenuItem mantenimientoModulos;
     private javax.swing.JCheckBoxMenuItem mantenimientoPerfiles;
+    private javax.swing.JMenuItem mantenimientoTipoPersonaBancos;
     private javax.swing.JCheckBoxMenuItem mantenimientoTipoUsuarios;
     private javax.swing.JMenuItem mantenimientoUsuarios;
     private javax.swing.JMenu mnuArchivo;
