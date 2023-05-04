@@ -104,7 +104,7 @@ int codigoAplicacion=1001;
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Concepto - Carlos Gonzalez - 9959-20-6164");
+        setTitle("Mantenimiento Conceptos Bancos");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
