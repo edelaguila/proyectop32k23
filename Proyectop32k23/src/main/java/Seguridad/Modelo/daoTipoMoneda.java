@@ -57,3 +57,28 @@ public class daoTipoMoneda {
         return tipmonedas;
     }
 
+
+     public int ingresaTipoMoneda (clsTipoMoneda moneda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt.setInt(1, moneda.getTipModId());
+            stmt.setString(2, moneda.getTipMondNombre());
+            stmt.setString(3, moneda.getTipMondAbreviacion());
+            stmt.setFloat(4, moneda.getTipModValor());
+            
+            System.out.println("ejecutando query:" + SQL_INSERT);
+            rows = stmt.executeUpdate();
+            System.out.println("Registros afectados:" + rows);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+    }
