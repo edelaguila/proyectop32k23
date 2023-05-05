@@ -41,3 +41,38 @@ public class clsTipoMoneda {
         this.tipModValor = tipModValor;
     }
 
+
+    public int getTipModId() {
+        return tipModId;
+    }
+
+    public void setTipModId(int tipModId) {
+        this.tipModId = tipModId;
+    }
+
+    public String getTipMondNombre() {
+        return tipMondNombre;
+    }
+
+    public void setTipMondNombre(String tipMondNombre) {
+        this.tipMondNombre = tipMondNombre;
+    }
+
+    public String getTipMondAbreviacion() {
+        return tipMondAbreviacion;
+    }
+
+    public void setTipMondAbreviacion(String tipMondAbreviacion) {
+        this.tipMondAbreviacion = tipMondAbreviacion;
+    }
+
+    public float getTipModValor() {
+        return tipModValor;
+    }
+
+    public void setTipModValor(float tipModValor) {
+        this.tipModValor = tipModValor;
+    }
+    
+
+ 
