@@ -317,16 +317,14 @@ int codigoAplicacion = 40;
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        
         clsPerfil perfil = new clsPerfil();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         perfil.setIdPerfil(Integer.parseInt(txtbuscado.getText()));        
         perfil = perfil.getBuscarInformacionPerfilPorId(perfil);
         System.out.println("Usuario retornado:" + perfil);        
         txtNombre.setText(perfil.getNombrePerfil());
-        txtContrasena.setText(perfil.getEstatusPerfil());
-         int resultadoBitacora=0;
-                    clsBitacora bitacoraRegistro = new clsBitacora();
-                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
+        txtContrasena.setText(perfil.getEstatusPerfil()); 
                  
         
         
@@ -374,6 +372,7 @@ int codigoAplicacion = 40;
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+  
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime

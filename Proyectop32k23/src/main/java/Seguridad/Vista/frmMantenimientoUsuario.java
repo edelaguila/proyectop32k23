@@ -5,7 +5,7 @@
  */
 package Seguridad.Vista;
 
-
+import Seguridad.Controlador.clsSeguridad;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuario;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -458,9 +458,13 @@ int codigoAplicacion=10;
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String cont=txtContrasena.getText(),conf=txtConfContraseña.getText();
         if(cont.equals(conf)){
+            clsSeguridad c = new clsSeguridad();
             clsUsuario usuario = new clsUsuario();
             usuario.setNombreUsuario(txtNombre.getText());
-            usuario.setContrasenaUsuario(txtContrasena.getText());
+            usuario.setContrasenaUsuario(c.encode(txtContrasena.getText()));
+                    
+            //Agregando codificado de contraseña = Anthony Avalos 
+            //usuario.setContrasenaUsuario(txtContrasena.getText());
             usuario.setUltimaSesionUsuario(txtUltimaSesion.getText());
             usuario.setEstatusUsuario(txtEstatus.getText());
             usuario.setNombreRealUsuario(txtNombreReal.getText());
@@ -489,7 +493,8 @@ int codigoAplicacion=10;
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-            // TODO add your handling code here:
+            // TODO add your handling code here:       
+            
         clsUsuario usuario = new clsUsuario();
         //usuario.setNombreUsuario(txtbuscado.getText());        
         usuario.setIdUsuario(Integer.parseInt(txtbuscado.getText()));        
@@ -504,17 +509,21 @@ int codigoAplicacion=10;
         txtTelefono.setText(usuario.getTelefonoUsuario());
         txtDireccion.setText(usuario.getDireccionUsuario());
         txtTipoUsuario.setText(Integer.toString(usuario.getTipoUsuario()));
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+        
+        clsSeguridad c = new clsSeguridad();
         clsUsuario usuario = new clsUsuario();
         usuario.setIdUsuario(Integer.parseInt(txtbuscado.getText()));
         usuario.setNombreUsuario(txtNombre.getText());
-        usuario.setContrasenaUsuario(txtContrasena.getText());
+        usuario.setContrasenaUsuario(c.encode(txtContrasena.getText()));
+        
+        //agregando codificado de contraseña modificar = Anthony Avalos
+        //usuario.setContrasenaUsuario(txtContrasena.getText());
         usuario.setUltimaSesionUsuario(txtUltimaSesion.getText());
         usuario.setEstatusUsuario(txtEstatus.getText());
         usuario.setNombreRealUsuario(txtNombreReal.getText());
@@ -573,6 +582,7 @@ int codigoAplicacion=10;
     }   
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
