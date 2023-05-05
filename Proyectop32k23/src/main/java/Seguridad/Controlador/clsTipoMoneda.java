@@ -75,4 +75,49 @@ public class clsTipoMoneda {
     }
     
 
- 
+  
+    @Override
+    public String toString() {
+        return "clsTipoMoneda{" + "tipModId =" + tipModId    + ", tipMondNombre=" + tipMondNombre + ", tipMondAbreviacion=" + tipMondAbreviacion + ", tipModValor  =" + tipModValor   + '}';
+    }
+    //Metodos de acceso a la capa controlador
+    public clsTipoMoneda getBuscarInformacionTipoMonedaPorNombre(clsTipoMoneda moneda)
+    {
+        daoTipoMoneda daoTipoMoneda = new daoTipoMoneda();
+        return daoTipoMoneda.consultaTipoMonedaPorNombre(moneda);
+    }
+    public clsTipoMoneda getBuscarInformacionMonedaPorId(clsTipoMoneda moneda)
+    {
+        daoTipoMoneda daoTipoMoneda = new daoTipoMoneda();
+        return daoTipoMoneda.consultaTipoMonedaPorId(moneda);
+    }    
+    public List<clsTipoMoneda> getListadoMonedas()
+    {
+        daoTipoMoneda daoTipoMoneda = new daoTipoMoneda();
+        List<clsTipoMoneda> listadoMonedas = daoTipoMoneda.consultaTipoMoneda();
+        return listadoMonedas;
+    }
+    public int setBorrarMoneda(clsTipoMoneda moneda)
+    {
+        daoTipoMoneda daoTipoMoneda = new daoTipoMoneda();
+        return daoTipoMoneda.borrarTipoMoneda(moneda);
+    }          
+    public int setIngresarMoneda(clsTipoMoneda moneda)
+    {
+        daoTipoMoneda daoTipoMoneda = new daoTipoMoneda();
+        return daoTipoMoneda.ingresaTipoMoneda(moneda);
+    }              
+    public int setModificarMoneda(clsTipoMoneda moneda)
+    {
+        daoTipoMoneda daoTipoMoneda = new daoTipoMoneda();
+        return daoTipoMoneda.actualizaTipoMoneda(moneda);
+    }              
+
+    public void getTipModValor(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getTipMondValor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
