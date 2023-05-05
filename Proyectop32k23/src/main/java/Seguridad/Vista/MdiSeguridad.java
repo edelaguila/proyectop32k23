@@ -45,15 +45,15 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mnuSalirSistema = new javax.swing.JCheckBoxMenuItem();
         mnuCatalogos = new javax.swing.JMenu();
         mnuCatalogosMantenimientos = new javax.swing.JMenu();
-        mantenimientoUsuarios = new javax.swing.JMenuItem();
         mantenimientoAplicaciones = new javax.swing.JCheckBoxMenuItem();
         mantenimientoModulos = new javax.swing.JCheckBoxMenuItem();
         mantenimientoPerfiles = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoUsuarios = new javax.swing.JCheckBoxMenuItem();
         mantenimientoConceptosBancos = new javax.swing.JCheckBoxMenuItem();
-        mantenimientoTipoPersonaBancos = new javax.swing.JMenuItem();
-        mantenimientoTipoMovimientoBancos = new javax.swing.JMenuItem();
         MantenimientoTipoMoneda = new javax.swing.JCheckBoxMenuItem();
+        mantenimientoUsuarios = new javax.swing.JCheckBoxMenuItem();
+        mantenimientoTipoPersonaBancos = new javax.swing.JCheckBoxMenuItem();
+        mantenimientoTipoMovimientoBancos = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
@@ -112,14 +112,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
             }
         });
 
-        mantenimientoUsuarios.setText("Mantenimiento Usuarios");
-        mantenimientoUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimientoUsuariosActionPerformed(evt);
-            }
-        });
-        mnuCatalogosMantenimientos.add(mantenimientoUsuarios);
-
         mantenimientoAplicaciones.setSelected(true);
         mantenimientoAplicaciones.setText("Mantenimiento Aplicaciones");
         mantenimientoAplicaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -165,22 +157,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientos.add(mantenimientoConceptosBancos);
 
-        mantenimientoTipoPersonaBancos.setText("Mantenimiento Tipo Persona Bancos");
-        mantenimientoTipoPersonaBancos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimientoTipoPersonaBancosActionPerformed(evt);
-            }
-        });
-        mnuCatalogosMantenimientos.add(mantenimientoTipoPersonaBancos);
-
-        mantenimientoTipoMovimientoBancos.setText("Mantenimiento Tipo Movimiento Bancos");
-        mantenimientoTipoMovimientoBancos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimientoTipoMovimientoBancosActionPerformed(evt);
-            }
-        });
-        mnuCatalogosMantenimientos.add(mantenimientoTipoMovimientoBancos);
-
         MantenimientoTipoMoneda.setSelected(true);
         MantenimientoTipoMoneda.setText("Mantenimiento Tipo Moneda");
         MantenimientoTipoMoneda.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +165,33 @@ public class MdiSeguridad extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientos.add(MantenimientoTipoMoneda);
+
+        mantenimientoUsuarios.setSelected(true);
+        mantenimientoUsuarios.setText("Mantenimiento Usuarios");
+        mantenimientoUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mantenimientoUsuariosActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientos.add(mantenimientoUsuarios);
+
+        mantenimientoTipoPersonaBancos.setSelected(true);
+        mantenimientoTipoPersonaBancos.setText("Mantenimiento Tipo Persona Bancos");
+        mantenimientoTipoPersonaBancos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mantenimientoTipoPersonaBancosActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientos.add(mantenimientoTipoPersonaBancos);
+
+        mantenimientoTipoMovimientoBancos.setSelected(true);
+        mantenimientoTipoMovimientoBancos.setText("Mantenimiento Tipo Movimiento Bancos");
+        mantenimientoTipoMovimientoBancos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mantenimientoTipoMovimientoBancosActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientos.add(mantenimientoTipoMovimientoBancos);
 
         mnuCatalogos.add(mnuCatalogosMantenimientos);
 
@@ -250,15 +253,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_mnuCatalogosMantenimientosActionPerformed
-
-    private void mantenimientoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoUsuariosActionPerformed
-        // TODO add your handling code here:
-        frmMantenimientoUsuario ventana = new frmMantenimientoUsuario();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_mantenimientoUsuariosActionPerformed
 
     private void mnuArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArchivoActionPerformed
         // TODO add your handling code here:
@@ -344,25 +338,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mantenimientoConceptosBancosActionPerformed
 
-    private void mantenimientoTipoPersonaBancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoPersonaBancosActionPerformed
-        // TODO add your handling code here:
-         frmMantenimientoTipoPersonaBancos ventana = new frmMantenimientoTipoPersonaBancos();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_mantenimientoTipoPersonaBancosActionPerformed
-
-    private void mantenimientoTipoMovimientoBancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoMovimientoBancosActionPerformed
-        // TODO add your handling code here:
-        //Alyson Rodríguez 9959-21-829
-        frmMantenimientoTipoMovimientoBancos ventana = new frmMantenimientoTipoMovimientoBancos();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_mantenimientoTipoMovimientoBancosActionPerformed
-
     private void MantenimientoTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoTipoMonedaActionPerformed
         // TODO add your handling code here:
             //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
@@ -372,6 +347,33 @@ public class MdiSeguridad extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_MantenimientoTipoMonedaActionPerformed
+
+    private void mantenimientoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoUsuariosActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoUsuario ventana = new frmMantenimientoUsuario();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mantenimientoUsuariosActionPerformed
+
+    private void mantenimientoTipoPersonaBancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoPersonaBancosActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoTipoPersonaBancos ventana = new frmMantenimientoTipoPersonaBancos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mantenimientoTipoPersonaBancosActionPerformed
+
+    private void mantenimientoTipoMovimientoBancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoTipoMovimientoBancosActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoTipoMovimientoBancos ventana = new frmMantenimientoTipoMovimientoBancos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mantenimientoTipoMovimientoBancosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,10 +427,10 @@ public class MdiSeguridad extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem mantenimientoConceptosBancos;
     private javax.swing.JCheckBoxMenuItem mantenimientoModulos;
     private javax.swing.JCheckBoxMenuItem mantenimientoPerfiles;
-    private javax.swing.JMenuItem mantenimientoTipoMovimientoBancos;
-    private javax.swing.JMenuItem mantenimientoTipoPersonaBancos;
+    private javax.swing.JCheckBoxMenuItem mantenimientoTipoMovimientoBancos;
+    private javax.swing.JCheckBoxMenuItem mantenimientoTipoPersonaBancos;
     private javax.swing.JCheckBoxMenuItem mantenimientoTipoUsuarios;
-    private javax.swing.JMenuItem mantenimientoUsuarios;
+    private javax.swing.JCheckBoxMenuItem mantenimientoUsuarios;
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAyudas;
     private javax.swing.JMenu mnuCatalogos;
