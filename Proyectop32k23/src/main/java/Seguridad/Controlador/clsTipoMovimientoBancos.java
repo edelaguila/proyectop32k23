@@ -52,7 +52,7 @@ public class clsTipoMovimientoBancos {
     public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorNombre(clsTipoMovimientoBancos movimiento)
     {
         daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
-        return daotipoMovimientoBancos.consultatipoMovimientoPorNombre(movimiento);
+        return daotipoMovimientoBancos.consultaTipoMovimientoPorNombre(movimiento);
     }
     public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorId(clsTipoMovimientoBancos movimiento)
     {

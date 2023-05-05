@@ -121,7 +121,7 @@ public class daoTipoMovimientoBancos {
         return rows;
     }
 
-    public clsTipoMovimientoBancos consultaMovimientoPorNombre(clsTipoMovimientoBancos movimiento) {
+    public clsTipoMovimientoBancos consultaTipoMovimientoPorNombre(clsTipoMovimientoBancos movimiento) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -155,27 +155,27 @@ public class daoTipoMovimientoBancos {
         //return movimiento;  // Si se utiliza un ArrayList
         return movimiento;
     }
-    public clsModulo consultaModuloPorId(clsModulo modulo) {
+    public clsTipoMovimientoBancos consultaTipoMovimientoPorId(clsTipoMovimientoBancos movimiento) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + modulo);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + movimiento);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, modulo.getIdModulo());            
+            stmt.setInt(1, movimiento.getTipoMovimiento());            
             //stmt.setString(1, modulo.getNombreModulo());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("modid");
-                String nombre = rs.getString("modnombre");
-                String estatus = rs.getString("modestatus");
+                int id = rs.getInt("tipmovid");
+                String nombre = rs.getString("tipmovnombre");
+                String estatus = rs.getString("tipmovestatus");
 
                 //modulo = new clsModulo();
-                modulo.setIdModulo(id);
-                modulo.setNombreModulo(nombre);
-                modulo.setEstatusModulo(estatus);
-                System.out.println(" registro consultado: " + modulo);                
+                movimiento.setTipoMovimiento(id);
+                movimiento.setNombreMovimiento(nombre);
+                movimiento.setEstatusMovimiento(estatus);
+                System.out.println(" registro consultado: " + movimiento);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -187,6 +187,6 @@ public class daoTipoMovimientoBancos {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return modulo;
+        return movimiento;
     }    
 }
