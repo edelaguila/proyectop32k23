@@ -4,7 +4,7 @@
  */
 package Seguridad.Modelo;
 
-import Seguridad.Controlador.clsAplicacion;
+
 import Seguridad.Controlador.clsTipoMovimientoBancos;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,12 +14,12 @@ import java.util.List;
  * @author cdavi
  */
 public class daoTipoMovimientoBancos {
-    private static final String SQL_SELECT = "SELECT tipmovid, tipmovnombre, tipmovestatus FROM tbl_tipomovimiento";
-    private static final String SQL_INSERT = "INSERT INTO tbl_tipomovimiento(tipmovid, tipmovnombre, tipmovestatus) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_tipomovimiento SET tipmovnombre, tipmovestatus WHERE tipmovid = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_tipomovimiento WHERE tipmovid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT tipmovid, tipmovnombre, tipmovestatus FROM tbl_tipomovimiento WHERE tipmovnombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT ipmovid, tipmovnombre, tipmovestatus FROM tbl_tipomovimiento WHERE ipmovid = ?";    
+    private static final String SQL_SELECT = "SELECT tipMovId , tipMovNombre, tipMovEstatus FROM tbl_tipomovimiento";
+    private static final String SQL_INSERT = "INSERT INTO tbl_tipomovimiento(tipMovId, tipMovNombre, tipMovEstatus) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_tipomovimiento SET tipMovNombre=?, tipMovEstatus=? WHERE tipMovId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_tipomovimiento WHERE tipMovId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT tipMovId, tipMovNombre, tipMovEstatus FROM tbl_tipomovimiento WHERE tipMovNombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT tipMovId, tipMovNombre, tipMovEstatus FROM tbl_tipomovimiento WHERE tipMovId = ?";    
 
     public List<clsTipoMovimientoBancos> consultaTipoMovimiento() {
         Connection conn = null;
@@ -32,11 +32,11 @@ public class daoTipoMovimientoBancos {
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("tipmovid");
-                String nombre = rs.getString("tipmovnombre");
-                String estatus = rs.getString("tipmovestatus");
+                int tipo = rs.getInt("tipMovId");
+                String nombre = rs.getString("tipMovNombre");
+                String estatus = rs.getString("tipMovEstatus");
                 clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
-                movimiento.setTipoMovimientoId(id);
+                movimiento.setTipoMovimientoId(tipo);
                 movimiento.setNombreMovimiento(nombre);
                 movimiento.setEstatusMovimiento(estatus);
                 movimientos.add(movimiento);
@@ -134,11 +134,11 @@ public class daoTipoMovimientoBancos {
             stmt.setString(1, movimiento.getNombreMovimiento());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("tipmovid");
-                String nombre = rs.getString("tipmovnombre");
-                String estatus = rs.getString("tipmovestatus");
+                int id = rs.getInt("tipMovId");
+                String nombre = rs.getString("tipMovNombre");
+                String estatus = rs.getString("tipMovEstatus");
 
-                //modulo = new clsModulo();
+                //movimiento = new clsModulo();
                 movimiento.setTipoMovimientoId(id);
                 movimiento.setNombreMovimiento(nombre);
                 movimiento.setEstatusMovimiento(estatus);
@@ -168,9 +168,9 @@ public class daoTipoMovimientoBancos {
             //stmt.setString(1, modulo.getNombreModulo());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("tipmovid");
-                String nombre = rs.getString("tipmovnombre");
-                String estatus = rs.getString("tipmovestatus");
+                int id = rs.getInt("tipMovId");
+                String nombre = rs.getString("tipMovNombre");
+                String estatus = rs.getString("tipMovEstatus");
 
                 //modulo = new clsModulo();
                 movimiento.setTipoMovimientoId(id);

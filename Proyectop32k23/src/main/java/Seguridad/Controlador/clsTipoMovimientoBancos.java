@@ -46,7 +46,7 @@ public class clsTipoMovimientoBancos {
 
     @Override
     public String toString() {
-        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimientoId + ", TipoMovimientoId=" + NombreMovimiento + ", EstatusMovimiento=" + EstatusMovimiento + '}';
+        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimientoId + ", NombreMovimiento=" + NombreMovimiento + ", EstatusMovimiento=" + EstatusMovimiento + '}';
     }
     //Metodos de acceso a la capa controlador
     public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorNombre(clsTipoMovimientoBancos movimiento)

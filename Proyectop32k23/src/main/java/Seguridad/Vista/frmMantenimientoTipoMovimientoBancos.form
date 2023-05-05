@@ -18,7 +18,7 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Mantenimiento Modulos"/>
+    <Property name="title" type="java.lang.String" value="Mantenimiento Tipo Movimiento"/>
     <Property name="visible" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
@@ -372,6 +372,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTipoMovimientoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

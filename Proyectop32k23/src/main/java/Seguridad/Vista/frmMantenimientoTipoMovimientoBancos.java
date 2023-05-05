@@ -7,6 +7,8 @@ package Seguridad.Vista;
 
 
 import Seguridad.Controlador.clsTipoMovimientoBancos;
+import Seguridad.Controlador.clsBitacora;
+import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -19,6 +21,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalFrame {
+    int codigoAplicacion= 1004;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -36,16 +39,16 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         modelo.addColumn("Estatus Movimiento");
        
 
-        clsTipoMovimientoBancos movimientos = new clsTipoMovimientoBancos();
+        clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsTipoMovimientoBancos> listamovimientos = movimientos.getListadoTipoMovimiento();
+        List<clsTipoMovimientoBancos> listadoTipoMovimientos = movimiento.getListadoTipoMovimiento();
      
         tablaMovimientos.setModel(modelo);
-        String[] dato = new String[10];
-        for (int i = 0; i < listamovimientos.size(); i++) {
-            dato[0] = Integer.toString(listamovimientos.get(i).getTipoMovimientoId());
-            dato[1] = listamovimientos.get(i).getNombreMovimiento();
-            dato[2] = listamovimientos.get(i).getEstatusMovimiento();
+        String[] dato = new String[3];
+        for (int i = 0; i < listadoTipoMovimientos.size(); i++) {
+            dato[0] = Integer.toString(listadoTipoMovimientos.get(i).getTipoMovimientoId());
+            dato[1] = listadoTipoMovimientos.get(i).getNombreMovimiento();
+            dato[2] = listadoTipoMovimientos.get(i).getEstatusMovimiento();
             modelo.addRow(dato);
         }       
     }
@@ -94,7 +97,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Modulos");
+        setTitle("Mantenimiento Tipo Movimiento");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -191,6 +194,11 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
 
         txtTipoMovimiento.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtTipoMovimiento.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtTipoMovimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoMovimientoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,26 +299,31 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsTipoMovimientoBancos movimientos= new clsTipoMovimientoBancos();
-        movimientos.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=movimientos.setBorrarTipoMovimiento(movimientos);
+        clsTipoMovimientoBancos movimiento= new clsTipoMovimientoBancos();
+        movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados=movimiento.setBorrarTipoMovimiento(movimiento);
 
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
+        int resultadoBitacora =0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
         limpiarTextos();
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+        int contador=0; 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
+        movimiento.setTipoMovimientoId(Integer.parseInt(txtTipoMovimiento.getText()));
         movimiento.setNombreMovimiento(txtNombre.getText());
-        //modulos.setIdModulos(txtContrasena.getText());
-
-        movimiento. setEstatusMovimiento(txtEstatus.getText());
+        movimiento.setEstatusMovimiento(txtEstatus.getText());
         movimiento.setIngresarTipoMovimiento(movimiento);
-
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+        
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTablas();
         limpiarTextos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -319,28 +332,28 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         // TODO add your handling code here:
         clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
         //usuario.setNombreUsuario(txtbuscado.getText());        
-
         movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));        
         movimiento = movimiento.getBuscarInformacionTipoMovimientoPorId(movimiento);
         System.out.println("Movimiento retornado:" + movimiento);        
         txtNombre.setText(movimiento.getNombreMovimiento());
-        //txtContrasena.setText(modulos.getIdModulos());
         txtEstatus.setText(movimiento.getEstatusMovimiento());
-
-       
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+         // TODO add your handling code here:
         clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
-
         movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
         movimiento.setNombreMovimiento(txtNombre.getText());
         movimiento.setEstatusMovimiento(txtEstatus.getText());
-
         movimiento.setModificarTipoMovimiento(movimiento);
-        JOptionPane.showMessageDialog(null, "Movimiento Modificado\n", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
+        JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
+                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);  
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "UPD");
         llenadoDeTablas();
         limpiarTextos();
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -353,12 +366,9 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     public void limpiarTextos()
     {
         txtNombre.setText("");
-      
         txtbuscado.setText("");
-       
         txtEstatus.setText("");
-        
-        
+            
     }
     public void habilitarBotones()
     {
@@ -394,6 +404,10 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         // TODO add your handling code here:
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtTipoMovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoMovimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoMovimientoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
