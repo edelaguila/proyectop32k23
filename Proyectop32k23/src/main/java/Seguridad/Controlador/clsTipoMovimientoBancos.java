@@ -5,7 +5,7 @@
  */
 package Seguridad.Controlador;
 import java.util.List;
-import Seguridad.Modelo.daoPerfil;
+import Seguridad.Modelo.daoTipoMovimientoBancos;
 /**
  *
  * @author visitante
@@ -15,7 +15,7 @@ import Seguridad.Modelo.daoPerfil;
 public class clsTipoMovimientoBancos {
     private static int TipoMovimiento;
     private static String NombreMovimiento;
-    private static String EstatusMovimieto;
+    private static String EstatusMovimiento;
 
     public clsTipoMovimientoBancos() {
     }
@@ -36,17 +36,17 @@ public class clsTipoMovimientoBancos {
         clsTipoMovimientoBancos.NombreMovimiento = NombreMovimiento;
     }
 
-    public static String getEstatusMovimieto() {
-        return EstatusMovimieto;
+    public static String getEstatusMovimiento() {
+        return EstatusMovimiento;
     }
 
-    public static void setEstatusMovimieto(String EstatusMovimieto) {
-        clsTipoMovimientoBancos.EstatusMovimieto = EstatusMovimieto;
+    public static void setEstatusMovimiento(String EstatusMovimiento) {
+        clsTipoMovimientoBancos.EstatusMovimiento = EstatusMovimiento;
     }
 
     @Override
     public String toString() {
-        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimiento + ", NombreMovimiento=" + NombreMovimiento + ", EstatusMovimieto=" + EstatusMovimieto + '}';
+        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimiento + ", NombreMovimiento=" + NombreMovimiento + ", EstatusMovimiento=" + EstatusMovimiento + '}';
     }
     //Metodos de acceso a la capa controlador
     public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorNombre(clsTipoMovimientoBancos movimiento)
