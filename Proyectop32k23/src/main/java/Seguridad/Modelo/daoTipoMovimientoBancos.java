@@ -121,27 +121,27 @@ public class daoTipoMovimientoBancos {
         return rows;
     }
 
-    public clsModulo consultaModuloPorNombre(clsModulo modulo) {
+    public clsTipoMovimientoBancos consultaMovimientoPorNombre(clsTipoMovimientoBancos movimiento) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + modulo);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + movimiento);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
             //stmt.setInt(1, modulo.getIdModulo());            
-            stmt.setString(1, modulo.getNombreModulo());
+            stmt.setString(1, movimiento.getNombreMovimiento());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("modid");
-                String nombre = rs.getString("modnombre");
-                String estatus = rs.getString("modestatus");
+                int id = rs.getInt("tipmovid");
+                String nombre = rs.getString("tipmovnombre");
+                String estatus = rs.getString("tipmovestatus");
 
                 //modulo = new clsModulo();
-                modulo.setIdModulo(id);
-                modulo.setNombreModulo(nombre);
-                modulo.setEstatusModulo(estatus);
-                System.out.println(" registro consultado: " + modulo);                
+                movimiento.setTipoMovimiento(id);
+                movimiento.setNombreMovimiento(nombre);
+                movimiento.setEstatusMovimiento(estatus);
+                System.out.println(" registro consultado: " + movimiento);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -152,8 +152,8 @@ public class daoTipoMovimientoBancos {
             Conexion.close(conn);
         }
 
-        //return personas;  // Si se utiliza un ArrayList
-        return modulo;
+        //return movimiento;  // Si se utiliza un ArrayList
+        return movimiento;
     }
     public clsModulo consultaModuloPorId(clsModulo modulo) {
         Connection conn = null;
