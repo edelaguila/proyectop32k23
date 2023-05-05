@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Seguridad.Modelo;
+package Bancos.Modelo;
 
 
-import Seguridad.Controlador.clsTipoMovimientoBancos;
+import Bancos.Controlador.clsTipoMovimientoBancos;
+import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

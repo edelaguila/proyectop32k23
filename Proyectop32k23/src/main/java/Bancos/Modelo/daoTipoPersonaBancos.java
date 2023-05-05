@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Modelo;
+package Bancos.Modelo;
 
-import Seguridad.Controlador.clsTipoPersonaBancos;
+import Bancos.Controlador.clsTipoPersonaBancos;
+import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

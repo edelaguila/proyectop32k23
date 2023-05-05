@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-package Seguridad.Controlador;
+package Bancos.Controlador;
 import java.util.List;
-import Seguridad.Modelo.daoTipoMoneda;
+import Bancos.Modelo.daoTipoMoneda;
 /**
  *
  * @author visitante

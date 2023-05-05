@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
+package Bancos.Vista;
 
-import Seguridad.Controlador.clsTipoPersonaBancos;
+import Bancos.Controlador.clsTipoPersonaBancos;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;

@@ -5,6 +5,7 @@
  */
 package Seguridad.Vista;
 
+import Bancos.Vista.MdiBancos;
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
@@ -153,7 +154,7 @@ public class frmLogin extends javax.swing.JFrame {
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(usuarioRegistrado.getIdUsuario(), codigoAplicacion, "BEG");
                     // Menu general
-                    MdiSeguridad menuGeneral = new MdiSeguridad();
+                    MdiBancos menuGeneral = new MdiBancos();
                     menuGeneral.setVisible(true);
                     this.dispose();
 

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
+package Bancos.Vista;
 
 
 import Seguridad.Controlador.clsBitacora;
-import Seguridad.Controlador.clsConceptosBancos;
+import Bancos.Controlador.clsConceptosBancos;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
             //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-package Seguridad.Vista;
+package Bancos.Vista;
 
 
 import Seguridad.Controlador.clsBitacora;
-import Seguridad.Controlador.clsTipoMoneda;
+import Bancos.Controlador.clsTipoMoneda;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

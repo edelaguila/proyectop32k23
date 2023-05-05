@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-package Seguridad.Modelo;
+package Bancos.Modelo;
 
-import Seguridad.Controlador.clsTipoMoneda;
+import Bancos.Controlador.clsTipoMoneda;
+import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

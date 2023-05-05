@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Controlador;
+package Bancos.Controlador;
 import java.util.List;
-import Seguridad.Modelo.daoConceptosBancos;
+import Bancos.Modelo.daoConceptosBancos;
 /**
  *
  * @author visitante
