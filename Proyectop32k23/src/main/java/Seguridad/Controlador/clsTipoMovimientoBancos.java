@@ -10,90 +10,74 @@ import Seguridad.Modelo.daoPerfil;
  *
  * @author visitante
  */
- /*Creado por María José Véliz Ochoa 9959-21-5909 */
+ /*Creado por Alyson Rodríguez 9959-21-829 */
 
 public class clsTipoMovimientoBancos {
-    private int IdPerfil;
-    private String NombrePerfil;
-    private String EstatusPerfil;
+    private static int TipoMovimiento;
+    private static String NombreMovimiento;
+    private static String EstatusMovimieto;
 
     public clsTipoMovimientoBancos() {
     }
 
-    public clsTipoMovimientoBancos(int IdPerfil) {
-        this.IdPerfil = IdPerfil;
+    public static int getTipoMovimiento() {
+        return TipoMovimiento;
     }
 
-    public clsTipoMovimientoBancos(String NombrePerfil, String EstatusPerfil) {
-        this.NombrePerfil = NombrePerfil;
-        this.EstatusPerfil = EstatusPerfil;
+    public static void setTipoMovimiento(int TipoMovimiento) {
+        clsTipoMovimientoBancos.TipoMovimiento = TipoMovimiento;
     }
 
-    public clsTipoMovimientoBancos(int IdPerfil, String NombrePerfil, String EstatusPerfil) {
-        this.IdPerfil = IdPerfil;
-        this.NombrePerfil = NombrePerfil;
-        this.EstatusPerfil = EstatusPerfil;
+    public static String getNombreMovimiento() {
+        return NombreMovimiento;
     }
 
-    public int getIdPerfil() {
-        return IdPerfil;
+    public static void setNombreMovimiento(String NombreMovimiento) {
+        clsTipoMovimientoBancos.NombreMovimiento = NombreMovimiento;
     }
 
-    public void setIdPerfil(int IdPerfil) {
-        this.IdPerfil = IdPerfil;
+    public static String getEstatusMovimieto() {
+        return EstatusMovimieto;
     }
 
-    public String getNombrePerfil() {
-        return NombrePerfil;
+    public static void setEstatusMovimieto(String EstatusMovimieto) {
+        clsTipoMovimientoBancos.EstatusMovimieto = EstatusMovimieto;
     }
 
-    public void setNombrePerfil(String NombrePerfil) {
-        this.NombrePerfil = NombrePerfil;
-    }
-
-    public String getEstatusPerfil() {
-        return EstatusPerfil;
-    }
-
-    public void setEstatusPerfil(String EstatusPerfil) {
-        this.EstatusPerfil = EstatusPerfil;
-    }
-
-    
     @Override
     public String toString() {
-        return "clsPerfil{" + "IdPerfil=" + IdPerfil + ", NombrePerfi=" + NombrePerfil + ", EstatusPerfil=" + EstatusPerfil + '}';
+        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimiento + ", NombreMovimiento=" + NombreMovimiento + ", EstatusMovimieto=" + EstatusMovimieto + '}';
     }
     //Metodos de acceso a la capa controlador
-    public clsTipoMovimientoBancos getBuscarInformacionPerfilPorNombre(clsTipoMovimientoBancos perfil)
+    public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorNombre(clsTipoMovimientoBancos movimiento)
     {
-        daoPerfil daoperfil = new daoPerfil();
-        return daoperfil.consultaPerfilPorNombre(perfil);
+        daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
+        return daotipoMovimientoBancos.consultatipoMovimientoPorNombre(movimiento);
     }
-    public clsTipoMovimientoBancos getBuscarInformacionPerfilPorId(clsTipoMovimientoBancos perfil)
+    public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorId(clsTipoMovimientoBancos movimiento)
     {
-        daoPerfil daoperfil = new daoPerfil();
-        return daoperfil.consultaPerfilPorId(perfil);
+        daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
+        return daotipoMovimientoBancos.consultaTipoMovimientoPorId(movimiento);
     }    
-    public List<clsTipoMovimientoBancos> getListadoPerfiles()
+    public List<clsTipoMovimientoBancos> getListadoTipoMovimiento()
     {
-        daoPerfil daoperfil = new daoPerfil();
-        List<clsTipoMovimientoBancos> listadoPerfiles = daoperfil.consultaPerfil();
-        return listadoPerfiles;
+        daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
+        List<clsTipoMovimientoBancos> listadoTipoMovimientos = daotipoMovimientoBancos.consultaTipoMovimiento();
+        return listadoTipoMovimientos;
     }
-    public int setBorrarPerfil(clsTipoMovimientoBancos perfil)
+    public int setBorrarTipoMovimiento(clsTipoMovimientoBancos movimiento)
     {
-        daoPerfil daoperfil = new daoPerfil();
-        return daoperfil.borrarPerfil(perfil);
+        daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
+        return daotipoMovimientoBancos.borrarTipoMovimiento(movimiento);
     }          
-    public int setIngresarPerfil(clsTipoMovimientoBancos perfil)
+    public int setIngresarTipoMovimiento(clsTipoMovimientoBancos movimiento)
     {
-        daoPerfil daoperfil = new daoPerfil();
-        return daoperfil.ingresaPerfil(perfil);
+        daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
+        return daotipoMovimientoBancos.ingresaTipoMovimiento(movimiento);
     }              
-    public int setModificarPerfil(clsTipoMovimientoBancos perfil)
+    public int setModificarTipoMovimiento(clsTipoMovimientoBancos movimiento)
     {
-        daoPerfil daoperfil = new daoPerfil();
-        return daoperfil.actualizaPerfil(perfil);
+        daoTipoMovimientoBancos daotipoMovimientoBancos = new daoTipoMovimientoBancos();
+        return daotipoMovimientoBancos.actualizaTipoMovimiento(movimiento);
     }              
 }
