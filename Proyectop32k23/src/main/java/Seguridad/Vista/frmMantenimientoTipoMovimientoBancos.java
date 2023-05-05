@@ -288,12 +288,12 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsModulo modulo = new clsModulo();
-        modulo.setNombreModulo(txtNombre.getText());
+        clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
+        movimiento.setNombreMovimiento(txtNombre.getText());
         //modulos.setIdModulos(txtContrasena.getText());
 
-        modulo. setEstatusModulo(txtEstatus.getText());
-        modulo.setIngresarModulo(modulo);
+        movimiento. setEstatusMovimiento(txtEstatus.getText());
+        movimiento.setIngresarTipoMovimiento(movimiento);
 
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
