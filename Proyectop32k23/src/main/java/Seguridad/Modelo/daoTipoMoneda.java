@@ -82,3 +82,29 @@ public class daoTipoMoneda {
 
         return rows;
     }
+
+    public int actualizaTipoMoneda (clsTipoMoneda moneda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("ejecutando query: " + SQL_UPDATE);
+            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, moneda.getTipMondNombre());
+            stmt.setString(2, moneda.getTipMondAbreviacion());
+            stmt.setFloat(3, moneda.getTipModValor());
+            stmt.setInt(4, moneda.getTipModId());
+            
+            rows = stmt.executeUpdate();
+            System.out.println("Registros actualizado:" + rows);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+    }
