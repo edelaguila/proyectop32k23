@@ -303,15 +303,15 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        clsModulo modulo = new clsModulo();
+        clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
         //usuario.setNombreUsuario(txtbuscado.getText());        
 
-        modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));        
-        modulo = modulo.getBuscarInformacionModuloPorId(modulo);
-        System.out.println("Modulo retornado:" + modulo);        
-        txtNombre.setText(modulo.getNombreModulo());
+        movimiento.setTipoMovimiento(Integer.parseInt(txtbuscado.getText()));        
+        movimiento = movimiento.getBuscarInformacionTipoMovimientoPorId(movimiento);
+        System.out.println("Movimiento retornado:" + movimiento);        
+        txtNombre.setText(movimiento.getNombreMovimiento());
         //txtContrasena.setText(modulos.getIdModulos());
-        txtEstatus.setText(modulo.getEstatusModulo());
+        txtEstatus.setText(movimiento.getEstatusMovimiento());
 
        
     }//GEN-LAST:event_btnBuscarActionPerformed
