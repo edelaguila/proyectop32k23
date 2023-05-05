@@ -53,6 +53,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mantenimientoConceptosBancos = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoPersonaBancos = new javax.swing.JMenuItem();
         mantenimientoTipoMovimientoBancos = new javax.swing.JMenuItem();
+        MantenimientoTipoMoneda = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
@@ -179,6 +180,15 @@ public class MdiSeguridad extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientos.add(mantenimientoTipoMovimientoBancos);
+
+        MantenimientoTipoMoneda.setSelected(true);
+        MantenimientoTipoMoneda.setText("Mantenimiento Tipo Moneda");
+        MantenimientoTipoMoneda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoTipoMonedaActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientos.add(MantenimientoTipoMoneda);
 
         mnuCatalogos.add(mnuCatalogosMantenimientos);
 
@@ -353,6 +363,16 @@ public class MdiSeguridad extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mantenimientoTipoMovimientoBancosActionPerformed
 
+    private void MantenimientoTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoTipoMonedaActionPerformed
+        // TODO add your handling code here:
+            //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
+        frmMantenimientoTipoMoneda ventana = new frmMantenimientoTipoMoneda();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_MantenimientoTipoMonedaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,6 +412,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem MantenimientoTipoMoneda;
     private javax.swing.JMenuItem aplicacionesUsuarios;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;

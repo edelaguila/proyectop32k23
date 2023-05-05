@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
 package Seguridad.Controlador;
 import java.util.List;
 import Seguridad.Modelo.daoTipoMoneda;
