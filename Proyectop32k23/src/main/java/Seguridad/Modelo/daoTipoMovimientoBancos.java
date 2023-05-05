@@ -99,7 +99,7 @@ public class daoTipoMovimientoBancos {
         return rows;
     }
 
-    public int borrarModulo(clsModulo modulo) {
+    public int borrarTipoMovimiento(clsTipoMovimientoBancos movimiento) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -108,7 +108,7 @@ public class daoTipoMovimientoBancos {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, modulo.getIdModulo());
+            stmt.setInt(1, movimiento.getTipoMovimiento());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
