@@ -74,7 +74,7 @@ public class daoTipoMovimientoBancos {
         return rows;
     }
 
-    public int actualizaModulo(clsModulo modulo) {
+    public int actualizaTipoMovimiento(clsTipoMovimientoBancos movimiento) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -82,9 +82,9 @@ public class daoTipoMovimientoBancos {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, modulo.getNombreModulo());
-            stmt.setString(2, modulo.getEstatusModulo());
-            stmt.setInt(3, modulo.getIdModulo());
+            stmt.setString(1, movimiento.getNombreMovimiento());
+            stmt.setString(2, movimiento.getEstatusMovimiento());
+            stmt.setInt(3, movimiento.getTipoMovimiento());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
