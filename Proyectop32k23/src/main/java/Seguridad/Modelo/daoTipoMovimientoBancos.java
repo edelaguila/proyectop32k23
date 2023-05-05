@@ -51,15 +51,15 @@ public class daoTipoMovimientoBancos {
         return movimientos;
     }
 
-    public int ingresaModulo(clsModulo modulo) {
+    public int ingresaTipoMovimiento(clsTipoMovimientoBancos movimiento) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, modulo.getNombreModulo());
-            stmt.setString(2, modulo.getEstatusModulo());
+            stmt.setString(1, movimiento.getNombreMovimiento());
+            stmt.setString(2, movimiento.getEstatusMovimiento());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
