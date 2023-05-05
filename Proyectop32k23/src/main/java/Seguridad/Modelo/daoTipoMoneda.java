@@ -130,3 +130,75 @@ public class daoTipoMoneda {
 
         return rows;
     }
+
+    public clsTipoMoneda consultaTipoMonedaPorNombre(clsTipoMoneda moneda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + moneda);
+            stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
+            //stmt.setInt(1, moneda.getIdMoneda());            
+            stmt.setString(1, moneda.getTipMondNombre());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("tipModId");
+                String nombre = rs.getString("tipMondNombre");
+                String abreviacion = rs.getString("tipMondAbreviacion");
+                float valor = rs.getFloat("tipModValor");
+                //moneda = new clsTipoMoneda();
+                moneda.setTipModId(id);
+                moneda.setTipMondNombre(nombre);
+                moneda.setTipMondAbreviacion(abreviacion);
+                moneda.setTipModValor(valor);
+                System.out.println(" registro consultado: " + moneda);                
+            }
+            //System.out.println("Registros buscado:" + persona);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        //return personas;  // Si se utiliza un ArrayList
+        return moneda;
+    }
+    public clsTipoMoneda consultaTipoMonedaPorId(clsTipoMoneda moneda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + moneda);
+            stmt = conn.prepareStatement(SQL_SELECT_ID);
+            stmt.setInt(1, moneda.getTipModId());            
+            //stmt.setString(1, moneda.getTipMondNombre());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("tipModId");
+                String nombre = rs.getString("tipMondNombre");
+                String abreviacion = rs.getString("tipMondAbreviacion");
+                float valor = rs.getFloat("tipModValor");
+                //moneda = new clsTipoMoneda();
+                moneda.setTipModId(id);
+                moneda. setTipMondNombre (nombre);
+                moneda. setTipMondAbreviacion (abreviacion);
+                moneda. setTipModValor (valor);
+                System.out.println(" registro consultado: " + moneda);                
+            }
+            //System.out.println("Registros buscado:" + persona);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        //return personas;  // Si se utiliza un ArrayList
+        return moneda;
+    }    
+}
