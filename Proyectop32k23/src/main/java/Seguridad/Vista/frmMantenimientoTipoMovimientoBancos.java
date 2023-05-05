@@ -43,7 +43,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         tablaMovimientos.setModel(modelo);
         String[] dato = new String[10];
         for (int i = 0; i < listamovimientos.size(); i++) {
-            dato[0] = Integer.toString(listamovimientos.get(i).getTipoMovimiento());
+            dato[0] = Integer.toString(listamovimientos.get(i).getTipoMovimientoId());
             dato[1] = listamovimientos.get(i).getNombreMovimiento();
             dato[2] = listamovimientos.get(i).getEstatusMovimiento();
             modelo.addRow(dato);
@@ -84,6 +84,8 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         btnActualizar = new javax.swing.JButton();
         label9 = new javax.swing.JLabel();
         txtEstatus = new javax.swing.JTextField();
+        label5 = new javax.swing.JLabel();
+        txtTipoMovimiento = new javax.swing.JTextField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -184,6 +186,12 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label5.setText("Id");
+
+        txtTipoMovimiento.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtTipoMovimiento.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,9 +226,11 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label3)
-                            .addComponent(label9))
-                        .addGap(57, 57, 57)
+                            .addComponent(label9)
+                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTipoMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26)
@@ -243,10 +253,14 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lb)
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label5)
+                    .addComponent(txtTipoMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -278,7 +292,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         // TODO add your handling code here:
         int registrosBorrados=0;
         clsTipoMovimientoBancos movimientos= new clsTipoMovimientoBancos();
-        movimientos.setTipoMovimiento(Integer.parseInt(txtbuscado.getText()));
+        movimientos.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
         registrosBorrados=movimientos.setBorrarTipoMovimiento(movimientos);
 
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
@@ -306,7 +320,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
         //usuario.setNombreUsuario(txtbuscado.getText());        
 
-        movimiento.setTipoMovimiento(Integer.parseInt(txtbuscado.getText()));        
+        movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));        
         movimiento = movimiento.getBuscarInformacionTipoMovimientoPorId(movimiento);
         System.out.println("Movimiento retornado:" + movimiento);        
         txtNombre.setText(movimiento.getNombreMovimiento());
@@ -320,7 +334,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
 //        // TODO add your handling code here:
         clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
 
-        movimiento.setTipoMovimiento(Integer.parseInt(txtbuscado.getText()));
+        movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
         movimiento.setNombreMovimiento(txtNombre.getText());
         movimiento.setEstatusMovimiento(txtEstatus.getText());
 
@@ -394,6 +408,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
+    private javax.swing.JLabel label5;
     private javax.swing.JLabel label9;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
@@ -401,6 +416,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     private javax.swing.JTable tablaMovimientos;
     private javax.swing.JTextField txtEstatus;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTipoMovimiento;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }

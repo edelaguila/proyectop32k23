@@ -13,19 +13,19 @@ import Seguridad.Modelo.daoTipoMovimientoBancos;
  /*Creado por Alyson Rodríguez 9959-21-829 */
 
 public class clsTipoMovimientoBancos {
-    private static int TipoMovimiento;
+    private static int TipoMovimientoId;
     private static String NombreMovimiento;
     private static String EstatusMovimiento;
 
     public clsTipoMovimientoBancos() {
     }
 
-    public static int getTipoMovimiento() {
-        return TipoMovimiento;
+    public static int getTipoMovimientoId() {
+        return TipoMovimientoId;
     }
 
-    public static void setTipoMovimiento(int TipoMovimiento) {
-        clsTipoMovimientoBancos.TipoMovimiento = TipoMovimiento;
+    public static void setTipoMovimientoId(int TipoMovimiento) {
+        clsTipoMovimientoBancos.TipoMovimientoId = TipoMovimiento;
     }
 
     public static String getNombreMovimiento() {
@@ -46,7 +46,7 @@ public class clsTipoMovimientoBancos {
 
     @Override
     public String toString() {
-        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimiento + ", NombreMovimiento=" + NombreMovimiento + ", EstatusMovimiento=" + EstatusMovimiento + '}';
+        return "clsTipoMovimientoBancos{" + "TipoMovimiento=" + TipoMovimientoId + ", TipoMovimientoId=" + NombreMovimiento + ", EstatusMovimiento=" + EstatusMovimiento + '}';
     }
     //Metodos de acceso a la capa controlador
     public clsTipoMovimientoBancos getBuscarInformacionTipoMovimientoPorNombre(clsTipoMovimientoBancos movimiento)

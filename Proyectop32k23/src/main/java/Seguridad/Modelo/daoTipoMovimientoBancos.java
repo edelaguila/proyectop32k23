@@ -14,12 +14,12 @@ import java.util.List;
  * @author cdavi
  */
 public class daoTipoMovimientoBancos {
-    private static final String SQL_SELECT = "SELECT tipmovid, tipmovnombre, tipmovestatus FROM tbl_tipoMovimiento";
-    private static final String SQL_INSERT = "INSERT INTO tbl_tipoMovimiento(tipmovnombre, tipmovestatus) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_tipoMovimiento SET tipmovnombre, tipmovestatus WHERE tipmovid = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_tipoMovimiento WHERE tipmovid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT tipmovid, tipmovnombre, tipmovestatus FROM tbl_tipoMovimiento WHERE tipmovnombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT ipmovid, tipmovnombre, tipmovestatus FROM tbl_tipoMovimiento WHERE ipmovid = ?";    
+    private static final String SQL_SELECT = "SELECT tipmovid, tipmovnombre, tipmovestatus FROM tbl_tipomovimiento";
+    private static final String SQL_INSERT = "INSERT INTO tbl_tipomovimiento(tipmovid, tipmovnombre, tipmovestatus) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_tipomovimiento SET tipmovnombre, tipmovestatus WHERE tipmovid = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_tipomovimiento WHERE tipmovid=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT tipmovid, tipmovnombre, tipmovestatus FROM tbl_tipomovimiento WHERE tipmovnombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT ipmovid, tipmovnombre, tipmovestatus FROM tbl_tipomovimiento WHERE ipmovid = ?";    
 
     public List<clsTipoMovimientoBancos> consultaTipoMovimiento() {
         Connection conn = null;
@@ -36,7 +36,7 @@ public class daoTipoMovimientoBancos {
                 String nombre = rs.getString("tipmovnombre");
                 String estatus = rs.getString("tipmovestatus");
                 clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
-                movimiento.setTipoMovimiento(id);
+                movimiento.setTipoMovimientoId(id);
                 movimiento.setNombreMovimiento(nombre);
                 movimiento.setEstatusMovimiento(estatus);
                 movimientos.add(movimiento);
@@ -58,8 +58,9 @@ public class daoTipoMovimientoBancos {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, movimiento.getNombreMovimiento());
-            stmt.setString(2, movimiento.getEstatusMovimiento());
+            stmt.setInt(1, movimiento.getTipoMovimientoId());
+            stmt.setString(2, movimiento.getNombreMovimiento());
+            stmt.setString(3, movimiento.getEstatusMovimiento());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -84,7 +85,7 @@ public class daoTipoMovimientoBancos {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setString(1, movimiento.getNombreMovimiento());
             stmt.setString(2, movimiento.getEstatusMovimiento());
-            stmt.setInt(3, movimiento.getTipoMovimiento());
+            stmt.setInt(3, movimiento.getTipoMovimientoId());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -108,7 +109,7 @@ public class daoTipoMovimientoBancos {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, movimiento.getTipoMovimiento());
+            stmt.setInt(1, movimiento.getTipoMovimientoId());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
@@ -138,7 +139,7 @@ public class daoTipoMovimientoBancos {
                 String estatus = rs.getString("tipmovestatus");
 
                 //modulo = new clsModulo();
-                movimiento.setTipoMovimiento(id);
+                movimiento.setTipoMovimientoId(id);
                 movimiento.setNombreMovimiento(nombre);
                 movimiento.setEstatusMovimiento(estatus);
                 System.out.println(" registro consultado: " + movimiento);                
@@ -163,7 +164,7 @@ public class daoTipoMovimientoBancos {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + movimiento);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, movimiento.getTipoMovimiento());            
+            stmt.setInt(1, movimiento.getTipoMovimientoId());            
             //stmt.setString(1, modulo.getNombreModulo());
             rs = stmt.executeQuery();
             while (rs.next()) {
@@ -172,7 +173,7 @@ public class daoTipoMovimientoBancos {
                 String estatus = rs.getString("tipmovestatus");
 
                 //modulo = new clsModulo();
-                movimiento.setTipoMovimiento(id);
+                movimiento.setTipoMovimientoId(id);
                 movimiento.setNombreMovimiento(nombre);
                 movimiento.setEstatusMovimiento(estatus);
                 System.out.println(" registro consultado: " + movimiento);                
