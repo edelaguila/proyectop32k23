@@ -318,14 +318,14 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        clsModulo modulo = new clsModulo();
+        clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
 
-        modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));
-        modulo.setNombreModulo(txtNombre.getText());
-        modulo.setEstatusModulo(txtEstatus.getText());
+        movimiento.setTipoMovimiento(Integer.parseInt(txtbuscado.getText()));
+        movimiento.setNombreMovimiento(txtNombre.getText());
+        movimiento.setEstatusMovimiento(txtEstatus.getText());
 
-        modulo.setModificarModulo(modulo);
-        JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
+        movimiento.setModificarTipoMovimiento(movimiento);
+        JOptionPane.showMessageDialog(null, "Movimiento Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
         limpiarTextos();
