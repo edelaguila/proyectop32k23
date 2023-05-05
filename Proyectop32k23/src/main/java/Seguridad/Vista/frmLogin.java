@@ -5,6 +5,7 @@
  */
 package Seguridad.Vista;
 
+import Bancos.Vista.MdiBancos;
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
