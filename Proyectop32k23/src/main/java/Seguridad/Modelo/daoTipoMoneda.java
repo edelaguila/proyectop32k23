@@ -108,3 +108,25 @@ public class daoTipoMoneda {
 
         return rows;
     }
+
+    public int borrarTipoMoneda(clsTipoMoneda moneda) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_DELETE);
+            stmt = conn.prepareStatement(SQL_DELETE);
+            stmt.setInt(1, moneda.getTipModId());
+            rows = stmt.executeUpdate();
+            System.out.println("Registros eliminados:" + rows);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+    }
