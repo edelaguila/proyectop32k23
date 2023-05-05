@@ -51,6 +51,8 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mantenimientoPerfiles = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoUsuarios = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
+        aplicacionesUsuarios = new javax.swing.JMenuItem();
+        menuperfilUsuario = new javax.swing.JCheckBoxMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         consultaBitacora = new javax.swing.JCheckBoxMenuItem();
         mnuReportes = new javax.swing.JMenu();
@@ -156,6 +158,24 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mnuGeneral.add(mnuCatalogos);
 
         mnuProcesos.setText("Procesos");
+
+        aplicacionesUsuarios.setText("Aplicaciones Usuarios");
+        aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aplicacionesUsuariosActionPerformed(evt);
+            }
+        });
+        mnuProcesos.add(aplicacionesUsuarios);
+
+        menuperfilUsuario.setSelected(true);
+        menuperfilUsuario.setText("Perfil Usuario");
+        menuperfilUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuperfilUsuarioActionPerformed(evt);
+            }
+        });
+        mnuProcesos.add(menuperfilUsuario);
+
         mnuGeneral.add(mnuProcesos);
 
         mnuConsultas.setText("Consultas");
@@ -278,6 +298,24 @@ public class MdiSeguridad extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
 
+    private void aplicacionesUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aplicacionesUsuariosActionPerformed
+        // TODO add your handling code here:
+        frmAplicacionUsuario ventana = new frmAplicacionUsuario();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_aplicacionesUsuariosActionPerformed
+
+    private void menuperfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuperfilUsuarioActionPerformed
+        // TODO add your handling code here:
+         frmMantenimientoPerfilUsuario ventana = new frmMantenimientoPerfilUsuario();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_menuperfilUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -317,6 +355,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aplicacionesUsuarios;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -329,6 +368,7 @@ public class MdiSeguridad extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem mantenimientoPerfiles;
     private javax.swing.JCheckBoxMenuItem mantenimientoTipoUsuarios;
     private javax.swing.JMenuItem mantenimientoUsuarios;
+    private javax.swing.JCheckBoxMenuItem menuperfilUsuario;
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAyudas;
     private javax.swing.JMenu mnuCatalogos;

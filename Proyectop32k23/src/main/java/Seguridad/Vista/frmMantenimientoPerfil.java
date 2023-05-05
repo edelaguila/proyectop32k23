@@ -10,7 +10,9 @@
 package Seguridad.Vista;
 
 
+import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsPerfil;
+import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -49,7 +51,12 @@ public class frmMantenimientoPerfil extends javax.swing.JInternalFrame {
             dato[2] = listaPerfiles.get(i).getEstatusPerfil();
             modelo.addRow(dato);
         }       
+
+
     }
+
+
+int codigoAplicacion = 40;
 
     public frmMantenimientoPerfil() {
         initComponents();
@@ -284,8 +291,13 @@ public class frmMantenimientoPerfil extends javax.swing.JInternalFrame {
         registrosBorrados=perfil.setBorrarPerfil(perfil);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL"); 
         llenadoDeTablas();
         limpiarTextos();
+        
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -295,8 +307,12 @@ public class frmMantenimientoPerfil extends javax.swing.JInternalFrame {
         perfil.setIngresarPerfil(perfil);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTablas();
         limpiarTextos();
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -308,6 +324,12 @@ public class frmMantenimientoPerfil extends javax.swing.JInternalFrame {
         System.out.println("Usuario retornado:" + perfil);        
         txtNombre.setText(perfil.getNombrePerfil());
         txtContrasena.setText(perfil.getEstatusPerfil());
+         int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
+                 
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -318,7 +340,10 @@ public class frmMantenimientoPerfil extends javax.swing.JInternalFrame {
         perfil.setEstatusPerfil(txtContrasena.getText());
         perfil.setModificarPerfil(perfil);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
+                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);      
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "UPD");
         llenadoDeTablas();
         limpiarTextos();
     }//GEN-LAST:event_btnModificarActionPerformed
