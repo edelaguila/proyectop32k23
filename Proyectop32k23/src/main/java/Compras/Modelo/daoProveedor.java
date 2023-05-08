@@ -20,12 +20,12 @@ import java.util.List;
  */
 public class daoProveedor {
     
-    private static final String SQL_SELECT = "SELECT id_proveedor, nombre, direccion FROM Proveedor";
-    private static final String SQL_INSERT = "INSERT INTO Proveedor(nombre, direccion) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE Proveedor SET nombre=?, direccion=? WHERE id_proveedor = ?";
-    private static final String SQL_DELETE = "DELETE FROM Proveedor WHERE id_proveedor=?";
+    private static final String SQL_SELECT = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor";
+    private static final String SQL_INSERT = "INSERT INTO tbl_Proveedor(nombre, direccion) VALUES(?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_Proveedor SET nombre=?, direccion=? WHERE id_proveedor = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_Proveedor WHERE id_proveedor=?";
     private static final String SQL_SELECT_NOMBRE = "SELECT id_proveedor, nombre, direccion FROM Proveedor WHERE nombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT id_proveedor, nombre, direccion FROM Proveedor WHERE id_proveedor = ?";
+    private static final String SQL_SELECT_ID = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor WHERE id_proveedor = ?";
     
     public List<clsProveedor> consultaProveedor() {
 
