@@ -386,7 +386,8 @@ int codigoAplicacion=1003;
         moneda.setTipModId(Integer.parseInt(txtbuscado.getText()));
         moneda.setTipMondNombre(txtNombre.getText());
         moneda.setTipMondAbreviacion(txtAbreviacion.getText());
-        moneda.setTipModValor(Integer.parseInt(txtValor.getText()));
+        moneda.setTipModValor(Float.parseFloat(txtValor.getText()));
+        
 
         moneda.setModificarMoneda(moneda);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
