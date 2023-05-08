@@ -10,10 +10,12 @@ import Seguridad.Modelo.daoAplicacion;
  *
  * @author visitante
  */
+
 public class clsAplicacion {
     private int IdAplicacion;
     private String NombreAplicacion;
     private String EstatusAplicacion;
+    
 
     public int getIdAplicacion() {
         return IdAplicacion;
