@@ -86,9 +86,9 @@ public class daoTipoPersonaBancos {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setInt(1, banco.getIdTipoPersonaBancos());
-            stmt.setString(2, banco.getTipoDescripcionBancos());
-            stmt.setString(3, banco.getTipoEstatusBancos());
+            stmt.setString(1, banco.getTipoDescripcionBancos());
+            stmt.setString(2, banco.getTipoEstatusBancos());
+            stmt.setInt(3, banco.getIdTipoPersonaBancos());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
 
