@@ -19,15 +19,23 @@ CREATE TABLE IF NOT EXISTS tbl_personas (
 	FOREIGN KEY (perTipoId) REFERENCES tbl_tipoPersona (perTipoId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
+CREATE TABLE IF NOT EXISTS tbl_tipoCuentas (
+	cueTipoId INT(5),
+	cueTipoDescripcion VARCHAR(45),
+	cueTipoEstatus VARCHAR(1),
+	PRIMARY KEY (cueTipoId))
+ENGINE = InnoDB CHARACTER SET = latin1;
+
 CREATE TABLE IF NOT EXISTS tbl_cuentas (
 	cueId INT(5) NOT NULL,
 	cueNumero INT(15) NOT NULL,
 	cueSaldo DECIMAL(20,5) NOT NULL,
    	perId INT(5) NOT NULL,
-	cueTipo VARCHAR(20) NOT NULL,
+	cueTipoId INT(5) NOT NULL,
 	cueestatus VARCHAR(1) NOT NULL,
 	PRIMARY KEY (cueId),
-	FOREIGN KEY (perId) REFERENCES tbl_personas (perId) )
+	FOREIGN KEY (perId) REFERENCES tbl_personas (perId),
+	FOREIGN KEY (cueTipoId) REFERENCES tbl_tbltipoCuentas (cueTipoId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_conceptos (
@@ -46,7 +54,7 @@ CREATE TABLE IF NOT EXISTS tbl_tipoMovimiento (
 	PRIMARY KEY (tipMovId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_tipoMoneda (
+CREATE TABLE IF NOT EXISTS tbl_moneda (
 	tipModId INT(5) NOT NULL,
 	tipMondNombre VARCHAR(15) NOT NULL,
 	tipMondAbreviacion VARCHAR(4) NOT NULL,
@@ -81,7 +89,7 @@ CREATE TABLE IF NOT EXISTS tbl_movimientosEncabezado (
 	tipMovId INT(5) NOT NULL,
 	movFecha datetime NULL,
 	cueEmId INT(5) NOT NULL,
-	PRIMARY KEY (MovId),
+	PRIMARY KEY (MovId,codBanco,tipMovId),
 	FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno (codBanco),
 	FOREIGN KEY (cueId) REFERENCES tbl_cuentas (cueId),
 	FOREIGN KEY (cueEmId) REFERENCES tbl_cuentaEmpresa (cueEmId),
@@ -95,7 +103,7 @@ CREATE TABLE IF NOT EXISTS tbl_movimientosDetalle(
 	concId INT(5) NOT NULL,
 	movSaldo DECIMAL(20,5) NOT NULL,
 	tipModId INT(5) NOT NULL,
-	PRIMARY KEY (movDetId),
+	PRIMARY KEY (movDetId,movCosto,tipModId),
 	FOREIGN KEY (movId) REFERENCES tbl_movimientosEncabezado (movId),
 	FOREIGN KEY (concId) REFERENCES tbl_conceptos (concId),
 	FOREIGN KEY (tipModId) REFERENCES tbl_tipoMoneda (tipModId))
