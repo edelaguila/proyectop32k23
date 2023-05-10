@@ -106,5 +106,5 @@ CREATE TABLE IF NOT EXISTS tbl_movimientosDetalle(
 	PRIMARY KEY (movDetId,movCosto,tipModId),
 	FOREIGN KEY (movId) REFERENCES tbl_movimientosEncabezado (movId),
 	FOREIGN KEY (concId) REFERENCES tbl_conceptos (concId),
-	FOREIGN KEY (tipModId) REFERENCES tbl_tipoMoneda (tipModId))
+	FOREIGN KEY (tipModId) REFERENCES tbl_moneda (tipModId))
 ENGINE = InnoDB CHARACTER SET = latin1;
