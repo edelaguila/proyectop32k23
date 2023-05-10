@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS tbl_cuentas (
 	cueestatus VARCHAR(1) NOT NULL,
 	PRIMARY KEY (cueId),
 	FOREIGN KEY (perId) REFERENCES tbl_personas (perId),
-	FOREIGN KEY (cueTipoId) REFERENCES tbl_tbltipoCuentas (cueTipoId) )
+	FOREIGN KEY (cueTipoId) REFERENCES tbl_tipoCuentas (cueTipoId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_conceptos (
