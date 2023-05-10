@@ -6,6 +6,7 @@
 package Compras.Vista;
 
 //import Seguridad.Controlador.clsModulo;
+import Compras.Modelo.daoProveedor;
 import Seguridad.Controlador.clsModulo;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,7 @@ public void llenadoDeCombos() {
        
 
         clsModulo modulos = new clsModulo();
-        VendedorDAO vendedorDAO = new VendedorDAO();
+        daoProveedor Proveedor = new daoProveedor();
         List<clsModulo> listamodulos = modulos.getListadoModulo();
      
         tablaModulos.setModel(modelo);
