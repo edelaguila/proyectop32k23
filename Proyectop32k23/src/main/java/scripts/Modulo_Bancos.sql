@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS tbl_bancoExterno (
 	banPaís VARCHAR (45) NOT NULL,
 	tipModId INT(5) NOT NULL,
 	PRIMARY KEY (codBanco),
-	FOREIGN KEY (tipModId) REFERENCES tbl_tipoMoneda (tipModId) )
+	FOREIGN KEY (tipModId) REFERENCES tbl_moneda (tipModId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_cuentaEmpresa (
