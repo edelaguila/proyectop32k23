@@ -6,7 +6,9 @@
 package Seguridad.Vista;
 
 
+import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsModulo;
+import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -14,12 +16,13 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author visitante
  */
 public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
-
+ int codigoAplicacion=116;
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -277,7 +280,11 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        // se agrega el codigo para la eliminacion de registros de la bitacora = Victor Jerez
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
+        
         int registrosBorrados=0;
         clsModulo modulos= new clsModulo();
         modulos.setIdModulo(Integer.parseInt(txtbuscado.getText()));
@@ -290,6 +297,12 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // se agrega el codigo para el registro de la bitacora = Hector Rosales
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS");
+        
+       
         clsModulo modulo = new clsModulo();
         modulo.setNombreModulo(txtNombre.getText());
         //modulos.setIdModulos(txtContrasena.getText());
@@ -305,6 +318,11 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+    //se agrego codigo para modificar en la bitacora= David Rojas
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
+        
         clsModulo modulo = new clsModulo();
         //usuario.setNombreUsuario(txtbuscado.getText());        
 
@@ -320,6 +338,11 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+    // se agrega el codigo para modificar de la bitacora = Hector Rosales
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS");
+
         clsModulo modulo = new clsModulo();
 
         modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));
@@ -334,6 +357,11 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // se agrega el codigo para limpiar campos en el mantenimiento = Victor Jerez
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
+        
         limpiarTextos();
         habilitarBotones();
         // TODO add your handling code here:
@@ -363,6 +391,10 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //se agrego codigo para modificar en la bitacora= David Rojas
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
@@ -379,7 +411,13 @@ public class frmMantenimientoModulos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        // agregado el codigo bitacora = Anthony Avalos 
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora= bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
+        
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 

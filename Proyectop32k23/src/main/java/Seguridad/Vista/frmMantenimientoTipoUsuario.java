@@ -6,7 +6,9 @@
 package Seguridad.Vista;
 
 
+import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsTipoUsuario;
+import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -19,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
-
+int codigoAplicacion=20;
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -290,6 +292,7 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        
         clsTipoUsuario tipou = new clsTipoUsuario();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         tipou.setIdTipoUsuario(Integer.parseInt(txtbuscado.getText()));        
@@ -338,6 +341,7 @@ public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
