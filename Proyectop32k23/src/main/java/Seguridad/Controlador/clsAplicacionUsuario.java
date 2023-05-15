@@ -113,11 +113,6 @@ public class clsAplicacionUsuario {
         return "clsAplicacionUsuario{" + "IdAplicacion=" + IdAplicacion + ", IdUsuario=" + IdUsuario + ", RegAplUsu=" + RegAplUsu + ", ModAplUsu=" + ModAplUsu + ", EliAplUsu=" + EliAplUsu + ", ImpAplUsu=" + ImpAplUsu +'}';
     }
     //Metodos de acceso a la capa controlador
-    /*public clsAplicacionUsuario getBuscarInformacionAplicacionPorNombre(clsAplicacionUsuario aplicacion)
-    {
-        daoAplicacionUsuario daoaplicacionusuario = new daoAplicacionUsuario();
-        return daoaplicacionusuario.consultaAplicacionPorNombre(aplicacion);
-    }*/
     public clsAplicacionUsuario getBuscarInformacionAplicacionUsuarioPorId(clsAplicacionUsuario aplicacionusuario)
     {
         daoAplicacionUsuario daoaplicacionusuario = new daoAplicacionUsuario();
@@ -139,11 +134,6 @@ public class clsAplicacionUsuario {
         daoAplicacionUsuario daoaplicacionusuario = new daoAplicacionUsuario();
         return daoaplicacionusuario.ingresaAplicacionUsuario(aplicacionusuario);
     }              
-   /* public int setModificarAplicacion(clsAplicacionUsuario aplicacion)
-    {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.actualizaAplicacion(aplicacion);
-    }  */
      public int setBorrarTodoAplicacion(clsAplicacionUsuario aplicacionusuario)
     {
         daoAplicacionUsuario daoaplicacionusuario = new daoAplicacionUsuario();

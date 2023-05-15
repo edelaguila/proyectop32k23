@@ -5,6 +5,7 @@
  */
 package Seguridad.Vista;
 
+import Bancos.Vista.MdiBancos;
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
@@ -199,7 +200,7 @@ public class frmLogin extends javax.swing.JFrame {
 
                         case "Bancos":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiBancos menu = new MdiBancos();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
