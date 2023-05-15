@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Seguridad.Vista;
+import Cuentas_Corrientes.Vista.frmMantenimientoTransaccionesCC;
 
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
@@ -12,15 +13,15 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
-public class MdiCompras extends javax.swing.JFrame {
+public class MdiSeguridad extends javax.swing.JFrame {
 
     /**
      * Creates new form MdiGeneral
      */
-    public MdiCompras() {
+    public MdiSeguridad() {
         initComponents();
         setLocationRelativeTo(null);
-        this.setExtendedState(MdiCompras.MAXIMIZED_BOTH);
+        this.setExtendedState(MdiSeguridad.MAXIMIZED_BOTH);
         this.setTitle("Ejemplo Capas");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -50,10 +51,11 @@ public class MdiCompras extends javax.swing.JFrame {
         mantenimientoModulos = new javax.swing.JCheckBoxMenuItem();
         mantenimientoPerfiles = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoUsuarios = new javax.swing.JCheckBoxMenuItem();
-        ModuloCompras = new javax.swing.JMenuItem();
+        mITansaccionesCC = new javax.swing.JMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         menuperfilUsuario = new javax.swing.JCheckBoxMenuItem();
+        mIAplicacionPerfil = new javax.swing.JMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         consultaBitacora = new javax.swing.JCheckBoxMenuItem();
         mnuReportes = new javax.swing.JMenu();
@@ -154,19 +156,24 @@ public class MdiCompras extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientos.add(mantenimientoTipoUsuarios);
 
-        ModuloCompras.setText("Modulo de compras");
-        ModuloCompras.addActionListener(new java.awt.event.ActionListener() {
+        mITansaccionesCC.setText("Mantenimiento Transacciones CC");
+        mITansaccionesCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModuloComprasActionPerformed(evt);
+                mITansaccionesCCActionPerformed(evt);
             }
         });
-        mnuCatalogosMantenimientos.add(ModuloCompras);
+        mnuCatalogosMantenimientos.add(mITansaccionesCC);
 
         mnuCatalogos.add(mnuCatalogosMantenimientos);
 
         mnuGeneral.add(mnuCatalogos);
 
         mnuProcesos.setText("Procesos");
+        mnuProcesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuProcesosActionPerformed(evt);
+            }
+        });
 
         aplicacionesUsuarios.setText("Aplicaciones Usuarios");
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +191,14 @@ public class MdiCompras extends javax.swing.JFrame {
             }
         });
         mnuProcesos.add(menuperfilUsuario);
+
+        mIAplicacionPerfil.setText("Aplicacion Perfil");
+        mIAplicacionPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mIAplicacionPerfilActionPerformed(evt);
+            }
+        });
+        mnuProcesos.add(mIAplicacionPerfil);
 
         mnuGeneral.add(mnuProcesos);
 
@@ -307,23 +322,14 @@ public class MdiCompras extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
 
-<<<<<<< HEAD
-    private void ModuloComprasActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
-        frmModuloCompras ventana = new frmModuloCompras();
-=======
-    private void aplicacionesUsuariosActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+    private void aplicacionesUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aplicacionesUsuariosActionPerformed
         // TODO add your handling code here:
         frmAplicacionUsuario ventana = new frmAplicacionUsuario();
->>>>>>> 419fa90f19d3029cece53901fc1562fc1e65d874
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-<<<<<<< HEAD
-    }//GEN-LAST:event_ModuloComprasActionPerformed//GEN-LAST:event_ModuloComprasActionPerformed
-=======
-    }                                                    
+    }//GEN-LAST:event_aplicacionesUsuariosActionPerformed
 
     private void menuperfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuperfilUsuarioActionPerformed
         // TODO add your handling code here:
@@ -333,7 +339,28 @@ public class MdiCompras extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_menuperfilUsuarioActionPerformed
->>>>>>> 419fa90f19d3029cece53901fc1562fc1e65d874
+
+    private void mIAplicacionPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mIAplicacionPerfilActionPerformed
+        // TODO add your handling code here:
+        frmProcesoAplicacionPerfil ventana = new frmProcesoAplicacionPerfil();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mIAplicacionPerfilActionPerformed
+
+    private void mnuProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProcesosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuProcesosActionPerformed
+
+    private void mITansaccionesCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mITansaccionesCCActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoTransaccionesCC ventana = new frmMantenimientoTransaccionesCC();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mITansaccionesCCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,11 +401,7 @@ public class MdiCompras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-    private javax.swing.JMenuItem ModuloCompras;
-=======
     private javax.swing.JMenuItem aplicacionesUsuarios;
->>>>>>> 419fa90f19d3029cece53901fc1562fc1e65d874
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -386,6 +409,8 @@ public class MdiCompras extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem mIAplicacionPerfil;
+    private javax.swing.JMenuItem mITansaccionesCC;
     private javax.swing.JCheckBoxMenuItem mantenimientoAplicaciones;
     private javax.swing.JCheckBoxMenuItem mantenimientoModulos;
     private javax.swing.JCheckBoxMenuItem mantenimientoPerfiles;

@@ -110,12 +110,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mantenimientoTipoUsuariosActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="ModuloCompras">
+                <MenuItem class="javax.swing.JMenuItem" name="mITansaccionesCC">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modulo de compras"/>
+                    <Property name="text" type="java.lang.String" value="Mantenimiento Transacciones CC"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModuloComprasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mITansaccionesCCActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
@@ -126,6 +126,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Procesos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuProcesosActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="aplicacionesUsuarios">
               <Properties>
@@ -142,6 +145,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuperfilUsuarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mIAplicacionPerfil">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aplicacion Perfil"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mIAplicacionPerfilActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
