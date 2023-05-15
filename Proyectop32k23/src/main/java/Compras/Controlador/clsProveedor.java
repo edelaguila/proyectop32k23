@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package Seguridad.Controlador;
+package Compras.Controlador;
 import java.util.List;
 //import Seguridad.Modelo.daoProveedor;
 /**

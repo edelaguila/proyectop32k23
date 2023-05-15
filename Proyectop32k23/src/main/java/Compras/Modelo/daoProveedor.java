@@ -9,7 +9,7 @@
 
 package Compras.Modelo;
 
-import Seguridad.Controlador.clsProveedor;
+import Compras.Controlador.clsProveedor;
 import Ventas.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
