@@ -58,8 +58,6 @@ public class clsAplicacion {
 
     public clsAplicacion() {
     }
-
-    
     //Metodos de acceso a la capa controlador
     public clsAplicacion getBuscarInformacionAplicacionPorNombre(clsAplicacion aplicacion)
     {
