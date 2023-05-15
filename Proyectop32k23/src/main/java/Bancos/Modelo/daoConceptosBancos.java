@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class daoConceptosBancos {
 
-    private static final String SQL_SELECT = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_conceptos(concId, concNombre, concDescripcion, concEfecto, concEstatus) VALUES(?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_conceptos SET concNombre=?, concDescripcion=?,  concEfecto=?, concEstatus=?  WHERE concId = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_conceptos WHERE concId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptos WHERE concNombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptos WHERE concId = ?";
+    private static final String SQL_SELECT = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptosBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_conceptosBancos(concId, concNombre, concDescripcion, concEfecto, concEstatus) VALUES(?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_conceptosBancos SET concNombre=?, concDescripcion=?,  concEfecto=?, concEstatus=?  WHERE concId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_conceptosBancos WHERE concId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptosBancos WHERE concNombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptosBancos WHERE concId = ?";
      
 
     public List<clsConceptosBancos> consultaConcepto() {

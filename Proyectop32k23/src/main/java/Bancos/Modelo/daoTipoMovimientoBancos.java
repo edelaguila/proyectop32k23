@@ -15,12 +15,12 @@ import java.util.List;
  * @author cdavi
  */
 public class daoTipoMovimientoBancos {
-    private static final String SQL_SELECT = "SELECT tipMovId , tipMovNombre, tipMovEstatus FROM tbl_tipomovimiento";
-    private static final String SQL_INSERT = "INSERT INTO tbl_tipomovimiento(tipMovId, tipMovNombre, tipMovEstatus) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_tipomovimiento SET tipMovNombre=?, tipMovEstatus=? WHERE tipMovId = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_tipomovimiento WHERE tipMovId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT tipMovId, tipMovNombre, tipMovEstatus FROM tbl_tipomovimiento WHERE tipMovNombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT tipMovId, tipMovNombre, tipMovEstatus FROM tbl_tipomovimiento WHERE tipMovId = ?";    
+    private static final String SQL_SELECT = "SELECT tipMovId , tipMovNombre, tipMovEstatus FROM tbl_tipomovimientoBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_tipomovimientoBancos(tipMovId, tipMovNombre, tipMovEstatus) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_tipomovimientoBancos SET tipMovNombre=?, tipMovEstatus=? WHERE tipMovId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_tipomovimientoBancos WHERE tipMovId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT tipMovId, tipMovNombre, tipMovEstatus FROM tbl_tipomovimientoBancos WHERE tipMovNombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT tipMovId, tipMovNombre, tipMovEstatus FROM tbl_tipomovimientoBancos WHERE tipMovId = ?";    
 
     public List<clsTipoMovimientoBancos> consultaTipoMovimiento() {
         Connection conn = null;

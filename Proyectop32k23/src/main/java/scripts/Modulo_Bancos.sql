@@ -1,16 +1,40 @@
 CREATE SCHEMA IF NOT EXISTS `proyectop312023` DEFAULT CHARACTER SET utf8 ;
 USE `proyectop312023` ;
 
+#Las puse acá solo para que me funcione a mi en las pruebas, despues se borra
+
+CREATE TABLE IF NOT EXISTS tbl_Clientes (
+	clId int auto_increment,
+    clFecha datetime NULL, 
+    clNombre VARCHAR(40) NOT NULL,
+    clNit varchar (25) NOT NULL,
+    clDebe VARCHAR (25) NOT NULL,
+    clHaber VARCHAR (25) NOT NULL,
+    clNoFactura varchar (25) NOT NULL,
+    PRIMARY KEY(clId)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_Proveedores (
+	prId int auto_increment,
+    prFecha datetime NULL, 
+    prNombre VARCHAR(40) NOT NULL,
+    prNit varchar (25) NOT NULL,
+    prSaldo VARCHAR (25) NOT NULL,
+    prDeuda VARCHAR (25) NOT NULL,
+    prNoFactura VARCHAR (25) NOT NULL,
+    PRIMARY KEY(prId)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 #Tablas necesarias para modulo Bancos
 
-CREATE TABLE IF NOT EXISTS tbl_tipoPersona (
+CREATE TABLE IF NOT EXISTS tbl_tipoPersonaBancos (
 	perTipoId INT(5) NOT NULL,
 	tipPerDescripcion VARCHAR(45) NOT NULL,
 	tipPerEstatus VARCHAR(1) NOT NULL,
 	PRIMARY KEY (perTipoId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_personas (
+CREATE TABLE IF NOT EXISTS tbl_personasBancos (
 	perId INT(5) NOT NULL,
 	perNombre VARCHAR(45) NOT NULL,
 	perTipoId INT(5) NOT NULL,
@@ -19,14 +43,14 @@ CREATE TABLE IF NOT EXISTS tbl_personas (
 	FOREIGN KEY (perTipoId) REFERENCES tbl_tipoPersona (perTipoId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_tipoCuentas (
+CREATE TABLE IF NOT EXISTS tbl_tipoCuentasBancos (
 	cueTipoId INT(5),
 	cueTipoDescripcion VARCHAR(45),
 	cueTipoEstatus VARCHAR(1),
 	PRIMARY KEY (cueTipoId))
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_cuentas (
+CREATE TABLE IF NOT EXISTS tbl_cuentasBancos (
 	cueId INT(5) NOT NULL,
 	cueNumero INT(15) NOT NULL,
 	cueSaldo DECIMAL(20,5) NOT NULL,
@@ -38,7 +62,7 @@ CREATE TABLE IF NOT EXISTS tbl_cuentas (
 	FOREIGN KEY (cueTipoId) REFERENCES tbl_tipoCuentas (cueTipoId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_conceptos (
+CREATE TABLE IF NOT EXISTS tbl_conceptosBancos (
 	concId INT(5) NOT NULL,
 	concNombre VARCHAR(45) NOT NULL,
 	concDescripcion VARCHAR(100) NOT NULL,
@@ -47,14 +71,14 @@ CREATE TABLE IF NOT EXISTS tbl_conceptos (
 	PRIMARY KEY (concId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_tipoMovimiento (
+CREATE TABLE IF NOT EXISTS tbl_tipoMovimientoBancos (
 	tipMovId INT(5) NOT NULL,
 	tipMovNombre VARCHAR(15) NOT NULL,
 	tipMovEstatus VARCHAR(1) NOT NULL,
 	PRIMARY KEY (tipMovId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_moneda (
+CREATE TABLE IF NOT EXISTS tbl_monedaBancos (
 	tipModId INT(5) NOT NULL,
 	tipMondNombre VARCHAR(15) NOT NULL,
 	tipMondAbreviacion VARCHAR(4) NOT NULL,
@@ -71,7 +95,7 @@ CREATE TABLE IF NOT EXISTS tbl_bancoExterno (
 	FOREIGN KEY (tipModId) REFERENCES tbl_moneda (tipModId) )
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_cuentaEmpresa (
+CREATE TABLE IF NOT EXISTS tbl_cuentaEmpresaBancos (
 	cueEmId INT(5) NOT NULL,
 	cueNumeroEm INT (15) NOT NULL,
 	cueSaldoEm DECIMAL(50,5) NOT NULL,
@@ -82,7 +106,7 @@ CREATE TABLE IF NOT EXISTS tbl_cuentaEmpresa (
 	FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno (codBanco))
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_movimientosEncabezado (
+CREATE TABLE IF NOT EXISTS tbl_movimientosEncabezadoBancos (
 	movId INT(5) NOT NULL,
 	codBanco INT(5) NOT NULL,
 	cueId INT(5) NOT NULL,
@@ -96,7 +120,7 @@ CREATE TABLE IF NOT EXISTS tbl_movimientosEncabezado (
 	FOREIGN KEY (tipMovId) REFERENCES tbl_tipoMovimiento (tipMovId))
 ENGINE = InnoDB CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS tbl_movimientosDetalle(
+CREATE TABLE IF NOT EXISTS tbl_movimientosDetalleBancos(
 	movDetId INT(5) NOT NULL,
     	movId INT(5) NOT NULL,
     	movCosto DECIMAL(20,5) NOT NULL,
@@ -107,4 +131,40 @@ CREATE TABLE IF NOT EXISTS tbl_movimientosDetalle(
 	FOREIGN KEY (movId) REFERENCES tbl_movimientosEncabezado (movId),
 	FOREIGN KEY (concId) REFERENCES tbl_conceptos (concId),
 	FOREIGN KEY (tipModId) REFERENCES tbl_moneda (tipModId))
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_boletaClientesBancos (
+	bolId int auto_increment NOT NULL,
+	bolCodigo INT(5) NOT NULL, 
+	bolFechaEmision datetime NOT NULL,
+	concid INT(5) NOT NULL,
+	concNombre VARCHAR(45) NOT NULL, 
+	cueNumero INT(15) NOT NULL, 
+	concEfecto VARCHAR(1) NOT NULL,
+	perTipoId INT(5) NOT NULL, 
+	concEstatus VARCHAR(1) NOT NULL, 
+	clNombre VARCHAR(40) NOT NULL, 
+	clId INT NOT NULL,
+	clNit VARCHAR(25) NOT NULL, 
+	PRIMARY KEY (bolId,bolCodigo),
+	FOREIGN KEY (clId) REFERENCES tbl_Clientes (clId))
+ENGINE = InnoDB CHARACTER SET = latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_comprobanteProveedoresBancos (
+	comId int auto_increment NOT NULL,
+	concNombre VARCHAR(45) NOT NULL, 
+	banNombre VARCHAR(45) NOT NULL,
+	conFechaEmision datetime NOT NULL,
+ 	conFechaVencimiento datetime NOT NULL,
+	prNombre VARCHAR(40) NOT NULL, 
+	MovCosto DECIMAL(20,5) NOT NULL, 
+	ConcDescripcion VARCHAR(100) NOT NULL, 
+	tipMovid INT(5) NOT NULL, 
+	cueId INT(5) NOT NULL,
+	cueNumero INT(15) NOT NULL,
+	prSaldo VARCHAR(25) NOT NULL,
+	prDeuda VARCHAR(25) NOT NULL, 
+	PRIMARY KEY (comId),
+	FOREIGN KEY (tipMovId) REFERENCES tbl_tipoMovimiento (tipMovId),
+	FOREIGN KEY (cueId) REFERENCES tbl_cuentas (cueId))
 ENGINE = InnoDB CHARACTER SET = latin1;

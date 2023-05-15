@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class daoTipoPersonaBancos {
 
-    private static final String SQL_SELECT = "SELECT perTipoId, tipPerDescripcion, tipPerEstatus FROM tbl_tipoPersona";
-    private static final String SQL_INSERT = "INSERT INTO tbl_tipoPersona (perTipoId, tipPerDescripcion,  tipPerEstatus) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_tipoPersona SET tipPerDescripcion=?, tipPerEstatus=? WHERE perTipoId = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_tipoPersona WHERE perTipoId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT perTipoId, tipPerDescripcion,  tipPerEstatus FROM tbl_tipoPersona WHERE tipPerEstatus = ?";
-    private static final String SQL_SELECT_ID = "SELECT perTipoId, tipPerDescripcion, tipPerEstatus FROM tbl_tipoPersona WHERE perTipoId = ?";    
+    private static final String SQL_SELECT = "SELECT perTipoId, tipPerDescripcion, tipPerEstatus FROM tbl_tipoPersonaBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_tipoPersonaBancos (perTipoId, tipPerDescripcion,  tipPerEstatus) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_tipoPersonaBancos SET tipPerDescripcion=?, tipPerEstatus=? WHERE perTipoId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_tipoPersonaBancos WHERE perTipoId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT perTipoId, tipPerDescripcion,  tipPerEstatus FROM tbl_tipoPersonaBancos WHERE tipPerEstatus = ?";
+    private static final String SQL_SELECT_ID = "SELECT perTipoId, tipPerDescripcion, tipPerEstatus FROM tbl_tipoPersonaBancos WHERE perTipoId = ?";    
 
     public List<clsTipoPersonaBancos> consultaBanco() {
         Connection conn = null;

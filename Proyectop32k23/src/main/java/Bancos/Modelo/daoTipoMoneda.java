@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class daoTipoMoneda {
 
-    private static final String SQL_SELECT = "SELECT tipModId, tipMondNombre, tipMondAbreviacion, tipModValor FROM tbl_moneda";
-    private static final String SQL_INSERT = "INSERT INTO tbl_moneda(tipModId, tipMondNombre, tipMondAbreviacion, tipModValor) VALUES(?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_moneda SET tipMondNombre=?, tipMondAbreviacion=?,  tipModValor=?  WHERE tipModId = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_moneda WHERE tipModId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT tipModId, tipMondNombre, tipMondAbreviacion, tipModValor  FROM tbl_moneda WHERE tipMondNombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT tipModId, tipMondNombre, tipMondAbreviacion, tipModValor  FROM tbl_moneda WHERE tipModId = ?";     
+    private static final String SQL_SELECT = "SELECT tipModId, tipMondNombre, tipMondAbreviacion, tipModValor FROM tbl_monedaBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_monedaBancos(tipModId, tipMondNombre, tipMondAbreviacion, tipModValor) VALUES(?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_monedaBancos SET tipMondNombre=?, tipMondAbreviacion=?,  tipModValor=?  WHERE tipModId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_monedaBancos WHERE tipModId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT tipModId, tipMondNombre, tipMondAbreviacion, tipModValor  FROM tbl_monedaBancos WHERE tipMondNombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT tipModId, tipMondNombre, tipMondAbreviacion, tipModValor  FROM tbl_monedaBancos WHERE tipModId = ?";     
 
 
 
