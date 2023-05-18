@@ -13,6 +13,8 @@ import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
+import Cuentas_Corrientes.Vista.MdiCCorrientes;
+
 /**
  *
  * @author visitante
@@ -217,7 +219,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "Cuentas Corrientes":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiCCorrientes menu = new MdiCCorrientes();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
