@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Cuentas_Corrientes.Controlador;
+import Cuentas_Corrientes.Modelo.daoCCorrientes;
 import Seguridad.Controlador.*;
 import java.util.List;
 import Seguridad.Modelo.daoAplicacion;
@@ -13,82 +14,174 @@ import Seguridad.Modelo.daoAplicacion;
  */
 
 public class clsCCorrientes {
-    private int IdAplicacion;
-    private String NombreAplicacion;
-    private String EstatusAplicacion;
-    
+    private int idCCorriente;
+    private String tipoCCorriente;
+    private int idTipoCCorriente;
+    private String fechaCCorriente;
+    private String nombreCCorriente;
+    private String facturaCCorriente;
+    private String saldoCCorriente;
+    private String deudaCCorriente;
 
-    public int getIdAplicacion() {
-        return IdAplicacion;
+    public int getIdCCorriente() {
+        return idCCorriente;
     }
 
-    public void setIdAplicacion(int IdAplicacion) {
-        this.IdAplicacion = IdAplicacion;
+    public void setIdCCorriente(int idCCorriente) {
+        this.idCCorriente = idCCorriente;
     }
 
-    public String getNombreAplicacion() {
-        return NombreAplicacion;
+    public String getTipoCCorriente() {
+        return tipoCCorriente;
     }
 
-    public void setNombreAplicacion(String NombreAplicacion) {
-        this.NombreAplicacion = NombreAplicacion;
+    public void setTipoCCorriente(String tipoCCorriente) {
+        this.tipoCCorriente = tipoCCorriente;
     }
 
-    public String getEstatusAplicacion() {
-        return EstatusAplicacion;
+    public int getIdTipoCCorriente() {
+        return idTipoCCorriente;
     }
 
-    public void setEstatusAplicacion(String EstatusAplicacion) {
-        this.EstatusAplicacion = EstatusAplicacion;
+    public void setIdTipoCCorriente(int idTipoCCorriente) {
+        this.idTipoCCorriente = idTipoCCorriente;
     }
 
-    public clsCCorrientes(int IdAplicacion, String NombreAplicacion, String EstatusAplicacion) {
-        this.IdAplicacion = IdAplicacion;
-        this.NombreAplicacion = NombreAplicacion;
-        this.EstatusAplicacion = EstatusAplicacion;
+    public String getFechaCCorriente() {
+        return fechaCCorriente;
     }
 
-    public clsCCorrientes(int IdAplicacion, String NombreAplicacion) {
-        this.IdAplicacion = IdAplicacion;
-        this.NombreAplicacion = NombreAplicacion;
+    public void setFechaCCorriente(String fechaCCorriente) {
+        this.fechaCCorriente = fechaCCorriente;
     }
 
-    public clsCCorrientes(int IdAplicacion) {
-        this.IdAplicacion = IdAplicacion;
+    public String getNombreCCorriente() {
+        return nombreCCorriente;
+    }
+
+    public void setNombreCCorriente(String nombreCCorriente) {
+        this.nombreCCorriente = nombreCCorriente;
+    }
+
+    public String getFacturaCCorriente() {
+        return facturaCCorriente;
+    }
+
+    public void setFacturaCCorriente(String facturaCCorriente) {
+        this.facturaCCorriente = facturaCCorriente;
+    }
+
+    public String getSaldoCCorriente() {
+        return saldoCCorriente;
+    }
+
+    public void setSaldoCCorriente(String saldoCCorriente) {
+        this.saldoCCorriente = saldoCCorriente;
+    }
+
+    public String getDeudaCCorriente() {
+        return deudaCCorriente;
+    }
+
+    public void setDeudaCCorriente(String deudaCCorriente) {
+        this.deudaCCorriente = deudaCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente, String facturaCCorriente, String saldoCCorriente, String deudaCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+        this.idTipoCCorriente = idTipoCCorriente;
+        this.fechaCCorriente = fechaCCorriente;
+        this.nombreCCorriente = nombreCCorriente;
+        this.facturaCCorriente = facturaCCorriente;
+        this.saldoCCorriente = saldoCCorriente;
+        this.deudaCCorriente = deudaCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente, String facturaCCorriente, String saldoCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+        this.idTipoCCorriente = idTipoCCorriente;
+        this.fechaCCorriente = fechaCCorriente;
+        this.nombreCCorriente = nombreCCorriente;
+        this.facturaCCorriente = facturaCCorriente;
+        this.saldoCCorriente = saldoCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente, String facturaCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+        this.idTipoCCorriente = idTipoCCorriente;
+        this.fechaCCorriente = fechaCCorriente;
+        this.nombreCCorriente = nombreCCorriente;
+        this.facturaCCorriente = facturaCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+        this.idTipoCCorriente = idTipoCCorriente;
+        this.fechaCCorriente = fechaCCorriente;
+        this.nombreCCorriente = nombreCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+        this.idTipoCCorriente = idTipoCCorriente;
+        this.fechaCCorriente = fechaCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+        this.idTipoCCorriente = idTipoCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente, String tipoCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.tipoCCorriente = tipoCCorriente;
+    }
+
+    public clsCCorrientes(int idCCorriente) {
+        this.idCCorriente = idCCorriente;
     }
 
     public clsCCorrientes() {
     }
+    
+
+    
     //Metodos de acceso a la capa controlador
-    public clsCCorrientes getBuscarInformacionAplicacionPorNombre(clsCCorrientes aplicacion)
+    public clsCCorrientes getBuscarInformacionAplicacionPorNombre(clsCCorrientes CCorriente)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorNombre(aplicacion);
+        daoCCorrientes daoCCorrientes = new daoCCorrientes();
+        return daoCCorrientes.consultaAplicacionPorNombre(CCorriente);
     }
-    public clsCCorrientes getBuscarInformacionAplicacionPorId(clsCCorrientes aplicacion)
+    public clsCCorrientes getBuscarInformacionAplicacionPorId(clsCCorrientes CCorriente)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorId(aplicacion);
+        daoCCorrientes daoCCorrientes = new daoCCorrientes();
+        return daoCCorrientes.consultaAplicacionPorId(CCorriente);
     }    
     public List<clsCCorrientes> getListadoAplicaciones()
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        List<clsCCorrientes> listadoUsuarios = daoAplicacion.consultaAplicacion();
-        return listadoUsuarios;
+        daoCCorrientes daoCCorrientes = new daoCCorrientes();
+        List<clsCCorrientes> listadoCCorrientes = daoCCorrientes.consultaAplicacion();
+        return listadoCCorrientes;
     }
-    public int setBorrarAplicacion(clsCCorrientes aplicacion)
+    public int setBorrarAplicacion(clsCCorrientes CCorriente)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.borrarAplicacion(aplicacion);
+        daoCCorrientes daoCCorrientes = new daoCCorrientes();
+        return daoCCorrientes.borrarAplicacion(CCorriente);
     }          
-    public int setIngresarAplicacion(clsCCorrientes aplicacion)
+    public int setIngresarAplicacion(clsCCorrientes CCorriente)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.ingresaAplicacion(aplicacion);
+        daoCCorrientes daoCCorrientes = new daoCCorrientes();
+        return daoCCorrientes.ingresaAplicacion(CCorriente);
     }              
-    public int setModificarAplicacion(clsCCorrientes aplicacion)
+    public int setModificarAplicacion(clsCCorrientes CCorriente)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.actualizaAplicacion(aplicacion);
+        daoCCorrientes daoCCorrientes = new daoCCorrientes();
+        return daoCCorrientes.actualizaAplicacion(CCorriente);
     }              
 }
