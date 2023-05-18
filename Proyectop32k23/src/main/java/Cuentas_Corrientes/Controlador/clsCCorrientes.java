@@ -19,6 +19,7 @@ public class clsCCorrientes {
     private int idTipoCCorriente;
     private String fechaCCorriente;
     private String nombreCCorriente;
+    private String nofacturaCCorriente;
     private String facturaCCorriente;
     private String saldoCCorriente;
     private String deudaCCorriente;
@@ -62,7 +63,14 @@ public class clsCCorrientes {
     public void setNombreCCorriente(String nombreCCorriente) {
         this.nombreCCorriente = nombreCCorriente;
     }
+    public String getNoFacturaCCorriente() {
+        return nofacturaCCorriente;
+    }
 
+    public void setNoFacturaCCorriente(String facturaCCorriente) {
+        this.nofacturaCCorriente = facturaCCorriente;
+    }
+    
     public String getFacturaCCorriente() {
         return facturaCCorriente;
     }
@@ -153,35 +161,35 @@ public class clsCCorrientes {
 
     
     //Metodos de acceso a la capa controlador
-    public clsCCorrientes getBuscarInformacionAplicacionPorNombre(clsCCorrientes CCorriente)
+    public clsCCorrientes getBuscarInformacionCCPorNombre(clsCCorrientes CCorriente)
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
-        return daoCCorrientes.consultaAplicacionPorNombre(CCorriente);
+        return daoCCorrientes.consultaCCPorNombre(CCorriente);
     }
-    public clsCCorrientes getBuscarInformacionAplicacionPorId(clsCCorrientes CCorriente)
+    public clsCCorrientes getBuscarInformacionCCPorId(clsCCorrientes CCorriente)
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
-        return daoCCorrientes.consultaAplicacionPorId(CCorriente);
+        return daoCCorrientes.consultaCCPorId(CCorriente);
     }    
-    public List<clsCCorrientes> getListadoAplicaciones()
+    public List<clsCCorrientes> getListadoCC()
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
-        List<clsCCorrientes> listadoCCorrientes = daoCCorrientes.consultaAplicacion();
+        List<clsCCorrientes> listadoCCorrientes = daoCCorrientes.consultaCC();
         return listadoCCorrientes;
     }
-    public int setBorrarAplicacion(clsCCorrientes CCorriente)
+    public int setBorrarCC(clsCCorrientes CCorriente)
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
-        return daoCCorrientes.borrarAplicacion(CCorriente);
+        return daoCCorrientes.borrarCC(CCorriente);
     }          
-    public int setIngresarAplicacion(clsCCorrientes CCorriente)
+    public int setIngresarCC(clsCCorrientes CCorriente)
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
-        return daoCCorrientes.ingresaAplicacion(CCorriente);
+        return daoCCorrientes.ingresaCC(CCorriente);
     }              
-    public int setModificarAplicacion(clsCCorrientes CCorriente)
+    public int setModificarCC(clsCCorrientes CCorriente)
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
-        return daoCCorrientes.actualizaAplicacion(CCorriente);
+        return daoCCorrientes.actualizaCC(CCorriente);
     }              
 }
