@@ -51,7 +51,7 @@ public void llenadoDeTabla() {
         clsCCorrientes aplicacion = new clsCCorrientes();
         List<clsCCorrientes> listaAplicaciones = aplicacion.getListadoCC();
         tablaUsuarios.setModel(modelo);
-        String[] dato = new String[2];
+        String[] dato = new String[9];
         for (int i = 0; i < listaAplicaciones.size(); i++) {
             dato[0] = Integer.toString(listaAplicaciones.get(i).getIdCCorriente());
             dato[1] = listaAplicaciones.get(i).getTipoCCorriente();
@@ -121,7 +121,8 @@ public void llenadoDeTabla() {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Aplicacion Usuario");
+        setTitle("Cuentas Corrientes");
+        setToolTipText("");
         setVisible(true);
 
         tablaUsuarios.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -145,6 +146,11 @@ public void llenadoDeTabla() {
 
         txtIdtipoC.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtIdtipoC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtIdtipoC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdtipoCActionPerformed(evt);
+            }
+        });
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("Id Tipo Cuenta");
@@ -472,6 +478,7 @@ public void llenadoDeTabla() {
         txtIdtipoC.setText(String.valueOf(transaccion.getIdTipoCCorriente()));
         txtfecha.setText(transaccion.getFechaCCorriente());
         txtnombreC.setText(transaccion.getNombreCCorriente());
+        txtnofac.setText(transaccion.getNoFacturaCCorriente());
         txttotfac.setText(transaccion.getFechaCCorriente());
         txtsaldo.setText(transaccion.getSaldoCCorriente());
         txtdeuda.setText(transaccion.getDeudaCCorriente());
@@ -511,6 +518,10 @@ public void llenadoDeTabla() {
     private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnofacActionPerformed
+
+    private void txtIdtipoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdtipoCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdtipoCActionPerformed
     public void limpiarTextos()
     {
         txtTipoC.setText("");
