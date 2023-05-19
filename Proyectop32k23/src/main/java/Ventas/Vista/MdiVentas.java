@@ -47,6 +47,7 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuCatalogosMantenimientosVentas = new javax.swing.JMenu();
         mantenimientoClientes = new javax.swing.JCheckBoxMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuProcesosVentas = new javax.swing.JMenu();
         mnuConsultasVentas = new javax.swing.JMenu();
         mnuReportesVentas = new javax.swing.JMenu();
@@ -119,6 +120,14 @@ public class MdiVentas extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientosVentas.add(jMenuItem3);
+
+        jMenuItem1.setText("Mantenimiento Vendedores");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientosVentas.add(jMenuItem1);
 
         mnuCatalogosVentas.add(mnuCatalogosMantenimientosVentas);
 
@@ -201,6 +210,16 @@ public class MdiVentas extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoVendedores ventana = new frmMantenimientoVendedores();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +262,7 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1MdiVentas;
     private javax.swing.JDesktopPane jDesktopPaneVentas;
     private javax.swing.JMenu jMenu1MdiVentas;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
     private javax.swing.JMenuItem jMenuItem3;

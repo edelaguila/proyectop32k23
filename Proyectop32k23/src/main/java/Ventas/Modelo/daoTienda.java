@@ -11,7 +11,7 @@ package Ventas.Modelo;
 
 import Ventas.Controlador.clsClientes;
 import Ventas.Controlador.clsTienda;
-
+import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
