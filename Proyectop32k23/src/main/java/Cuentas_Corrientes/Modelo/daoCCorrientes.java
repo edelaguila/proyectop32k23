@@ -21,8 +21,8 @@ public class daoCCorrientes {
     private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientes(cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda) VALUES(?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE tbl_cCorrientes SET cctipo=?,ccidtipo=?,ccfecha=?,ccnombretipo=?,NoFactura=?,ccTotalFactura=?,ccSaldo=?,ccDeuda=? WHERE ccid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_cCorrientes WHERE ccid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT ccid,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes WHERE cctipo=?";
-    private static final String SQL_SELECT_ID = "SELECT ccid,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes WHERE ccid=?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT ccid,cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes WHERE cctipo=?";
+    private static final String SQL_SELECT_ID = "SELECT ccid,cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes WHERE ccid=?";    
 
     public List<clsCCorrientes> consultaCC() {
         Connection conn = null;
@@ -109,7 +109,7 @@ public class daoCCorrientes {
             stmt.setString(6, cuenta.getFacturaCCorriente());
             stmt.setString(7, cuenta.getSaldoCCorriente());
             stmt.setString(8, cuenta.getDeudaCCorriente());
-            stmt.setInt(8, cuenta.getIdCCorriente());
+            stmt.setInt(9, cuenta.getIdCCorriente());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
         } catch (SQLException ex) {
