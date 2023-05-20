@@ -7,7 +7,6 @@ package Cuentas_Corrientes.Controlador;
 import Cuentas_Corrientes.Modelo.daoCCorrientesProv;
 import Seguridad.Controlador.*;
 import java.util.List;
-import Seguridad.Modelo.daoAplicacion;
 /**
  *
  * @author visitante
@@ -80,11 +79,11 @@ public class clsCCorrientesProv {
         this.facturaCCorrienteProv = facturaCCorrienteProv;
     }
 
-    public String getCancelaciónProv() {
+    public String getCancelacionProv() {
         return CancelaciónProv;
     }
 
-    public void setCancelaciónProv(String CancelaciónProv) {
+    public void setCancelacionProv(String CancelaciónProv) {
         this.CancelaciónProv = CancelaciónProv;
     }
 
@@ -176,33 +175,33 @@ public class clsCCorrientesProv {
     //Metodos de acceso a la capa controlador
     public clsCCorrientesProv getBuscarInformacionCCPorNombre(clsCCorrientesProv CCorrienteProv)
     {
-        daoCCorrientesProv daoCCorrientes = new daoCCorrientesProv();
-        return daoCCorrientesProv.consultaCCPorNombre(CCorrienteProv);
+        daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
+        return daoCCorrientesProv.consultaCCProvPorNombre(CCorrienteProv);
     }
-    public clsCCorrientesProv getBuscarInformacionCCPorId(clsCCorrientesProv CCorrienteProv)
+    public clsCCorrientesProv getBuscarInformacionCCProvPorId(clsCCorrientesProv CCorrienteProv)
     {
         daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
-        return daoCCorrientesProv.consultaCCPorId(CCorrienteProv);
+        return daoCCorrientesProv.consultaCCProvPorId(CCorrienteProv);
     }    
     public List<clsCCorrientesProv> getListadoCC()
     {
         daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
-        List<clsCCorrientesProv> listadoCCorrientesProv = daoCCorrientesProv.consultaCC();
+        List<clsCCorrientesProv> listadoCCorrientesProv = daoCCorrientesProv.consultaCCProv();
         return listadoCCorrientesProv;
     }
     public int setBorrarCC(clsCCorrientesProv CCorrienteProv)
     {
         daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
-        return daoCCorrientesProv.borrarCC(CCorrienteProv);
+        return daoCCorrientesProv.borrarCCProv(CCorrienteProv);
     }          
     public int setIngresarCC(clsCCorrientesProv CCorrienteProv)
     {
         daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
-        return daoCCorrientesProv.ingresaCC(CCorrienteProv);
+        return daoCCorrientesProv.ingresaCCProv(CCorrienteProv);
     }              
-    public int setModificarCC(clsCCorrientesProv CCorriente)
+    public int setModificarCC(clsCCorrientesProv CCorrienteProv)
     {
         daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
-        return daoCCorrientesProv.actualizaCC(CCorrienteProv);
+        return daoCCorrientesProv.actualizaCCProv(CCorrienteProv);
     }              
 }
