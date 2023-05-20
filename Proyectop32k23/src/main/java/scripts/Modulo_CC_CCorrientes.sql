@@ -1,7 +1,7 @@
 USE `proyectop312023` ;
 
 CREATE TABLE IF NOT EXISTS tbl_cCorrientes (
-	ccid int auto_increment,
+    ccid int auto_increment,
     cctipo VARCHAR (25) NOT NULL,
     ccidtipo INT NOT NULL,
     ccfecha DATE,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS tbl_cCorrientes (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_cCorrientesProv (
-	cpid int auto_increment,
+    cpid int auto_increment,
     cptipo VARCHAR (25) NOT NULL,
     cpidprov INT NOT NULL,
     cpfecha DATE,
