@@ -22,7 +22,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setExtendedState(MdiCCorrientes.MAXIMIZED_BOTH);
-        this.setTitle("Menu Gestión de Ventas");
+        this.setTitle("Menu Gestión Cuentas Corrientes");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -196,8 +196,6 @@ public class MdiCCorrientes extends javax.swing.JFrame {
 
     private void mnuSalirSistemaVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirSistemaVentasActionPerformed
         // TODO add your handling code here:
-                /*===== OPERACIÓN CERRAR SESIÓN ====
-          Variable entera respuesta_cs*/
 
         int respuesta_cs = JOptionPane.showConfirmDialog(this, "¿Desea Cerrar Sesión?", "Cerrar Sesión",            JOptionPane.YES_NO_OPTION);
 

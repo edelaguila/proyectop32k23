@@ -191,7 +191,6 @@ public class daoCCorrientes {
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + cuenta);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
             stmt.setInt(1, cuenta.getIdCCorriente());            
-            //stmt.setString(1, aplicacion.getNombreAplicacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ccid");

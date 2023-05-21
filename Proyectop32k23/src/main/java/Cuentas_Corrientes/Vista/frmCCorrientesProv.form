@@ -18,7 +18,7 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Cuentas Corrientes"/>
+    <Property name="title" type="java.lang.String" value="Cuentas Corrientes Proveedores"/>
     <Property name="toolTipText" type="java.lang.String" value=""/>
     <Property name="visible" type="boolean" value="true"/>
   </Properties>
@@ -124,7 +124,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="label1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="294" pref="460" max="32767" attributes="0"/>
+                      <EmptySpace min="294" pref="382" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane1" pref="559" max="32767" attributes="0"/>
@@ -352,7 +352,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cuentas Corrientes"/>
+        <Property name="text" type="java.lang.String" value="Cuentas Corrientes Proveedores"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnModificar">
@@ -438,7 +438,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Saldo"/>
+        <Property name="text" type="java.lang.String" value="Cancelaci&#xf3;n"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txttotfac">
@@ -477,7 +477,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Deuda"/>
+        <Property name="text" type="java.lang.String" value="Saldo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtdeuda">

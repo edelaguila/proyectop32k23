@@ -121,7 +121,7 @@ public void llenadoDeTabla() {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Cuentas Corrientes");
+        setTitle("Cuentas Corrientes Proveedores");
         setToolTipText("");
         setVisible(true);
 
@@ -200,7 +200,7 @@ public void llenadoDeTabla() {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Cuentas Corrientes");
+        label1.setText("Cuentas Corrientes Proveedores");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +235,7 @@ public void llenadoDeTabla() {
         label9.setText("Total Factura");
 
         label10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label10.setText("Saldo");
+        label10.setText("Cancelación");
 
         txttotfac.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txttotfac.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -249,7 +249,7 @@ public void llenadoDeTabla() {
         txtsaldo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label11.setText("Deuda");
+        label11.setText("Saldo");
 
         txtdeuda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtdeuda.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -333,7 +333,7 @@ public void llenadoDeTabla() {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 460, Short.MAX_VALUE))
+                        .addGap(294, 382, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
                         .addContainerGap())))
