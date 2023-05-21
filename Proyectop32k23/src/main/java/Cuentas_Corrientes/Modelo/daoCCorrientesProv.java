@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class daoCCorrientesProv {
 
-    private static final String SQL_SELECT = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,ccSaldo FROM tbl_cCorrientesProv";
-    private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientesProv(cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,ccSaldo) VALUES(?,?,?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_cCorrientesProv SET cptipo=?,cpidprov=?,cpfecha=?,cpnombretipo=?,NpFactura=?,cpTotalFactura=?,cpconcelación=?,ccSaldo=? WHERE cpid = ?";
+    private static final String SQL_SELECT = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv";
+    private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientesProv(cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo) VALUES(?,?,?,?,?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_cCorrientesProv SET cptipo=?,cpidprov=?,cpfecha=?,cpnombretipo=?,NpFactura=?,cpTotalFactura=?,cpconcelación=?,cpSaldo=? WHERE cpid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_cCorrientesProv WHERE cpid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,ccSaldo FROM tbl_cCorrientesProv WHERE cptipo=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cptipo=?";
     private static final String SQL_SELECT_ID = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cpid=?";    
 
     public List<clsCCorrientesProv> consultaCCProv() {
@@ -35,15 +35,15 @@ public class daoCCorrientesProv {
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ccid");
-                String nombre = rs.getString("cctipo");
-                int tipo = rs.getInt("ccidtipo");
-                String fecha = rs.getString("ccfecha");
-                String nombretipo = rs.getString("ccnombretipo");
-                String factura = rs.getString("NoFactura");
-                String total = rs.getString("ccTotalFactura");
-                String saldo = rs.getString("ccSaldo");
-                String deuda = rs.getString("ccDeuda");
+                int id = rs.getInt("cpid");
+                String nombre = rs.getString("cptipo");
+                int tipo = rs.getInt("cpidprov");
+                String fecha = rs.getString("cpfecha");
+                String nombretipo = rs.getString("cpnombretipo");
+                String factura = rs.getString("NpFactura");
+                String total = rs.getString("cpTotalFactura");
+                String saldo = rs.getString("cpconcelación");
+                String deuda = rs.getString("cpSaldo");
                 clsCCorrientesProv cuenta = new clsCCorrientesProv();
                 cuenta.setIdCCorrienteProv(id);
                 cuenta.setTipoCCorrienteProv(nombre);
@@ -144,20 +144,19 @@ public class daoCCorrientesProv {
         try {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + cuenta);
-            stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            //stmt.setInt(1, aplicacion.getIdAplicacion());            
-            stmt.setString(1, cuenta.getTipoCCorrienteProv());
+            stmt = conn.prepareStatement(SQL_SELECT_ID);            
+            stmt.setInt(1, cuenta.getIdCCorrienteProv());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ccid");
-                String nombre = rs.getString("cctipo");
-                int tipo = rs.getInt("ccidtipo");
-                String fecha = rs.getString("ccfecha");
-                String nombretipo = rs.getString("ccnombretipo");
-                String factura = rs.getString("NoFactura");
-                String total = rs.getString("ccTotalFactura");
-                String saldo = rs.getString("ccSaldo");
-                String deuda = rs.getString("ccDeuda");
+                int id = rs.getInt("cpid");
+                String nombre = rs.getString("cptipo");
+                int tipo = rs.getInt("cpidprov");
+                String fecha = rs.getString("cpfecha");
+                String nombretipo = rs.getString("cpnombretipo");
+                String factura = rs.getString("NpFactura");
+                String total = rs.getString("cpTotalFactura");
+                String saldo = rs.getString("cpconcelación");
+                String deuda = rs.getString("cpSaldo");
                 cuenta.setIdCCorrienteProv(id);
                 cuenta.setTipoCCorrienteProv(nombre);
                 cuenta.setIdTipoCCorrienteProv(tipo);
@@ -177,7 +176,7 @@ public class daoCCorrientesProv {
             Conexion.close(conn);
         }
         return cuenta;
-    }
+    }   
     public clsCCorrientesProv consultaCCProvPorId(clsCCorrientesProv cuenta) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -186,19 +185,19 @@ public class daoCCorrientesProv {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + cuenta);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, cuenta.getIdCCorrienteProv());            
+            stmt.setInt(1, cuenta.getIdCCorrienteProv());
             //stmt.setString(1, aplicacion.getNombreAplicacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ccid");
-                String nombre = rs.getString("cctipo");
-                int tipo = rs.getInt("ccidtipo");
-                String fecha = rs.getString("ccfecha");
-                String nombretipo = rs.getString("ccnombretipo");
-                String factura = rs.getString("NoFactura");
-                String total = rs.getString("ccTotalFactura");
-                String saldo = rs.getString("ccSaldo");
-                String deuda = rs.getString("ccDeuda");
+                int id = rs.getInt("cpid");
+                String nombre = rs.getString("cptipo");
+                int tipo = rs.getInt("cpidprov");
+                String fecha = rs.getString("cpfecha");
+                String nombretipo = rs.getString("cpnombretipo");
+                String factura = rs.getString("NpFactura");
+                String total = rs.getString("cpTotalFactura");
+                String saldo = rs.getString("cpconcelación");
+                String deuda = rs.getString("cpSaldo");
                 cuenta.setIdCCorrienteProv(id);
                 cuenta.setTipoCCorrienteProv(nombre);
                 cuenta.setIdTipoCCorrienteProv(tipo);
