@@ -112,7 +112,7 @@ public void llenadoDeTabla() {
         txtdeuda = new javax.swing.JTextField();
         label12 = new javax.swing.JLabel();
         txtnofac = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txttipocuenta = new javax.swing.JTextField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -262,7 +262,13 @@ public void llenadoDeTabla() {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "tipo de cuenta 1", "tipo de cuenta 2", "tipo de cuenta 3", "tipo de cuenta 4" }));
+        txttipocuenta.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txttipocuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txttipocuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttipocuentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -303,15 +309,17 @@ public void llenadoDeTabla() {
                                     .addComponent(label6)
                                     .addComponent(label3)
                                     .addComponent(label5))
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtfecha)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(txtIdtipoC, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(41, 41, 41)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtfecha)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(txtIdtipoC, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txttipocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label10)
@@ -356,16 +364,16 @@ public void llenadoDeTabla() {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lb)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(label3)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(7, 7, 7)
+                                        .addGap(13, 13, 13)
+                                        .addComponent(label3)
+                                        .addGap(12, 12, 12)
                                         .addComponent(label5)))
                                 .addGap(12, 12, 12)
                                 .addComponent(label6))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
+                                .addGap(13, 13, 13)
+                                .addComponent(txttipocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtIdtipoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -451,7 +459,7 @@ public void llenadoDeTabla() {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setTipoCCorrienteProv(txtTipoC.getText());
+        transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
         transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtIdtipoC.getText()));
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
@@ -476,7 +484,7 @@ public void llenadoDeTabla() {
         transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
         transaccion = transaccion.getBuscarInformacionCCProvPorId(transaccion);
         System.out.println("Cuenta Corriente retornada:" + transaccion);
-        txtTipoC.setText(transaccion.getTipoCCorrienteProv());
+        txttipocuenta.setText(transaccion.getTipoCCorrienteProv());
         txtIdtipoC.setText(String.valueOf(transaccion.getIdTipoCCorrienteProv()));
         txtfecha.setText(transaccion.getFechaCCorrienteProv());
         txtnombreC.setText(transaccion.getNombreCCorrienteProv());
@@ -484,14 +492,13 @@ public void llenadoDeTabla() {
         txttotfac.setText(transaccion.getFacturaCCorrienteProv());
         txtsaldo.setText(transaccion.getCancelacionProv());
         txtdeuda.setText(transaccion.getSaldoCCorrienteProv());
-
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //TODO add your handling code here:
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
         transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        transaccion.setTipoCCorrienteProv(txtTipoC.getText());
+        transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
         transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtIdtipoC.getText()));
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
@@ -524,9 +531,13 @@ public void llenadoDeTabla() {
     private void txtIdtipoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdtipoCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdtipoCActionPerformed
+
+    private void txttipocuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttipocuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttipocuentaActionPerformed
     public void limpiarTextos()
     {
-        txtTipoC.setText("");
+        txttipocuenta.setText("");
         txtIdtipoC.setText("");
         txtfecha.setText("");
         txtnombreC.setText("");
@@ -545,7 +556,6 @@ public void llenadoDeTabla() {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
@@ -568,6 +578,7 @@ public void llenadoDeTabla() {
     private javax.swing.JTextField txtnofac;
     private javax.swing.JTextField txtnombreC;
     private javax.swing.JTextField txtsaldo;
+    private javax.swing.JTextField txttipocuenta;
     private javax.swing.JTextField txttotfac;
     // End of variables declaration//GEN-END:variables
 }

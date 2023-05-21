@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS tbl_cCorrientes (
     ccTotalFactura VARCHAR (25) NOT NULL,
     ccSaldo VARCHAR (25) NOT NULL,
     ccDeuda VARCHAR (25) NOT NULL,
-    PRIMARY KEY(ccId)
+    PRIMARY KEY(ccid)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_cCorrientesProv (
@@ -23,5 +23,5 @@ CREATE TABLE IF NOT EXISTS tbl_cCorrientesProv (
     cpTotalFactura VARCHAR (25) NOT NULL,
     cpconcelación VARCHAR (25) NOT NULL,
     cpSaldo VARCHAR (25) NOT NULL,
-    PRIMARY KEY(ccId)
+    PRIMARY KEY(ccid)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -482,7 +482,6 @@ public void llenadoDeTabla() {
         txttotfac.setText(transaccion.getFechaCCorriente());
         txtsaldo.setText(transaccion.getSaldoCCorriente());
         txtdeuda.setText(transaccion.getDeudaCCorriente());
-
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed

@@ -21,8 +21,8 @@ public class daoCCorrientesProv {
     private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientesProv(cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo) VALUES(?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE tbl_cCorrientesProv SET cptipo=?,cpidprov=?,cpfecha=?,cpnombretipo=?,NpFactura=?,cpTotalFactura=?,cpconcelación=?,cpSaldo=? WHERE cpid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_cCorrientesProv WHERE cpid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cptipo=?";
-    private static final String SQL_SELECT_ID = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cpid=?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cpid=?";
+    private static final String SQL_SELECT_ID = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cpid=?";
 
     public List<clsCCorrientesProv> consultaCCProv() {
         Connection conn = null;
@@ -186,7 +186,6 @@ public class daoCCorrientesProv {
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + cuenta);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
             stmt.setInt(1, cuenta.getIdCCorrienteProv());
-            //stmt.setString(1, aplicacion.getNombreAplicacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("cpid");

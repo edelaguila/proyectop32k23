@@ -169,9 +169,6 @@ public class clsCCorrientesProv {
 
     public clsCCorrientesProv() {
     }
-    
-    
-    
     //Metodos de acceso a la capa controlador
     public clsCCorrientesProv getBuscarInformacionCCPorNombre(clsCCorrientesProv CCorrienteProv)
     {
