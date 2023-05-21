@@ -203,5 +203,5 @@ public class clsCCorrientesProv {
     {
         daoCCorrientesProv daoCCorrientesProv = new daoCCorrientesProv();
         return daoCCorrientesProv.actualizaCCProv(CCorrienteProv);
-    }              
+    }
 }

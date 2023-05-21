@@ -48,7 +48,8 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         mnuCatalogosVentas = new javax.swing.JMenu();
         mnuCatalogosMantenimientosVentas = new javax.swing.JMenu();
         MantenimientoTransacciones = new javax.swing.JCheckBoxMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MantenimientoCC = new javax.swing.JMenuItem();
+        MantenimientoCCProv = new javax.swing.JMenuItem();
         mnuProcesosVentas = new javax.swing.JMenu();
         mnuConsultasVentas = new javax.swing.JMenu();
         mnuReportesVentas = new javax.swing.JMenu();
@@ -130,13 +131,21 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoTransacciones);
 
-        jMenuItem1.setText("Mantenimiento Cuentas Corriente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        MantenimientoCC.setText("Mantenimiento Cuentas Corriente");
+        MantenimientoCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                MantenimientoCCActionPerformed(evt);
             }
         });
-        mnuCatalogosMantenimientosVentas.add(jMenuItem1);
+        mnuCatalogosMantenimientosVentas.add(MantenimientoCC);
+
+        MantenimientoCCProv.setText("Mantenimiento Cuentas Corriente (proveedores)");
+        MantenimientoCCProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoCCProvActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientosVentas.add(MantenimientoCCProv);
 
         mnuCatalogosVentas.add(mnuCatalogosMantenimientosVentas);
 
@@ -210,14 +219,23 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuConsultasVentasActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void MantenimientoCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoCCActionPerformed
         // TODO add your handling code here:
         frmCCorrientes ventana = new frmCCorrientes();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_MantenimientoCCActionPerformed
+
+    private void MantenimientoCCProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoCCProvActionPerformed
+        // TODO add your handling code here:
+        frmCCorrientesProv ventana = new frmCCorrientesProv();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_MantenimientoCCProvActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,12 +280,13 @@ public class MdiCCorrientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MantenimientoCC;
+    private javax.swing.JMenuItem MantenimientoCCProv;
     private javax.swing.JCheckBoxMenuItem MantenimientoTransacciones;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1MdiVentas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPaneVentas;
     private javax.swing.JMenu jMenu1MdiVentas;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
     private javax.swing.JMenuItem jMenuItem4MdiVentas;
