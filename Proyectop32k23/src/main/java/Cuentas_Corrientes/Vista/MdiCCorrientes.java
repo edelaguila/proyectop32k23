@@ -49,6 +49,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         mnuCatalogosMantenimientosVentas = new javax.swing.JMenu();
         MantenimientoTransacciones = new javax.swing.JCheckBoxMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         mnuProcesosVentas = new javax.swing.JMenu();
         mnuConsultasVentas = new javax.swing.JMenu();
         mnuReportesVentas = new javax.swing.JMenu();
@@ -138,6 +139,14 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(jMenuItem1);
 
+        jMenuItem2.setText("Mantenimiento Cuentas Corrientes Prov");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientosVentas.add(jMenuItem2);
+
         mnuCatalogosVentas.add(mnuCatalogosMantenimientosVentas);
 
         mnuGeneralVentas.add(mnuCatalogosVentas);
@@ -219,6 +228,15 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        frmCCorrientesProv ventana = new frmCCorrientesProv();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +287,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1MdiVentas;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
     private javax.swing.JMenuItem jMenuItem4MdiVentas;
     private javax.swing.JMenu mnuArchivoVentas;
