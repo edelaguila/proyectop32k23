@@ -7,7 +7,7 @@ package Cuentas_Corrientes.Vista;
 
 
 import Seguridad.Vista.*;
-import Cuentas_Corrientes.Controlador.clsCCorrientes;
+import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import java.util.List;
@@ -41,27 +41,27 @@ public void llenadoDeTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID CCorrientes");
         modelo.addColumn("Tipo de Cuenta");
-        modelo.addColumn("ID Tipo Cuenta");
+        modelo.addColumn("ID Tipo Proveedor");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Nombre de Cuenta");
+        modelo.addColumn("Nombre de Proveedor");
         modelo.addColumn("No. Factura");
-        modelo.addColumn("Total Factura");
+        modelo.addColumn("Factura");
+        modelo.addColumn("Cancelacion");
         modelo.addColumn("Saldo");
-        modelo.addColumn("Deuda");
-        clsCCorrientes aplicacion = new clsCCorrientes();
-        List<clsCCorrientes> listaAplicaciones = aplicacion.getListadoCC();
+        clsCCorrientesProv aplicacion = new clsCCorrientesProv();
+        List<clsCCorrientesProv> listaAplicaciones = aplicacion.getListadoCC();
         tablaUsuarios.setModel(modelo);
         String[] dato = new String[9];
         for (int i = 0; i < listaAplicaciones.size(); i++) {
-            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdCCorriente());
-            dato[1] = listaAplicaciones.get(i).getTipoCCorriente();
-            dato[2] = Integer.toString(listaAplicaciones.get(i).getIdTipoCCorriente());
-            dato[3] = listaAplicaciones.get(i).getFechaCCorriente();
-            dato[4] = listaAplicaciones.get(i).getNombreCCorriente();
-            dato[5] = listaAplicaciones.get(i).getNoFacturaCCorriente();
-            dato[6] = listaAplicaciones.get(i).getFacturaCCorriente();
-            dato[7] = listaAplicaciones.get(i).getSaldoCCorriente();
-            dato[8] = listaAplicaciones.get(i).getDeudaCCorriente();
+            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdCCorrienteProv());
+            dato[1] = listaAplicaciones.get(i).getTipoCCorrienteProv();
+            dato[2] = Integer.toString(listaAplicaciones.get(i).getIdTipoCCorrienteProv());
+            dato[3] = listaAplicaciones.get(i).getFechaCCorrienteProv();
+            dato[4] = listaAplicaciones.get(i).getNombreCCorrienteProv();
+            dato[5] = listaAplicaciones.get(i).getNofacturaCCorrienteProv();
+            dato[6] = listaAplicaciones.get(i).getFacturaCCorrienteProv();
+            dato[7] = listaAplicaciones.get(i).getCancelacionProv();
+            dato[8] = listaAplicaciones.get(i).getSaldoCCorrienteProv();
             modelo.addRow(dato);
         }   
     }
@@ -70,7 +70,7 @@ public void llenadoDeTabla() {
     public frmCCorrientesProv() {
         initComponents();
         llenadoDeTabla();
-        llenadoDeCombos();
+       
     }
 
     /**
@@ -437,8 +437,8 @@ public void llenadoDeTabla() {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsCCorrientes transaccion = new clsCCorrientes();
-        transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
+        clsCCorrientesProv transaccion = new clsCCorrientesProv();
+        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
         registrosBorrados=transaccion.setBorrarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n","Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -450,15 +450,15 @@ public void llenadoDeTabla() {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsCCorrientes transaccion = new clsCCorrientes();
-        transaccion.setTipoCCorriente(txtTipoC.getText());
-        transaccion.setIdTipoCCorriente(Integer.parseInt(txtIdtipoC.getText()));
-        transaccion.setFechaCCorriente(txtfecha.getText());
-        transaccion.setNombreCCorriente(txtnombreC.getText());
-        transaccion.setNoFacturaCCorriente(txtnofac.getText());
-        transaccion.setFacturaCCorriente(txttotfac.getText());
-        transaccion.setSaldoCCorriente(txtsaldo.getText());
-        transaccion.setDeudaCCorriente(txtdeuda.getText());
+        clsCCorrientesProv transaccion = new clsCCorrientesProv();
+        transaccion.setTipoCCorrienteProv(txtTipoC.getText());
+        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtIdtipoC.getText()));
+        transaccion.setFechaCCorrienteProv(txtfecha.getText());
+        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
+        transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
+        transaccion.setFacturaCCorrienteProv(txttotfac.getText());
+        transaccion.setCancelacionProv(txtsaldo.getText());
+        transaccion.setSaldoCCorrienteProv(txtdeuda.getText());
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -471,34 +471,34 @@ public void llenadoDeTabla() {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        clsCCorrientes transaccion = new clsCCorrientes();
+        clsCCorrientesProv transaccion = new clsCCorrientesProv();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());
-        transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
-        transaccion = transaccion.getBuscarInformacionCCPorId(transaccion);
+        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
+        transaccion = transaccion.getBuscarInformacionCCProvPorId(transaccion);
         System.out.println("Cuenta Corriente retornada:" + transaccion);
-        txtTipoC.setText(transaccion.getTipoCCorriente());
-        txtIdtipoC.setText(String.valueOf(transaccion.getIdTipoCCorriente()));
-        txtfecha.setText(transaccion.getFechaCCorriente());
-        txtnombreC.setText(transaccion.getNombreCCorriente());
-        txtnofac.setText(transaccion.getNoFacturaCCorriente());
-        txttotfac.setText(transaccion.getFechaCCorriente());
-        txtsaldo.setText(transaccion.getSaldoCCorriente());
-        txtdeuda.setText(transaccion.getDeudaCCorriente());
+        txtTipoC.setText(transaccion.getTipoCCorrienteProv());
+        txtIdtipoC.setText(String.valueOf(transaccion.getIdTipoCCorrienteProv()));
+        txtfecha.setText(transaccion.getFechaCCorrienteProv());
+        txtnombreC.setText(transaccion.getNombreCCorrienteProv());
+        txtnofac.setText(transaccion.getNofacturaCCorrienteProv());
+        txttotfac.setText(transaccion.getFacturaCCorrienteProv());
+        txtsaldo.setText(transaccion.getCancelacionProv());
+        txtdeuda.setText(transaccion.getSaldoCCorrienteProv());
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //TODO add your handling code here:
-        clsCCorrientes transaccion = new clsCCorrientes();
-        transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
-        transaccion.setTipoCCorriente(txtTipoC.getText());
-        transaccion.setIdTipoCCorriente(Integer.parseInt(txtIdtipoC.getText()));
-        transaccion.setFechaCCorriente(txtfecha.getText());
-        transaccion.setNombreCCorriente(txtnombreC.getText());
-        transaccion.setNoFacturaCCorriente(txtnofac.getText());
-        transaccion.setFacturaCCorriente(txttotfac.getText());
-        transaccion.setSaldoCCorriente(txtsaldo.getText());
-        transaccion.setDeudaCCorriente(txtdeuda.getText());
+        clsCCorrientesProv transaccion = new clsCCorrientesProv();
+        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
+        transaccion.setTipoCCorrienteProv(txtTipoC.getText());
+        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtIdtipoC.getText()));
+        transaccion.setFechaCCorrienteProv(txtfecha.getText());
+        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
+        transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
+        transaccion.setFacturaCCorrienteProv(txttotfac.getText());
+        transaccion.setCancelacionProv(txtsaldo.getText());
+        transaccion.setSaldoCCorrienteProv(txtdeuda.getText());
         transaccion.setModificarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
