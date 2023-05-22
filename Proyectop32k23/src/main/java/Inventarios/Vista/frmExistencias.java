@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
-
+package Inventarios.Vista;
 
 import Seguridad.Controlador.clsBitacora;
-import Seguridad.Controlador.clsSeguridad;
-import Seguridad.Controlador.clsTipoUsuario;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Inventarios.Controlador.clsExistencias;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -21,8 +19,9 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
-public class frmMantenimientoTipoUsuario extends javax.swing.JInternalFrame {
-int codigoAplicacion=20;
+
+public class frmExistencias extends javax.swing.JInternalFrame {
+
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -34,23 +33,25 @@ int codigoAplicacion=20;
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("nombre");
-        modelo.addColumn("Estatus");
-        clsTipoUsuario tipou = new clsTipoUsuario();
+        modelo.addColumn("codigo del producto");
+        modelo.addColumn("codigo de la bodega");
+        modelo.addColumn("saldo");
+       
+        clsExistencias existencias = new clsExistencias();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsTipoUsuario> listaTipoUsuarios = tipou.getListadoTipoUsuarios();
-        tablaUsuarios.setModel(modelo);
-        String[] dato = new String[3];
-        for (int i = 0; i < listaTipoUsuarios.size(); i++) {
-            dato[0] = Integer.toString(listaTipoUsuarios.get(i).getIdTipoUsuario());
-            dato[1] = listaTipoUsuarios.get(i).getNombreTipoUsuario();
-            dato[2] = listaTipoUsuarios.get(i).getEstatusTipoUsuario();
+        List<clsExistencias> listaExistencias = existencias.getListadoExistencias();
+        tablaExistencias.setModel(modelo);
+        String[] dato = new String[4];
+        for (int i = 0; i < listaExistencias.size(); i++) {
+            dato[0] = Integer.toString(listaExistencias.get(i).getIdProductos());
+            dato[1] = Integer.toString(listaExistencias.get(i).getIdBodegas());
+            dato[2] = Integer.toString(listaExistencias.get(i).getExistenciasSaldo());
+          
             modelo.addRow(dato);
         }       
     }
 
-    public frmMantenimientoTipoUsuario() {
+    public frmExistencias() {
         initComponents();
         llenadoDeTablas();
         llenadoDeCombos();
@@ -77,13 +78,15 @@ int codigoAplicacion=20;
         txtNombre = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaUsuarios = new javax.swing.JTable();
-        txtContrasena = new javax.swing.JTextField();
-        label5 = new javax.swing.JLabel();
+        tablaExistencias = new javax.swing.JTable();
         lb = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
+        txtPrecios = new javax.swing.JTextField();
+        label6 = new javax.swing.JLabel();
+        label8 = new javax.swing.JLabel();
+        txtEstatus = new javax.swing.JTextField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -92,7 +95,7 @@ int codigoAplicacion=20;
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Aplicaciones");
+        setTitle("Mantenimiento Existencias");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -117,7 +120,7 @@ int codigoAplicacion=20;
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Tipo de Usuario");
+        label1.setText("Existencias");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +130,13 @@ int codigoAplicacion=20;
         });
 
         label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Nombre");
+        label3.setText("codigo del producto");
+
+        txtbuscado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscadoActionPerformed(evt);
+            }
+        });
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -139,8 +148,8 @@ int codigoAplicacion=20;
             }
         });
 
-        tablaUsuarios.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tablaExistencias.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        tablaExistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -148,13 +157,7 @@ int codigoAplicacion=20;
 
             }
         ));
-        jScrollPane1.setViewportView(tablaUsuarios);
-
-        txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Estatus");
+        jScrollPane1.setViewportView(tablaExistencias);
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
@@ -176,23 +179,23 @@ int codigoAplicacion=20;
             }
         });
 
+        txtPrecios.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtPrecios.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
+        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label6.setText("codigo de la bodega");
+
+        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label8.setText("saldo");
+
+        txtEstatus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label3)
-                            .addComponent(label5))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(txtNombre))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
@@ -213,7 +216,27 @@ int codigoAplicacion=20;
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(14, 14, 14)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label6)
+                                    .addComponent(label8))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(175, 175, 175)
+                                        .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addComponent(txtPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label3)
+                                .addGap(44, 44, 44)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -221,9 +244,9 @@ int codigoAplicacion=20;
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 550, Short.MAX_VALUE))
+                        .addGap(294, 484, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -235,16 +258,20 @@ int codigoAplicacion=20;
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
+                                .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label3))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label5)))
-                            .addComponent(lb))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtPrecios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(label8)
+                                    .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -261,19 +288,24 @@ int codigoAplicacion=20;
                             .addComponent(label4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     int clsBitacora = 1006;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         //----------
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
+        
         int registrosBorrados=0;
-        clsTipoUsuario tipou = new clsTipoUsuario();
-        tipou.setIdTipoUsuario(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=tipou.setBorrarTipoUsuario(tipou);
+        clsExistencias existencias = new clsExistencias();
+        existencias.setIdProductos(Integer.parseInt(txtbuscado.getText()));
+         //existencias.setIdBodegas(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados = existencias.setBorrarExistencias(existencias);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -281,10 +313,15 @@ int codigoAplicacion=20;
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsTipoUsuario tipou = new clsTipoUsuario();
-        tipou.setNombreTipoUsuario(txtNombre.getText());
-        tipou.setEstatusTipoUsuario(txtContrasena.getText());
-        tipou.setIngresarTipoUsuario(tipou);
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "INS");
+        
+        clsExistencias existencias = new clsExistencias();
+        existencias.setIdProductos(Integer.parseInt(txtNombre.getText()));
+        existencias.setIdBodegas(Integer.parseInt(txtPrecios.getText()));
+        existencias.setExistenciasSaldo(Integer.parseInt(txtEstatus.getText()));
+        existencias.setIngresarExistencias(existencias);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -293,26 +330,35 @@ int codigoAplicacion=20;
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "READ");
         
-        clsSeguridad c = new clsSeguridad();
-        clsTipoUsuario tipou = new clsTipoUsuario();
+        clsExistencias existencias = new clsExistencias();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
-        tipou.setIdTipoUsuario(Integer.parseInt(txtbuscado.getText()));        
-        tipou = tipou.getBuscarInformacionTipoUsuarioPorId(tipou);
-        System.out.println("Usuario retornado:" + tipou);        
-        txtNombre.setText(tipou.getNombreTipoUsuario());
-        txtContrasena.setText(c.encode(tipou.getEstatusTipoUsuario()));
+        existencias.setIdProductos(Integer.parseInt(txtbuscado.getText())); 
+        
+        //existencias.setIdBodegas(Integer.parseInt(txtbuscado.getText()));
+        existencias = existencias.getBuscarInformacionExistenciasPorId(existencias);
+        System.out.println("Usuario retornado:" + existencias);
+        txtNombre.setText(Integer.toString(existencias.getIdProductos()));
+        txtPrecios.setText(Integer.toString(existencias.getIdBodegas()));
+        txtEstatus.setText(Integer.toString(existencias.getExistenciasSaldo()));
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "UPD");
 
-        clsSeguridad c = new clsSeguridad();
-        clsTipoUsuario tipou = new clsTipoUsuario();
-        tipou.setIdTipoUsuario(Integer.parseInt(txtbuscado.getText()));
-        tipou.setNombreTipoUsuario(txtNombre.getText());
-        tipou.setEstatusTipoUsuario(c.encode(txtContrasena.getText()));
-        tipou.setModificarTipoUsuario(tipou);
+        clsExistencias existencias = new clsExistencias();
+        existencias.setIdProductos(Integer.parseInt(txtbuscado.getText()));
+        existencias.setIdBodegas(Integer.parseInt (txtNombre.getText()));
+        existencias.setExistenciasSaldo(Integer.parseInt(txtPrecios.getText()));        
+        existencias.setModificarExistencias(existencias);
+        
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
@@ -322,12 +368,19 @@ int codigoAplicacion=20;
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarTextos();
         habilitarBotones();
+        
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
+        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
     {
         txtNombre.setText("");
-        txtContrasena.setText("");
+        txtPrecios.setText("");
+        txtEstatus.setText("");
         txtbuscado.setText("");
     }
     public void habilitarBotones()
@@ -345,7 +398,6 @@ int codigoAplicacion=20;
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
@@ -363,8 +415,16 @@ int codigoAplicacion=20;
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "UPD");
+        
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtbuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -379,13 +439,15 @@ int codigoAplicacion=20;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
-    private javax.swing.JLabel label5;
+    private javax.swing.JLabel label6;
+    private javax.swing.JLabel label8;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
-    private javax.swing.JTable tablaUsuarios;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTable tablaExistencias;
+    private javax.swing.JTextField txtEstatus;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecios;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }
