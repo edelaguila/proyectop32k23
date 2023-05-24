@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
+package Compras.Vista;
 
-
-//import Seguridad.Controlador.clsModulo;
+import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsModulo;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -38,7 +37,6 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
        
 
         clsModulo modulos = new clsModulo();
-        //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsModulo> listamodulos = modulos.getListadoModulo();
      
         tablaModulos.setModel(modelo);

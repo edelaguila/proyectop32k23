@@ -9,6 +9,7 @@ package Seguridad.Vista;
 import Seguridad.Controlador.clsAplicacion;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
+import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;

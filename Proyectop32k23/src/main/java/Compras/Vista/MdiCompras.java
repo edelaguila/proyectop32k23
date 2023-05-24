@@ -5,6 +5,7 @@
  */
 package Compras.Vista;
 
+import Seguridad.Vista.*;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -207,10 +208,20 @@ public class MdiCompras extends javax.swing.JFrame {
 
     private void mnuConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultasActionPerformed
         // TODO add your handling code here:
+        frmMantenimientoBitacora ventana = new frmMantenimientoBitacora();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mnuConsultasActionPerformed
 
     private void consultaBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBitacoraActionPerformed
-        
+         // TODO add your handling code here:
+         frmMantenimientoBitacora ventana = new frmMantenimientoBitacora();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
                                                   
 
