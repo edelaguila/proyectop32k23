@@ -5,7 +5,7 @@
  */
 package Compras.Vista;
 
-//import Seguridad.Controlador.clsModulo;
+
 import Compras.Modelo.daoProveedor;
 import Seguridad.Controlador.clsModulo;
 import java.util.List;

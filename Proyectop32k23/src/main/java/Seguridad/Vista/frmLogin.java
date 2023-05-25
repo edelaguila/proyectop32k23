@@ -15,6 +15,7 @@ import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
 import Bancos.Vista.MdiBancos;
+import Compras.Vista.MdiCompras;
 /**
  *
  * @author visitante
@@ -210,7 +211,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "Compras":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiCompras menu = new MdiCompras();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
