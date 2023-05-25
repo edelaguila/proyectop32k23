@@ -109,7 +109,7 @@ public class MdiCompras extends javax.swing.JFrame {
         ModuloCompras.setText("MantenimientoProveedores");
         ModuloCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModuloComprasActionPerformed(evt);
+                
             }
         });
         MantenimientoProveedores.add(ModuloCompras);
@@ -123,7 +123,7 @@ public class MdiCompras extends javax.swing.JFrame {
         aplicacionesUsuarios.setText("Aplicaciones Usuarios");
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aplicacionesUsuariosActionPerformed(evt);
+                
             }
         });
         mnuProcesos.add(aplicacionesUsuarios);
