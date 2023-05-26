@@ -25,13 +25,14 @@ import javax.swing.table.DefaultTableModel;
 
 //Conexion de tablas y combo Box a base de datos trabajado por Carlos Sandoval
 public class daoPerfilUsuario {
-    String usuariobd = "UsuPrueba";
+    String usuariobd = "root";
+    String contrabd = "";
     public ArrayList<String> obtenerNombresUsuarios() {
     ArrayList<String> nombresUsuarios = new ArrayList<>();
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -61,7 +62,7 @@ public class daoPerfilUsuario {
 public void cargarTabla(DefaultTableModel modelo) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -93,7 +94,7 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
 
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -128,7 +129,7 @@ public ArrayList<String> obtenerPerfilesUsuario(String usuario) {
 public  void asignartodoPerfilesUsuario(DefaultTableModel modelo, String usuario) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
 
         // 2. Obtener el usuario seleccionado en el combo box
 
@@ -176,7 +177,7 @@ public  void asignartodoPerfilesUsuario(DefaultTableModel modelo, String usuario
 public  void eliminarPerfilesUsuario(DefaultTableModel modelo, String usuario) {
     try {
         // 1. Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
 
         // 2. Crear el objeto Statement
         Statement stmt = con.createStatement();
@@ -217,7 +218,7 @@ public  void asignarunPerfilesUsuario(String pernombre, String usuario) {
             
             try {
                // Conectar a la base de datos
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
                 
                  // 2. Crear el objeto Statement
                 PreparedStatement stmt = con.prepareStatement("SELECT perid FROM tbl_perfil WHERE pernombre=?");
@@ -254,7 +255,7 @@ public void eliminarunPerfilesUsuario(String pernombre, String usuario) {
             
             try {
         // Conectar a la base de datos
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, "123456");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyectop312023?useSSL=false&serverTimezone=UTC", usuariobd, contrabd);
         
         // Obtener el perid del perfil seleccionado
         Statement stmt = con.createStatement();

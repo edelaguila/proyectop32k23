@@ -141,6 +141,12 @@ int codigoAplicacion = 3002;
         lbNombreTienda.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lbNombreTienda.setText("Nombre");
 
+        txtTiendabuscado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTiendabuscadoActionPerformed(evt);
+            }
+        });
+
         txtNombreTienda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombreTienda.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
@@ -412,6 +418,10 @@ int codigoAplicacion = 3002;
     private void txtTipoTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoTiendaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoTiendaActionPerformed
+
+    private void txtTiendabuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiendabuscadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTiendabuscadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

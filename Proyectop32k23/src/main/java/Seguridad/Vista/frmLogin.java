@@ -5,6 +5,7 @@
  */
 package Seguridad.Vista;
 
+import Inventarios.Vista.MdiInventario;
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
@@ -13,8 +14,12 @@ import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
+<<<<<<< HEAD
 import Cuentas_Corrientes.Vista.MdiCCorrientes;
 
+=======
+import Bancos.Vista.MdiBancos;
+>>>>>>> 57dc5dc0f34dbaa44fb8c76fb0811adfd8fd3635
 /**
  *
  * @author visitante
@@ -29,7 +34,7 @@ public class frmLogin extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
-        setSize(300, 200);
+        setSize(350, 250);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -175,7 +180,7 @@ public class frmLogin extends javax.swing.JFrame {
                 usuario.setContrasenaUsuario(c.encode(txtContraseña.getText()));
                 
                 usuario = usuario.getBuscarInformacionUsuarioPorNombre(usuario);
-                if (txtContraseña.getText().equals(usuario.getContrasenaUsuario()) && 
+                if (c.encode(txtContraseña.getText()).equals(usuario.getContrasenaUsuario()) && 
                     txtUsuario.getText().equals(usuario.getNombreUsuario())) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al SISTEMA\n", 
                     "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
@@ -201,7 +206,7 @@ public class frmLogin extends javax.swing.JFrame {
 
                         case "Bancos":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiBancos menu = new MdiBancos();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
@@ -228,7 +233,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "Inventarios":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiInventario menu = new MdiInventario();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {

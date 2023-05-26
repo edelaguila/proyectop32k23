@@ -1,0 +1,1459 @@
+commit 1d1ffcbfa144d6ab9419e65a5267aa5804092a31
+Merge: 4bd68c8 aaa3eeb
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Mon May 15 12:09:20 2023 -0600
+
+    Resolviendo conflicto en repo 15 may 2023
+
+commit 4bd68c84a7eb747c2436644848f7bea7e1cb89a3
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Mon May 15 12:07:16 2023 -0600
+
+    Agregando script LMD Seguridad
+
+commit aaa3eeb472ea989247198aa0bcc23bec2e990b92
+Merge: f062c76 d4afcd3
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Mon May 15 11:44:19 2023 -0600
+
+    Merge pull request #33 from CarlosSandoval2003/Grupo3_Mantenimientos_Modulo_Ventas
+    
+    Grupo3 Mantenimientos Modulo Ventas
+
+commit d4afcd340b3432b2be3b5022172997fc1b0341de
+Merge: d2f6b64 f062c76
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Wed May 10 22:50:15 2023 -0600
+
+    Merge branch 'main' into Grupo3_Mantenimientos_Modulo_Ventas
+
+commit f062c769a98ca199ccf201373af52eaf898d8ddb
+Merge: 25bca49 5994777
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed May 10 16:09:21 2023 -0600
+
+    Merge pull request #31 from Alan2300/main
+    
+    Equipo 4. Aplicación perfil y Mantenimiento de Transacciones CC
+
+commit d2f6b64712ffee22877db4c2972917b057f9afa7
+Merge: 062059b f891511
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Wed May 10 12:47:36 2023 -0600
+
+    Merge pull request #29 from CarlosSandoval2003/Grupo3_Mantenimientos_Modulos_Ventas
+    
+    Grupo3 mantenimientos modulos ventas
+
+commit f8915119c7b5e5443ab11c79c9582803f56260ea
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Wed May 10 12:46:06 2023 -0600
+
+    Correccion en combo Box del login agregando Ventas
+
+commit 41629f98ae4734394e24ea0eded29d2a0d450053
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Wed May 10 12:43:24 2023 -0600
+
+    Correcion en apartado Email de daoVendedores
+
+commit 062059b5d1792890c5673d0135bd1227d1208024
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue May 9 19:38:44 2023 -0600
+
+    Agregando el Script de Ventas
+
+commit 44a340579de2110a5f4b1be7f9c4c228bddfda30
+Merge: 7f1ffef f744c64
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue May 9 19:33:32 2023 -0600
+
+    Merge pull request #28 from CarlosSandoval2003/PruebaModificacionLoginVentas
+    
+    Se modificó el Login para agregar el acceso al MdiVentas
+
+commit f744c643ecf6ea702f13dbc259b398d65d589909
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue May 9 19:31:49 2023 -0600
+
+    Se modificó el Login para agregar el acceso al MdiVentas
+
+commit 7f1ffef2b15d1dec46b9eb5b8cd1e5573d697dae
+Merge: 17fbae5 2908445
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue May 9 19:24:10 2023 -0600
+
+    Merge pull request #27 from CarlosSandoval2003/MantenimientoVendedores
+    
+    Mantenimiento vendedores
+
+commit 2908445eca8cb87d4266368a7da6d32b45f59fa7
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue May 9 19:21:17 2023 -0600
+
+    Mantenimiento Clientes Corregido
+
+commit 2da74d79e40881aeb964f1ab1bf975342026c2d8
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue May 9 18:50:39 2023 -0600
+
+    DaoClientes Corregido
+
+commit dd96edbbf230d8665635c3bcd4d88e4f6a490b73
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue May 9 18:45:26 2023 -0600
+
+    clsClientes Corregida
+
+commit 66cc646b440ab03ca649393733ecb0e47dcba2f1
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue May 9 18:16:40 2023 -0600
+
+    Correcciones Generales en Ventas.Modelo
+
+commit 17fbae51abc1127636845795cc1827165ff984b2
+Merge: bd55fb2 77b242a
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue May 9 15:18:23 2023 -0600
+
+    Merge pull request #26 from Carlos-Hernandez04/mantenimientovendedores
+    
+    se agrego el mantenimiento de vendedores
+
+commit bd55fb2abc4af6e85033a0c2f7e732a1e26bc92d
+Merge: c5907cf a43b3df
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue May 9 15:18:12 2023 -0600
+
+    Merge pull request #25 from MariaVelizO/DaoVendedores_Modelo
+    
+    Subiendo Modelo daoVendedores
+
+commit c5907cf09ec28b59b026b28847201053f0c37b7d
+Merge: 25bca49 32f62f8
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue May 9 15:17:53 2023 -0600
+
+    Merge pull request #24 from MeyglinRosales/Controlador_clsVendedores
+    
+    Subiendo clsVendedores del Controlador
+
+commit 77b242af52fa901ebf5cad664ff256fcc3011f5b
+Author: Carlos-Hernandez04 <chernandezg37@miumg.edu.gt>
+Date:   Mon May 8 22:46:28 2023 -0600
+
+    se agrego el mantenimiento de vendedores
+
+commit a43b3dfb0c3bbfd86e8490c8094566959d8411c4
+Author: María José Véliz <mvelizo1@miumg.edu.gt>
+Date:   Mon May 8 21:55:27 2023 -0600
+
+    Subiendo Modelo daoVendedores
+
+commit 32f62f8e9e3b8a637f75c7d203b983428b849475
+Author: MeyglinRosales <mrosaleso3@miumg.edu.gt>
+Date:   Mon May 8 21:51:45 2023 -0600
+
+    Subiendo clsVendedores del Controlador
+
+commit 59947779943eaac910062a9d7378232440235353
+Author: Alan Galicia <agaliciar4@miumg.edu.gt>
+Date:   Mon May 8 11:25:51 2023 -0600
+
+    agregando script de transacciones y alter de aplicacion perfil
+
+commit 08fe08871b9022ce7f3601f323b0ad01cc85dd42
+Merge: eb7f9a5 de3527f
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Sat May 6 21:25:26 2023 -0600
+
+    Merge pull request #21 from DiegoCortezUMG/main
+    
+    Arreglado el mantenimiento transacciones
+
+commit de3527fd09b7fa6a4311e19034c14684090c59ab
+Author: DiegoCortezUMG <98113773+DiegoCortezUMG@users.noreply.github.com>
+Date:   Sat May 6 21:10:51 2023 -0600
+
+    arreglado el mantenimiento al cambiar el dao
+
+commit a809ae4c5227aca852111e92857c12ca449d86b5
+Author: DiegoCortezUMG <98113773+DiegoCortezUMG@users.noreply.github.com>
+Date:   Sat May 6 19:22:30 2023 -0600
+
+    correciones menores en el dao
+
+commit 42662a06a5c2a3fc52a8cea95c237da875672677
+Merge: b412240 eb7f9a5
+Author: DiegoCortezUMG <98113773+DiegoCortezUMG@users.noreply.github.com>
+Date:   Sat May 6 19:15:06 2023 -0600
+
+    resuleto un merge conflict y unos problemas en el dao
+
+commit b4122401da67c70c424afdb22e38c1fd9633da2e
+Author: DiegoCortezUMG <98113773+DiegoCortezUMG@users.noreply.github.com>
+Date:   Sat May 6 18:45:46 2023 -0600
+
+    correcciones a las tablas sql en el dao
+
+commit eb7f9a5113ed24e5c43aaa70508c9d9364bfa76b
+Merge: 0ae6a43 7ed852e
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Sat May 6 18:36:49 2023 -0600
+
+    Merge pull request #19 from DanielHall2219/main
+    
+    Subiendo arreglos dao y cls de cuentas corrientes
+
+commit 7ed852eea8ddaf5f1386765ba34407a10a7b1f2f
+Author: Daniel Hall <dhalla@miumg.edu.gt>
+Date:   Sat May 6 17:09:47 2023 -0600
+
+    Subiendo arreglos dao y cls de cuentas corrientes
+
+commit 0ae6a43b70b57b88f995095e7ef8cbea1581bdeb
+Merge: 100e51d d7fab54
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Sat May 6 16:48:52 2023 -0600
+
+    Merge pull request #18 from Monica-Perez/main
+    
+    Subiendo frmMantenimientoTransaccionesCC
+
+commit d7fab549964164fe7b812e206ec8de89de223652
+Author: Monica Perez <mperezv32@miumg.edu.gt>
+Date:   Fri May 5 22:45:52 2023 -0600
+
+    Subiendo frmMantenimientoTransaccionesCC
+
+commit 100e51d86b66f7c1fa2779312f81db756239c690
+Merge: 71b0847 d7e678f
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Fri May 5 17:48:38 2023 -0600
+
+    Merge pull request #17 from DiegoCortezUMG/main
+    
+    Añadido el daoTransaccionesCC y unos métodos a su clase
+
+commit d7e678f1cd4d4ef7dcf0f61108151a4abdb5dbd7
+Author: DiegoCortezUMG <98113773+DiegoCortezUMG@users.noreply.github.com>
+Date:   Fri May 5 17:40:43 2023 -0600
+
+    añadido el daoTransaccionesCC y unos métodos a su clase
+
+commit 71b0847cd920ab2db73a4652b04d1ed8295e7cd6
+Author: Alan Galicia <agaliciar4@miumg.edu.gt>
+Date:   Fri May 5 16:15:12 2023 -0600
+
+    subiendo inicializacion de mantenimiento de transacciones cuentas corrientes y cls terminado
+
+commit 39762ac3cb391aa20bf3bbfde9f14748645de959
+Author: Alan Galicia <agaliciar4@miumg.edu.gt>
+Date:   Fri May 5 12:33:14 2023 -0600
+
+    enviando programa con menu de aplicacion perfil en procesos
+
+commit 08f8861cad715d75fc7e58eec96c6145d3c41b5f
+Merge: c0d9b40 25bca49
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Fri May 5 12:14:28 2023 -0600
+
+    Merge branch 'edelaguila:main' into main
+
+commit 25bca49eef5351035f86c59d8959e2a365b1d2ce
+Merge: bb7ed5c 19e0712
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Fri May 5 12:02:11 2023 -0600
+
+    Merge pull request #25 from ronahect29/main
+    
+    Se arreglaron los problemas del equipo 1
+
+commit c0d9b4030e3e2a6185beaf05234e4198c664fef0
+Author: Alan Galicia <agaliciar4@miumg.edu.gt>
+Date:   Fri May 5 11:16:39 2023 -0600
+
+    enviando aplicacionPerfil con proyecto actualizado
+
+commit bb7ed5cb67bccf8be1d03e912accde30acb66c1c
+Merge: 92580a5 496995d
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Fri May 5 10:35:18 2023 -0600
+
+    Merge pull request #24 from CarlosSandoval2003/main
+    
+    Implementacion Perfil Usuario Final Grupo3
+
+commit 19e071214d8d1fce20037ea544f32048bcbe5807
+Merge: 1a8f7c9 458b8bc
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Fri May 5 09:28:26 2023 -0600
+
+    Merge pull request #25 from Carlos-David-Rojas-Coronado/main
+    
+     se elimino código excedente
+
+commit 496995defb507be82f397b91622b41ec9d961857
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Fri May 5 08:12:57 2023 -0600
+
+    Eliminacion de archivos no utilizados
+
+commit d78e8165dea1c8f0cf5c9e8c2025cf15a7f6a0e1
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Fri May 5 08:07:27 2023 -0600
+
+    Cambios en Variables de Tienda
+
+commit c970cf4606cd7026a243146eca0b0359969943a0
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Fri May 5 07:50:18 2023 -0600
+
+    Correcciones en Mantenimiento Tiendas
+
+commit 6315493306395d29e704179f58727728934d98f9
+Merge: cfbc4d7 0e1b321
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Fri May 5 07:16:00 2023 -0600
+
+    Merge pull request #23 from MariaVelizO/Daotienda_Modelo
+    
+    Subiendo Modelo daoTienda
+
+commit cfbc4d763575ef0cb8d5b70e057e0e1c116c7841
+Merge: a39cb3b e2848a4
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Fri May 5 07:15:49 2023 -0600
+
+    Merge pull request #22 from Carlos-Hernandez04/vistatienda
+    
+    agregue el mantenimetno de la tienda
+
+commit a39cb3bf2c699e55a6d309a4df94458c18a3c72c
+Merge: d359b40 d53d92e
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Fri May 5 07:15:26 2023 -0600
+
+    Merge pull request #21 from MeyglinRosales/Controlador_clsTienda
+    
+    Subiendo la clase de tienda en controlador
+
+commit 0e1b321d2405e67e4d4663807300bfc190a8b86f
+Author: María José Véliz <mvelizo1@miumg.edu.gt>
+Date:   Thu May 4 22:52:21 2023 -0600
+
+    Subiendo Modelo daoTienda
+
+commit d53d92e3ca038de65faed440a3080652bcd3e90d
+Author: MeyglinRosales <mrosaleso3@miumg.edu.gt>
+Date:   Thu May 4 22:43:16 2023 -0600
+
+    Subiendo la clase de tienda en controlador
+
+commit e2848a49d73a56f5af6b13c4a0259d2d056ca8bf
+Author: Carlos-Hernandez04 <chernandezg37@miumg.edu.gt>
+Date:   Thu May 4 22:43:12 2023 -0600
+
+    agregue el mantenimetno de la tienda
+
+commit 458b8bc6add3f8db9476db36d192c5c70bfc7562
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Thu May 4 22:42:18 2023 -0600
+
+     se elimino codigo ecxedente
+
+commit 1a8f7c9c67eeb74b5d075e69f307182776f87cb1
+Merge: ad75fa5 49cc04d
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 22:06:29 2023 -0600
+
+    Merge pull request #24 from afernan2001/main
+    
+    Agregado encriptacion de contraseñas y codigo bitacora
+
+commit 49cc04dfd3b4176a5bd593b33ec0ca58077247a7
+Author: Anthony Avalos <98932340+afernan2001@users.noreply.github.com>
+Date:   Thu May 4 22:01:39 2023 -0600
+
+    agregando encriptacion de contraseña en registrar y modificar, agragado bitacora
+
+commit 6f10bf14e2baf38fccc8e1647d1552184179ff3f
+Author: Anthony Avalos <98932340+afernan2001@users.noreply.github.com>
+Date:   Thu May 4 21:56:07 2023 -0600
+
+    Agregando encriptacion de contraseña y botones bitacora
+
+commit ad75fa55c0091a93ad32d8bda2a62664a5a65f3c
+Merge: 338da7a 5f8d8cf
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 21:05:15 2023 -0600
+
+    Merge pull request #23 from afernan2001/main
+    
+    Boton actualizar, con codigo bitacora nuevo
+
+commit 5f8d8cf74ec099704c611e82afefbafa90586c51
+Author: Anthony Avalos <98932340+afernan2001@users.noreply.github.com>
+Date:   Thu May 4 21:02:54 2023 -0600
+
+    Boton actualizar, con codigo bitacora
+
+commit 338da7a24d623bc5f7b75a5a2b428f8af8acd4a7
+Merge: 62311c9 22f885b
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 20:37:53 2023 -0600
+
+    Merge pull request #22 from Carlos-David-Rojas-Coronado/main
+    
+    se agrego clase seguridad para el cifrado
+
+commit d359b40635b361e0bc0d1a9d756342428518195c
+Merge: ddcc3e9 24eb4d5
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Thu May 4 20:28:24 2023 -0600
+
+    Merge pull request #20 from CarlosSandoval2003/MantenimientosTablasMaestras
+    
+    Mantenimiento Clientes Corregido
+
+commit 24eb4d515fac75820d993e01880243455cb0709e
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Thu May 4 20:26:20 2023 -0600
+
+    Cambio de Nombre Variables en Clientes
+
+commit 22f885bd8468c8c3cc287925501833b399f977b9
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Thu May 4 19:33:09 2023 -0600
+
+    se agrego clase seguridad para el cifrado
+
+commit e375a6128557cdc278629a427fbd9cc656c6b473
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Thu May 4 18:36:55 2023 -0600
+
+    Agregando Comentarios a Clientes
+
+commit e3edd8e195e93e6773231790e5cf71a75f08696e
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Thu May 4 18:12:41 2023 -0600
+
+    Creacion de frmMantenimientoClientes
+
+commit 857c3271856439d07deae7292997bccb75e4e424
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Thu May 4 18:12:01 2023 -0600
+
+    Creacion de DaoClientes
+
+commit e79e05bf8dc3de26eed2ab895468e7bfb1ba7706
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Thu May 4 18:11:33 2023 -0600
+
+    Creacion de ClsClientes
+
+commit 323d48c9e6db2ec0e92b0f59915b6cc1d620d8ff
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Thu May 4 18:09:47 2023 -0600
+
+    Creacion de MDIVentas Provisional
+
+commit 62311c97bb2b1274b6aeff54c15f90e9dcfab7ef
+Merge: 496a401 aa76e71
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 17:26:43 2023 -0600
+
+    Merge pull request #21 from Carlos-David-Rojas-Coronado/main
+    
+     se agrego bitácora a los botones Ayuda y Buscar
+
+commit aa76e71bbc10d66ff0da44389c66312c935c9574
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Thu May 4 15:53:33 2023 -0600
+
+     se agrego bitacora a los botones Ayuda y Buscar
+
+commit 496a40147c37039218d5c7fec7b8dab3902ea88f
+Merge: ae63419 d2a65a4
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 14:33:55 2023 -0600
+
+    Merge pull request #20 from VictorJJerezm/main
+    
+    Se agrega codigo switch case para las opciones del nuevo login
+
+commit d2a65a41620bfe7aa416ea68ae3f6327d4c7cb96
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu May 4 14:27:29 2023 -0600
+
+    Se agrega codigo switch case para las opciones del nuevo login
+
+commit ae634193e0cbf5a42e9e858ed34e41eed8e1c0b0
+Merge: 474d739 25cf017
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 14:18:39 2023 -0600
+
+    Merge pull request #19 from VictorJJerezm/main
+    
+    Se agrega codigo de la bitacora en los botones eliminar y limpiar
+
+commit 25cf0178cdaa96791b3680ce08263656b8430597
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Thu May 4 14:15:48 2023 -0600
+
+    Se agrega codigo de la bitacora en los botones eliminar y limpiar
+
+commit 474d7397970eaf23d181f68acc091d754186c7bb
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 14:10:04 2023 -0600
+
+    se agrega el diseño del nuevo login
+
+commit a6b0bfa5ed2fca539e15ff8b102bd95551d5cc7a
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Thu May 4 13:57:35 2023 -0600
+
+    se agrega el codigo bitacora en botones registrar y modificar
+
+commit ddcc3e9509101d97fa02047cda4e97199e052266
+Merge: 92580a5 dce6664
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Wed May 3 15:38:52 2023 -0600
+
+    Merge pull request #18 from CarlosSandoval2003/Perfil_Usuario_Final_Grupo3
+    
+    Implementacion PerfilUsuario al Proyecto
+
+commit dce6664cababba904be72ac8371f234fd20c2bd0
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Wed May 3 15:37:42 2023 -0600
+
+    Implementacion PerfilUsuario al Proyecto
+
+commit 92580a503e94c5f56407694137705d3ad4dc30e7
+Merge: a34d919 0ee3f64
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed May 3 14:14:01 2023 -0600
+
+    Merge pull request #20 from CarlosGonzalez20/Grupo5_AplicacionUsuario
+    
+    Grupo5 aplicacion usuario
+
+commit a34d91998ab2a1261fc8f2aaa8158dd23a68eae2
+Merge: c08d73c c55af52
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed May 3 14:12:05 2023 -0600
+
+    Merge pull request #15 from CarlosGonzalez20/grupo5-prototipoDeAplicacionUsuario
+    
+    Grupo5 prototipo de aplicacion usuario
+
+commit c08d73c21037032e29d0faec1187c9dc94345b1b
+Merge: f95c0a3 996b80a
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed May 3 14:11:41 2023 -0600
+
+    Merge pull request #14 from CarlosSandoval2003/Mantenimiento_Perfil_Equipo3
+    
+    Bitacora Perfil equipo3
+
+commit f95c0a376c23d5dfa018a46d263f709be77f22d5
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed May 3 14:10:29 2023 -0600
+
+    Creacion de nuevas carpetas para cada modulo del sistema
+
+commit 479fa2e16d75c35b9da1947735577c652e25a8de
+Merge: 602edfc 4502970
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed May 3 10:59:28 2023 -0600
+
+    Merge pull request #12 from CarlosGonzalez20/grupo5_bitacora
+    
+    Grupo5 bitacora
+
+commit 0ee3f64ced534175b0e5131ce05dba7eeb7f6d87
+Merge: 7f90e9d 7418299
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Fri Apr 14 10:13:44 2023 -0600
+
+    Merge pull request #19 from 567ALYSON-RODRIGUEZ/Bitacora_Botones
+    
+    Bitacora botones
+
+commit 7418299c7c2015192e91b9d7773581c68e6c9434
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Thu Apr 13 21:19:33 2023 -0600
+
+    Agregando bitácora en btnAgregarUno y btnAgregarTodos
+
+commit 07fb35e0899e43967786d4fe7018c54eded64afb
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Thu Apr 13 21:18:01 2023 -0600
+
+    Agregando bitácora en btnEliminarUno y btnEliminarTodos
+
+commit 27e256f4c72db5f2d8394e6806dafa370556409f
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Thu Apr 13 21:05:41 2023 -0600
+
+    Agregando código de aplicación y bitácora en btnBuscar
+
+commit 7f90e9d87528a638b909322ce4bdd49fd89446af
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Wed Apr 12 15:53:45 2023 -0600
+
+    agregando comboBox para colocar todas las ID, pero no me funcionó. También se agregó la función de buscar las alicaciones asignadas a un usuario, pero solo funciona con un registro
+
+commit bf98ffb50e47ba0042118f7d07feacd71208f79e
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Wed Apr 12 14:33:08 2023 -0600
+
+    agregando funcion de buscar aplicacines asiganadas a un usuario el cual ya tiene aplicaciones asignadas, completando funcionalidad del boton buscar
+
+commit e4fb5480915237b4d585a5feaa2a177ff4eccc43
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Wed Apr 12 13:21:28 2023 -0600
+
+    corrigiendo error en la clase aplicacion usuario
+
+commit ccb334b823bdca89fd5f3eb24c8bc0097b657503
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Wed Apr 12 10:42:50 2023 -0600
+
+    corrigiendo condicionales en los botones
+
+commit 64df23db0ba625b7c1dccffca82bbbe82bdc16ca
+Merge: 67ba777 aaf76d7
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Wed Apr 12 10:26:57 2023 -0600
+
+    Merge pull request #18 from NelsonUMG/main
+    
+    agregando mas funciones en boton de quitar
+
+commit aaf76d73a06377e319b63f8bf340bd1c42c9e37d
+Author: NelsonUMG <npinedac3@miumg.edu.gt>
+Date:   Wed Apr 12 10:25:04 2023 -0600
+
+    agregando mas funciones en boton de quitar
+
+commit 67ba777de1cb82e59a5858e8d7e4c0e35df6d559
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Wed Apr 12 09:30:17 2023 -0600
+
+    corrigiendo espaciado de líneas, y agregando condicionales a los botones de la forma Aplicacion Usuario
+
+commit 4830d2321248e1c6cea625f9a997a4d5fff0fe1a
+Merge: f7e8dc0 810ed0a
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Wed Apr 12 09:19:37 2023 -0600
+
+    Merge pull request #17 from vesania-sofia/main
+    
+    correcciones del boton borrar uno dao y clase de aplicacion usuario
+
+commit 810ed0aaccaa8ee81956590648db3d7b97392211
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 09:08:32 2023 -0600
+
+    corrigiendo el were del dao aplicacionusuario
+
+commit 10293ad47a4ac85f81ec0103c079200128f8db81
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 09:07:13 2023 -0600
+
+    cambios al boton borraruno de vista aplicacion usuario
+
+commit 58768bd45af476cc2a6d7f57efe89ad366e15364
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 09:00:32 2023 -0600
+
+    cambios al dao y clase aplicacion usuario
+
+commit 1c43a0bb2e2ffceab06204c4931e37b9853d471a
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 08:35:08 2023 -0600
+
+    reestructuracion del boton borrar uno de aplicacion usuario
+
+commit 6dac006395ee38907c042af42f09f5a301941abb
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 08:12:58 2023 -0600
+
+    agregando usuid a SQL DELETE
+
+commit 912c835fb141a915be590545ae5045e805deb87f
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 08:01:26 2023 -0600
+
+    correcciones del codigo de boton quitar uno en aplicacion usuario
+
+commit 56226a9406da193920c6696104153f6ac192a799
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Wed Apr 12 08:00:07 2023 -0600
+
+    agregando claseusuario al boton quitar uno en aplicacion usuario
+
+commit f7e8dc07f04bc2e2d3e0fe6c51b5b4c618622a82
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Tue Apr 11 21:39:46 2023 -0600
+
+    arreglando errores menores en clsAplicacionUsuario, en setBorrarTodoAplicacion
+
+commit f147b7c6b5a98b3671c5136755dda0f7c6451b9f
+Merge: 325dd1c aca74c9
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Tue Apr 11 21:31:38 2023 -0600
+
+    Merge pull request #16 from NelsonUMG/main
+    
+    añadiendo código de quitar todo en funcion de la base de datos
+
+commit aca74c93b67071e0cdc55a653e3baf18b9561b03
+Author: NelsonUMG <npinedac3@miumg.edu.gt>
+Date:   Tue Apr 11 21:26:33 2023 -0600
+
+    añadiendo código de quitar todo en funcion de la base de datos
+
+commit 325dd1c942378edee062f55af9064c61ed18cdee
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Tue Apr 11 20:27:24 2023 -0600
+
+    solucionando un error en la clase y dao aplicacionUsuario, en el método de borrarAplicacionUsuario
+
+commit 538a4eb4765f33ce586527fecd81936abfbcfa91
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Tue Apr 11 20:19:31 2023 -0600
+
+    agregando llenado de tablas a AplicacionUsuario y funcionalidadcompleta de los botones agregar 1 aplicacion y agregar todas las aplicaciones
+
+commit 72c133d8e4f8896edd47def90ac77d8aacc85e62
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Mon Apr 10 09:37:36 2023 -0600
+
+    reajustando dimensiones de textFields y labels
+
+commit 9437ce604fd0a2254917e5022f3127f02c60ef06
+Merge: c55af52 27a147a
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Mon Apr 10 08:52:11 2023 -0600
+
+    Merge pull request #15 from vesania-sofia/main
+    
+    agregado la confirmación de la contraseña y editando el botón registrar de mantenimiento usuario
+
+commit 27a147a811dd668236aa7942e4050a4e18f554e0
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Mon Apr 10 08:40:20 2023 -0600
+
+    correcciones al boton registrar de mantenimiento usuario
+
+commit da8d7269c190c0ca2351ae0125f182f9d8097038
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Mon Apr 10 08:09:49 2023 -0600
+
+    modificado el boton registrar de mantenimiento usuario
+
+commit da7615df0dd6d108f4f8257c53f8ae4a2b929135
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Mon Apr 10 08:02:47 2023 -0600
+
+    agregando confirmar contraseña en vista mantenimiento usuario
+
+commit c55af52a2314b5a888edd77bda14be84b5eba7b5
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Sun Apr 2 16:22:37 2023 -0600
+
+    corrigiendo errores de espaciado y tipeado en los cuatro botones
+
+commit 29aeba06a0f6ad5c26fa54bbc6ff9df4c2fdfb75
+Merge: ed89976 c915047
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Sun Apr 2 15:52:51 2023 -0600
+
+    Merge pull request #14 from 567ALYSON-RODRIGUEZ/main
+    
+    Botón agregar uno y todos en frmAplicacionUsuario
+
+commit c91504795e4c0e7b4a5da00c2af4cfd21268242d
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Sun Apr 2 15:50:07 2023 -0600
+
+    Botón agregar uno y todos en frmAplicacionUsuario
+
+commit ed8997653ceb66238920fd19682e4ed49ab96b77
+Merge: cf1bf9e 79377f9
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Sun Apr 2 15:19:28 2023 -0600
+
+    Merge pull request #12 from NelsonUMG/main
+    
+    subiendo función de eliminar todo en la tabla
+
+commit 79377f910ef98c978faf0d352377a08aba663c13
+Author: NelsonUMG <npinedac3@miumg.edu.gt>
+Date:   Sun Apr 2 15:15:28 2023 -0600
+
+    subiendo función de eliminar todo en la tabla
+
+commit cf1bf9e57535cf1a66e5c23edff7bb1026f8d252
+Merge: e3cdaae 0f1a643
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Sun Apr 2 15:03:28 2023 -0600
+
+    Merge pull request #10 from vesania-sofia/main
+    
+    boton eliminar uno agregado
+
+commit 0f1a6435565f7f6429d9de82b9439564822e3968
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Sun Apr 2 00:41:18 2023 -0600
+
+    agregado el codigo del boton eliminar uno
+
+commit 69474c02e44a944bafb71279ac50524e456d4183
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Sun Apr 2 00:38:35 2023 -0600
+
+    agregado el boton eliminar uno
+
+commit e3cdaae9062a61e929a86d8342e9dd8af105d636
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Fri Mar 31 13:21:21 2023 -0600
+
+    agregando detalles a la forma transaccional de aplicacion-usuario
+
+commit b1dbcb05a73504683e8dc3b7b2960a4c9aad4ddf
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Fri Mar 31 09:49:49 2023 -0600
+
+    agregando forma de tabla transaccional Aplicacion-Usuarios
+
+commit 996b80a66f1332f779146cc440fd0f39d65989e6
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Wed Mar 29 15:29:50 2023 -0600
+
+    Codigo Aplicacion y Buscar Corregidos
+
+commit 45029709e3ec851766a7a6206b2f8d79c972f31b
+Merge: 49d5b4b aceaa86
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Mon Mar 27 12:25:46 2023 -0600
+
+    Merge pull request #8 from 567ALYSON-RODRIGUEZ/main
+    
+    Cambio de variable del método bitácora en botón eliminar
+
+commit 49d5b4bb430eeee4e58fa450b55b15b238e74ac0
+Merge: 8f718e5 c6829a0
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Mon Mar 27 12:25:27 2023 -0600
+
+    Merge pull request #9 from NelsonUMG/main
+    
+    Agregando cambios en el boton de buscar de REA a QRY
+
+commit c6829a05b21623f3445b7f4f54300eb813e9c157
+Author: NelsonUMG <npinedac3@miumg.edu.gt>
+Date:   Mon Mar 27 12:06:15 2023 -0600
+
+    Agregando cambios en el boton de buscar de REA a QRY
+
+commit aceaa865140a16606aa980f4f303b10ed3c66484
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Mon Mar 27 12:04:59 2023 -0600
+
+    Cambio de variable del metódo bitacóra en botón eliminar
+
+commit 8f718e555e59b9f73f2c71e26851dcaa5c76207f
+Merge: 2455cf2 d8f28c1
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Mon Mar 27 11:44:27 2023 -0600
+
+    Merge pull request #7 from vesania-sofia/main
+    
+    se corrigio el usuarioregistrado por la claseusuarioconectado en el b…
+
+commit d8f28c108ba4735ae8698fb41c9447175f436290
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Mon Mar 27 11:35:37 2023 -0600
+
+    se corrigio el usuarioregistrado por la claseusuarioconectado en el boton modificar
+
+commit 2455cf24931209126eb0316aefe9386b1a29eed5
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Mon Mar 27 11:30:05 2023 -0600
+
+    corrigiendo numeroAplicación a 10, cambiando referencia de la bitácora a clsUsuarioConectado, en el botón registrar, mantenimiento usuarios
+
+commit 57b706927a7d7bf8022dc9545ee585230fa3bad3
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Mon Mar 27 10:59:56 2023 -0600
+
+    corrigiendo errores de import
+
+commit 7cad92ac34f8436908dd08e163f19f6ad93b95dc
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Sun Mar 26 20:56:42 2023 -0600
+
+    Correcion Bitacoras: Agregado llamado a clsUsuarioConectado
+
+commit eb6459169a42c04b4174a26536eaa265c2617e31
+Merge: c40143b ec59863
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Sun Mar 26 20:20:31 2023 -0600
+
+    Merge pull request #6 from 567ALYSON-RODRIGUEZ/main
+    
+    Agregando bitácora en botón eliminar de ClsUsuarios
+
+commit ec59863e774b58b6aceb8ef7d98b5bd5734f6468
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Sun Mar 26 19:36:11 2023 -0600
+
+    Agregando bitácora en botón eliminar de ClsUsuarios
+
+commit b2f44ac1180b266ad5370410b0240811533d6a96
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Sun Mar 26 19:28:27 2023 -0600
+
+    Bitacora Boton Modificar Agregada
+
+commit 8b6b9cee2848236dd0682e208f1f400c1c8d1465
+Merge: 73a2814 11fa013
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Sun Mar 26 19:08:30 2023 -0600
+
+    Uniendo rama de Bitacora del boton buscar
+    
+    Agregando bitácora para el botón de buscar
+
+commit 11fa01388df69b1f42c195c4979f9261bf71bb78
+Merge: 3a3334e 73a2814
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Sun Mar 26 19:08:07 2023 -0600
+
+    Merge branch 'main' into Bitacora_buscar
+
+commit 73a28145e1a703cab5894f592e084e1b61c39ede
+Merge: dc0b6d7 77f9c9f
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Sun Mar 26 19:07:17 2023 -0600
+
+    Agregando rama de bitacora del boton registrar
+    
+    Agregando bitacora para botón registrar
+
+commit 77f9c9ffd67097ff725b487cd7b98bca9bf4661f
+Merge: 3a54f34 dc0b6d7
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Sun Mar 26 19:06:55 2023 -0600
+
+    Merge branch 'main' into bitacoraRegistrar
+
+commit dc0b6d777a54b9de92a8d6b8e0cde201328bf13e
+Merge: 602edfc 25508d8
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Sun Mar 26 19:04:42 2023 -0600
+
+    Uniendo Rama de Bitacora del boton eliminar
+    
+    agregue la bitácora al botón eliminar
+
+commit 3a3334eb7cae026a4ab68785ac760ce28a4e2f17
+Author: MeyglinRosales <mrosaleso3@miumg.edu.gt>
+Date:   Sun Mar 26 18:45:24 2023 -0600
+
+    Agregando bitacora para el boton de buscar
+
+commit 3a54f34099c085e80cc8ffafdf7caacabbabdd23
+Author: María José Véliz <mvelizo1@miumg.edu.gt>
+Date:   Sun Mar 26 18:21:51 2023 -0600
+
+    Agregando bitacora para botón registrar
+
+commit 25508d89c0bd94b54c62ca756bcf7198cb446d96
+Author: Carlos-Hernandez04 <chernandezg37@miumg.edu.gt>
+Date:   Sun Mar 26 18:11:53 2023 -0600
+
+    agregue la bitacora al boton eliminar
+
+commit c40143b6004bd549a0c4b3413104cc4f7899e4b4
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Sun Mar 26 15:57:09 2023 -0600
+
+    eliminando código de más en clsBitácora (código innecesario)
+
+commit 8d9bac5d14d168c8f5c032b01db3efe9e7f87f70
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Sun Mar 26 15:39:49 2023 -0600
+
+    corrigiendo referencia a la bitácora en el botón ingresar, mantenimiento ususarios
+
+commit c19d98ec780c1a4ef7c7ac098866f90e78a4120f
+Merge: b33a339 2ca34f9
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Sun Mar 26 15:36:40 2023 -0600
+
+    Merge pull request #4 from NelsonUMG/main
+    
+    agregando función de bitácora en el botón buscar
+
+commit b33a33935b69e470dae4296f7790c8778d907c0e
+Merge: a52ea35 4fe1bb3
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Sun Mar 26 15:34:39 2023 -0600
+
+    Merge pull request #5 from vesania-sofia/main
+    
+    se agrego bitacora al boton modificar
+
+commit 4fe1bb31ff6cfc2744c24bdf9f6cdbaadf7bb201
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Sun Mar 26 15:25:45 2023 -0600
+
+    se agrego bitacora al boton modificar
+
+commit 2ca34f9a5aea0cf3a2d96603293bd0a69c718fea
+Author: NelsonUMG <npinedac3@miumg.edu.gt>
+Date:   Sun Mar 26 15:18:23 2023 -0600
+
+    agregando función de bitácora en el botón buscar
+
+commit a52ea35911ea391eee08b0f09333c860f09607b3
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Sun Mar 26 13:31:15 2023 -0600
+
+    agregando función de registro en bitácora, en el apartado de mantenimiento usuarios, en el botón agregar
+
+commit 602edfc08629060e34d7934256aa3249e3397f79
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Fri Mar 24 08:15:58 2023 -0600
+
+    Agregando clase usuario conectado
+
+commit aff72be787dd020d0128a1f20237576849f24f49
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 17:50:14 2023 -0600
+
+    Agregando MdiSeguridad
+
+commit cc00994a0f6e1b82e531df73b7b3baccd0391d44
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 16:00:41 2023 -0600
+
+    Cambios en Script General BD
+
+commit 2f4b482aed226141a0ef1477ab98eee0f519eac2
+Merge: 62f0c58 e29cb2f
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 15:49:03 2023 -0600
+
+    Revisión y actualización con PR cuatro equipos
+
+commit e29cb2f2b04b7c8bb9e356452ecb5dfd92015c79
+Merge: 8d9f7b6 0e0490d
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed Mar 15 15:45:44 2023 -0600
+
+    Merge pull request #5 from ronahect29/main
+    
+    Cambios grupo 1
+
+commit 0e0490d06f2b34c6bfddd5ceb23daf52260015e7
+Merge: 320dd52 e9d46b6
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 14:30:27 2023 -0600
+
+    se reaclizaron cambios en el mantenimiento
+
+commit 320dd528758971b1629c6b007813a983a68b8f12
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 14:21:26 2023 -0600
+
+    Edite los nombres del frMantenimientoModulos
+
+commit e9d46b65b43b46254e051dd7bcd94626d5a7ba48
+Merge: c827c7a c37d850
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 14:16:39 2023 -0600
+
+    Merge pull request #6 from VictorJJerezm/main
+    
+    Se agrega nuevamente clase clsModulo
+
+commit c37d850c31a8a89291b52561322535c4001bb32e
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Wed Mar 15 14:15:34 2023 -0600
+
+    Se agrega nuevamente clase clsModulo
+
+commit c827c7aa0d5e5d091f68065ab356ef9aaa1668ae
+Merge: 0074160 6999db0
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 14:05:47 2023 -0600
+
+    Merge pull request #5 from Carlos-David-Rojas-Coronado/main
+    
+    se creo daoModulo
+
+commit 6999db05d4cc261d1a18a37483a316b2e5726936
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Wed Mar 15 14:04:40 2023 -0600
+
+    se creo daoModulo
+
+commit 0074160c20c11a5f3fb6fcea618fe604a4bd1053
+Merge: 22a4c27 abc8dbd
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 13:48:48 2023 -0600
+
+    Merge pull request #4 from VictorJJerezm/main
+    
+    Se agrega clase  "clsModulos"
+
+commit 22a4c27f9514fe45a52b6be0d125de15444dbfdd
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 13:44:56 2023 -0600
+
+    creacion de frmMantenimientoModulos
+
+commit 62f0c58466d08330dbc7c761e6dcac1d0b7f72ea
+Merge: af80aea 8d9f7b6
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 13:25:12 2023 -0600
+
+    Merge branch 'main' of github.com:edelaguila/proyectop32k23
+
+commit abc8dbddec0e465bd57885d74e6ef1eebe0259d3
+Merge: 6d46763 90b7a03
+Author: VictorJJerezm <98106604+VictorJJerezm@users.noreply.github.com>
+Date:   Wed Mar 15 12:59:04 2023 -0600
+
+    Merge branch 'main' into main
+
+commit 6d46763fcb93325fa8ec6ffcf10a074221122c5d
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Wed Mar 15 12:46:23 2023 -0600
+
+    Se hacen pequeños cambios en la conexion
+
+commit 8a2345e3a3c2ea78b1e63516e1d7d5ded5e36f09
+Merge: 1c06eea 8d9f7b6
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Wed Mar 15 12:44:06 2023 -0600
+
+    Se agrega clase clsModulos
+
+commit 90b7a039426be7c9417ef955e7a0e5d7328116c7
+Merge: 1c06eea 8d9f7b6
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 12:18:52 2023 -0600
+
+    Merge branch 'main' of https://github.com/ronahect29/proyectop32k23
+
+commit 8d9f7b6630d6c5804feb8d1f340013f778c160a0
+Merge: 6338ae7 5994d1a
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed Mar 15 11:57:28 2023 -0600
+
+    Merge pull request #2 from CarlosSandoval2003/main
+    
+    Grupo 3
+
+commit 6338ae7933eeaf85d99843cd4b5f645a16cc6e24
+Merge: 8a3a0d6 2aad7e8
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed Mar 15 11:52:35 2023 -0600
+
+    Merge pull request #1 from CarlosGonzalez20/grupo5
+    
+    Grupo5
+
+commit af80aead1c4e14aad3373fd04a95db34e4772628
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 11:40:45 2023 -0600
+
+    revisando el MdiSeguridad
+
+commit 0d412b7acc4de56c4a3475d60615d2c4345f207b
+Merge: 14a6164 8a3a0d6
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 11:25:12 2023 -0600
+
+    actualizando MDI seguridad
+
+commit 14a61644322d7caa287a9ac2b648552d999a8f9a
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Wed Mar 15 11:23:06 2023 -0600
+
+    Actualizando opciones generales proyecto
+
+commit 8a3a0d6539deb261b06cd5870677745469ad5988
+Merge: 7a4991b f0d8c02
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Wed Mar 15 11:21:31 2023 -0600
+
+    Merge pull request #3 from Alan2300/main
+    
+    Grupo 4 TipoUsuario
+
+commit 1c06eea3f23e8c3fa9e1eaf3ecb452e181f46c16
+Merge: 88234d8 c90c714
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 10:46:12 2023 -0600
+
+    Merge pull request #1 from Carlos-David-Rojas-Coronado/main
+    
+    se creo daoModulo
+
+commit 88234d8787d137759cf57db20fcc5869825011d0
+Merge: 7a4991b e27d3f1
+Author: Hector Rosales <98504704+ronahect29@users.noreply.github.com>
+Date:   Wed Mar 15 10:45:00 2023 -0600
+
+    Merge pull request #2 from VictorJJerezm/clsModulo
+    
+    Se agrega clase clsModulo
+
+commit f0d8c02d71b0e070f52675e92384bd595e1395c2
+Merge: 742b68b 905e13b
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Wed Mar 15 10:31:36 2023 -0600
+
+    Merge pull request #4 from DanielHall2219/main
+    
+     Subiendo correcciones del dao
+
+commit e27d3f17258bc503550c796e9dccb720489a9238
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Wed Mar 15 10:18:24 2023 -0600
+
+    Se realizan pequeños cambios
+
+commit 990fb0935f8c8dfa09d508d8a5c0495ed70ac035
+Author: Victor Jerez <vjerezm@miumg.edu.gt>
+Date:   Wed Mar 15 10:13:41 2023 -0600
+
+    Se agrega clase clsModulo
+
+commit c90c714eee84570578354667445cd97cc1ed3b74
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Wed Mar 15 10:08:54 2023 -0600
+
+    se creo daoModulo
+
+commit 5994d1a793e1be19748639c575339962a78bb888
+Author: CarlosSandoval2003 <jawicho@outlook.com>
+Date:   Tue Mar 14 21:30:45 2023 -0600
+
+    Correciones en Mantenimiento Perfiles
+
+commit 965c750fdea5787775b981100626aa5511243205
+Merge: ae7afe8 f7439cc
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue Mar 14 21:19:36 2023 -0600
+
+    Uniendo Correcciones de daoPerfil MeyglinRosales 9959-21-4490
+    
+    agregando modelo-daoPerfil
+
+commit f7439cc4c2704dc93c2ea71337a829c8bd9754fb
+Merge: 811cbcc ae7afe8
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue Mar 14 21:19:10 2023 -0600
+
+    Merge branch 'main' into daoPerfil_9959-21-4490
+
+commit 811cbccac72a81d6936aef5598d723efab3aaf4d
+Author: MeyglinRosales <mrosaleso3@miumg.edu.gt>
+Date:   Tue Mar 14 21:03:00 2023 -0600
+
+    agregando modelo-daoPerfil
+
+commit 905e13ba8024bff858b64fc059425b6facb46fff
+Author: Daniel Hall <dhalla@miumg.edu.gt>
+Date:   Tue Mar 14 19:47:07 2023 -0600
+
+     Subiendo correcciones del dao
+
+commit ae7afe8427404067c354e69deb6a432ceb844cfe
+Merge: fc1d93f 05c9fa7
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue Mar 14 19:03:15 2023 -0600
+
+    Uniendo rama Carlos-Hernandez 9959-21-363
+    
+    subiendo la vista de perfil
+
+commit fc1d93f92a14870fcae42d1c2c6abf774a8bb7eb
+Merge: b88078c efae0df
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue Mar 14 19:02:51 2023 -0600
+
+    Uniendo rama Meyglin Rosales 9959-21-4490
+    
+    agregando daoPerfil
+
+commit b88078c4336e656fa264903a0d40aaa23b1f9259
+Merge: 7a4991b d4180c4
+Author: CarlosSandoval2003 <98406391+CarlosSandoval2003@users.noreply.github.com>
+Date:   Tue Mar 14 19:02:15 2023 -0600
+
+    Uniendo Controlador Maria Jose Veliz-9959-21-5909
+    
+    Subiendo Clase Perfil
+
+commit efae0dff75b74250e13efaebb7ac91f66745bcf5
+Author: MeyglinRosales <mrosaleso3@miumg.edu.gt>
+Date:   Tue Mar 14 18:33:54 2023 -0600
+
+    agregando daoPerfil
+
+commit 05c9fa70f3e088f440ffc6c3f6ce9f9a940c25e3
+Author: Carlos-Hernandez04 <chernandezg37@miumg.edu.gt>
+Date:   Tue Mar 14 18:07:05 2023 -0600
+
+    subiendo la vista de perfil
+
+commit 742b68bdb7c8e29b67799f2a1adfe55ebb02e0fe
+Merge: 7fc200d 9ee479c
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Tue Mar 14 17:56:57 2023 -0600
+
+    Merge pull request #3 from Monica-Perez/main
+    
+    Subiendo frmTipoUsuario
+
+commit 9ee479cf8a84d444c78fecb8811accb3d60e62aa
+Author: Monica Perez <Monica>
+Date:   Tue Mar 14 17:55:27 2023 -0600
+
+    Subiendo frmTipoUsuario
+
+commit 2aad7e8a68dbe28c9a4033dee26b98566903470c
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Tue Mar 14 17:46:17 2023 -0600
+
+    corrigiendo problemas con la main class
+
+commit d4180c4062de13eb816e711d7ad73a8e61f2424f
+Author: María José Véliz <mvelizo1@miumg.edu.gt>
+Date:   Tue Mar 14 17:45:38 2023 -0600
+
+    Subiendo Clase Perfil
+
+commit d52fa98461011f18f4e989f52d756f8b75152d6d
+Author: CarlosGonzalez20 <ll3224645@gmail.com>
+Date:   Tue Mar 14 17:07:19 2023 -0600
+
+    agregando vista usuario
+
+commit 22698f21f4741ac2c66c8204bc9527dbe3f5ef73
+Merge: c555f45 a0e04c5
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Tue Mar 14 17:04:13 2023 -0600
+
+    Merge pull request #3 from vesania-sofia/main
+    
+    dao usuario terminado Karla
+
+commit a0e04c5ada63e0c8f8a2296fa3ec4db0ddfce437
+Author: sofia Tobar <kgomezt2@miumg.edu.gt>
+Date:   Tue Mar 14 17:02:28 2023 -0600
+
+    dao usuario terminado
+
+commit c555f457ec2406bc028c0c7ad7b48570b428142a
+Merge: 11879d0 bae6b2b
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Tue Mar 14 16:48:29 2023 -0600
+
+    Merge pull request #2 from NelsonUMG/main
+    
+    Agregando cambios en el dao usuario
+
+commit bae6b2bf7242180a7e7ad94e855676ec1a06fb8c
+Author: NelsonUMG <npinedac3@miumg.edu.gt>
+Date:   Tue Mar 14 16:47:31 2023 -0600
+
+    Agregando cambios en el dao usuario
+
+commit 11879d0904211003c2129811119c39b6b7c9ea96
+Merge: 7a4991b 71bc11f
+Author: Carlos González <97981499+CarlosGonzalez20@users.noreply.github.com>
+Date:   Tue Mar 14 08:12:14 2023 -0600
+
+    Merge pull request #1 from 567ALYSON-RODRIGUEZ/main
+    
+    Creacion Clase Usuario 995921829
+
+commit 71bc11fbdd3a802c67f9cc325bb45512971a0e39
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Tue Mar 14 06:41:42 2023 -0600
+
+    cambios
+
+commit 915f80e364a5f7d4fceb21f22dc9589c08c8dca0
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Mon Mar 13 22:15:56 2023 -0600
+
+    Agregando Bitacora
+
+commit 11c862fd18e34f01d9c51c17b4d4c22df51d3e98
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Mon Mar 13 21:24:22 2023 -0600
+
+    Agregando Override de clase usuario
+
+commit 1e5135446ffb896fabb7fee0c4009bf88b559d36
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Mon Mar 13 21:17:32 2023 -0600
+
+    Agregando getters y setters de clase usuario
+
+commit 7ea5c6443b936a82a15cf81db73ef3dcf7040511
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Mon Mar 13 21:16:19 2023 -0600
+
+    Agregando constructores de clase usuario
+
+commit 1e81f0aaa3dfb8b047405b35a354a5f1653fcc49
+Author: Alyson Rodríguez <arodriguezq3@miumg.edu.gt>
+Date:   Mon Mar 13 21:12:07 2023 -0600
+
+    Agregando variables de clase usuario
+
+commit 7fc200d54169e37ab03ea080fde4d79c53e62cac
+Merge: a551f3d 84ad5b1
+Author: Alan Galicia <97969544+Alan2300@users.noreply.github.com>
+Date:   Mon Mar 13 20:53:15 2023 -0600
+
+    Merge pull request #1 from DiegoCortezUMG/daoTipoUsuario9959207425
+    
+    añadido el dao de tipo usuario
+
+commit 84ad5b1e8a06936f2b668800b452618d751c579a
+Author: DiegoCortezUMG <98113773+DiegoCortezUMG@users.noreply.github.com>
+Date:   Mon Mar 13 20:46:24 2023 -0600
+
+    añadido el dao de tipo usuario
+
+commit a551f3d267feb1e4e73fc3349652bd2a27b3f0b2
+Author: Alan Galicia <agaliciar4@miumg.edu.gt>
+Date:   Mon Mar 13 16:13:26 2023 -0600
+
+    subiendo creacion de cls con getter setteers y constructor e inicializacion de dao y frm para tipoUsuario
+
+commit 7a4991b180489f42859a9a752a2a427160ba98f6
+Author: Esduardo Del Aguila <daguilae@yahoo.com>
+Date:   Mon Mar 13 13:04:09 2023 -0600
+
+    Inicio de proyecto final
+
+commit 5cd675c3f2520c1c36f9cdda003f9942ab1273eb
+Author: edelaguila <54811781+edelaguila@users.noreply.github.com>
+Date:   Mon Mar 13 12:37:13 2023 -0600
+
+    Initial commit

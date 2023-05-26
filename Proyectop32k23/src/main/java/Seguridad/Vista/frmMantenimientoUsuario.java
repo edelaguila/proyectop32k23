@@ -494,14 +494,15 @@ int codigoAplicacion=10;
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
             // TODO add your handling code here:       
-            
+        
+        clsSeguridad c = new clsSeguridad();
         clsUsuario usuario = new clsUsuario();
         //usuario.setNombreUsuario(txtbuscado.getText());        
         usuario.setIdUsuario(Integer.parseInt(txtbuscado.getText()));        
         usuario = usuario.getBuscarInformacionUsuarioPorId(usuario);
         System.out.println("Usuario retornado:" + usuario);        
         txtNombre.setText(usuario.getNombreUsuario());
-        txtContrasena.setText(usuario.getContrasenaUsuario());
+        txtContrasena.setText(c.decode(usuario.getContrasenaUsuario()));
         txtUltimaSesion.setText(usuario.getUltimaSesionUsuario());
         txtEstatus.setText(usuario.getEstatusUsuario());
         txtNombreReal.setText(usuario.getNombreRealUsuario());

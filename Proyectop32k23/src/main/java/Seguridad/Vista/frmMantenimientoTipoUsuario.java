@@ -7,6 +7,7 @@ package Seguridad.Vista;
 
 
 import Seguridad.Controlador.clsBitacora;
+import Seguridad.Controlador.clsSeguridad;
 import Seguridad.Controlador.clsTipoUsuario;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
@@ -293,21 +294,24 @@ int codigoAplicacion=20;
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         
+        clsSeguridad c = new clsSeguridad();
         clsTipoUsuario tipou = new clsTipoUsuario();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         tipou.setIdTipoUsuario(Integer.parseInt(txtbuscado.getText()));        
         tipou = tipou.getBuscarInformacionTipoUsuarioPorId(tipou);
         System.out.println("Usuario retornado:" + tipou);        
         txtNombre.setText(tipou.getNombreTipoUsuario());
-        txtContrasena.setText(tipou.getEstatusTipoUsuario());
+        txtContrasena.setText(c.encode(tipou.getEstatusTipoUsuario()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+
+        clsSeguridad c = new clsSeguridad();
         clsTipoUsuario tipou = new clsTipoUsuario();
         tipou.setIdTipoUsuario(Integer.parseInt(txtbuscado.getText()));
         tipou.setNombreTipoUsuario(txtNombre.getText());
-        tipou.setEstatusTipoUsuario(txtContrasena.getText());
+        tipou.setEstatusTipoUsuario(c.encode(txtContrasena.getText()));
         tipou.setModificarTipoUsuario(tipou);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
