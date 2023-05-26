@@ -9,12 +9,21 @@ package Seguridad.Vista;
 import Seguridad.Controlador.clsAplicacion;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -83,6 +92,7 @@ int codigoAplicacion=120;
         jButton2 = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
+        ReporteApl = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -130,7 +140,6 @@ int codigoAplicacion=120;
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtNombre.setOpaque(false);
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +169,6 @@ int codigoAplicacion=120;
 
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtContrasena.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("Estatus");
@@ -182,6 +190,13 @@ int codigoAplicacion=120;
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
+            }
+        });
+
+        ReporteApl.setText("Reporte");
+        ReporteApl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteAplActionPerformed(evt);
             }
         });
 
@@ -220,7 +235,8 @@ int codigoAplicacion=120;
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ReporteApl))
                             .addGap(14, 14, 14)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(19, 19, 19)
@@ -269,7 +285,9 @@ int codigoAplicacion=120;
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnActualizar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar)
+                    .addComponent(ReporteApl))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -370,8 +388,29 @@ int codigoAplicacion=120;
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void ReporteAplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteAplActionPerformed
+        // TODO add your handling code here:
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/main/java/seguridad/reportes/rptAplicacion.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_ReporteAplActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ReporteApl;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;

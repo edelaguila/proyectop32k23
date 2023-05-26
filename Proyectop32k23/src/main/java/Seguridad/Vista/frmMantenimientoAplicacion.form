@@ -77,6 +77,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="ReporteApl" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="btnEliminar" min="-2" pref="95" max="-2" attributes="0"/>
@@ -144,7 +145,10 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ReporteApl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -344,6 +348,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ReporteApl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reporte"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReporteAplActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
