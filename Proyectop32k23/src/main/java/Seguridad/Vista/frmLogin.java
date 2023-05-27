@@ -15,6 +15,7 @@ import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
 import Bancos.Vista.MdiBancos;
+import Cuentas_Corrientes.Vista.MdiCCorrientes;
 /**
  *
  * @author visitante
