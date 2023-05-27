@@ -45,11 +45,11 @@ public class daoClasificacionCompras {
                 int id = rs.getInt("id_proveedor");
                 String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
-                clsClasificacionCompras ClasificacionCompras = new clsClasificacionCompras();
-                ClasificacionCompras.setId_proveedor(id);
-               ClasificacionCompras.setNombre(nombre);
-                ClasificacionCompras.setDireccion(direccion);
-                ClasificacionCompras.add(ClasificacionCompras);
+                clsClasificacionCompras ccompra = new clsClasificacionCompras();
+                ccompra.setId_proveedor(id);
+               ccompra.setNombre(nombre);
+                ccompra.setDireccion(direccion);
+                ccompra.add(ccompra);
 
             }
         } catch (SQLException ex) {

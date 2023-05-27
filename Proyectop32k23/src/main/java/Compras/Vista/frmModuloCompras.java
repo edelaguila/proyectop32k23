@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author visitante
+ * @author Bryan Illescas 9959-20-273
  */
 public class frmModuloCompras extends javax.swing.JInternalFrame {
 
