@@ -267,6 +267,11 @@ public void cargarTabla2(String usuario) {
         comboBoxPerfilUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escoje un Usuario" }));
 
         btnAsignarPerfilUsuario.setText("Asignar");
+        btnAsignarPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarPerfilUsuarioActionPerformed(evt);
+            }
+        });
 
         btnAsignarTodoPerfilUsuario.setText("Asignar Todo");
 
@@ -281,7 +286,7 @@ public void cargarTabla2(String usuario) {
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addComponent(jScrollPanePerfilUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAsignarPerfilUsuario)
@@ -326,6 +331,10 @@ public void cargarTabla2(String usuario) {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAsignarPerfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarPerfilUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAsignarPerfilUsuarioActionPerformed
  
     
 
