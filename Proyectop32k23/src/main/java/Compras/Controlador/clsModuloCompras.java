@@ -17,7 +17,7 @@ public class clsModuloCompras {
     private int id_compra;
     private int id_proveedor;
     private String fecha_compra;
-    private double total_compra;
+    private Double total_compra;
     
 
     public int getid_compra() {

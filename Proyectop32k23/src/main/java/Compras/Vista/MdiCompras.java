@@ -47,8 +47,9 @@ public class MdiCompras extends javax.swing.JFrame {
         mnuSalirSistema = new javax.swing.JCheckBoxMenuItem();
         mnuCatalogos = new javax.swing.JMenu();
         MantenimientoProveedores = new javax.swing.JMenu();
-        ModuloCompras = new javax.swing.JMenuItem();
+        ManteminientoProveedores = new javax.swing.JMenuItem();
         MantenimientoCompras = new javax.swing.JCheckBoxMenuItem();
+        MantenimientoFactura = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         menuperfilUsuario = new javax.swing.JCheckBoxMenuItem();
@@ -108,13 +109,13 @@ public class MdiCompras extends javax.swing.JFrame {
             }
         });
 
-        ModuloCompras.setText("MantenimientoProveedores");
-        ModuloCompras.addActionListener(new java.awt.event.ActionListener() {
+        ManteminientoProveedores.setText("MantenimientoProveedores");
+        ManteminientoProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModuloComprasActionPerformed(evt);
+                ManteminientoProveedoresActionPerformed(evt);
             }
         });
-        MantenimientoProveedores.add(ModuloCompras);
+        MantenimientoProveedores.add(ManteminientoProveedores);
 
         MantenimientoCompras.setSelected(true);
         MantenimientoCompras.setText("MantenimientoCompras");
@@ -124,6 +125,15 @@ public class MdiCompras extends javax.swing.JFrame {
             }
         });
         MantenimientoProveedores.add(MantenimientoCompras);
+
+        MantenimientoFactura.setSelected(true);
+        MantenimientoFactura.setText("MantenimientoFactura");
+        MantenimientoFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoFacturaActionPerformed(evt);
+            }
+        });
+        MantenimientoProveedores.add(MantenimientoFactura);
 
         mnuCatalogos.add(MantenimientoProveedores);
 
@@ -249,6 +259,15 @@ public class MdiCompras extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_MantenimientoComprasActionPerformed
 
+    private void MantenimientoFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoFacturaActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoFactura ventana = new frmMantenimientoFactura();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_MantenimientoFacturaActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -289,9 +308,10 @@ public class MdiCompras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ManteminientoProveedores;
     private javax.swing.JCheckBoxMenuItem MantenimientoCompras;
+    private javax.swing.JCheckBoxMenuItem MantenimientoFactura;
     private javax.swing.JMenu MantenimientoProveedores;
-    private javax.swing.JMenuItem ModuloCompras;
     private javax.swing.JMenuItem aplicacionesUsuarios;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
