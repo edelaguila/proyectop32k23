@@ -45,7 +45,9 @@ public void llenadoDeComboDetallesTipoMoneda() {
     cbMovimientoMoneda.setAlignmentX(Component.CENTER_ALIGNMENT);
     cbMovimientoMoneda.addItem("Seleccionar...");
     for (int i = 0; i < listaTipoMonedas.size(); i++) {
-        cbMovimientoMoneda.addItem(String.valueOf(listaTipoMonedas.get(i).getTipModId()));
+        clsTipoMoneda tipoMoneda = listaTipoMonedas.get(i);
+            String item = tipoMoneda.getTipModId() + " - " + tipoMoneda.getTipMondAbreviacion();
+        cbMovimientoMoneda.addItem(item);
     }
 }
 
@@ -55,7 +57,9 @@ public void llenadoDeComboDetallesConcepto() {
     cbConcepto.setAlignmentX(Component.CENTER_ALIGNMENT);
    cbConcepto.addItem("Seleccionar...");
     for (int i = 0; i < listaConceptoss.size(); i++) {
-        cbConcepto.addItem(String.valueOf(listaConceptoss.get(i).getIdConcepto()));
+        clsConceptosBancos Concepto = listaConceptoss.get(i);
+            String item = Concepto.getIdConcepto() + " - " + Concepto.getNombreConcepto();
+        cbConcepto.addItem(item);
     }
 }
 
@@ -80,14 +84,18 @@ public void llenadoDeComboA() {
         clsBancoExterno banco = new clsBancoExterno();
         List<clsBancoExterno> listadoBancosExternos = banco.getListadoBancosExternos();
         cbCodigo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbCodigo.addItem("Seleccionar...");
         for (int i = 0; i < listadoBancosExternos.size(); i++) {
-            cbCodigo.addItem(String.valueOf(listadoBancosExternos.get(i).getCodigoBanco()));
+            clsBancoExterno Banco = listadoBancosExternos.get(i);
+            String item = Banco.getCodigoBanco() + " - " + Banco.getNombreBanco();
+            cbCodigo.addItem(item);
         }
     }
     public void llenadoDeComboB() {
         clsCuentasBancos cuentasB = new clsCuentasBancos();
         List<clsCuentasBancos> listaCuentasbancos = cuentasB.getListadoCuentas();
         cbIdCuenta.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbIdCuenta.addItem("Seleccionar...");
         for (int i = 0; i < listaCuentasbancos.size(); i++) {
             cbIdCuenta.addItem(String.valueOf(listaCuentasbancos.get(i).getIdCuenta()));
         }
@@ -96,14 +104,18 @@ public void llenadoDeComboA() {
         clsTipoMovimientoBancos TipoMB = new clsTipoMovimientoBancos();
         List<clsTipoMovimientoBancos> listaclsTipoMovimientoBancos = TipoMB.getListadoTipoMovimiento();
         cbTipMov.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbTipMov.addItem("Seleccionar...");
         for (int i = 0; i < listaclsTipoMovimientoBancos.size(); i++) {
-            cbTipMov.addItem(String.valueOf(listaclsTipoMovimientoBancos.get(i).getTipoMovimientoId()));
+            clsTipoMovimientoBancos TipoMov = listaclsTipoMovimientoBancos.get(i);
+            String item = TipoMov.getTipoMovimientoId() + " - " + TipoMov.getNombreMovimiento();
+            cbTipMov.addItem(item);
         }
     }
     public void llenadoDeComboD() {
         clsCuentaEmpresa TipoMB = new clsCuentaEmpresa();
         List<clsCuentaEmpresa> listaclsCuentaEmpresa = TipoMB.getListadoCuentaEmpresas();
         cbIdCuenEm.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbIdCuenEm.addItem("Seleccionar...");
         for (int i = 0; i < listaclsCuentaEmpresa.size(); i++) {
             cbIdCuenEm.addItem(String.valueOf(listaclsCuentaEmpresa.get(i).getIdCuentaEm()));
         }
@@ -238,6 +250,7 @@ public void BusquedaDetallesEncabezado() {
         llenadoDeTablas2();
         llenarClasificacionDetalles();
         BusquedaDetallesEncabezado();
+
     }
     
     
@@ -480,7 +493,7 @@ public void BusquedaDetallesEncabezado() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(label17)
@@ -494,7 +507,7 @@ public void BusquedaDetallesEncabezado() {
                         .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(label18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -505,8 +518,7 @@ public void BusquedaDetallesEncabezado() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,67 +601,65 @@ public void BusquedaDetallesEncabezado() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label6)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(label3)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbMovimientoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(label8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label19))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(label9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(36, 36, 36)
-                            .addComponent(label7)))
-                    .addComponent(label5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tbTipoCargoAbono, 0, 112, Short.MAX_VALUE)
-                    .addComponent(txtAbono)
-                    .addComponent(txtCargo))
-                .addGap(108, 108, 108))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbMovimientoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(label7)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(label5)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(label8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(label19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tbTipoCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label6)
-                            .addComponent(label8)
-                            .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label19)
-                            .addComponent(tbTipoCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label5))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label6)
+                    .addComponent(label8)
+                    .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label19)
+                    .addComponent(tbTipoCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(label3)
-                        .addComponent(cbMovimientoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbMovimientoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(label9)
-                        .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label7)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label7)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         label20.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -756,9 +766,10 @@ public void BusquedaDetallesEncabezado() {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(label10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label11)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(label11)
+                                        .addGap(530, 530, 530))
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -783,7 +794,7 @@ public void BusquedaDetallesEncabezado() {
                                         .addComponent(label1)
                                         .addGap(686, 686, 686))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -985,7 +996,9 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
                 break;
             }
         }
-        
+     int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");    
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -1047,11 +1060,11 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     {
         txtid.setText("");
         txtFecha.setText("");
-        cbEncabezadoId.setSelectedIndex(0);
         cbCodigo.setSelectedIndex(0);
         cbIdCuenta.setSelectedIndex(0);
         cbTipMov.setSelectedIndex(0);
         cbIdCuenEm.setSelectedIndex(0);
+        cbEncabezadoId.setSelectedIndex(0);
 
     }
     public void habilitarBotones2()
@@ -1095,28 +1108,39 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
-
-        clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
-        encabezado.setMovId(Integer.parseInt(txtid.getText()));
+ 
+        String fecha = txtFecha.getText();
+         String codigo = cbCodigo.getSelectedItem().toString();
+         String cuenta= cbIdCuenta.getSelectedItem().toString();
+         String tipmovimiento = cbTipMov.getSelectedItem().toString();
+         String cuentaempresa = cbIdCuenEm.getSelectedItem().toString();
+ 
+         
+ if (codigo.equals("Seleccionar...")|| cuenta.equals("Seleccionar...")||tipmovimiento.equals("Seleccionar...")||cuentaempresa.equals("Seleccionar...")) {
+   JOptionPane.showMessageDialog(null, "Error! Debe seleccionar todos los Id", 
+                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+}else{
+           clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
+    encabezado.setMovId(Integer.parseInt(txtid.getText()));
         encabezado.setMovFecha(txtFecha.getText());
         encabezado.setCodBanco(Integer.parseInt(cbCodigo.getSelectedItem().toString()));
         encabezado.setCueId(Integer.parseInt(cbIdCuenta.getSelectedItem().toString()));
         encabezado.setTipMovId(Integer.parseInt(cbTipMov.getSelectedItem().toString()));
         encabezado.setCueEmId(Integer.parseInt(cbIdCuenEm.getSelectedItem().toString()));
 
-
-        encabezado.setingresaMovimientosEncabezado(encabezado);
-        JOptionPane.showMessageDialog(null, "Registro Ingresado\n",
-            "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+    
+    encabezado.setingresaMovimientosEncabezado(encabezado);
+        JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
+                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
-        llenarClasificacionDetalles ();
-        BusquedaDetallesEncabezado();
-         llenadoDeComboDetallesId();
+        llenarClasificacionDetalles();
+        BusquedaDetallesEncabezado ();
         llenadoDeTablas2();
         limpiarTextos2();
-
+  
+ }  
     }//GEN-LAST:event_btnRegistrar1ActionPerformed
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
@@ -1130,7 +1154,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
 
 
         int cogidoBanc = encabezado.getCodBanco();
-        for (int i = 0; i < cbCodigo.getItemCount(); i++) {
+        for (int i = 1; i < cbCodigo.getItemCount(); i++) {
             int item = Integer.parseInt(cbCodigo.getItemAt(i).toString());
             if (item == cogidoBanc) {
                 cbCodigo.setSelectedIndex(i);
@@ -1139,7 +1163,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
         }
         
         int IdCuenta = encabezado.getCueId();
-        for (int i = 0; i < cbIdCuenta.getItemCount(); i++) {
+        for (int i = 1; i < cbIdCuenta.getItemCount(); i++) {
             int item = Integer.parseInt(cbIdCuenta.getItemAt(i).toString());
             if (item == IdCuenta) {
                 cbIdCuenta.setSelectedIndex(i);
@@ -1148,7 +1172,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
         }
         
         int TipMovID = encabezado.getTipMovId();
-        for (int i = 0; i < cbTipMov.getItemCount(); i++) {
+        for (int i = 1; i < cbTipMov.getItemCount(); i++) {
             int item = Integer.parseInt(cbTipMov.getItemAt(i).toString());
             if (item == TipMovID) {
                 cbTipMov.setSelectedIndex(i);
@@ -1158,7 +1182,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
 
         
         int CuentaEmID = encabezado.getCueEmId();
-        for (int i = 0; i < cbIdCuenEm.getItemCount(); i++) {
+        for (int i = 1; i < cbIdCuenEm.getItemCount(); i++) {
             int item = Integer.parseInt(cbIdCuenEm.getItemAt(i).toString());
             if (item == CuentaEmID) {
                 cbIdCuenEm.setSelectedIndex(i);
