@@ -20,3 +20,67 @@ public class clsComprobanteProveedoresBancos {
     private int codBanco;
     private int movDetId;
     private int cpid ;
+
+    public int getComId() {
+        return comId;
+    }
+
+    public void setComId(int comId) {
+        this.comId = comId;
+    }
+
+    public String getConFechaEmision() {
+        return conFechaEmision;
+    }
+
+    public void setConFechaEmision(String conFechaEmision) {
+        this.conFechaEmision = conFechaEmision;
+    }
+
+    public int getTipMovid() {
+        return tipMovid;
+    }
+
+    public void setTipMovid(int tipMovid) {
+        this.tipMovid = tipMovid;
+    }
+
+    public int getCueId() {
+        return cueId;
+    }
+
+    public void setCueId(int cueId) {
+        this.cueId = cueId;
+    }
+
+    public int getConcId() {
+        return concId;
+    }
+
+    public void setConcId(int concId) {
+        this.concId = concId;
+    }
+
+    public int getCodBanco() {
+        return codBanco;
+    }
+
+    public void setCodBanco(int codBanco) {
+        this.codBanco = codBanco;
+    }
+
+    public int getMovDetId() {
+        return movDetId;
+    }
+
+    public void setMovDetId(int movDetId) {
+        this.movDetId = movDetId;
+    }
+
+    public int getcpid () {
+        return cpid ;
+    }
+
+    public void setcpid (int cpid ) {
+        this.cpid  = cpid ;
+    }
