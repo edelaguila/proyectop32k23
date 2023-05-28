@@ -16,3 +16,13 @@ import java.util.List;
  *
  * @author visitante
  */
+public class daoComprobanteProveedoresBancos {
+
+    private static final String SQL_SELECT = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid    FROM tbl_comprobanteProveedoresBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_comprobanteProveedoresBancos(conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid ) VALUES(?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_comprobanteProveedoresBancos SET conFechaEmision=?, tipMovid=?, cueId=?, concId=?, codBanco=?, movDetId=?, cpid=? WHERE comId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_comprobanteProveedoresBancos WHERE comId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid  FROM tbl_comprobanteProveedoresBancos WHERE conFechaEmision = ?";
+    private static final String SQL_SELECT_ID = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid   FROM tbl_comprobanteProveedoresBancos WHERE tipModId = ?";     
+
+
