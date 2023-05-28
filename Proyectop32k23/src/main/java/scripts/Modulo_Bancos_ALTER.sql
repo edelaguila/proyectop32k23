@@ -25,6 +25,34 @@ ALTER TABLE tbl_movimientosencabezadobancos modify movFecha DATE;
 
 -- agregamos status a tipo moneda
 ALTER TABLE tbl_monedabancos add estatus varchar(1) not null;
--- Modificamos el tipo de dato de la tabla comprobante proveedor de DATETIME a DATE
+
+-- modificamos los datos de fecha en comprobante proveedores
 ALTER TABLE tbl_comprobanteProveedoresBancos modify conFechaEmision DATE;
-ALTER TABLE tbl_comprobanteProveedoresBancos modify conFechaVencimiento DATE;
+-- eliminamos las columnas redundantes en comprobante proveedores
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN concNombre;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN banNombre;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN conFechaVencimiento;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prNombre;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN MovCosto;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN ConcDescripcion;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN cueNumero;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prSaldo;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prDeuda;
+
+-- Agregamos las nuevos campos que serian llaves foraneas
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD concId INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD codBanco INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD movDetId INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD cpid INT(5) NOT NULL;
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_concId_comprobanteProveedoresBancos
+FOREIGN KEY (concId) REFERENCES tbl_conceptosbancos(concId);
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_codBanco_comprobanteProveedoresBancos
+FOREIGN KEY (codBanco) REFERENCES tbl_bancoexterno (codBanco);
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_movDetId_comprobanteProveedoresBancos
+FOREIGN KEY (movDetId) REFERENCES tbl_movimientosdetallebancos(movDetId);
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_cpid_ccorrientesprov
+FOREIGN KEY (cpid) REFERENCES tbl_ccorrientesprov(cpid);

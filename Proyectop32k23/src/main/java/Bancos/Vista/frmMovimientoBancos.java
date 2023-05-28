@@ -79,7 +79,7 @@ public void llenadoDeComboDetallesId() {
     
     }
 }
-
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
 public void llenadoDeComboA() {
         clsBancoExterno banco = new clsBancoExterno();
         List<clsBancoExterno> listadoBancosExternos = banco.getListadoBancosExternos();
@@ -91,6 +91,7 @@ public void llenadoDeComboA() {
             cbCodigo.addItem(item);
         }
     }
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void llenadoDeComboB() {
         clsCuentasBancos cuentasB = new clsCuentasBancos();
         List<clsCuentasBancos> listaCuentasbancos = cuentasB.getListadoCuentas();
@@ -100,6 +101,7 @@ public void llenadoDeComboA() {
             cbIdCuenta.addItem(String.valueOf(listaCuentasbancos.get(i).getIdCuenta()));
         }
     }
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void llenadoDeComboC() {
         clsTipoMovimientoBancos TipoMB = new clsTipoMovimientoBancos();
         List<clsTipoMovimientoBancos> listaclsTipoMovimientoBancos = TipoMB.getListadoTipoMovimiento();
@@ -111,6 +113,7 @@ public void llenadoDeComboA() {
             cbTipMov.addItem(item);
         }
     }
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void llenadoDeComboD() {
         clsCuentaEmpresa TipoMB = new clsCuentaEmpresa();
         List<clsCuentaEmpresa> listaclsCuentaEmpresa = TipoMB.getListadoCuentaEmpresas();
@@ -207,7 +210,7 @@ public void BusquedaDetallesEncabezado() {
       }
          
     
-    
+    //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
         public void llenadoDeTablas2() {
        DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -1055,7 +1058,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
     }    
-    
+ //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896   
     public void limpiarTextos2()
     {
         txtid.setText("");
@@ -1067,6 +1070,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
         cbEncabezadoId.setSelectedIndex(0);
 
     }
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void habilitarBotones2()
     {
         btnRegistrar1.setEnabled(true);
@@ -1089,6 +1093,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_txtFechaActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
         // TODO add your handling code here:
         int registrosBorrados=0;
         clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
@@ -1108,7 +1113,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
- 
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896 
         String fecha = txtFecha.getText();
          String codigo = cbCodigo.getSelectedItem().toString();
          String cuenta= cbIdCuenta.getSelectedItem().toString();
@@ -1144,6 +1149,7 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_btnRegistrar1ActionPerformed
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
         // TODO add your handling code here:
         clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
         //usuario.setNombreUsuario(txtbuscado.getText());
@@ -1195,7 +1201,8 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
-         // TODO add your handling code here:
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
+        // TODO add your handling code here:
         clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
         encabezado.setMovId(Integer.parseInt(cbEncabezadoId.getSelectedItem().toString()));
         encabezado.setCodBanco(Integer.parseInt(cbCodigo.getSelectedItem().toString()));
@@ -1221,13 +1228,15 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_cbCodigoActionPerformed
 
     private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
         limpiarTextos2();
         habilitarBotones2();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896        
+// TODO add your handling code here:
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
