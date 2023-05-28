@@ -84,3 +84,66 @@ public class clsComprobanteProveedoresBancos {
     public void setcpid (int cpid ) {
         this.cpid  = cpid ;
     }
+
+    public clsComprobanteProveedoresBancos() {
+    }
+
+    public clsComprobanteProveedoresBancos(int comId) {
+        this.comId = comId;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+        this.tipMovid = tipMovid;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+        this.tipMovid = tipMovid;
+        this.cueId = cueId;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId, int concId) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+        this.tipMovid = tipMovid;
+        this.cueId = cueId;
+        this.concId = concId;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId, int concId, int codBanco) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+        this.tipMovid = tipMovid;
+        this.cueId = cueId;
+        this.concId = concId;
+        this.codBanco = codBanco;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId, int concId, int codBanco, int movDetId) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+        this.tipMovid = tipMovid;
+        this.cueId = cueId;
+        this.concId = concId;
+        this.codBanco = codBanco;
+        this.movDetId = movDetId;
+    }
+
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId, int concId, int codBanco, int movDetId, int cpid ) {
+        this.comId = comId;
+        this.conFechaEmision = conFechaEmision;
+        this.tipMovid = tipMovid;
+        this.cueId = cueId;
+        this.concId = concId;
+        this.codBanco = codBanco;
+        this.movDetId = movDetId;
+        this.cpid  = cpid;
+    }
