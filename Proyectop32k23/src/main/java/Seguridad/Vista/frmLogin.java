@@ -16,6 +16,7 @@ import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
 import Cuentas_Corrientes.Vista.MdiCCorrientes;
 import Bancos.Vista.MdiBancos;
+import Cuentas_Corrientes.Vista.MdiCCorrientes;
 /**
  *
  * @author visitante
@@ -187,9 +188,9 @@ public class frmLogin extends javax.swing.JFrame {
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(usuarioRegistrado.getIdUsuario(), codigoAplicacion, "BEG");
                     // Menu general---
-                    /*MdiSeguridad menuGeneral = new MdiSeguridad();
+                    MdiSeguridad menuGeneral = new MdiSeguridad();
                     menuGeneral.setVisible(true);
-                    this.dispose();*/
+                    this.dispose();
                     
                     //---Agregando switch case para funcionalidad de todos los módulos(incompleto porque aún no hay MDI'S de todos)
                     //Victor Jerez

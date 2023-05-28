@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class daoCCorrientesProv {
 
+    //CAMBIOS HECHOS POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
     private static final String SQL_SELECT = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv";
     private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientesProv(cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo) VALUES(?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE tbl_cCorrientesProv SET cptipo=?,cpidprov=?,cpfecha=?,cpnombretipo=?,NpFactura=?,cpTotalFactura=?,cpconcelación=?,cpSaldo=? WHERE cpid = ?";

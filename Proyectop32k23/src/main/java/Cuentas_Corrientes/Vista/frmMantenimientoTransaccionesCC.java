@@ -5,8 +5,7 @@
  */
 
 
-//Monica Gabriela Perez Velásquez
-//9959-21-1840
+//REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
 package Cuentas_Corrientes.Vista;
 
 
@@ -46,6 +45,7 @@ public class frmMantenimientoTransaccionesCC extends javax.swing.JInternalFrame 
     }
 
     public void llenadoDeTablas() {
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
@@ -323,6 +323,7 @@ int codigoAplicacion = 40;
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         int registrosBorrados=0;
         clsTransaccionesCC transaccion = new clsTransaccionesCC();
         transaccion.setCodigoT(Integer.parseInt(txtbuscado.getText()));
@@ -339,6 +340,7 @@ int codigoAplicacion = 40;
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsTransaccionesCC transaccion = new clsTransaccionesCC();
         transaccion.setNombreT(txtNombre.getText());
         transaccion.setEstatusT(txtContrasena.getText());
@@ -356,6 +358,7 @@ int codigoAplicacion = 40;
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsTransaccionesCC transaccion = new clsTransaccionesCC();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         transaccion.setCodigoT(Integer.parseInt(txtbuscado.getText()));        
@@ -369,6 +372,7 @@ int codigoAplicacion = 40;
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsTransaccionesCC transaccion = new clsTransaccionesCC();
         transaccion.setCodigoT(Integer.parseInt(txtbuscado.getText()));
         transaccion.setNombreT(txtNombre.getText());
@@ -389,6 +393,7 @@ int codigoAplicacion = 40;
         habilitarBotones();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
+    //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
     public void limpiarTextos()
     {
         txtNombre.setText("");

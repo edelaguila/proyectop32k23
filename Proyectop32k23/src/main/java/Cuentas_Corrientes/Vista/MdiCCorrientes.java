@@ -131,7 +131,11 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoTransacciones);
 
+<<<<<<< HEAD
         MantenimientoCC.setText("Mantenimiento Cuentas Corriente");
+=======
+        MantenimientoCC.setText("Mantenimiento Cuentas Corriente Clientes");
+>>>>>>> 6d46ea7f9b7a91d1367e722f6c286bd52a46d11a
         MantenimientoCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MantenimientoCCActionPerformed(evt);
@@ -139,7 +143,11 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoCC);
 
+<<<<<<< HEAD
         MantenimientoCCProv.setText("Mantenimiento Cuentas Corriente (proveedores)");
+=======
+        MantenimientoCCProv.setText("Mantenimiento Cuentas Corriente Proveedores");
+>>>>>>> 6d46ea7f9b7a91d1367e722f6c286bd52a46d11a
         MantenimientoCCProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MantenimientoCCProvActionPerformed(evt);
@@ -183,7 +191,6 @@ public class MdiCCorrientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void mnuCatalogosMantenimientosVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCatalogosMantenimientosVentasActionPerformed
         // TODO add your handling code here:
 
@@ -219,6 +226,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
 
     private void MantenimientoCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoCCActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         frmCCorrientes ventana = new frmCCorrientes();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
