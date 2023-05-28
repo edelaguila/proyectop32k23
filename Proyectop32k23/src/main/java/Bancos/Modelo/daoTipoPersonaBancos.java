@@ -10,7 +10,8 @@ import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015 
+//TODO EL DAO TIPO PERSONA BANCOS
 /**
  *
  * @author visitante

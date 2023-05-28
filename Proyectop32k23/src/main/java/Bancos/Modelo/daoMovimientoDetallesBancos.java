@@ -10,7 +10,8 @@ import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//TODO dao Movmiento Detalles Bancos.
 /**
  *
  * @author visitante
@@ -19,7 +20,7 @@ public class daoMovimientoDetallesBancos {
     
 private static final String SQL_SELECT = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId FROM tbl_movimientosDetalleBancos";
 private static final String SQL_INSERT = "INSERT INTO tbl_movimientosDetalleBancos (movDetId, movId, movCosto, concId, movSaldo, tipModId) VALUES (?, ?, ?, ?, ?, ?)"; 
-private static final String SQL_UPDATE = "UPDATE tbl_movimientosDetalleBancos SET movCosto=?, movSaldo=?, movId=?, concId=?, tipModId=?  WHERE movDetId = ?";
+private static final String SQL_UPDATE = "UPDATE tbl_movimientosDetalleBancos SET movCosto=?, movSaldo=?, concId=?, tipModId=?  WHERE movDetId = ?";
 private static final String SQL_DELETE = "DELETE FROM tbl_movimientosDetalleBancos WHERE movDetId=?";
 private static final String SQL_SELECT_NOMBRE = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId  FROM tbl_movimientosDetalleBancos WHERE movId = ?";
 private static final String SQL_SELECT_ID = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId  FROM tbl_movimientosDetalleBancos WHERE movDetId = ?";  
@@ -98,10 +99,9 @@ private static final String SQL_SELECT_ID = "SELECT movDetId, movId, movCosto, c
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setFloat(1, banco.getMovimientoCosto());
             stmt.setFloat(2, banco.getMovimientoSaldo());
-            stmt.setInt(3, banco.getIdMovimiento());
-            stmt.setInt(4,banco.getIdConcepto()) ;
-            stmt.setInt(5, banco.getIdTipoMovimiento());
-            stmt.setInt(6, banco.getIdMovimientoDetalles());
+            stmt.setInt(3,banco.getIdConcepto()) ;
+            stmt.setInt(4, banco.getIdTipoMovimiento());
+            stmt.setInt(5, banco.getIdMovimientoDetalles());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizados:" + rows);
         } catch (SQLException ex) {
