@@ -147,3 +147,49 @@ public class clsComprobanteProveedoresBancos {
         this.movDetId = movDetId;
         this.cpid  = cpid;
     }
+
+    @Override
+    public String toString() {
+        return "clsComprobanteProveedoresBancos{" + "comId =" + comId    + ", conFechaEmision  =" + conFechaEmision   + ", tipMovid  =" + tipMovid + ", cueId=" + cueId + ", concId  =" + concId    + ", banId  =" + codBanco +  ", movdetId  =" + movDetId +  ", cpid   =" + cpid  + '}';
+    }
+    //Metodos de acceso a la capa controlador
+    public clsComprobanteProveedoresBancos getBuscarInformacionComprobanteProveedoresPorNombre(clsComprobanteProveedoresBancos comprobante)
+    {
+        daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
+        return daoComprobanteProveedoresBancos.consultaTComprobanteProveedoresPorNombre(comprobante);
+    }
+    public clsComprobanteProveedoresBancos getBuscarInformacionComprobanteProveedoresPorId(clsComprobanteProveedoresBancos comprobante)
+    {
+        daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
+        return daoComprobanteProveedoresBancos.consultaComprobanteProveedoresPorId(comprobante);
+    }    
+    public List<clsComprobanteProveedoresBancos> getListadoComprobantesProveedores()
+    {
+        daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
+        List<clsComprobanteProveedoresBancos> listadoComprobanteProveedor = daoComprobanteProveedoresBancos.consultaComprobanteProveedores();
+        return listadoComprobanteProveedor;
+    }
+    public int setBorrarComprobanteProveedores(clsComprobanteProveedoresBancos comprobante)
+    {
+        daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
+        return daoComprobanteProveedoresBancos.borrarComprobanteProveedores(comprobante);
+    }          
+    public int setIngresarComprobanteProveedores(clsComprobanteProveedoresBancos comprobante)
+    {
+        daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
+        return daoComprobanteProveedoresBancos.ingresaComprobanteProveedores(comprobante);
+    }              
+    public int setModificarComprobanteProveedores(clsComprobanteProveedoresBancos comprobante)
+    {
+        daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
+        return daoComprobanteProveedoresBancos.actualizaComprobanteProveedores(comprobante);
+    }              
+
+    public void getComprobantePrCosto(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getComprobantePrdCosto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
