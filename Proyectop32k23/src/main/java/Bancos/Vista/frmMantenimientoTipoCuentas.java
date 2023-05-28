@@ -5,6 +5,7 @@
  */
 package Bancos.Vista;
 
+//Hecho por Carlos González, 9959-20-6164
 
 import Bancos.Controlador.clsTipoCuentas;
 import Seguridad.Controlador.clsBitacora;

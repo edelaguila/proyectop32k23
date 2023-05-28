@@ -5,6 +5,8 @@
  */
 package Bancos.Vista;
 
+//Inicializado por Carlos González, 9959-20-6164
+//Luego cada integrante fue colocando todo lo necesario para que funcionaran sus tablas
 
 import Seguridad.Vista.frmMantenimientoBitacora;
 import java.awt.Dimension;
