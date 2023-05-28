@@ -10,6 +10,8 @@ import Bancos.Modelo.daoMovimientoDetallesBancos;
  *
  * @author visitante
  */
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//Todo en ClsMovimientoDetallesBancos.
 public class clsMovimientoDetallesBancos {
     private int IdMovimientoDetalles;
     private int IdMovimiento;

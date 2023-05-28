@@ -321,6 +321,7 @@ int codigoAplicacion= 5002;
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         int registrosBorrados=0;
         clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
         banco.setIdTipoPersonaBancos(Integer.parseInt(txtbuscado.getText()));
@@ -336,7 +337,9 @@ int codigoAplicacion= 5002;
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-  clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
+
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+        clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
 banco.setIdTipoPersonaBancos(Integer.parseInt(txtTipoPersona.getText()));
 banco.setTipoDescripcionBancos(txtDescripcion.getText());
 
@@ -362,6 +365,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         banco.setIdTipoPersonaBancos(Integer.parseInt(txtbuscado.getText()));        
@@ -378,6 +382,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
         banco.setIdTipoPersonaBancos(Integer.parseInt(txtbuscado.getText()));
         banco.setTipoDescripcionBancos(txtDescripcion.getText());
@@ -403,6 +408,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         limpiarTextos();
         habilitarBotones();
         // TODO add your handling code here:
@@ -429,6 +435,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
@@ -446,6 +453,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 

@@ -28,6 +28,9 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//KARLA SOFÍA GOMEZ TOBAR -
+//TODO LO RELACIONADO EN COMBOBOXS.
 public class frmMovimientoBancos extends javax.swing.JInternalFrame {
 int codigoAplicacion= 5009;
 
@@ -63,23 +66,8 @@ public void llenadoDeComboDetallesConcepto() {
     }
 }
 
-public void llenadoDeComboDetallesId() {
-     clsMovimientosEncabezadoBancos movEncabezado = new clsMovimientosEncabezadoBancos();
-    List<clsMovimientosEncabezadoBancos> listaMovEncabezado = movEncabezado.getListadoMovEncabezado();
-   cbMovimientoEncabezado.removeAllItems();
-    Set <Integer> idSet= new HashSet<>();
-    cbMovimientoEncabezado.setAlignmentX(Component.CENTER_ALIGNMENT);
-   cbMovimientoEncabezado.addItem("Seleccionar...");
-    for (clsMovimientosEncabezadoBancos movimientos : listaMovEncabezado){
-        int Id = movimientos.getMovId();
-        if(!idSet.contains(Id)){
-            cbMovimientoEncabezado.addItem(String.valueOf(Id));
-            idSet.add(Id);
-    }
-    
-    }
-}
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
+
+
 public void llenadoDeComboA() {
         clsBancoExterno banco = new clsBancoExterno();
         List<clsBancoExterno> listadoBancosExternos = banco.getListadoBancosExternos();
@@ -91,7 +79,6 @@ public void llenadoDeComboA() {
             cbCodigo.addItem(item);
         }
     }
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void llenadoDeComboB() {
         clsCuentasBancos cuentasB = new clsCuentasBancos();
         List<clsCuentasBancos> listaCuentasbancos = cuentasB.getListadoCuentas();
@@ -101,7 +88,6 @@ public void llenadoDeComboA() {
             cbIdCuenta.addItem(String.valueOf(listaCuentasbancos.get(i).getIdCuenta()));
         }
     }
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void llenadoDeComboC() {
         clsTipoMovimientoBancos TipoMB = new clsTipoMovimientoBancos();
         List<clsTipoMovimientoBancos> listaclsTipoMovimientoBancos = TipoMB.getListadoTipoMovimiento();
@@ -113,7 +99,6 @@ public void llenadoDeComboA() {
             cbTipMov.addItem(item);
         }
     }
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void llenadoDeComboD() {
         clsCuentaEmpresa TipoMB = new clsCuentaEmpresa();
         List<clsCuentaEmpresa> listaclsCuentaEmpresa = TipoMB.getListadoCuentaEmpresas();
@@ -138,6 +123,8 @@ public void llenarOpcion(){
 }
 }
 
+
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
 public void llenarClasificacionDetalles(){
      clsMovimientosEncabezadoBancos movEncabezado = new clsMovimientosEncabezadoBancos();
     List<clsMovimientosEncabezadoBancos> listaMovEncabezado = movEncabezado.getListadoMovEncabezado();
@@ -157,24 +144,24 @@ public void llenarClasificacionDetalles(){
 }
   
 
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
 public void BusquedaDetallesEncabezado() {
-     clsMovimientosEncabezadoBancos movEncabezado = new clsMovimientosEncabezadoBancos();
-    List<clsMovimientosEncabezadoBancos> listaMovEncabezado = movEncabezado.getListadoMovEncabezado();
-     cbEncabezadoId.removeAllItems();
+    clsMovimientoDetallesBancos movEncabezado = new clsMovimientoDetallesBancos();
+    List<clsMovimientoDetallesBancos> listaMovDetalles = movEncabezado.getListadoMovimiento();
+     cbBusquedaID.removeAllItems();
     Set <Integer> idSet= new HashSet<>();
-    cbEncabezadoId.addItem("Seleccionar...");
-    cbEncabezadoId.setAlignmentX(Component.CENTER_ALIGNMENT);
-    for (clsMovimientosEncabezadoBancos movimientos : listaMovEncabezado){
-        int Id = movimientos.getMovId();
+    cbBusquedaID.addItem("Seleccionar...");
+    cbBusquedaID.setAlignmentX(Component.CENTER_ALIGNMENT);
+    for (clsMovimientoDetallesBancos movimientos : listaMovDetalles){
+        int Id = movimientos.getIdMovimientoDetalles();
         if(!idSet.contains(Id)){
-            cbEncabezadoId.addItem(String.valueOf(Id));
+            cbBusquedaID.addItem(String.valueOf(Id));
             idSet.add(Id);     
        }
     }
 }     
             
-                      
-            
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id Movimiento Detalles");
@@ -209,8 +196,9 @@ public void BusquedaDetallesEncabezado() {
    TotalDiferencia.setText(Float.toString(TotalCargos-TotalAbonos));
       }
          
+   
+//KARLA SOFÍA GOMEZ TOBAR -
     
-    //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
         public void llenadoDeTablas2() {
        DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -244,7 +232,7 @@ public void BusquedaDetallesEncabezado() {
         llenadoDeCombos();
         llenadoDeComboDetallesTipoMoneda();
         llenadoDeComboDetallesConcepto();
-        llenadoDeComboDetallesId();
+        
         llenadoDeComboA();
         llenadoDeComboB();
         llenadoDeComboC();
@@ -271,23 +259,12 @@ public void BusquedaDetallesEncabezado() {
 
         lb2 = new javax.swing.JLabel();
         lbusu = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
-        btnModificar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        lb = new javax.swing.JLabel();
-        txtbuscado = new javax.swing.JTextField();
-        btnLimpiar1 = new javax.swing.JButton();
-        btnEliminar1 = new javax.swing.JButton();
-        btnRegistrar1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        btnBuscar1 = new javax.swing.JButton();
-        label10 = new javax.swing.JLabel();
-        btnModificar1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         label14 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
@@ -309,8 +286,6 @@ public void BusquedaDetallesEncabezado() {
         label7 = new javax.swing.JLabel();
         txtAbono = new javax.swing.JTextField();
         txtCargo = new javax.swing.JTextField();
-        label3 = new javax.swing.JLabel();
-        cbMovimientoEncabezado = new javax.swing.JComboBox<>();
         label8 = new javax.swing.JLabel();
         cbConcepto = new javax.swing.JComboBox<>();
         label9 = new javax.swing.JLabel();
@@ -320,18 +295,21 @@ public void BusquedaDetallesEncabezado() {
         label20 = new javax.swing.JLabel();
         label21 = new javax.swing.JLabel();
         TotalAbono = new javax.swing.JLabel();
-        label23 = new javax.swing.JLabel();
         label11 = new javax.swing.JLabel();
         label24 = new javax.swing.JLabel();
         TotalCargo = new javax.swing.JLabel();
         TotalDiferencia = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        label26 = new javax.swing.JLabel();
+        cbBusquedaID = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        label25 = new javax.swing.JLabel();
         btnClasificacion = new javax.swing.JButton();
         cbClasificacion = new javax.swing.JComboBox<>();
-        label25 = new javax.swing.JLabel();
-        cbEncabezadoId = new javax.swing.JComboBox<>();
-        txtbuscadoDetalles = new javax.swing.JTextField();
-        label26 = new javax.swing.JLabel();
-        label27 = new javax.swing.JLabel();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -342,13 +320,6 @@ public void BusquedaDetallesEncabezado() {
         setTitle("Movimiento Bancarios");
         setVisible(true);
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
         btnRegistrar.setText("Aceptar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,22 +327,8 @@ public void BusquedaDetallesEncabezado() {
             }
         });
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label1.setText("Detalle de Movimientos");
-
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -399,51 +356,10 @@ public void BusquedaDetallesEncabezado() {
         });
         jScrollPane1.setViewportView(tablaUsuarios);
 
-        lb.setForeground(new java.awt.Color(204, 204, 204));
-        lb.setText(".");
-
-        btnLimpiar1.setText("Limpiar");
-        btnLimpiar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiar1ActionPerformed(evt);
-            }
-        });
-
-        btnEliminar1.setText("Eliminar");
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar1ActionPerformed(evt);
-            }
-        });
-
-        btnRegistrar1.setText("Registrar");
-        btnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrar1ActionPerformed(evt);
-            }
-        });
-
         jButton3.setText("Ayuda");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        btnBuscar1.setText("Buscar");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
-            }
-        });
-
-        label10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label10.setText("ID a buscar deEncabezado");
-
-        btnModificar1.setText("Modificar");
-        btnModificar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificar1ActionPerformed(evt);
             }
         });
 
@@ -481,6 +397,12 @@ public void BusquedaDetallesEncabezado() {
 
         label16.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label16.setText("ID Cuenta");
+
+        cbIdCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbIdCuentaActionPerformed(evt);
+            }
+        });
 
         label13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label13.setText("Codigo Bancario");
@@ -573,15 +495,6 @@ public void BusquedaDetallesEncabezado() {
         txtCargo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtCargo.setOpaque(false);
 
-        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Id Movimiento Encabezado");
-
-        cbMovimientoEncabezado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbMovimientoEncabezadoActionPerformed(evt);
-            }
-        });
-
         label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label8.setText("Id Concepto");
 
@@ -605,64 +518,67 @@ public void BusquedaDetallesEncabezado() {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(label3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbMovimientoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(label7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(label5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(78, 78, 78)
+                        .addComponent(label9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(label8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGap(50, 50, 50)
                         .addComponent(label19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tbTipoCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(label7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(label5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 30, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label6)
-                    .addComponent(label8)
-                    .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label19)
-                    .addComponent(tbTipoCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(label3)
-                        .addComponent(cbMovimientoEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label9)
-                        .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label7)
-                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label6)
+                            .addComponent(txtIdMovDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbMovimientoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label9))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label8)
+                            .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label5)
+                            .addComponent(txtAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label7)
+                            .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tbTipoCargoAbono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label19))
+                        .addGap(22, 22, 22))))
         );
 
         label20.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -673,9 +589,6 @@ public void BusquedaDetallesEncabezado() {
 
         TotalAbono.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         TotalAbono.setText("0");
-
-        label23.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label23.setText("Eliminar un Id Detalles");
 
         label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label11.setText("Detalles:");
@@ -688,6 +601,79 @@ public void BusquedaDetallesEncabezado() {
 
         TotalDiferencia.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         TotalDiferencia.setText("0");
+
+        jButton1.setText("Reporte");
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        label26.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label26.setText("Buscar el Id Detalle que deseeas accionar:");
+
+        cbBusquedaID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBusquedaIDActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar1.setText("Eliminar");
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(label26, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbBusquedaID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(label26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cbBusquedaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar1)))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        label25.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label25.setText("Clasifiación de ID Encabezado");
 
         btnClasificacion.setText("Aceptar");
         btnClasificacion.addActionListener(new java.awt.event.ActionListener() {
@@ -702,20 +688,30 @@ public void BusquedaDetallesEncabezado() {
             }
         });
 
-        label25.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label25.setText("Clasifiación de ID Encabezado");
-
-        cbEncabezadoId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEncabezadoIdActionPerformed(evt);
-            }
-        });
-
-        label26.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label26.setText("Modificar/Buscar EL Id Detalles");
-
-        label27.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label27.setText("Modificar/Buscar/Eliminar EL Id Encabezado");
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label25))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label25)
+                .addGap(8, 8, 8)
+                .addComponent(cbClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClasificacion)
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -724,9 +720,9 @@ public void BusquedaDetallesEncabezado() {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(label24)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -737,152 +733,70 @@ public void BusquedaDetallesEncabezado() {
                                 .addComponent(TotalCargo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(label20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TotalDiferencia)
-                                .addGap(300, 300, 300))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label25)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(cbClasificacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(btnClasificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label23)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label12)
+                            .addComponent(label11)
+                            .addComponent(label1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(label10)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label11)
-                                        .addGap(530, 530, 530))
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnLimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(label27)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cbEncabezadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label1)
-                                        .addGap(686, 686, 686))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtbuscadoDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(label26))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(204, 204, 204)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(16, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(label12)
                 .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrar1)
-                            .addComponent(btnLimpiar1)
-                            .addComponent(jButton3))
-                        .addGap(32, 32, 32)
-                        .addComponent(label27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbEncabezadoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEliminar1)
-                            .addComponent(btnModificar1)
-                            .addComponent(btnBuscar1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label11))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label10)))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnRegistrar)
-                                .addComponent(btnLimpiar))
-                            .addComponent(lb))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(label26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBuscar)
-                            .addComponent(txtbuscadoDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label1)
+                .addComponent(label11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1)
+                    .addComponent(btnLimpiar))
                 .addGap(18, 18, 18)
+                .addComponent(label1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(label25)
-                        .addGap(13, 13, 13)
-                        .addComponent(btnClasificacion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label21)
-                    .addComponent(TotalDiferencia)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(TotalCargo)
+                        .addComponent(TotalDiferencia)
                         .addComponent(label20))
+                    .addComponent(TotalCargo)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(label24)
                         .addComponent(TotalAbono)))
@@ -892,41 +806,70 @@ public void BusquedaDetallesEncabezado() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        int registrosBorrados=0;
-        clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
-        banco.setIdMovimientoDetalles(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=banco.setBorrarMovimiento(banco);
-        JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
-        llenadoDeTablas();
-        limpiarTextos();
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
-         String Encabezado = cbMovimientoEncabezado.getSelectedItem().toString();
+// Funcion de condición para Encabezado
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//KARLA SOFÍA GOMEZ TOBAR -
+      String fecha = txtFecha.getText();
+         String codigo = cbCodigo.getSelectedItem().toString();
+         String cuenta= cbIdCuenta.getSelectedItem().toString();
+         String tipmovimiento = cbTipMov.getSelectedItem().toString();
+         String cuentaempresa = cbIdCuenEm.getSelectedItem().toString();
+ 
+         // Funcion de condición para Detalles 
          String Concepto = cbConcepto.getSelectedItem().toString();
          String TipoMoneda= cbMovimientoMoneda.getSelectedItem().toString();
          String CargoAbono = tbTipoCargoAbono.getSelectedItem().toString();
          String Abono = txtAbono.getText();
          String Cargo = txtCargo.getText();
-         
- if (Encabezado.equals("Seleccionar...")|| Concepto.equals("Seleccionar...")||TipoMoneda.equals("Seleccionar...")||CargoAbono.equals("Seleccionar...")) {
-   JOptionPane.showMessageDialog(null, "Error! Debe seleccionar todos los Id y el Tipo de Cuenta", 
+              
+ if (codigo.equals("Seleccionar...")|| cuenta.equals("Seleccionar...")||tipmovimiento.equals("Seleccionar...")||cuentaempresa.equals("Seleccionar...")||
+        Concepto.equals("Seleccionar...")||TipoMoneda.equals("Seleccionar...")||CargoAbono.equals("Seleccionar...")) {
+   JOptionPane.showMessageDialog(null, "Error! Debe seleccionar todos los Id", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
 }else{
+     
+  //Registro de Encazeado y Detalles
+  //Cuadro de Encabezado
+           clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
+    encabezado.setMovId(Integer.parseInt(txtid.getText()));
+        encabezado.setMovFecha(txtFecha.getText());
+        
+        String selectedItem = cbCodigo.getSelectedItem().toString();
+        int item = Integer.parseInt(selectedItem.split(" - ")[0]);
+        encabezado.setCodBanco(item);
+  
+        String selectedItem2 = cbIdCuenta.getSelectedItem().toString();
+        int item2 = Integer.parseInt(selectedItem2.split(" - ")[0]);
+        encabezado.setCueId(item2);
+        
+       String selectedItem3= cbTipMov.getSelectedItem().toString();
+        int item3 = Integer.parseInt(selectedItem3.split(" - ")[0]);
+        encabezado.setTipMovId(item3);
+        
+        String selectedItem4= cbIdCuenEm.getSelectedItem().toString();
+        int item4 = Integer.parseInt(selectedItem4.split(" - ")[0]);
+        encabezado.setCueEmId(item4);
+    encabezado.setingresaMovimientosEncabezado(encabezado);
+    
+    //Cuadro de Detalles
+
            clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
     banco.setIdMovimientoDetalles(Integer.parseInt(txtIdMovDetalles.getText()));
-    banco.setIdMovimiento(Integer.parseInt(cbMovimientoEncabezado.getSelectedItem().toString()));
-    banco.setIdConcepto(Integer.parseInt(cbConcepto.getSelectedItem().toString()));
-    banco.setIdTipoMovimiento(Integer.parseInt(cbMovimientoMoneda.getSelectedItem().toString()));
-    int SeleccionarIndex = tbTipoCargoAbono.getSelectedIndex();
-    String vacio = ""; //Saldo = Cargo, Costo = Abono
+   
+      int item5 = Integer.parseInt(txtid.getText());
+                       banco.setIdMovimiento(item5);  
+        
+     String selectedItem6 = cbConcepto.getSelectedItem().toString();
+        int item6 = Integer.parseInt(selectedItem6.split(" - ")[0]);
+        banco.setIdConcepto(item6);   
+
+     String selectedItem7 = cbMovimientoMoneda.getSelectedItem().toString();
+        int item7 = Integer.parseInt(selectedItem7.split(" - ")[0]);
+        banco.setIdTipoMovimiento(item7);  
+        
+        int SeleccionarIndex = tbTipoCargoAbono.getSelectedIndex();
+    String vacio = ""; 
     String cero = "0";
       if (SeleccionarIndex == 0){
                banco.setMovimientoCosto(Float.parseFloat(vacio));
@@ -944,8 +887,6 @@ public void BusquedaDetallesEncabezado() {
             banco.setMovimientoSaldo(Float.parseFloat(cero));
             banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText())); 
       }
-    
-    
     banco.setIngresarMovimiento(banco);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -955,70 +896,176 @@ public void BusquedaDetallesEncabezado() {
         llenarClasificacionDetalles();
         BusquedaDetallesEncabezado ();
         llenadoDeTablas();
-        limpiarTextos();
+
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+ //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//KARLA SOFÍA GOMEZ TOBAR -
+    //Buqueda de Detalles.
+ 
    txtAbono.setEnabled(true);
     txtCargo.setEnabled(true);
-        
-        clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
-        //aplicacion.setNombreAplicacion(txtbuscado.getText());        
-        banco.setIdMovimientoDetalles(Integer.parseInt(txtbuscadoDetalles.getText()));        
+    
+   clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
+        banco.setIdMovimientoDetalles(Integer.parseInt(cbBusquedaID.getSelectedItem().toString())); 
         banco = banco.getBuscarInformacionBancoPorTipoMovimiento(banco);
         System.out.println("Usuario retornado:" + banco); 
        txtIdMovDetalles.setText(Integer.toString(banco.getIdMovimientoDetalles()));
        txtAbono.setText(Float.toString(banco.getMovimientoCosto()));
        txtCargo.setText(Float.toString(banco.getMovimientoSaldo()));
-        int Encabezado = banco.getIdMovimiento();
-   
-for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
-    int item = Integer.parseInt(cbMovimientoEncabezado.getItemAt(i).toString());
-    if (item == Encabezado) {
-        cbMovimientoEncabezado.setSelectedIndex(i);
-        break;
-     }
-}
-        
+       
+       
         int IdConcepto = banco.getIdConcepto();
-        for (int i = 1; i <cbConcepto.getItemCount(); i++) {
-            int item = Integer.parseInt(cbConcepto.getItemAt(i).toString());
-            if (item == IdConcepto) {
-                cbConcepto.setSelectedIndex(i);
+         for (int i = 1; i <cbConcepto.getItemCount(); i++){
+            String item1 = cbConcepto.getItemAt(i).toString();
+          int itemcodigo1 = Integer.parseInt(item1.split(" - ")[0]);            
+            if (itemcodigo1 == IdConcepto) {
+               cbConcepto.setSelectedIndex(i);
                 break;
             }
-        }
-    
-        int TipMoneda = banco.getIdTipoMovimiento();
-        for (int i = 1; i < cbMovimientoMoneda.getItemCount(); i++) {
-            int item = Integer.parseInt(cbMovimientoMoneda.getItemAt(i).toString());
-            if (item == TipMoneda) {
+     
+         }
+     
+     
+      int TipMoneda = banco.getIdTipoMovimiento();
+         for (int i = 1; i <cbMovimientoMoneda.getItemCount(); i++){
+            String item2 = cbMovimientoMoneda.getItemAt(i).toString();
+          int itemcodigo2 = Integer.parseInt(item2.split(" - ")[0]);            
+            if (itemcodigo2 == TipMoneda) {
                cbMovimientoMoneda.setSelectedIndex(i);
                 break;
             }
+     
+         }
+           
+ 
+        
+    //Busqueda de Encabezado 
+
+  clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();    
+int movID = 0; // Variable para almacenar el valor de movID
+
+if (banco != null) {
+    movID = banco.getIdMovimiento();
+}
+
+encabezado.setMovId(movID); 
+encabezado = encabezado.getBuscarMovimientosEncabezadoPorId(encabezado);
+
+System.out.println("movDetalle retornado: " + encabezado);
+txtFecha.setText(encabezado.getMovFecha());
+
+                
+        int cogidoBanco = encabezado.getCodBanco();
+        for (int i = 1; i < cbCodigo.getItemCount(); i++) {
+            String item4 = cbCodigo.getItemAt(i).toString();
+          int itemcodigo4 = Integer.parseInt(item4.split(" - ")[0]);            
+            if (itemcodigo4 == cogidoBanco) {
+                cbCodigo.setSelectedIndex(i);
+                break;
+            }
         }
+        
+        
+        int IdCuenta = encabezado.getCueId();
+        for (int i = 1; i < cbIdCuenta.getItemCount(); i++) {
+            String item5 = cbIdCuenta.getItemAt(i).toString();
+          int itemcodigo5 = Integer.parseInt(item5.split(" - ")[0]);            
+            if (itemcodigo5 == IdCuenta) {
+                cbIdCuenta.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+       int TipMovID = encabezado.getTipMovId();
+for (int i = 1; i < cbTipMov.getItemCount(); i++) {
+    String item6 = cbTipMov.getItemAt(i).toString();
+    int itemcodigo6 = Integer.parseInt(item6.split(" - ")[0]);
+    if (itemcodigo6 == TipMovID) {
+        cbTipMov.setSelectedIndex(i);
+        break;
+    }
+}
+
+        
+          int CuentaEmID= encabezado.getCueEmId();
+        for (int i = 1; i < cbIdCuenEm.getItemCount(); i++) {
+            String item7 = cbIdCuenEm.getItemAt(i).toString();
+          int itemcodigo7 = Integer.parseInt(item7.split(" - ")[0]);            
+            if (itemcodigo7 == CuentaEmID) {
+               cbIdCuenEm.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        
      int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");    
-
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");     
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//KARLA SOFÍA GOMEZ TOBAR -
+ // TODO add your handling code here:
         clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
-        banco.setIdMovimientoDetalles(Integer.parseInt(txtbuscadoDetalles.getText()));
+        banco.setIdMovimientoDetalles(Integer.parseInt(cbBusquedaID.getSelectedItem().toString()));
         banco.setMovimientoCosto (Float.parseFloat(txtAbono.getText()));
         banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
-        banco.setIdMovimiento(Integer.parseInt(cbMovimientoEncabezado.getSelectedItem().toString()));
-        banco.setIdConcepto(Integer.parseInt(cbConcepto.getSelectedItem().toString()));
-        banco.setIdTipoMovimiento(Integer.parseInt(cbMovimientoMoneda.getSelectedItem().toString()));
-         banco.setModificarMovimiento(banco);
+           String selectItem = cbConcepto.getSelectedItem().toString();
+   int Movid = 0; // Variable para almacenar el valor de Movid
+
+if (banco != null) {
+    Movid = banco.getIdMovimiento();
+}
+        String concep = selectItem.split(" - ")[0]; // Obtiene solo la ID
+         banco.setIdConcepto(Integer.parseInt(concep));
+        
+          String selectItem2 = cbMovimientoMoneda.getSelectedItem().toString();
+        String Tip = selectItem2.split(" - ")[0]; // Obtiene solo la ID
+         banco.setIdTipoMovimiento(Integer.parseInt(Tip));
+        
+// Codigo Encabezado:
+
+
+
+// encabezados: 
+  clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
+        encabezado.setMovId(Movid);
+        
+           String selectItem3 =cbCodigo.getSelectedItem().toString();
+        String codBan= selectItem3.split(" - ")[0]; // Obtiene solo la ID
+         encabezado.setCodBanco(Integer.parseInt(codBan));
+        
+        String selectItem4 = cbIdCuenta.getSelectedItem().toString();
+        String cue= selectItem4.split(" - ")[0]; // Obtiene solo la ID
+         encabezado.setCueId(Integer.parseInt(cue));
      
-    
+         
+          String selectItem5 = cbTipMov.getSelectedItem().toString();
+        String T= selectItem5.split(" - ")[0]; // Obtiene solo la ID
+        encabezado.setTipMovId(Integer.parseInt(T));
+         
+         
+
+        encabezado.setMovFecha(txtFecha.getText());
         
+         String selectItem6 = cbIdCuenEm.getSelectedItem().toString();
+        String CueE= selectItem6.split(" - ")[0]; // Obtiene solo la ID
+         encabezado.setCueEmId(Integer.parseInt(CueE));
         
+  
+            
+         banco.setModificarMovimiento(banco);
+   
+        encabezado.setModificarMovimientosEncabezado(encabezado);
+       
+       
+  
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);  
         int resultadoBitacora=0;
@@ -1027,38 +1074,42 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
         BusquedaDetallesEncabezado ();
         llenadoDeTablas();
         limpiarTextos();
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+       //KARLA SOFÍA GOMEZ TOBAR -
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         limpiarTextos();
         habilitarBotones();
-        
+           limpiarTextos2();
+        habilitarBotones2();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
     {
-        cbMovimientoEncabezado.setSelectedIndex(0);
+      
         cbConcepto.setSelectedIndex(0);
         cbMovimientoMoneda.setSelectedIndex(0);
         tbTipoCargoAbono.setSelectedIndex(0);
         txtAbono.setText("");
         txtIdMovDetalles.setText("");
         txtCargo.setText("");
-        txtbuscadoDetalles.setText("");
+        
     }
     public void habilitarBotones()
     {
         btnRegistrar.setEnabled(true);
         btnModificar.setEnabled(true);
-        btnEliminar.setEnabled(true);
+
     }
     public void desHabilitarBotones()
     {
         btnRegistrar.setEnabled(false);
         btnModificar.setEnabled(false);
-        btnEliminar.setEnabled(false);
+  
     }    
- //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896   
+    
     public void limpiarTextos2()
     {
         txtid.setText("");
@@ -1067,20 +1118,18 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
         cbIdCuenta.setSelectedIndex(0);
         cbTipMov.setSelectedIndex(0);
         cbIdCuenEm.setSelectedIndex(0);
-        cbEncabezadoId.setSelectedIndex(0);
+        cbBusquedaID.setSelectedIndex(0);
 
     }
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
     public void habilitarBotones2()
     {
-        btnRegistrar1.setEnabled(true);
-        btnModificar1.setEnabled(true);
+   
         btnEliminar1.setEnabled(true);
     }
     public void desHabilitarBotones2()
     {
-        btnRegistrar1.setEnabled(false);
-        btnModificar1.setEnabled(false);
+       
+      
         btnEliminar1.setEnabled(false);
     }    
     
@@ -1093,150 +1142,54 @@ for (int i = 1; i < cbMovimientoEncabezado.getItemCount(); i++) {
     }//GEN-LAST:event_txtFechaActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-        // TODO add your handling code here:
-        int registrosBorrados=0;
-        clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
-        encabezado.setMovId(Integer.parseInt(cbEncabezadoId.getSelectedItem().toString()));
-        registrosBorrados=encabezado.setborrarMovimientosEncabezado(encabezado);
+   //KARLA SOFÍA GOMEZ TOBAR -
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+    //Borrado de Detalles
+   
+ int idMovimientoDetalles = Integer.parseInt(cbBusquedaID.getSelectedItem().toString());
+// Borrar todas las llaves foráneas en MovimientoIdDetalles
+int registrosBorradosDetalles = 0;
+clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
+banco.setIdMovimientoDetalles(idMovimientoDetalles);
+registrosBorradosDetalles = banco.setBorrarMovimiento(banco);
+
+// Encontrar el último encabezado con el idMovimiento coincidente
+int contador = 0;
+int ultimoEncabezadoId = 0;
+clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
+encabezado.setMovId(idMovimientoDetalles);
+
+List<clsMovimientosEncabezadoBancos> encabezados = encabezado.getListadoMovEncabezado();
+for (clsMovimientosEncabezadoBancos enc : encabezados) {
+    contador++;
+    if (contador == encabezados.size()) {
+        ultimoEncabezadoId = enc.getMovId();
+    }
+}
+// Borrar el último encabezado encontrado
+int registrosBorradosEncabezado = 0;
+encabezado.setMovId(ultimoEncabezadoId);
+registrosBorradosEncabezado = encabezado.setborrarMovimientosEncabezado(encabezado);
+
         JOptionPane.showMessageDialog(null, "Registro Borrado\n",
             "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas2();
-
+         llenadoDeTablas();
+        limpiarTextos();
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
          llenarClasificacionDetalles ();
          BusquedaDetallesEncabezado();
-         llenadoDeComboDetallesId();
         limpiarTextos2();
     }//GEN-LAST:event_btnEliminar1ActionPerformed
-
-    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896 
-        String fecha = txtFecha.getText();
-         String codigo = cbCodigo.getSelectedItem().toString();
-         String cuenta= cbIdCuenta.getSelectedItem().toString();
-         String tipmovimiento = cbTipMov.getSelectedItem().toString();
-         String cuentaempresa = cbIdCuenEm.getSelectedItem().toString();
- 
-         
- if (codigo.equals("Seleccionar...")|| cuenta.equals("Seleccionar...")||tipmovimiento.equals("Seleccionar...")||cuentaempresa.equals("Seleccionar...")) {
-   JOptionPane.showMessageDialog(null, "Error! Debe seleccionar todos los Id", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-}else{
-           clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
-    encabezado.setMovId(Integer.parseInt(txtid.getText()));
-        encabezado.setMovFecha(txtFecha.getText());
-        encabezado.setCodBanco(Integer.parseInt(cbCodigo.getSelectedItem().toString()));
-        encabezado.setCueId(Integer.parseInt(cbIdCuenta.getSelectedItem().toString()));
-        encabezado.setTipMovId(Integer.parseInt(cbTipMov.getSelectedItem().toString()));
-        encabezado.setCueEmId(Integer.parseInt(cbIdCuenEm.getSelectedItem().toString()));
-
-    
-    encabezado.setingresaMovimientosEncabezado(encabezado);
-        JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
-        llenarClasificacionDetalles();
-        BusquedaDetallesEncabezado ();
-        llenadoDeTablas2();
-        limpiarTextos2();
-  
- }  
-    }//GEN-LAST:event_btnRegistrar1ActionPerformed
-
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-        // TODO add your handling code here:
-        clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
-        //usuario.setNombreUsuario(txtbuscado.getText());
-        encabezado.setMovId(Integer.parseInt(cbEncabezadoId.getSelectedItem().toString()));
-        encabezado = encabezado.getBuscarMovimientosEncabezadoPorId(encabezado);
-        System.out.println("movDetalle retornado:" + encabezado);
-        txtFecha.setText(encabezado.getMovFecha());
-
-
-        int cogidoBanc = encabezado.getCodBanco();
-        for (int i = 1; i < cbCodigo.getItemCount(); i++) {
-            int item = Integer.parseInt(cbCodigo.getItemAt(i).toString());
-            if (item == cogidoBanc) {
-                cbCodigo.setSelectedIndex(i);
-                break;
-            }
-        }
-        
-        int IdCuenta = encabezado.getCueId();
-        for (int i = 1; i < cbIdCuenta.getItemCount(); i++) {
-            int item = Integer.parseInt(cbIdCuenta.getItemAt(i).toString());
-            if (item == IdCuenta) {
-                cbIdCuenta.setSelectedIndex(i);
-                break;
-            }
-        }
-        
-        int TipMovID = encabezado.getTipMovId();
-        for (int i = 1; i < cbTipMov.getItemCount(); i++) {
-            int item = Integer.parseInt(cbTipMov.getItemAt(i).toString());
-            if (item == TipMovID) {
-                cbTipMov.setSelectedIndex(i);
-                break;
-            }
-        }
-
-        
-        int CuentaEmID = encabezado.getCueEmId();
-        for (int i = 1; i < cbIdCuenEm.getItemCount(); i++) {
-            int item = Integer.parseInt(cbIdCuenEm.getItemAt(i).toString());
-            if (item == CuentaEmID) {
-                cbIdCuenEm.setSelectedIndex(i);
-                break;
-            }
-        }
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "QRY");
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
-
-    private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-        // TODO add your handling code here:
-        clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
-        encabezado.setMovId(Integer.parseInt(cbEncabezadoId.getSelectedItem().toString()));
-        encabezado.setCodBanco(Integer.parseInt(cbCodigo.getSelectedItem().toString()));
-        encabezado.setCueId(Integer.parseInt(cbIdCuenta.getSelectedItem().toString()));
-        encabezado.setTipMovId(Integer.parseInt(cbTipMov.getSelectedItem().toString()));
-        encabezado.setMovFecha(txtFecha.getText());
-        encabezado.setCueEmId(Integer.parseInt(cbIdCuenEm.getSelectedItem().toString()));
-
-        encabezado.setModificarMovimientosEncabezado(encabezado);
-        JOptionPane.showMessageDialog(null, "Registro Modificado\n",
-            "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        llenadoDeTablas2();
-
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "UPD");
-
-        limpiarTextos2();
-    }//GEN-LAST:event_btnModificar1ActionPerformed
 
     private void cbCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCodigoActionPerformed
 
-    private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
-        limpiarTextos2();
-        habilitarBotones2();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLimpiar1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//Hecho por: Karla Sofia Góomez Tobar 9959-21-1896        
-// TODO add your handling code here:
+        // TODO add your handling code here:
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
                 Process p = Runtime
@@ -1279,11 +1232,6 @@ if (Seleccionar.equals("Ambos")) {
 
         
     }//GEN-LAST:event_tbTipoCargoAbonoActionPerformed
-
-    private void cbMovimientoEncabezadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMovimientoEncabezadoActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_cbMovimientoEncabezadoActionPerformed
 
     private void btnClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasificacionActionPerformed
         // TODO add your handling code here:
@@ -1333,9 +1281,13 @@ else{
         // TODO add your handling code here:
     }//GEN-LAST:event_cbClasificacionActionPerformed
 
-    private void cbEncabezadoIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEncabezadoIdActionPerformed
+    private void cbBusquedaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBusquedaIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbEncabezadoIdActionPerformed
+    }//GEN-LAST:event_cbBusquedaIDActionPerformed
+
+    private void cbIdCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIdCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbIdCuentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1343,31 +1295,27 @@ else{
     private javax.swing.JLabel TotalCargo;
     private javax.swing.JLabel TotalDiferencia;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnClasificacion;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnLimpiar1;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnModificar1;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnRegistrar1;
+    private javax.swing.JComboBox<String> cbBusquedaID;
     private javax.swing.JComboBox<String> cbClasificacion;
     private javax.swing.JComboBox<String> cbCodigo;
     private javax.swing.JComboBox<String> cbConcepto;
-    private javax.swing.JComboBox<String> cbEncabezadoId;
     private javax.swing.JComboBox<String> cbIdCuenEm;
     private javax.swing.JComboBox<String> cbIdCuenta;
-    private javax.swing.JComboBox<String> cbMovimientoEncabezado;
     private javax.swing.JComboBox<String> cbMovimientoMoneda;
     private javax.swing.JComboBox<String> cbTipMov;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
-    private javax.swing.JLabel label10;
     private javax.swing.JLabel label11;
     private javax.swing.JLabel label12;
     private javax.swing.JLabel label13;
@@ -1379,18 +1327,14 @@ else{
     private javax.swing.JLabel label19;
     private javax.swing.JLabel label20;
     private javax.swing.JLabel label21;
-    private javax.swing.JLabel label23;
     private javax.swing.JLabel label24;
     private javax.swing.JLabel label25;
     private javax.swing.JLabel label26;
-    private javax.swing.JLabel label27;
-    private javax.swing.JLabel label3;
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel label7;
     private javax.swing.JLabel label8;
     private javax.swing.JLabel label9;
-    private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaUsuarios;
@@ -1399,8 +1343,6 @@ else{
     private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtIdMovDetalles;
-    private javax.swing.JTextField txtbuscado;
-    private javax.swing.JTextField txtbuscadoDetalles;
     private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 }
