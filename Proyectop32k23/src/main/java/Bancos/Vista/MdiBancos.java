@@ -60,6 +60,7 @@ public class MdiBancos extends javax.swing.JFrame {
         cuentaEmpresa = new javax.swing.JCheckBoxMenuItem();
         MovDetallesBancos = new javax.swing.JMenuItem();
         PersonaBancoss = new javax.swing.JMenuItem();
+        comrpobante = new javax.swing.JCheckBoxMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         consultaBitacora = new javax.swing.JCheckBoxMenuItem();
         mnuReportes = new javax.swing.JMenu();
@@ -209,6 +210,15 @@ public class MdiBancos extends javax.swing.JFrame {
             }
         });
         mnuProcesos.add(PersonaBancoss);
+
+        comrpobante.setSelected(true);
+        comrpobante.setText("comprobantes Proveedores");
+        comrpobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comrpobanteActionPerformed(evt);
+            }
+        });
+        mnuProcesos.add(comrpobante);
 
         mnuGeneral.add(mnuProcesos);
 
@@ -379,6 +389,16 @@ public class MdiBancos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_PersonaBancossActionPerformed
 
+    private void comrpobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comrpobanteActionPerformed
+        //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
+// TODO add your handling code here:
+        frmComprobanteproveedoresbancos ventana = new frmComprobanteproveedoresbancos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_comrpobanteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -425,6 +445,7 @@ public class MdiBancos extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem MantenimientoTipoMoneda;
     private javax.swing.JMenuItem MovDetallesBancos;
     private javax.swing.JMenuItem PersonaBancoss;
+    private javax.swing.JCheckBoxMenuItem comrpobante;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem cuentaEmpresa;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
