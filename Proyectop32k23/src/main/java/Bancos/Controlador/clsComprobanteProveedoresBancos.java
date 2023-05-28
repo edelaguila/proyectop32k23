@@ -156,7 +156,7 @@ public class clsComprobanteProveedoresBancos {
     public clsComprobanteProveedoresBancos getBuscarInformacionComprobanteProveedoresPorNombre(clsComprobanteProveedoresBancos comprobante)
     {
         daoComprobanteProveedoresBancos daoComprobanteProveedoresBancos = new daoComprobanteProveedoresBancos();
-        return daoComprobanteProveedoresBancos.consultaTComprobanteProveedoresPorNombre(comprobante);
+        return daoComprobanteProveedoresBancos.consultaComprobanteProveedoresPorNombre(comprobante);
     }
     public clsComprobanteProveedoresBancos getBuscarInformacionComprobanteProveedoresPorId(clsComprobanteProveedoresBancos comprobante)
     {
