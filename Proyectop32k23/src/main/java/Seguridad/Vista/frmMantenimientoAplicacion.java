@@ -41,6 +41,7 @@ int codigoAplicacion=120;
     }
 
     public void llenadoDeTablas() {
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("nombre");
@@ -298,6 +299,7 @@ int codigoAplicacion=120;
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         int registrosBorrados=0;
         clsAplicacion aplicacion = new clsAplicacion();
         aplicacion.setIdAplicacion(Integer.parseInt(txtbuscado.getText()));
@@ -309,6 +311,7 @@ int codigoAplicacion=120;
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsAplicacion aplicacion = new clsAplicacion();
         aplicacion.setNombreAplicacion(txtNombre.getText());
         aplicacion.setEstatusAplicacion(txtContrasena.getText());
@@ -321,7 +324,7 @@ int codigoAplicacion=120;
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsAplicacion aplicacion = new clsAplicacion();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         aplicacion.setIdAplicacion(Integer.parseInt(txtbuscado.getText()));        
@@ -332,7 +335,8 @@ int codigoAplicacion=120;
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+        // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsAplicacion aplicacion = new clsAplicacion();
         aplicacion.setIdAplicacion(Integer.parseInt(txtbuscado.getText()));
         aplicacion.setNombreAplicacion(txtNombre.getText());
@@ -349,6 +353,7 @@ int codigoAplicacion=120;
         habilitarBotones();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
+    //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
     public void limpiarTextos()
     {
         txtNombre.setText("");

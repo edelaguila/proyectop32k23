@@ -27,6 +27,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
+//REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
 
 /**
  *
@@ -323,7 +324,7 @@ public void llenadoDeTabla() {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
+                        .addGap(159, 159, 159)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -390,10 +391,11 @@ public void llenadoDeTabla() {
                             .addComponent(btnRegistrar)
                             .addComponent(btnEliminar)
                             .addComponent(btnModificar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
                     .addComponent(jButton2))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -414,20 +416,21 @@ public void llenadoDeTabla() {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_clientesayuda.chm")).exists()) {
                 Process p = Runtime
                 .getRuntime()
-                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_clientesayuda.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -437,6 +440,7 @@ public void llenadoDeTabla() {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         int registrosBorrados=0;
         clsCCorrientes transaccion = new clsCCorrientes();
         transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
@@ -451,6 +455,7 @@ public void llenadoDeTabla() {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsCCorrientes transaccion = new clsCCorrientes();
         transaccion.setTipoCCorriente(txtTipoC.getText());
         transaccion.setIdTipoCCorriente(Integer.parseInt(txtIdtipoC.getText()));
@@ -472,6 +477,7 @@ public void llenadoDeTabla() {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsCCorrientes transaccion = new clsCCorrientes();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());
         transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
@@ -489,6 +495,7 @@ public void llenadoDeTabla() {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsCCorrientes transaccion = new clsCCorrientes();
         transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
         transaccion.setTipoCCorriente(txtTipoC.getText());
@@ -527,6 +534,7 @@ public void llenadoDeTabla() {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -546,6 +554,7 @@ public void llenadoDeTabla() {
     }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiarTextos()
     {
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         txtTipoC.setText("");
         txtIdtipoC.setText("");
         txtfecha.setText("");
