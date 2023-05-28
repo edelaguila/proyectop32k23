@@ -146,3 +146,90 @@ public class daoComprobanteProveedoresBancos {
 
         return rows;
     }
+    public clsComprobanteProveedoresBancos consultaComprobanteProveedoresPorNombre(clsComprobanteProveedoresBancos comprobante) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + comprobante);
+            stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
+            //stmt.setInt(1, comprobante.comprobante());            
+            stmt.setString(1, comprobante.getConFechaEmision());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("comId");
+                String fechaE = rs.getString("conFechaEmision");
+                int tipoMovId = rs.getInt("tipMovid");
+                int cuentaId = rs.getInt("cueId");
+                int conceptoId = rs.getInt("concId");
+                int bancoId = rs.getInt("codBanco");
+                int movDId = rs.getInt("movDetId");
+                int cpid  = rs.getInt("cpid ");
+                //comprobante = new comprobante();
+                comprobante.setComId(id);
+                comprobante.setConFechaEmision(fechaE);
+                comprobante.setTipMovid(tipoMovId);
+                comprobante.setCueId(cuentaId);
+                comprobante.setConcId(conceptoId);
+                comprobante.setCodBanco(bancoId);
+                comprobante.setMovDetId(movDId);
+                comprobante.setcpid (cpid );
+                System.out.println(" registro consultado: " + comprobante);                
+            }
+            //System.out.println("Registros buscado:" + persona);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        //return personas;  // Si se utiliza un ArrayList
+        return comprobante;
+    }
+       public clsComprobanteProveedoresBancos consultaComprobanteProveedoresPorId(clsComprobanteProveedoresBancos comprobante) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + comprobante);
+            stmt = conn.prepareStatement(SQL_SELECT_ID);
+            stmt.setInt(1, comprobante.getComId());            
+            //stmt.setString(1, comprobante.getTipMondNombre());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("comId");
+                String fechaE = rs.getString("conFechaEmision");
+                int tipoMovId = rs.getInt("tipMovid");
+                int cuentaId = rs.getInt("cueId");
+                int conceptoId = rs.getInt("concId");
+                int bancoId = rs.getInt("codBanco");
+                int movDId = rs.getInt("movDetId");
+                int cpid  = rs.getInt("cpid ");
+                //comprobante = new comprobante();
+                comprobante.setComId(id);
+                comprobante.setConFechaEmision(fechaE);
+                comprobante.setTipMovid(tipoMovId);
+                comprobante.setCueId(cuentaId);
+                comprobante.setConcId(conceptoId);
+                comprobante.setCodBanco(bancoId);
+                comprobante.setMovDetId(movDId);
+                comprobante.setcpid (cpid );
+                System.out.println(" registro consultado: " + comprobante);                
+            }
+            //System.out.println("Registros buscado:" + persona);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        //return personas;  // Si se utiliza un ArrayList
+        return comprobante;
+    }    
+}
