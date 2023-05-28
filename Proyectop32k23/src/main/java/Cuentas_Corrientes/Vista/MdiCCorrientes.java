@@ -131,7 +131,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoTransacciones);
 
-        MantenimientoCC.setText("Mantenimiento Cuentas Corriente");
+        MantenimientoCC.setText("Mantenimiento Cuentas Corriente Clientes");
         MantenimientoCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MantenimientoCCActionPerformed(evt);
@@ -139,7 +139,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoCC);
 
-        MantenimientoCCProv.setText("Mantenimiento Cuentas Corriente (proveedores)");
+        MantenimientoCCProv.setText("Mantenimiento Cuentas Corriente Proveedores");
         MantenimientoCCProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MantenimientoCCProvActionPerformed(evt);
@@ -219,6 +219,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
 
     private void MantenimientoCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoCCActionPerformed
         // TODO add your handling code here:
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         frmCCorrientes ventana = new frmCCorrientes();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();

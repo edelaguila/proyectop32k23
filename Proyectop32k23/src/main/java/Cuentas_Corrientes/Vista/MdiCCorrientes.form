@@ -77,7 +77,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="MantenimientoCC">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Mantenimiento Cuentas Corriente"/>
+                    <Property name="text" type="java.lang.String" value="Mantenimiento Cuentas Corriente Clientes"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MantenimientoCCActionPerformed"/>
@@ -85,7 +85,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="MantenimientoCCProv">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Mantenimiento Cuentas Corriente (proveedores)"/>
+                    <Property name="text" type="java.lang.String" value="Mantenimiento Cuentas Corriente Proveedores"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MantenimientoCCProvActionPerformed"/>
