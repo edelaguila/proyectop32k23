@@ -27,14 +27,14 @@ public class daoClasificacionCompras {
     private static final String SQL_SELECT_NOMBRE = "SELECT id_proveedor, nombre, direccion FROM Proveedor WHERE nombre = ?";
     private static final String SQL_SELECT_ID = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor WHERE id_proveedor = ?";
     
-    public List<ClasificacionCompras> consultaClasificacionCompras() {
+    public List<clsClasificacionCompras> consultaClasificacionCompras() {
 
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
 
-        List<ClasificacionCompras> ClasificacionCompras = new ArrayList<>();
+        List<clsClasificacionCompras> ClasificacionCompras = new ArrayList<>();
 
         try {
             conn = Conexion.getConnection();
@@ -222,10 +222,4 @@ public class daoClasificacionCompras {
         return ClasificacionCompras;
 
     } 
-
-    private static class ClasificacionCompras {
-
-        public ClasificacionCompras() {
-        }
-    }
 }
