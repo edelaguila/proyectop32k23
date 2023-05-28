@@ -67,3 +67,31 @@ public class daoComprobanteProveedoresBancos {
         return ComprobanteProveedor;
     }
 
+
+     public int ingresaComprobanteProveedores (clsComprobanteProveedoresBancos comprobante) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt.setString(1, comprobante.getConFechaEmision());
+            stmt.setInt(2, comprobante.getTipMovid());
+            stmt.setInt(3, comprobante.getCueId());
+            stmt.setInt(4, comprobante.getConcId());
+            stmt.setInt(5, comprobante.getCodBanco());
+            stmt.setInt(6, comprobante.getMovDetId());
+            stmt.setInt(7, comprobante.getcpid ());
+            
+            System.out.println("ejecutando query:" + SQL_INSERT);
+            rows = stmt.executeUpdate();
+            System.out.println("Registros afectados:" + rows);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+    }
