@@ -112,6 +112,21 @@ int codigoAplicacion=50015;
     }
 }
 */
+        public void BusquedaComp() {
+     clsComprobanteProveedoresBancos proveedor = new clsComprobanteProveedoresBancos();
+    List<clsComprobanteProveedoresBancos> listaCompr = proveedor.getListadoComprobantesProveedores();
+     cbID.removeAllItems();
+    Set <Integer> idSet= new HashSet<>();
+    cbID.addItem("Seleccionar...");
+    cbID.setAlignmentX(Component.CENTER_ALIGNMENT);
+    for (clsComprobanteProveedoresBancos pr : listaCompr){
+        int Id = pr.getComId();
+        if(!idSet.contains(Id)){
+            cbID.addItem(String.valueOf(Id));
+            idSet.add(Id);     
+       }
+    }
+}
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -152,6 +167,7 @@ int codigoAplicacion=50015;
         llenadoDeComboConcepto();
         llenadoDeComboMovDetalle();
         //llenadoDeComboproveedor();
+        BusquedaComp();
     }
 
     /**
@@ -486,6 +502,7 @@ int codigoAplicacion=50015;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
         limpiarTextos();
+        BusquedaComp();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -519,6 +536,7 @@ int codigoAplicacion=50015;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTablas();
+        BusquedaComp();
         limpiarTextos();
   
  }  
