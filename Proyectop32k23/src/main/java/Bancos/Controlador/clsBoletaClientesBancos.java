@@ -195,42 +195,41 @@ public class clsBoletaClientesBancos {
         this.IdTipoMoneda = IdTipoMoneda;
     }
     
-
-    
-    @Override
+@Override
     public String toString() {
-        return "clsTipoCuentas{" + "tipoCueId=" + tipoCueId + ", tipoCueDescripcion=" + tipoCueDescripcion + ", estatusTipoCue=" + estatusTipoCue + '}';
+        return "clsBoletaClientesBancos{" + "IdBoleta=" + IdBoleta + ", CodigoBanco=" + CodigoBanco + ", FechaEmisionBoleta=" + FechaEmisionBoleta + ", NombreCliente=" + NombreCliente + ", SaldoBoleta=" + SaldoBoleta + ", IdConcepto=" + IdConcepto + ", IdTipoMovimiento=" + IdTipoMovimiento + ", IdCuenta=" + IdCuenta + ", EfectoBoleta=" + EfectoBoleta +
+                ", IdTipoMoneda=" + IdTipoMoneda +'}';
     }
     //Metodos de acceso a la capa controlador
-    public clsBoletaClientes getBuscarInformacionTipoCuentaPorNombre(clsBoletaClientes cuenta)
+    public clsBoletaClientesBancos getBuscarInformacionBoletaPorCodigo(clsBoletaClientesBancos boleta)
     {
-        daoTipoCuentas daotipoCuenta = new daoTipoCuentas();
-        return daotipoCuenta.consultaTipoCuentaPorNombre(cuenta);
+        daoBoletaClientesBancos daoboletaClientesBancos = new daoBoletaClientesBancos();
+        return daoboletaClientesBancos.consultaBoletaPorCodigo(boleta);
     }
-    public clsBoletaClientes getBuscarInformacionTipoCuentaPorId(clsBoletaClientes cuenta)
+    public clsBoletaClientesBancos getBuscarInformacionBoletaPorId(clsBoletaClientesBancos boleta)
     {
-        daoTipoCuentas daotipocuenta = new daoTipoCuentas();
-        return daotipocuenta.consultaTipoCuentaPorId(cuenta);
+        daoBoletaClientesBancos daoboletaClientesBancos = new daoBoletaClientesBancos();
+        return daoboletaClientesBancos.consultaBoletaPorId(boleta);
     }    
-    public List<clsBoletaClientes> getListadoTipoCuentas()
+    public List<clsBoletaClientesBancos> getListadoBoletas()
     {
-        daoTipoCuentas daotipocuenta = new daoTipoCuentas();
-        List<clsBoletaClientes> listadoTipoCuenta = daotipocuenta.consultaTipoCuenta();
-        return listadoTipoCuenta;
+        daoBoletaClientesBancos daoboletaClientesBancos = new daoBoletaClientesBancos();
+        List<clsBoletaClientesBancos> listadoBoletas = daoboletaClientesBancos.consultaBoleta();
+        return listadoBoletas;
     }
-    public int setBorrarTipoCuenta(clsBoletaClientes cuenta)
+    public int setBorrarBoleta(clsBoletaClientesBancos boleta)
     {
-        daoTipoCuentas daotipoccuenta = new daoTipoCuentas();
-        return daotipoccuenta.borrarTipoCuenta(cuenta);
+        daoBoletaClientesBancos daoboletaClientesBancos = new daoBoletaClientesBancos();
+        return daoboletaClientesBancos.borrarBoleta(boleta);
     }          
-    public int setIngresarTipoCuenta(clsBoletaClientes cuenta)
+    public int setIngresarTipoBoleta(clsBoletaClientesBancos boleta)
     {
-        daoTipoCuentas daotipocuenta = new daoTipoCuentas();
-        return daotipocuenta.ingresaTipoCuenta(cuenta);
+        daoBoletaClientesBancos daoboletaClientesBancos = new daoBoletaClientesBancos();
+        return daoboletaClientesBancos.ingresaBoleta(boleta);
     }              
-    public int setModificarTipoCuenta(clsBoletaClientes cuenta)
+    public int setModificarBoleta(clsBoletaClientesBancos boleta)
     {
-        daoTipoCuentas daotipocuenta = new daoTipoCuentas();
-        return daotipocuenta.actualizaTipoCuenta(cuenta);
+        daoBoletaClientesBancos daoboletaClientesBancos = new daoBoletaClientesBancos();
+        return daoboletaClientesBancos.actualizaBoleta(boleta);
     }              
 }
