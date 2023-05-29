@@ -54,6 +54,8 @@ public class MdiVentas extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         mnuConsultasVentas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
@@ -175,6 +177,24 @@ public class MdiVentas extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         mnuProcesosVentas.add(jMenu1);
+
+        jMenu2.setText("Facturas");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("Nueva Factura");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMenuItem3);
+
+        mnuProcesosVentas.add(jMenu2);
 
         mnuGeneralVentas.add(mnuProcesosVentas);
 
@@ -325,6 +345,19 @@ public class MdiVentas extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
 
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        frmFacturas ventana = new frmFacturas();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,9 +400,11 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1MdiVentas;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JDesktopPane jDesktopPaneVentas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1MdiVentas;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
     private javax.swing.JMenuItem jMenuItem2;
