@@ -292,7 +292,7 @@ public class frmMantenimientoBitacora extends javax.swing.JInternalFrame {
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
         // TODO add your handling code here:
-    /*    Connection conn = null;        
+        Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
         JasperPrint print;
@@ -307,7 +307,7 @@ public class frmMantenimientoBitacora extends javax.swing.JInternalFrame {
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }//GEN-LAST:event_btnReporteActionPerformed
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
