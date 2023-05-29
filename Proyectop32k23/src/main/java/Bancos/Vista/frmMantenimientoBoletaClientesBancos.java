@@ -538,35 +538,27 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-            // TODO add your handling code here:
-        clsCuentasBancos cuenta = new clsCuentasBancos();
+        // TODO add your handling code here:
+        clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
         //usuario.setNombreUsuario(txtbuscado.getText());        
-        cuenta.setIdCuenta(Integer.parseInt(txtbuscado.getText()));        
-        cuenta = cuenta.getBuscarInformacionCuentaPorId(cuenta);
-        System.out.println("Cuenta retornado:" + cuenta);        
-        txtNumero.setText(Integer.toString(cuenta.getNumeroCuenta()));
-        txtSaldo.setText(Double.toString(cuenta.getSaldoCuenta()));
+        boleta.setIdBoleta(Integer.parseInt(txtbuscado.getText()));        
+        boleta = boleta.getBuscarInformacionBoletaPorId(boleta);
+        System.out.println("Boleta retornada:" + boleta);        
+        txtCodigoDocumento.setText(Integer.toString(boleta.getCodigoBanco()));
+        txtFecha.setText(boleta.getFechaEmisionBoleta());
+        txtvalor.setText(Float.toString(boleta.getSaldoBoleta()));
         
-        int IdPersona = cuenta.getIdPersona();
-        for (int i = 1; i < cbIdPersona.getItemCount(); i++) {
-            int item = Integer.parseInt(cbIdPersona.getItemAt(i).toString());
-            if (item == IdPersona) {
-                cbIdPersona.setSelectedIndex(i);
+        int tipoMonedaId = boleta.getIdTipoMoneda();
+        for (int i = 1; i < cbTipoMoneda.getItemCount(); i++) {
+            String item = cbTipoMoneda.getItemAt(i).toString();
+            int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
+            
+            if (itemId == tipoMonedaId) {
+                cbTipoMoneda.setSelectedIndex(i);
                 break;
             }
         }
         
-        int IdTipoCuenta = cuenta.getIdTipoCuenta();
-        for (int i = 1; i < cbTipoCuenta.getItemCount(); i++) {
-            int item = Integer.parseInt(cbTipoCuenta.getItemAt(i).toString());
-            if (item == IdTipoCuenta) {
-                cbTipoCuenta.setSelectedIndex(i);
-                break;
-            }
-        }
-     
-        rbHabilitar.setSelected(cuenta.getEstatusCuenta().equals("T"));
-        rbDeshabilitar.setSelected(cuenta.getEstatusCuenta().equals("F"));
         
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -574,24 +566,23 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        clsCuentasBancos cuenta = new clsCuentasBancos();
-        cuenta.setIdCuenta(Integer.parseInt(txtbuscado.getText()));
-        cuenta.setNumeroCuenta(Integer.parseInt(txtNumero.getText()));
-        cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
-        cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
-        cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
-        cuenta.setModificarCuenta(cuenta);
+      /*   // TODO add your handling code here:
+        clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
+        movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
+        movimiento.setNombreMovimiento(txtNombre.getText());
+        //movimiento.setEstatusMovimiento(txtEstatus.getText());
+        //movimiento.setModificarTipoMovimiento(movimiento);
         
-       int contador = 0;
-            String estatusCuenta = rbHabilitar.isSelected() ? "T" : (rbDeshabilitar.isSelected() ? "F" : "");
-            if (!estatusCuenta.isEmpty()) {
+
+        int contador = 0;
+            String estatusMovimiento = rbHabilitado.isSelected() ? "T" : (rbDeshabilitado.isSelected() ? "F" : "");
+            if (!estatusMovimiento.isEmpty()) {
                 contador++;
-                cuenta.setEstatusCuenta(estatusCuenta);
+                movimiento.setEstatusMovimiento(estatusMovimiento);
             }
             if (contador == 1) {
                 // Los dos botones de cada ButtonGroup están seleccionados
-                cuenta.setModificarCuenta(cuenta);
+                 movimiento.setModificarTipoMovimiento(movimiento);
                 JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
                 int resultadoBitacora=0;
@@ -602,9 +593,7 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
             } else {
                 // No se cumple la condición de selección de dos botones
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un estatus.");
-            }
-
-
+            }*/
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -612,15 +601,11 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         habilitarBotones();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
-    public void limpiarTextos()
     {
-        txtId.setText("");
-        txtNumero.setText("");
-        txtSaldo.setText("");
         txtbuscado.setText("");
-        cbIdPersona.setSelectedIndex(0);
-        cbTipoCuenta.setSelectedIndex(0);
         tipoEstatus.clearSelection();
+        cbConcepto.setSelectedIndex(0);
+            
     }
     public void habilitarBotones()
     {
