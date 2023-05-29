@@ -45,10 +45,6 @@
 				</textElement>
 				<text><![CDATA[Reporte Cuentas Corrientes Clientes]]></text>
 			</staticText>
-			<image>
-				<reportElement x="211" y="18" width="115" height="38" uuid="d4c611aa-2808-490d-a9e0-8f525b0828b3"/>
-				<imageExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\Progra III\\Proyectop32k23\\Img\\Clientes.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

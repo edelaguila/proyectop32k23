@@ -5,7 +5,7 @@
  */
 
 
-//Meyglin del Rosario Rosales Ochoa Carne: 9959-21-4490
+
 package Cuentas_Corrientes.Modelo;
 
 import Cuentas_Corrientes.Controlador.clsTransaccionesCC;

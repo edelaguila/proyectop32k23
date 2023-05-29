@@ -16,7 +16,7 @@ import java.util.List;
  * @author visitante
  */
 public class daoCCorrientes {
-
+// CAMBIOS HECHOS POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
     private static final String SQL_SELECT = "SELECT ccid,cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes";
     private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientes(cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda) VALUES(?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE tbl_cCorrientes SET cctipo=?,ccidtipo=?,ccfecha=?,ccnombretipo=?,NoFactura=?,ccTotalFactura=?,ccSaldo=?,ccDeuda=? WHERE ccid = ?";
