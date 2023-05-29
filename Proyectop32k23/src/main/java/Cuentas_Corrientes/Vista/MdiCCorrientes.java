@@ -229,6 +229,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
 
     private void MantenimientoCCProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoCCProvActionPerformed
         // TODO add your handling code here:
+        // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         frmCCorrientesProv ventana = new frmCCorrientesProv();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
