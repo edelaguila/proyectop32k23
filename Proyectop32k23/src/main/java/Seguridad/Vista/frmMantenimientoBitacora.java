@@ -5,6 +5,8 @@
  */
 package Seguridad.Vista;
 
+
+
 import Seguridad.Modelo.daoBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
@@ -294,6 +296,7 @@ public class frmMantenimientoBitacora extends javax.swing.JInternalFrame {
         Map p = new HashMap();
         JasperReport report;
         JasperPrint print;
+
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()

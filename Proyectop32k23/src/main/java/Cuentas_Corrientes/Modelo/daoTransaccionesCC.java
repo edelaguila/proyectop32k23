@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+//Meyglin del Rosario Rosales Ochoa Carne: 9959-21-4490
 package Cuentas_Corrientes.Modelo;
 
 import Cuentas_Corrientes.Controlador.clsTransaccionesCC;
