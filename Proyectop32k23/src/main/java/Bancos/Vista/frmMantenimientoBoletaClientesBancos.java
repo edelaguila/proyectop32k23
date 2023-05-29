@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 package Bancos.Vista;
 
 
@@ -163,10 +164,10 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         tablaMovimientos = new javax.swing.JTable();
         lb = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnRegistrar2 = new javax.swing.JButton();
-        btnModificar2 = new javax.swing.JButton();
-        btnEliminar2 = new javax.swing.JButton();
-        btnActualizar2 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtCodigoDocumento = new javax.swing.JLabel();
@@ -232,31 +233,31 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
-        btnRegistrar2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registrar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        btnRegistrar2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registrar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrar2ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
-        btnModificar2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        btnModificar2.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modificar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificar2ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
 
-        btnEliminar2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        btnEliminar2.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar2ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
-        btnActualizar2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        btnActualizar2.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizar2ActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -266,13 +267,13 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRegistrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnActualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
@@ -280,10 +281,10 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEliminar2, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addComponent(btnModificar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistrar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnActualizar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -548,7 +549,7 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar2ActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
         clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
 
@@ -600,9 +601,9 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTablas();
         limpiarTextos();
-    }//GEN-LAST:event_btnRegistrar2ActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void btnModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar2ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         /*   // TODO add your handling code here:
         clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
         movimiento.setTipoMovimientoId(Integer.parseInt(txtbuscado.getText()));
@@ -630,9 +631,9 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
             // No se cumple la condición de selección de dos botones
             JOptionPane.showMessageDialog(null, "Debe seleccionar un estatus.");
         }*/
-    }//GEN-LAST:event_btnModificar2ActionPerformed
+    }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnEliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar2ActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
         clsBoletaClientesBancos boleta= new clsBoletaClientesBancos();
@@ -646,12 +647,12 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
         limpiarTextos();
-    }//GEN-LAST:event_btnEliminar2ActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar2ActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
         llenadoDeTablas();
-    }//GEN-LAST:event_btnActualizar2ActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
@@ -702,7 +703,7 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-    {
+    public void limpiarTextos() {
         txtbuscado.setText("");
         tipoEstatus.clearSelection();
         cbConcepto.setSelectedIndex(0);
@@ -729,12 +730,12 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar2;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar2;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar2;
-    private javax.swing.JButton btnRegistrar2;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbCodigoMov;
     private javax.swing.JComboBox<String> cbConcepto;
     private javax.swing.JComboBox<String> cbIdCuenta;
@@ -774,7 +775,4 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
     private javax.swing.JTextField txtvalor;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarTextos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

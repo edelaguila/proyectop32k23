@@ -10,7 +10,7 @@ import Bancos.Modelo.daoTipoMovimientoBancos;
  *
  * @author visitante
  */
- /*Creado por Alyson Rodríguez 9959-21-829 */
+ //Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 
 public class clsTipoMovimientoBancos {
     private int TipoMovimientoId;

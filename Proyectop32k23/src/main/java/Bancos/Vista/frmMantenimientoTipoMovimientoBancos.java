@@ -20,17 +20,9 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
+//Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalFrame {
     int codigoAplicacion= 5004;
-
-    public void llenadoDeCombos() {
-        /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-        List<Empleado> empleados = empleadoDAO.select();
-        cbox_empleado.addItem("Seleccione una opción");
-        for (int i = 0; i < empleados.size(); i++) {
-            cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
-        } */
-    }
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -56,7 +48,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     public frmMantenimientoTipoMovimientoBancos() {
         initComponents();
         llenadoDeTablas();
-        llenadoDeCombos();
+        
     }
 
     /**

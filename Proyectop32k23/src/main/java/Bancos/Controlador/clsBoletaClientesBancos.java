@@ -11,8 +11,7 @@ import Bancos.Modelo.daoBoletaClientesBancos;
  * @author visitante
  */
 
- /*Creado por Alyson Rodríguez 9959-21-829 */
-
+ //Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 public class clsBoletaClientesBancos {
     private int IdBoleta;
     private int CodigoBanco;
