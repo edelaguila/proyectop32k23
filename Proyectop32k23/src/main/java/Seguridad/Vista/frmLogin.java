@@ -14,7 +14,6 @@ import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
-import Cuentas_Corrientes.Vista.MdiCCorrientes;
 import Bancos.Vista.MdiBancos;
 import Cuentas_Corrientes.Vista.MdiCCorrientes;
 /**
@@ -168,12 +167,14 @@ public class frmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "ERROR", JOptionPane.                  ERROR_MESSAGE);
         } else {
             try {
-                clsUsuario usuario = new clsUsuario();          
+                clsUsuario usuario = new clsUsuario();
+          
                 usuario.setNombreUsuario(txtUsuario.getText().trim());
                 // Recuperación de información a través de otro objeto
                 // se agrego codificacion de seguridad = David Rojas
                 clsSeguridad c = new clsSeguridad();
                 usuario.setContrasenaUsuario(c.encode(txtContraseña.getText()));
+                
                 usuario = usuario.getBuscarInformacionUsuarioPorNombre(usuario);
                 if (c.encode(txtContraseña.getText()).equals(usuario.getContrasenaUsuario()) && 
                     txtUsuario.getText().equals(usuario.getNombreUsuario())) {
@@ -219,7 +220,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "Cuentas Corrientes":
                         try {
-                            MdiCCorrientes menu = new MdiCCorrientes();
+                            MdiSeguridad menu = new MdiSeguridad();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
