@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
-public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalFrame {
+public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
     int codigoAplicacion= 5005;
 
     public void llenadoCodigoBanco() {
@@ -137,7 +137,7 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
         }       
     }
 
-    public frmMantenimientoBoletaClientesBancos() {
+    public frmBoletaClientesBancos() {
         initComponents();
         llenadoDeTablas();
         llenadoCodigoBanco();
