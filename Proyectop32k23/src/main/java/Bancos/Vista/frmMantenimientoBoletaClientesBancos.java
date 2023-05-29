@@ -469,53 +469,71 @@ public class frmMantenimientoBoletaClientesBancos extends javax.swing.JInternalF
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsCuentasBancos cuenta = new clsCuentasBancos();
-        cuenta.setIdCuenta(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=cuenta.setBorrarCuenta(cuenta);
+        clsBoletaClientesBancos boleta= new clsBoletaClientesBancos();
+        boleta.setIdBoleta(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados=boleta.setBorrarBoleta(boleta);
+
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
-        
-        int resultadoBitacora=0;
+        int resultadoBitacora =0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "DEL");
-        
         limpiarTextos();
     }//GEN-LAST:event_btnEliminarActionPerformed
     //int contador=0; 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsCuentasBancos cuenta = new clsCuentasBancos();
+        clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
+
+        boleta.setIdBoleta(Integer.parseInt(txtCodigoDocumento.getText()));
         
-        cuenta.setIdCuenta(Integer.parseInt(txtId.getText()));
-        cuenta.setNumeroCuenta(Integer.parseInt(txtNumero.getText()));
-        cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
-        cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
-        cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
+        /*String selectedItem= cbNombreBanco.getSelectedItem().toString();
+        int itemNombreBanco = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setCodigoBanco(itemNombreBanco);
         
-        if(rbHabilitar.isSelected()){
-            cuenta.setEstatusCuenta("T");
+        boleta.setFechaEmisionBoleta(txtFecha.getText()); 
+        
+        String selectedItem3= cbConcepto.getSelectedItem().toString();
+        int itemConcepto = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdConcepto(itemConcepto);
+        
+        String selectedItem4= cbIdCuenta.getSelectedItem().toString();
+        int itemCuenta = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdCuenta(itemCuenta);
+        
+        boleta.setNombreCliente(txtNombreCliente.getText());
+        
+        String selectedItem5 = cbTipoMoneda.getSelectedItem().toString();
+        int itemTipoMoneda = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdTipoMoneda(itemTipoMoneda);
+                
+        boleta.setSaldoBoleta(Float.parseFloat(txtvalor.getText()));
+        
+        if(rbcargo.isSelected()){
+            boleta.setEfectoBoleta("Cargo");
         }
         
-        else if(rbDeshabilitar.isSelected()){
-            cuenta.setEstatusCuenta("F");
+        else if(rbabono.isSelected()){
+            boleta.setEfectoBoleta("Abono");
         }
         else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un estatus.");
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un Cargo.");
             return;
         }
         
-        cuenta.setIngresarCuenta(cuenta);
+        /*String selectedItem = cbNombreCliente.getSelectedItem().toString();
+        String itemNombre = selectedItem.split(" - ")[0];
+        boleta.setNombreCliente(itemNombre);*/
+  
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        
-        llenadoDeTablas();
         
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
-        
+        llenadoDeTablas();
         limpiarTextos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
