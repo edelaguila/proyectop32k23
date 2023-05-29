@@ -236,7 +236,7 @@ public class daoPedidos {
         try (Connection conn = Conexion.getConnection()) {
             String query = "INSERT INTO tbl_pedidodetalle (pedid, proCodigo, proPrecios, prodcantidad, pedTotalInd) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            PreparedStatement stmtUpdate = null;            
+                       
             int rowCount = model.getRowCount();
             
             for (int i = 0; i < rowCount; i++) {
@@ -253,10 +253,7 @@ public class daoPedidos {
                 
                 
                 // Actualiza las existencias en la tabla tbl_productos
-                stmtUpdate = conn.prepareStatement("UPDATE tbl_productos SET proExistencias = proExistencias - ? WHERE proCodigo = ?");
-                stmtUpdate.setInt(1, cantidadProducto);
-                stmtUpdate.setInt(2, codigoProducto);
-                stmtUpdate.executeUpdate();
+                
                 
                 statement.executeUpdate();
             }

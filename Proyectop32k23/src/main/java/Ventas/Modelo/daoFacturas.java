@@ -26,7 +26,7 @@ public class daoFacturas {
     String contrabd = "";
     private static final String SQL_SELECT = "SELECT proCodigo, proNombre, proPrecios, proExistencias FROM tbl_productos";
     private static final String SQL_SELECT_COT = "SELECT facid, pedid, clId, venid, tieid, facfecha, facTotalGeneral FROM tbl_factura";
-    private static final String SQL_SELECT_COTDET = "SELECT facid, proCodigo, proPrecios, cotprodcantidad, factdescuento, facimpuestos, factotalInd FROM tbl_facturadetalle";
+    private static final String SQL_SELECT_COTDET = "SELECT facid, proCodigo, proPrecios, facprodcantidad, factdescuento, facimpuestos, factotalInd FROM tbl_facturadetalle";
     private static final String SQL_SELECT_COT2 = "SELECT clId, facfecha, facTotalGeneral FROM tbl_factura";
     private static final String SQL_SELECT_COTDET2 = "SELECT proCodigo, proPrecios, cotprodcantidad, cotTotalInd FROM tbl_facturadetalle";
       public int verificarExistencias(int codigoProducto) {
@@ -132,8 +132,7 @@ public class daoFacturas {
             statement.setInt(2, idVendedor);
             statement.setInt(3, tieid);
             statement.setDate(4, java.sql.Date.valueOf(fecha));
-            statement.setDouble(5, total);
-            
+            statement.setDouble(5, total);     
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -162,7 +161,7 @@ public class daoFacturas {
         try (Connection conn = Conexion.getConnection()) {
             String query = "INSERT INTO tbl_facturadetalle (facid, proCodigo, proPrecios, facprodcantidad, factdescuento, facimpuestos, factotalInd) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            
+            PreparedStatement stmtUpdate = null; 
             int rowCount = model.getRowCount();
             
             for (int i = 0; i < rowCount; i++) {
@@ -171,14 +170,21 @@ public class daoFacturas {
                 int cantidadProducto = (int) model.getValueAt(i, 1);
                 double descuentoFac = descuento;
                 double impuesto = 0.12;
-                double totalIndividual = (double) model.getValueAt(i, 2);
-                
+                double totalIndividual = (double) model.getValueAt(i, 4);
+                double descuentocalculado = (double) model.getValueAt(i, 2);
+                double impuestocalculado = (double) model.getValueAt(i, 3);
                 statement.setInt(1, cotizacionId);
                 statement.setInt(2, codigoProducto);
                 statement.setDouble(3, precioProducto);
                 statement.setInt(4, cantidadProducto);
-                statement.setDouble(5, descuento);
-                statement.setDouble(6, totalIndividual);
+                statement.setDouble(5, descuentocalculado);
+                statement.setDouble(6, impuestocalculado);
+                statement.setDouble(7, totalIndividual);
+                
+                stmtUpdate = conn.prepareStatement("UPDATE tbl_productos SET proExistencias = proExistencias - ? WHERE proCodigo = ?");
+                stmtUpdate.setInt(1, cantidadProducto);
+                stmtUpdate.setInt(2, codigoProducto);
+                stmtUpdate.executeUpdate();
                 
                 statement.executeUpdate();
             }
