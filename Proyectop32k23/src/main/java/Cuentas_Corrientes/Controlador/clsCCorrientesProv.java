@@ -19,9 +19,9 @@ public class clsCCorrientesProv {
     private String fechaCCorrienteProv;
     private String nombreCCorrienteProv;
     private String nofacturaCCorrienteProv;
-    private String facturaCCorrienteProv;
-    private String CancelaciónProv;
-    private String SaldoCCorrienteProv;
+    private double facturaCCorrienteProv;
+    private double CancelaciónProv;
+    private double SaldoCCorrienteProv;
 
     public int getIdCCorrienteProv() {
         return idCCorrienteProv;
@@ -71,31 +71,31 @@ public class clsCCorrientesProv {
         this.nofacturaCCorrienteProv = nofacturaCCorrienteProv;
     }
 
-    public String getFacturaCCorrienteProv() {
+    public double getFacturaCCorrienteProv() {
         return facturaCCorrienteProv;
     }
 
-    public void setFacturaCCorrienteProv(String facturaCCorrienteProv) {
+    public void setFacturaCCorrienteProv(double facturaCCorrienteProv) {
         this.facturaCCorrienteProv = facturaCCorrienteProv;
     }
 
-    public String getCancelacionProv() {
+    public double getCancelacionProv() {
         return CancelaciónProv;
     }
 
-    public void setCancelacionProv(String CancelaciónProv) {
+    public void setCancelacionProv(double CancelaciónProv) {
         this.CancelaciónProv = CancelaciónProv;
     }
 
-    public String getSaldoCCorrienteProv() {
+    public double getSaldoCCorrienteProv() {
         return SaldoCCorrienteProv;
     }
 
-    public void setSaldoCCorrienteProv(String SaldoCCorrienteProv) {
+    public void setSaldoCCorrienteProv(int SaldoCCorrienteProv) {
         this.SaldoCCorrienteProv = SaldoCCorrienteProv;
     }
 
-    public clsCCorrientesProv(int idCCorrienteProv, String tipoCCorrienteProv, int idTipoCCorrienteProv, String fechaCCorrienteProv, String nombreCCorrienteProv, String nofacturaCCorrienteProv, String facturaCCorrienteProv, String CancelaciónProv, String SaldoCCorrienteProv) {
+    public clsCCorrientesProv(int idCCorrienteProv, String tipoCCorrienteProv, int idTipoCCorrienteProv, String fechaCCorrienteProv, String nombreCCorrienteProv, String nofacturaCCorrienteProv, double facturaCCorrienteProv, double CancelaciónProv, double SaldoCCorrienteProv) {
         this.idCCorrienteProv = idCCorrienteProv;
         this.tipoCCorrienteProv = tipoCCorrienteProv;
         this.idTipoCCorrienteProv = idTipoCCorrienteProv;
@@ -107,7 +107,7 @@ public class clsCCorrientesProv {
         this.SaldoCCorrienteProv = SaldoCCorrienteProv;
     }
 
-    public clsCCorrientesProv(int idCCorrienteProv, String tipoCCorrienteProv, int idTipoCCorrienteProv, String fechaCCorrienteProv, String nombreCCorrienteProv, String nofacturaCCorrienteProv, String facturaCCorrienteProv, String CancelaciónProv) {
+    public clsCCorrientesProv(int idCCorrienteProv, String tipoCCorrienteProv, int idTipoCCorrienteProv, String fechaCCorrienteProv, String nombreCCorrienteProv, String nofacturaCCorrienteProv, double facturaCCorrienteProv, double CancelaciónProv) {
         this.idCCorrienteProv = idCCorrienteProv;
         this.tipoCCorrienteProv = tipoCCorrienteProv;
         this.idTipoCCorrienteProv = idTipoCCorrienteProv;
@@ -118,7 +118,7 @@ public class clsCCorrientesProv {
         this.CancelaciónProv = CancelaciónProv;
     }
 
-    public clsCCorrientesProv(int idCCorrienteProv, String tipoCCorrienteProv, int idTipoCCorrienteProv, String fechaCCorrienteProv, String nombreCCorrienteProv, String nofacturaCCorrienteProv, String facturaCCorrienteProv) {
+    public clsCCorrientesProv(int idCCorrienteProv, String tipoCCorrienteProv, int idTipoCCorrienteProv, String fechaCCorrienteProv, String nombreCCorrienteProv, String nofacturaCCorrienteProv, double facturaCCorrienteProv) {
         this.idCCorrienteProv = idCCorrienteProv;
         this.tipoCCorrienteProv = tipoCCorrienteProv;
         this.idTipoCCorrienteProv = idTipoCCorrienteProv;

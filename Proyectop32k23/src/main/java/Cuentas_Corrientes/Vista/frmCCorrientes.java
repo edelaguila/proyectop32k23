@@ -426,7 +426,6 @@ public void llenadoDeTabla() {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

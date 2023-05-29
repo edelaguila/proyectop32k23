@@ -6,7 +6,7 @@
 package Cuentas_Corrientes.Vista;
 
 
-import Seguridad.Vista.*;
+//import Seguridad.Vista.*;
 import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
@@ -15,12 +15,12 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+//import java.sql.ResultSet;
+//import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+//import java.util.Set;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -68,9 +68,9 @@ public void llenadoDeTabla() {
             dato[3] = listaAplicaciones.get(i).getFechaCCorrienteProv();
             dato[4] = listaAplicaciones.get(i).getNombreCCorrienteProv();
             dato[5] = listaAplicaciones.get(i).getNofacturaCCorrienteProv();
-            dato[6] = listaAplicaciones.get(i).getFacturaCCorrienteProv();
-            dato[7] = listaAplicaciones.get(i).getCancelacionProv();
-            dato[8] = listaAplicaciones.get(i).getSaldoCCorrienteProv();
+            dato[6] = Double.toString(listaAplicaciones.get(i).getFacturaCCorrienteProv());
+            dato[7] = Double.toString(listaAplicaciones.get(i).getCancelacionProv());
+            dato[8] = Double.toString(listaAplicaciones.get(i).getSaldoCCorrienteProv());
             modelo.addRow(dato);
         }   
     }
@@ -468,9 +468,9 @@ public void llenadoDeTabla() {
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(txttotfac.getText());
-        transaccion.setCancelacionProv(txtsaldo.getText());
-        transaccion.setSaldoCCorrienteProv(txtdeuda.getText());
+        transaccion.setFacturaCCorrienteProv(Integer.parseInt(txttotfac.getText()));
+        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
+        transaccion.setSaldoCCorrienteProv(Integer.parseInt(txtdeuda.getText()));
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -494,9 +494,9 @@ public void llenadoDeTabla() {
         txtfecha.setText(transaccion.getFechaCCorrienteProv());
         txtnombreC.setText(transaccion.getNombreCCorrienteProv());
         txtnofac.setText(transaccion.getNofacturaCCorrienteProv());
-        txttotfac.setText(transaccion.getFacturaCCorrienteProv());
-        txtsaldo.setText(transaccion.getCancelacionProv());
-        txtdeuda.setText(transaccion.getSaldoCCorrienteProv());
+        txttotfac.setText(String.valueOf(transaccion.getFacturaCCorrienteProv()));
+        txtsaldo.setText(String.valueOf(transaccion.getCancelacionProv()));
+        txtdeuda.setText(String.valueOf(transaccion.getSaldoCCorrienteProv()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -509,9 +509,9 @@ public void llenadoDeTabla() {
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(txttotfac.getText());
-        transaccion.setCancelacionProv(txtsaldo.getText());
-        transaccion.setSaldoCCorrienteProv(txtdeuda.getText());
+        transaccion.setFacturaCCorrienteProv(Integer.parseInt(txttotfac.getText()));
+        transaccion.setCancelacionProv(Integer.parseInt(txtsaldo.getText()));
+        transaccion.setSaldoCCorrienteProv(Integer.parseInt(txtdeuda.getText()));
         transaccion.setModificarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
