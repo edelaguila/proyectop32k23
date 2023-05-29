@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 public class clsFacturas {
     private int IdProducto;
+    private int IdTienda;
     private String NombreProducto;
     private Double PrecioProducto;
     private int ExistenciaProducto;
@@ -190,13 +191,13 @@ public void setTotalCot(double TotalCot) {
     daoFacturas dao = new daoFacturas();
     return dao.verificarExistencias(codigoProducto);
 }   
-    public void registrarCotizacionDetalle(int cotizacionId, DefaultTableModel model) {
+    public void registrarCotizacionDetalle(int cotizacionId, DefaultTableModel model, double descuento) {
     daoFacturas dao = new daoFacturas();
-    dao.registrarCotizacionDetalle( cotizacionId, model);
+    dao.registrarCotizacionDetalle( cotizacionId, model, descuento);
 }   
-    public void registrarCotizacion(int idCliente, int idVendedor, LocalDate fecha, double total) {
+    public void registrarCotizacion(int idCliente, int idVendedor, String idTienda, LocalDate fecha, double total) {
     daoFacturas dao = new daoFacturas();
-    dao.registrarCotizacion( idCliente,  idVendedor, fecha, total);
+    dao.registrarCotizacion( idCliente,  idVendedor, idTienda, fecha, total);
 }
     public int obtenerUltimoIdCotizacion() {
     daoFacturas dao = new daoFacturas();

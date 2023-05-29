@@ -141,7 +141,7 @@ public class frmFacturas extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Codigo Producto", "Cantidad", "SubTotal"
+                "Codigo Producto", "Cantidad", "Descuento", "Impuesto", "SubTotal"
             }
         ));
         jScrollPaneCotActual.setViewportView(tblFacActual);
@@ -178,7 +178,7 @@ public class frmFacturas extends javax.swing.JInternalFrame {
 
         lbDescProdFac.setText("Descuento Aplicado:");
 
-        cbxDescFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0%", "15%", "25%", "50%", "75%", "95%" }));
+        cbxDescFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.0", "0.15", "0.25", "0.50", "0.75", "0.95" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -328,7 +328,7 @@ for (int i = 0; i < rowCount; i++) {
         i--; // Decrementar el índice para evitar saltar la siguiente fila en la iteración
         codigoEncontrado = true; // Marcar el código como encontrado
     } else {
-        double subtotal = (double) model.getValueAt(i, 2); // Obtener el valor del subtotal
+        double subtotal = (double) model.getValueAt(i, 4); // Obtener el valor del subtotal
         suma += subtotal; // Sumar el subtotal a la suma
     }
 
@@ -379,7 +379,8 @@ limpiarTextos();
         int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
         int nuevaCantidad = Integer.parseInt(txtCantProdFac.getText());
         clsFacturas cotizacion = new clsFacturas();
-        
+        Double descuento = Double.valueOf((String) cbxDescFac.getSelectedItem());
+        Double impuesto = 0.12;
         
 // Verificar si el código de producto existe en la tabla de cotización
         boolean productoEncontrado = false;
@@ -396,17 +397,19 @@ limpiarTextos();
                 // Actualizar el subtotal y el total
             if (cotizacion.verificarExistencias(codigoProducto) >= nuevaCantidad) {
                 double precio = cotizacion.obtenerPrecioProducto(codigoProducto);
-                double sumaSubTotal = precio * nuevaCantidad;
+                double sumaProd = (precio * nuevaCantidad);
+                double sumaImp = sumaProd + (sumaProd * impuesto);
+                double sumaSubTotal = sumaImp - (sumaImp * descuento);
                 
                 // Actualizar la cantidad en la fila correspondiente
                 modeloTabla.setValueAt(nuevaCantidad, filaModificar, 1);
-                
+                modeloTabla.setValueAt(descuento, filaModificar, 2);
                 // Actualizar el subtotal en la fila correspondiente
-                modeloTabla.setValueAt(sumaSubTotal, filaModificar, 2);
+                modeloTabla.setValueAt(sumaSubTotal, filaModificar, 4);
                 
                // Actualizar el total
                 double suma = 0.0;
-                int columnaSubTotal = 2;
+                int columnaSubTotal = 4;
                 int filas = tblFacActual.getRowCount();
                 
                 for (int i = 0; i < filas; i++) {
@@ -443,6 +446,9 @@ limpiarTextos();
     private void btnAgregarFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFacActionPerformed
 int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
     int cantidad = Integer.parseInt(txtCantProdFac.getText());
+    double descuento = Double.valueOf((String) cbxDescFac.getSelectedItem());
+    double impuesto = 0.12;
+    
     clsFacturas cotizacion = new clsFacturas();
     
     // Verificar si el producto ya está registrado en la tabla
@@ -460,14 +466,18 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
         JOptionPane.showMessageDialog(this, "Este Producto ya está registrado, puedes intentar MODIFICAR.");
     } else if (cotizacion.verificarExistencias(codigoProducto) >= cantidad) {
         double precio = cotizacion.obtenerPrecioProducto(codigoProducto);
-        double sumaSubTotal = precio * cantidad;
+        double sumaProd = (precio * cantidad);
+        double impuestocalculado = sumaProd * impuesto;
+        double sumaImp = sumaProd + (impuestocalculado);
+        double descuentocalculado = sumaImp * descuento;
+        double sumaSubTotal = sumaImp - (descuentocalculado);
         
         // Agregar los datos a la tabla
-        Object[] fila = {codigoProducto, cantidad, sumaSubTotal};
+        Object[] fila = {codigoProducto, cantidad, descuentocalculado, impuestocalculado, sumaSubTotal};
         modeloTabla.addRow(fila);
 
         double suma = 0.0;
-        int columnaSubTotal = 2; 
+        int columnaSubTotal = 4; 
 
         filas = tblFacActual.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -495,16 +505,16 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
                 int idVendedor = Integer.parseInt(txtIdVendedorFac.getText());
                 double totalCotizacion = Double.parseDouble(txtTotalFac.getText());
                 LocalDate fechaActual = LocalDate.now();
-
-                
+                Double descuento = Double.valueOf((String) cbxDescFac.getSelectedItem());
+                String nombretienda = (String) cbxIdTiendaFac.getSelectedItem();
                 // Registrar en la tabla tbl_cotizacion
-                cotizacion.registrarCotizacion(idCliente, idVendedor, fechaActual, totalCotizacion);
+                cotizacion.registrarCotizacion(idCliente, idVendedor, nombretienda, fechaActual, totalCotizacion);
                 
                 // Obtener el último valor agregado en la columna cotid de tbl_cotizacion
                 int cotizacionId = cotizacion.obtenerUltimoIdCotizacion();
                 
                 // Obtener los datos de la JTable tblCotActual y registrar en tbl_cotdetalle
-                cotizacion.registrarCotizacionDetalle(cotizacionId, modelo);
+                cotizacion.registrarCotizacionDetalle(cotizacionId, modelo, descuento);
                 limpiarTextos();
                 limpiarTextosCliente();
                 int rowCount = modelo.getRowCount();
