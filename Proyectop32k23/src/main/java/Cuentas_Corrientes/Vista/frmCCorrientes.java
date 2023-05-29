@@ -12,10 +12,6 @@ import Seguridad.Controlador.clsBitacora;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
-/*import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;*/
 import Seguridad.Modelo.Conexion;
 import java.sql.Connection;
 import java.util.HashMap;
