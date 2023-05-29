@@ -130,7 +130,7 @@ public class daoBoletaClientesBancos {
         return rows;
     }
 
-    public int borrarCuenta(clsCuentasBancos cuenta) {
+    public int borrarBoleta(clsBoletaClientesBancos boleta) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -139,7 +139,7 @@ public class daoBoletaClientesBancos {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, cuenta.getIdCuenta());
+            stmt.setInt(1, boleta.getIdBoleta());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
