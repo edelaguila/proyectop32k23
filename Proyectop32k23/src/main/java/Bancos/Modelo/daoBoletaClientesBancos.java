@@ -68,20 +68,23 @@ public class daoBoletaClientesBancos {
         return boletas;
     }
 
-    public int ingresaCuenta(clsCuentasBancos cuenta) {
+    public int ingresaBoleta(clsBoletaClientesBancos boleta) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setInt(1, cuenta.getIdCuenta());
-            stmt.setInt(2, cuenta.getNumeroCuenta());
-            stmt.setDouble(3, cuenta.getSaldoCuenta());
-            stmt.setInt(4, cuenta.getIdPersona());
-            stmt.setInt(5, cuenta.getIdTipoCuenta());
-            stmt.setString(6, cuenta.getEstatusCuenta());
-            
+            stmt.setInt(1, boleta.getIdBoleta());
+            stmt.setInt(2, boleta.getCodigoBanco());
+            stmt.setString(3, boleta.getFechaEmisionBoleta());
+            stmt.setString(4, boleta.getNombreCliente());
+            stmt.setDouble(5, boleta.getSaldoBoleta());
+            stmt.setInt(6, boleta.getIdConcepto());
+            stmt.setInt(7, boleta.getIdTipoMovimiento());
+            stmt.setInt(8, boleta.getIdCuenta());
+            stmt.setString(9, boleta.getEfectoBoleta());
+            stmt.setInt(10, boleta.getIdTipoMoneda());
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
             System.out.println("Registros afectados:" + rows);
