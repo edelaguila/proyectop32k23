@@ -6,7 +6,7 @@
 package Cuentas_Corrientes.Vista;
 
 
-import Seguridad.Vista.*;
+//import Seguridad.Vista.*;
 import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
@@ -15,12 +15,12 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+//import java.sql.ResultSet;
+//import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+//import java.util.Set;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -68,9 +68,9 @@ public void llenadoDeTabla() {
             dato[3] = listaAplicaciones.get(i).getFechaCCorrienteProv();
             dato[4] = listaAplicaciones.get(i).getNombreCCorrienteProv();
             dato[5] = listaAplicaciones.get(i).getNofacturaCCorrienteProv();
-            dato[6] = listaAplicaciones.get(i).getFacturaCCorrienteProv();
-            dato[7] = listaAplicaciones.get(i).getCancelacionProv();
-            dato[8] = listaAplicaciones.get(i).getSaldoCCorrienteProv();
+            dato[6] = Double.toString(listaAplicaciones.get(i).getFacturaCCorrienteProv());
+            dato[7] = Double.toString(listaAplicaciones.get(i).getCancelacionProv());
+            dato[8] = Double.toString(listaAplicaciones.get(i).getSaldoCCorrienteProv());
             modelo.addRow(dato);
         }   
     }
@@ -117,8 +117,6 @@ public void llenadoDeTabla() {
         label10 = new javax.swing.JLabel();
         txttotfac = new javax.swing.JTextField();
         txtsaldo = new javax.swing.JTextField();
-        label11 = new javax.swing.JLabel();
-        txtdeuda = new javax.swing.JTextField();
         label12 = new javax.swing.JLabel();
         txtnofac = new javax.swing.JTextField();
         txttipocuenta = new javax.swing.JTextField();
@@ -255,12 +253,6 @@ public void llenadoDeTabla() {
         txtsaldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtsaldo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
-        label11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        label11.setText("Saldo");
-
-        txtdeuda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtdeuda.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
         label12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         label12.setText("No. Factura");
 
@@ -303,7 +295,6 @@ public void llenadoDeTabla() {
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label10)
-                            .addComponent(label11)
                             .addComponent(label9)
                             .addComponent(label12)
                             .addComponent(label8)
@@ -319,7 +310,6 @@ public void llenadoDeTabla() {
                                     .addComponent(txtfecha))
                                 .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtsaldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtdeuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -387,11 +377,7 @@ public void llenadoDeTabla() {
                         .addGap(7, 7, 7)
                         .addComponent(label9)
                         .addGap(7, 7, 7)
-                        .addComponent(label10)
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label11)
-                            .addComponent(txtdeuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(label10))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txttipocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -406,7 +392,7 @@ public void llenadoDeTabla() {
                         .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(58, 58, 58)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
@@ -468,9 +454,11 @@ public void llenadoDeTabla() {
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(txttotfac.getText());
-        transaccion.setCancelacionProv(txtsaldo.getText());
-        transaccion.setSaldoCCorrienteProv(txtdeuda.getText());
+        double TotalEnFactura = Double.parseDouble(txttotfac.getText());
+        transaccion.setFacturaCCorrienteProv(TotalEnFactura);
+        double TotalSaldo = Double.parseDouble(txtsaldo.getText());
+        transaccion.setCancelacionProv(TotalSaldo);
+        transaccion.setSaldoCCorrienteProv(TotalSaldo-TotalEnFactura);
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -494,9 +482,9 @@ public void llenadoDeTabla() {
         txtfecha.setText(transaccion.getFechaCCorrienteProv());
         txtnombreC.setText(transaccion.getNombreCCorrienteProv());
         txtnofac.setText(transaccion.getNofacturaCCorrienteProv());
-        txttotfac.setText(transaccion.getFacturaCCorrienteProv());
-        txtsaldo.setText(transaccion.getCancelacionProv());
-        txtdeuda.setText(transaccion.getSaldoCCorrienteProv());
+        txttotfac.setText(String.valueOf(transaccion.getFacturaCCorrienteProv()));
+        txtsaldo.setText(String.valueOf(transaccion.getCancelacionProv()));
+        txtdeuda.setText(String.valueOf(transaccion.getSaldoCCorrienteProv()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -509,9 +497,9 @@ public void llenadoDeTabla() {
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(txttotfac.getText());
-        transaccion.setCancelacionProv(txtsaldo.getText());
-        transaccion.setSaldoCCorrienteProv(txtdeuda.getText());
+        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
+        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
+        transaccion.setSaldoCCorrienteProv(Double.parseDouble(txtdeuda.getText()));
         transaccion.setModificarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -588,7 +576,6 @@ public void llenadoDeTabla() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
-    private javax.swing.JLabel label11;
     private javax.swing.JLabel label12;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
@@ -602,7 +589,6 @@ public void llenadoDeTabla() {
     private javax.swing.JTable tablaUsuarios;
     private javax.swing.JTextField txtIdtipoC;
     private javax.swing.JTextField txtbuscado;
-    private javax.swing.JTextField txtdeuda;
     private javax.swing.JTextField txtfecha;
     private javax.swing.JTextField txtnofac;
     private javax.swing.JTextField txtnombreC;

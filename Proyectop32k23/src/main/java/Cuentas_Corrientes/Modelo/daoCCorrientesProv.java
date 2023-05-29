@@ -10,11 +10,11 @@ import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author visitante
  */
+
 public class daoCCorrientesProv {
 
     //CAMBIOS HECHOS POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
@@ -24,7 +24,7 @@ public class daoCCorrientesProv {
     private static final String SQL_DELETE = "DELETE FROM tbl_cCorrientesProv WHERE cpid=?";
     private static final String SQL_SELECT_NOMBRE = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cpid=?";
     private static final String SQL_SELECT_ID = "SELECT cpid,cptipo,cpidprov,cpfecha,cpnombretipo,NpFactura,cpTotalFactura,cpconcelación,cpSaldo FROM tbl_cCorrientesProv WHERE cpid=?";
-
+    
     public List<clsCCorrientesProv> consultaCCProv() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -42,9 +42,9 @@ public class daoCCorrientesProv {
                 String fecha = rs.getString("cpfecha");
                 String nombretipo = rs.getString("cpnombretipo");
                 String factura = rs.getString("NpFactura");
-                String total = rs.getString("cpTotalFactura");
-                String saldo = rs.getString("cpconcelación");
-                String deuda = rs.getString("cpSaldo");
+                double total = rs.getDouble("cpTotalFactura");
+                double saldo = rs.getDouble("cpconcelación");
+                double deuda = rs.getDouble("cpSaldo");
                 clsCCorrientesProv cuenta = new clsCCorrientesProv();
                 cuenta.setIdCCorrienteProv(id);
                 cuenta.setTipoCCorrienteProv(nombre);
@@ -78,9 +78,9 @@ public class daoCCorrientesProv {
             stmt.setString(3, cuenta.getFechaCCorrienteProv());
             stmt.setString(4, cuenta.getNombreCCorrienteProv());
             stmt.setString(5, cuenta.getNofacturaCCorrienteProv());
-            stmt.setString(6, cuenta.getFacturaCCorrienteProv());
-            stmt.setString(7, cuenta.getCancelacionProv());
-            stmt.setString(8, cuenta.getSaldoCCorrienteProv());
+            stmt.setDouble(6, cuenta.getFacturaCCorrienteProv());
+            stmt.setDouble(7, cuenta.getCancelacionProv());
+            stmt.setDouble(8, cuenta.getSaldoCCorrienteProv());
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
             System.out.println("Registros afectados:" + rows);
@@ -105,9 +105,9 @@ public class daoCCorrientesProv {
             stmt.setString(3, cuenta.getFechaCCorrienteProv());
             stmt.setString(4, cuenta.getNombreCCorrienteProv());
             stmt.setString(5, cuenta.getNofacturaCCorrienteProv());
-            stmt.setString(6, cuenta.getFacturaCCorrienteProv());
-            stmt.setString(7, cuenta.getCancelacionProv());
-            stmt.setString(8, cuenta.getSaldoCCorrienteProv());
+            stmt.setDouble(6, cuenta.getFacturaCCorrienteProv());
+            stmt.setDouble(7, cuenta.getCancelacionProv());
+            stmt.setDouble(8, cuenta.getSaldoCCorrienteProv());
             stmt.setInt(9, cuenta.getIdCCorrienteProv());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -155,9 +155,9 @@ public class daoCCorrientesProv {
                 String fecha = rs.getString("cpfecha");
                 String nombretipo = rs.getString("cpnombretipo");
                 String factura = rs.getString("NpFactura");
-                String total = rs.getString("cpTotalFactura");
-                String saldo = rs.getString("cpconcelación");
-                String deuda = rs.getString("cpSaldo");
+                int total = rs.getInt("cpTotalFactura");
+                int saldo = rs.getInt("cpconcelación");
+                int deuda = rs.getInt("cpSaldo");
                 cuenta.setIdCCorrienteProv(id);
                 cuenta.setTipoCCorrienteProv(nombre);
                 cuenta.setIdTipoCCorrienteProv(tipo);
@@ -195,9 +195,9 @@ public class daoCCorrientesProv {
                 String fecha = rs.getString("cpfecha");
                 String nombretipo = rs.getString("cpnombretipo");
                 String factura = rs.getString("NpFactura");
-                String total = rs.getString("cpTotalFactura");
-                String saldo = rs.getString("cpconcelación");
-                String deuda = rs.getString("cpSaldo");
+                int total = rs.getInt("cpTotalFactura");
+                int saldo = rs.getInt("cpconcelación");
+                int deuda = rs.getInt("cpSaldo");
                 cuenta.setIdCCorrienteProv(id);
                 cuenta.setTipoCCorrienteProv(nombre);
                 cuenta.setIdTipoCCorrienteProv(tipo);
