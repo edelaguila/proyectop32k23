@@ -5,9 +5,7 @@
  */
 package Bancos.Controlador;
 import java.util.List;
-
-import Bancos.Modelo.daoTipoCuentas;
-import Bancos.Modelo.daoTipoMovimientoBancos;
+import Bancos.Modelo.daoBoletaClientesBancos;
 /**
  *
  * @author visitante
