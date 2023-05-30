@@ -23,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.AbstractCellEditor;
@@ -57,6 +58,7 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
     
     public frmConsultaPedido() {
         initComponents();
+        cargarComboBox();
         llenadoDeTablasCotizaciones();
         llenadoDeCombos();
     }
@@ -82,6 +84,13 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         btnVerDetallePed = new javax.swing.JButton();
         btnFacturarPed = new javax.swing.JButton();
         lbInsPedReg = new javax.swing.JLabel();
+        cbx = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        cbx2 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        txtVenFacPed = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         lb2PedCons.setForeground(new java.awt.Color(204, 204, 204));
         lb2PedCons.setText(".");
@@ -137,6 +146,21 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
 
         lbInsPedReg.setText("Haz clic en el pedido que quieras trabajar, luego presiona un botón:");
 
+        jLabel3.setText("Descuento:");
+
+        cbx2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.0", "0.15", "0.25", "0.50", "0.75", "0.95" }));
+
+        jButton1.setText("Cancelar Pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Id del Vendedor:");
+
+        jLabel2.setText("Tienda:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,28 +174,59 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbInsPedReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPanePedReg, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVerDetallePed)
-                    .addComponent(btnFacturarPed))
-                .addGap(123, 123, 123))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVerDetallePed)
+                            .addComponent(btnFacturarPed))
+                        .addGap(123, 123, 123))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtVenFacPed, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(cbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbx2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPedReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(lbInsPedReg)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPanePedReg, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPanePedReg, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(btnVerDetallePed)
-                        .addGap(65, 65, 65)
-                        .addComponent(btnFacturarPed)))
-                .addGap(19, 19, 19))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVenFacPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cbx2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFacturarPed)
+                        .addGap(36, 36, 36))))
         );
 
         pack();
@@ -195,17 +250,46 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnVerDetallePedActionPerformed
 
+         private void cargarComboBox() {
+    clsPedidos perfilUsuario = new clsPedidos();
+    ArrayList<String> nombresUsuarios = perfilUsuario.obtenerNombresUsuarios();
+
+    nombresUsuarios.forEach(nombreUsuario -> {
+        cbx.addItem(nombreUsuario);
+        });
+}
+         
     private void btnFacturarPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarPedActionPerformed
         // TODO add your handling code here:
-        /*        int filaSeleccionada = tblCotConsulta.getSelectedRow();
-                int cotidSeleccionado = Integer.valueOf(tblCotConsulta.getValueAt(filaSeleccionada, 0).toString());
-                clsCotizacion frmConsulta = new clsCotizacion();
-                frmConsulta.RegistrarPedidoCot(cotidSeleccionado);
-                frmConsulta.RegistrarPedidoCotDet(cotidSeleccionado);
+               String nombretienda = (String) cbx.getSelectedItem();
+        double descuento = Double.valueOf((String)cbx2.getSelectedItem());
+        int idVendedor = Integer.parseInt(txtVenFacPed.getText());
+        int filaSeleccionada = tblPedConsulta.getSelectedRow();
+                int cotidSeleccionado = Integer.valueOf(tblPedConsulta.getValueAt(filaSeleccionada, 0).toString());
+                clsPedidos frmConsulta = new clsPedidos();
+                frmConsulta.RegistrarPedidoCot(cotidSeleccionado, idVendedor, nombretienda);
+                frmConsulta.RegistrarPedidoCotDet(cotidSeleccionado, descuento); 
+                    DefaultTableModel model = (DefaultTableModel) tblPedConsulta.getModel();
+                    model.setRowCount(0); // Eliminar todas las filas actuales de la tabla
+                    llenadoDeTablasCotizaciones();
                 int resultadoBitacora=0;
                     clsBitacora bitacoraRegistro = new clsBitacora();
-                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS"); */
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS");    
     }//GEN-LAST:event_btnFacturarPedActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = tblPedConsulta.getSelectedRow();
+        int cotidSeleccionado = Integer.valueOf(tblPedConsulta.getValueAt(filaSeleccionada, 0).toString());
+        clsPedidos frmConsulta = new clsPedidos();
+        frmConsulta.CancelarPedido(cotidSeleccionado);
+        DefaultTableModel model = (DefaultTableModel) tblPedConsulta.getModel();
+        model.setRowCount(0); // Eliminar todas las filas actuales de la tabla
+        llenadoDeTablasCotizaciones();
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
      public void llenadoDeTablasCotizaciones() {
         DefaultTableModel modelo = new DefaultTableModel(){
@@ -217,16 +301,18 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         modelo.addColumn("Id Cliente");
         modelo.addColumn("Fecha");
         modelo.addColumn("Total");
+        modelo.addColumn("Estatus");
         clsPedidos cotizacion = new clsPedidos();
         //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsPedidos> listaCotizaciones = cotizacion.getListadoPedidos();
         tblPedConsulta.setModel(modelo);
-        String[] dato = new String[4];
+        String[] dato = new String[5];
         for (int i = 0; i < listaCotizaciones.size(); i++) {
             dato[0] = Integer.toString(listaCotizaciones.get(i).getIdPed());
             dato[1] = Integer.toString(listaCotizaciones.get(i).getIdCliente());
             dato[2] = listaCotizaciones.get(i).getFechaPed();
             dato[3] = Double.toString(listaCotizaciones.get(i).getTotalPed());
+            dato[4] = listaCotizaciones.get(i).getEstatusPed();
             modelo.addRow(dato);
         }              
 
@@ -245,6 +331,12 @@ public int obtenerCotidSeleccionado() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFacturarPed;
     private javax.swing.JButton btnVerDetallePed;
+    private javax.swing.JComboBox<String> cbx;
+    private javax.swing.JComboBox<String> cbx2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1PedCons;
     private javax.swing.JScrollPane jScrollPanePedReg;
     private javax.swing.JTable jTable1PedCons;
@@ -253,6 +345,7 @@ public int obtenerCotidSeleccionado() {
     private javax.swing.JLabel lbPedReg;
     private javax.swing.JLabel lbusuPedCons;
     private javax.swing.JTable tblPedConsulta;
+    private javax.swing.JTextField txtVenFacPed;
     // End of variables declaration//GEN-END:variables
 
 

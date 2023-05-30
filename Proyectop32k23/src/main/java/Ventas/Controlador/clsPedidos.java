@@ -26,6 +26,7 @@ public class clsPedidos {
     private int IdCliente;
     private int IdPed;
     private String FechaPed;
+    private String estatusPed;
     private double TotalPed;
     private int CantidadProducto;
 
@@ -121,6 +122,14 @@ public void setTotalPed(double TotalPed) {
     this.TotalPed = TotalPed;
 }
 
+public String getEstatusPed() {
+    return estatusPed;
+}
+
+public void setEstatusPed(String estatusPed) {
+    this.estatusPed = estatusPed;
+}
+
     @Override
     public String toString() {
         return "clsPedidos{" + "IdProducto=" + IdProducto + ", NombreProducto=" + NombreProducto + ", PrecioProducto=" + PrecioProducto + ", ExistenciaProducto=" + ExistenciaProducto + '}';
@@ -168,5 +177,24 @@ public void setTotalPed(double TotalPed) {
     daoPedidos dao = new daoPedidos();
     return dao.obtenerUltimoIdPedido();
 }
+    
+        public void RegistrarPedidoCot(int cotid2, int idvendedor, String tienda) {
+    daoPedidos dao = new daoPedidos();
+    dao.registroPedidoCot(cotid2, idvendedor, tienda);
+} 
+    public ArrayList<String> obtenerNombresUsuarios() {
+    daoPedidos dao = new daoPedidos();
+    return dao.obtenerNombresUsuarios();
+    }
+    
+        public void RegistrarPedidoCotDet(int cotid3, double descuento) {
+    daoPedidos dao = new daoPedidos();
+    dao.registroPedidoCotDet(cotid3, descuento);
+} 
+        
+        public void CancelarPedido(int cotid4){
+            daoPedidos dao = new daoPedidos();
+            dao.cancelarPedido(cotid4);
+        }
     
 }
