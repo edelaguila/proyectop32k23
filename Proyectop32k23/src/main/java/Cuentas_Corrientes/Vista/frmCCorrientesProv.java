@@ -8,6 +8,7 @@ package Cuentas_Corrientes.Vista;
 
 //import Seguridad.Vista.*;
 import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
+import Cuentas_Corrientes.Controlador.clsProveedoresCC;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Modelo.Conexion;
@@ -29,7 +30,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
-// REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
 /**
  *
  * @author visitante
@@ -37,17 +37,41 @@ import net.sf.jasperreports.view.JasperViewer;
 public class frmCCorrientesProv extends javax.swing.JInternalFrame {
     
 //int codigoAplicacion=preguntar;
-/*public void llenadoDeCB() {
-        clsCCorrientesProv moneda = new clsCCorrientesProv();
-        List<clsCCorrientesProv> listaTipoMonedas = moneda.getListadoProv();
+    /*
+public void llenadoDeCB() {
+        clsProveedoresCC proveedoresC = new clsProveedoresCC();
+        List<clsProveedoresCC> ListadoProveedores = proveedoresC.getListadoT();
         cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdProv.addItem("Seleccionar...");
-        for (int i = 0; i < listaTipoMonedas.size(); i++) {
-            clsCCorrientesProv prov = listaTipoMonedas.get(i);
-            String item = prov.getProvId() + " - " + prov.getProvNombre();
+        for (int i = 0; i < ListadoProveedores.size(); i++) {
+            cbIdProv.addItem(String.valueOf(ListadoProveedores.get(i).getIdProv));
+        }
+    }
+    */
+    public void llenadoDeCB() {
+        clsProveedoresCC prov = new clsProveedoresCC();
+        List<clsProveedoresCC> listaProv = prov.getListadoT();
+        cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbIdProv.addItem("Seleccionar...");
+        for (int i = 0; i < listaProv.size(); i++) {
+            clsProveedoresCC provee = listaProv.get(i);
+            String item = provee.getIdProv() + " - " + prov.getNombreProv() + prov.getFactProv();
             cbIdProv.addItem(item);
         }
-    }*/
+        
+        
+        /*clsTipoMoneda moneda = new clsTipoMoneda();
+        List<clsTipoMoneda> listaTipoMonedas = moneda.getListadoMonedas();
+        cbTipoMoneda.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbTipoMoneda.addItem("Seleccionar...");
+        for (int i = 0; i < listaTipoMonedas.size(); i++) {
+            clsTipoMoneda tipoMoneda = listaTipoMonedas.get(i);
+            String item = tipoMoneda.getTipModId() + " - " + tipoMoneda.getTipMondAbreviacion();
+            cbTipoMoneda.addItem(item);
+        }*/
+        
+    }
+    
     //public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -90,8 +114,7 @@ public void llenadoDeTabla() {
     public frmCCorrientesProv() {
         initComponents();
         llenadoDeTabla();
-        //llenadoDeCB();
-       
+        llenadoDeCB();       
     }
 
     /**
@@ -283,8 +306,6 @@ public void llenadoDeTabla() {
             }
         });
 
-        cbIdProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -308,16 +329,15 @@ public void llenadoDeTabla() {
                             .addComponent(label3)
                             .addComponent(label5))
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txttipocuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                                    .addComponent(txtfecha))
-                                .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtsaldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txttipocuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                                .addComponent(txtfecha))
+                            .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                            .addComponent(txtnombreC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,33 +473,27 @@ public void llenadoDeTabla() {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
+        //Alan Abimael Galicia Ruano, Luis Diego Cortez
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
         transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        int tipoMonedaId = transaccion.getIdTipoCCorrienteProv();
-        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
-            String item = cbIdProv.getItemAt(i).toString();
-            int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
-            
-            if (itemId == tipoMonedaId) {
-                cbIdProv.setSelectedIndex(i);
-                break;
-            }
-        }
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-<<<<<<< HEAD
+
+        String selectedItem = cbIdProv.getSelectedItem().toString();
+            int itemId = Integer.parseInt(selectedItem.split(" - ")[0]);
+            transaccion.setIdTipoCCorrienteProv(itemId);
+            
+        
+        
         transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
         transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        transaccion.setSaldoCCorrienteProv(Double.parseDouble(txtdeuda.getText()));
-=======
+
         double TotalEnFactura = Double.parseDouble(txttotfac.getText());
         transaccion.setFacturaCCorrienteProv(TotalEnFactura);
         double TotalSaldo = Double.parseDouble(txtsaldo.getText());
         transaccion.setCancelacionProv(TotalSaldo);
         transaccion.setSaldoCCorrienteProv(TotalSaldo-TotalEnFactura);
->>>>>>> 75c5e86194a4f438e9ec40aad41931cf14d3331d
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -487,7 +501,6 @@ public void llenadoDeTabla() {
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTabla();
         limpiarTextos();
-
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -511,10 +524,8 @@ public void llenadoDeTabla() {
         }
         txtfecha.setText(transaccion.getFechaCCorrienteProv());
         txtnombreC.setText(transaccion.getNombreCCorrienteProv());
-        txtnofac.setText(transaccion.getNofacturaCCorrienteProv());
         txttotfac.setText(String.valueOf(transaccion.getFacturaCCorrienteProv()));
         txtsaldo.setText(String.valueOf(transaccion.getCancelacionProv()));
-        txtdeuda.setText(String.valueOf(transaccion.getSaldoCCorrienteProv()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -523,13 +534,15 @@ public void llenadoDeTabla() {
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
         transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
         transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
+        
+            String selectedItem = cbIdProv.getSelectedItem().toString();
+        String id = selectedItem.split(" - ")[0]; // Obtiene solo la ID
+        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(id));
+        
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
-        transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
         transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
         transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        transaccion.setSaldoCCorrienteProv(Double.parseDouble(txtdeuda.getText()));
         transaccion.setModificarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -547,10 +560,6 @@ public void llenadoDeTabla() {
     private void txttotfacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotfacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttotfacActionPerformed
-
-    private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnofacActionPerformed
 
     private void txttipocuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttipocuentaActionPerformed
         // TODO add your handling code here:
@@ -576,17 +585,20 @@ public void llenadoDeTabla() {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnofacActionPerformed
     public void limpiarTextos()
     {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         cbIdProv.setSelectedIndex(0);
+        txtnofac.setText("");
         txttipocuenta.setText("");
         txtfecha.setText("");
         txtnombreC.setText("");
-        txtnofac.setText("");
         txttotfac.setText("");
         txtsaldo.setText("");
-        txtdeuda.setText("");
     }
     
 
