@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac81c70f-f54d-4dd3-8096-49f02da4fb44">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b41a1fd-cfb5-49d8-a0a8-65c0fd19927a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
-	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
-	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
-	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
-	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
-		<conditionalStyle>
-			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style mode="Opaque" backcolor="#F0EFEF"/>
-		</conditionalStyle>
-	</style>
 	<queryString language="SQL">
 		<![CDATA[select * from tbl_bancoExterno]]>
 	</queryString>
@@ -35,164 +25,135 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="102" splitType="Stretch">
-			<image>
-				<reportElement x="725" y="0" width="77" height="102" uuid="8d74a6b8-2079-45c0-a5ee-16e8faa43fd1"/>
-				<imageExpression><![CDATA["banco.jpg"]]></imageExpression>
-			</image>
+		<band height="79" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="81d9a83f-6d9d-4778-a9cc-7a3b1784fede"/>
+				<reportElement mode="Opaque" x="0" y="0" width="670" height="79" backcolor="#000000" uuid="8ac7bc8c-f86c-4e53-85f4-7ae048d65360"/>
 				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="4c946696-801c-48aa-82b4-16cac9ac7da0"/>
-					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
-					<textElement verticalAlignment="Bottom">
-						<font isBold="false"/>
+					<reportElement x="201" y="15" width="315" height="44" forecolor="#FFFFFF" uuid="c5c97d77-fdb6-4064-b0de-5106ba404ceb"/>
+					<textElement>
+						<font size="32" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
 					</textElement>
 					<text><![CDATA[Bancos, Reportes]]></text>
 				</staticText>
-				<staticText>
-					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="91a1b0f9-633a-4ebf-bfce-b600c63521bf"/>
-					<textElement textAlignment="Right">
-						<font size="22" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Banco Externo]]></text>
-				</staticText>
 			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="acad42d9-ebfd-4f69-b88c-7f82ba309345"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="807b98d0-2338-425d-b3ce-b584892ced12"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-			</frame>
+			<image>
+				<reportElement x="670" y="0" width="82" height="79" uuid="feceeb90-3584-43cc-937f-a7b821942e65"/>
+				<imageExpression><![CDATA["C:\\Users\\ll322\\OneDrive\\Documentos\\progra3\\proyectop32k23\\Proyectop32k23\\src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="18" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="159" height="18" forecolor="#000000" uuid="1cd51f31-b17d-4cb6-bcf8-9f631284a5fd"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Código]]></text>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="35" forecolor="#CC0033" backcolor="#CC0033" uuid="e24320d7-cbdd-431a-98e9-24c5d9ad3cab"/>
+				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="159" y="0" width="159" height="18" forecolor="#000000" uuid="85f97558-2e8b-46db-9e67-b6e4b44f5430"/>
+				<reportElement x="516" y="0" width="236" height="35" forecolor="#FFFFFF" uuid="6e861ade-3fcb-482f-aec6-e4b27c064090"/>
+				<textElement>
+					<font size="18" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Banco Externo]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="16" y="15" width="142" height="20" forecolor="#FFFFFF" uuid="f1b05ecd-c7b5-445e-a855-da3c8463f28d"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="22" width="100" height="20" uuid="034f6afb-40ba-48ab-bac0-6bf951d19c72"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Código del Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="22" width="100" height="20" uuid="5f2ec97f-6078-4771-ab17-3cdfd1eb3b4c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="318" y="0" width="159" height="18" forecolor="#000000" uuid="b4464bf1-a81c-4972-801b-0b2e649cb379"/>
+				<reportElement x="290" y="22" width="100" height="20" uuid="41d0a024-7290-44df-a0b9-4567e0c36e95"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[País]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="477" y="0" width="159" height="18" forecolor="#000000" uuid="03b364e1-59ff-4a36-b68f-ab437866c33e"/>
+				<reportElement x="441" y="22" width="100" height="20" uuid="ecd0166f-612b-4a89-b9e5-43c18411bb91"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Moneda]]></text>
+				<text><![CDATA[Tipo de Moneda]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="636" y="0" width="159" height="18" forecolor="#000000" uuid="f9a1de90-f8a3-42fb-a17d-632417c2c096"/>
+				<reportElement x="590" y="22" width="100" height="20" uuid="633e642c-4dbf-4d4c-8aea-155f51e2b141"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Estatus]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="18" splitType="Stretch">
-			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="35b2e2f9-7b10-4681-a016-cecaa365cdf2"/>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="159" height="18" uuid="55c5bc51-7fff-422a-9675-0a9b183c31df"/>
-					<textElement textAlignment="Center">
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{codBanco}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="159" y="0" width="159" height="18" uuid="ea34bacc-d37d-435e-be18-0055b4a133b7"/>
-					<textElement textAlignment="Justified">
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{banNombre}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="318" y="0" width="159" height="18" uuid="4b885b9f-833d-455b-9045-32bc7a6ad112"/>
-					<textElement textAlignment="Justified">
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{banPaís}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="477" y="0" width="159" height="18" uuid="98c0b6cf-0c45-415c-8fa2-4b30e687c18d"/>
-					<textElement textAlignment="Center">
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{tipModId}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="636" y="0" width="159" height="18" uuid="d1340d96-345e-4261-adeb-cf6e73a02564"/>
-					<textElement textAlignment="Center">
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
-				</textField>
-			</frame>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="27" y="11" width="100" height="20" uuid="a3cb3f2a-1626-456f-ac0f-c8487486fb86"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{codBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="11" width="100" height="20" uuid="cd472960-aa03-498a-a7d5-75de0df6dc77"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{banNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="11" width="100" height="20" uuid="963844bf-ad49-4914-bd4f-4920a96a91b1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{banPaís}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="11" width="100" height="20" uuid="2f360697-3b87-4a23-8be3-3ae21b3e99a4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tipModId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="590" y="11" width="100" height="20" uuid="ce4e2287-7a9c-46e6-ab6f-fdc73e9f66a9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1724c560-3489-4528-9031-6a6dbc4c68f0"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="11" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
-			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="e97ce309-f5ab-4110-a3be-10875f2c4fa9"/>
-				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="2cbe5c3b-4c4b-40b6-af95-4965468e893b"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="755ee9b7-840a-43a4-95a7-906e8ee592ae"/>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="f51cbae3-4c68-476c-adc0-c200e7db48aa"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-			</frame>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="30" backcolor="#000000" uuid="3c7d9db8-c52c-4e8c-9803-1e448ac05189"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="8b53cae0-2125-4a42-8d2a-adfe2d1eae29"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="6f869a5e-b683-45d1-adc2-9a415ae37bcd"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Página No. ]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="42" splitType="Stretch"/>
 	</summary>
 </jasperReport>

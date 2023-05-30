@@ -29,7 +29,7 @@ import java.io.File;
  */
 public class frmBancoExterno extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=5009;
+int codigoAplicacion=5006;
 
     public void llenadoDeCombos() {
         clsTipoMoneda moneda = new clsTipoMoneda();
