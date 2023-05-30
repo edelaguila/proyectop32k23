@@ -203,5 +203,12 @@ public void setTotalCot(double TotalCot) {
     daoFacturas dao = new daoFacturas();
     return dao.obtenerUltimoIdCotizacion();
 }
-    
+    public boolean verificarSaldoCliente(int IdCliente){
+    daoFacturas dao = new daoFacturas();
+    return dao.verificarSaldoCliente(IdCliente );
+    }
+    public void actualizarSaldoCliente(int Idcliente, double debeNuevo, double haberNuevo){
+    daoFacturas dao = new daoFacturas();
+    dao.actualizarSaldoCliente(  Idcliente,debeNuevo,haberNuevo );
+}
 }

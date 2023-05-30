@@ -492,10 +492,46 @@ public ArrayList<String> obtenerNombresUsuarios() {
 
     } catch (SQLException ex) {
         ex.printStackTrace();
+        
     }
 
     return nombresUsuarios;
 }
+// Función para verificar el saldo del cliente
+    public static boolean verificarSaldoCliente(int IdCliente) {
+ 
+        try (Connection conn = Conexion.getConnection()) {
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT clDebe, clHaber FROM tbl_cliente WHERE clId = '" + IdCliente + "'");
+        
+        if (rs.next()) {
+            double debe = rs.getDouble("clDebe");
+            double haber = rs.getDouble("clHaber");
+            
+            return debe >= haber;
+        }else {
+                    System.out.println("No es posible que el cliente realice el pago");
+                }
+    }
+            catch (SQLException e) {
+        e.printStackTrace();
+            }   
+       return false;
+          
+    }
+    
+    // Función para actualizar el saldo del cliente
+    public static void actualizarSaldoCliente( int Idcliente, double debeNuevo, double haberNuevo) {
+        
+        try (Connection conn = Conexion.getConnection()) {
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate("UPDATE tbl_cliente SET clDebe = " + debeNuevo + ", clHaber = " + haberNuevo + " WHERE clId = '" + Idcliente + "'");
+        
+        System.out.println("Saldo actualizado para el cliente: " + Idcliente);
+    }
+        catch (SQLException e) {
+        e.printStackTrace();
+    
+}}}
 
-}
  

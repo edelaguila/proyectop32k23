@@ -495,6 +495,13 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
 
     private void btnRegistrarFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFacActionPerformed
         // TODO add your handling code here:
+ clsFacturas saldo = new clsFacturas();
+ int idcliente = Integer.parseInt(txtIdClienteFac.getText());
+ // Llamar a la función que verifica el saldo
+            boolean puedePagar = saldo.verificarSaldoCliente(idcliente );
+            
+            if (puedePagar) {
+                
         DefaultTableModel modelo = (DefaultTableModel) tblFacActual.getModel();
                     if (txtIdClienteFac.getText().isEmpty() || txtIdVendedorFac.getText().isEmpty() || modelo.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "No se ha ingresado la información necesaria", "Error", JOptionPane.ERROR_MESSAGE);
@@ -529,7 +536,9 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS"); 
                 JOptionPane.showMessageDialog(null, "Factura #" + cotizacionId + " ha sido registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                
+            }else {
+                System.out.println("No es posible que el cliente realice el pago.");
+            }          
     }//GEN-LAST:event_btnRegistrarFacActionPerformed
          
     
