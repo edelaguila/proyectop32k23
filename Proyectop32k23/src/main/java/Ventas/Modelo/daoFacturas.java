@@ -208,18 +208,23 @@ public class daoFacturas {
             rs = stmt.executeQuery();
             while (rs.next()) {
 
-                int IdCot = rs.getInt("cotid");
+                
+                int IdFactura = rs.getInt("facid");
+                int IdPedido = rs.getInt("pedid");
                 int IdCliente = rs.getInt("clId");
                 int IdVendedor = rs.getInt("venid");
-                String Fecha = rs.getString("cotFecha");
-                double Total = rs.getDouble("cotTotalGeneral");
+                int IdTienda = rs.getInt("tieid");
+                String Fecha = rs.getString("facfecha");
+                double Total = rs.getDouble("facTotalGeneral");
                 
                 clsFacturas cotizacion = new clsFacturas();
-                cotizacion.setIdCot(IdCot);
+                cotizacion.setIdFactura(IdFactura);
+                cotizacion.setIdPedido(IdPedido);
                 cotizacion.setIdCliente(IdCliente);
                 cotizacion.setIdVendedor(IdVendedor);
-                cotizacion.setFechaCot(Fecha);
-                cotizacion.setTotalCot(Total);
+                cotizacion.setIdTienda(IdTienda);
+                cotizacion.setFechaFactura(Fecha);
+                cotizacion.setTotalFactura(Total);
                 cotizaciones.add(cotizacion);
 
             }
@@ -253,19 +258,25 @@ public class daoFacturas {
         
         while (rs.next()) {
             
-            int IdCot = rs.getInt("cotid");
+            int IdFactura = rs.getInt("facid");
             int Codigo = rs.getInt("proCodigo");
             double Precio = rs.getDouble("proPrecios");
-            int Cantidad = rs.getInt("cotprodcantidad");
-            double Total = rs.getDouble("cotTotalInd");
+            double Cantidad = rs.getInt("facprodcantidad");
+            double Descuento = rs.getDouble("facdescuento");
+            double Impuestos = rs.getDouble("facimpuestos");
+            double Total = rs.getDouble("factotalInd");
 
             
             clsFacturas cotizacion = new clsFacturas();
-            cotizacion.setIdCot(IdCot);
+            cotizacion.setIdFactura(IdFactura);
             cotizacion.setIdProducto(Codigo);
             cotizacion.setPrecioProducto(Precio);
             cotizacion.setCantidadProducto(Cantidad);
-            cotizacion.setTotalCot(Total);
+            cotizacion.setDescuentoFactura(Descuento);
+            cotizacion.setImpuestosFactura(Impuestos);
+            
+            
+            cotizacion.setTotalIndividualFactura(Total);
             cotizaciones.add(cotizacion);
         }
     } catch (SQLException ex) {
@@ -492,46 +503,10 @@ public ArrayList<String> obtenerNombresUsuarios() {
 
     } catch (SQLException ex) {
         ex.printStackTrace();
-        
     }
 
     return nombresUsuarios;
 }
-// Función para verificar el saldo del cliente
-    public static boolean verificarSaldoCliente(int IdCliente) {
- 
-        try (Connection conn = Conexion.getConnection()) {
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT clDebe, clHaber FROM tbl_cliente WHERE clId = '" + IdCliente + "'");
-        
-        if (rs.next()) {
-            double debe = rs.getDouble("clDebe");
-            double haber = rs.getDouble("clHaber");
-            
-            return debe >= haber;
-        }else {
-                    System.out.println("No es posible que el cliente realice el pago");
-                }
-    }
-            catch (SQLException e) {
-        e.printStackTrace();
-            }   
-       return false;
-          
-    }
-    
-    // Función para actualizar el saldo del cliente
-    public static void actualizarSaldoCliente( int Idcliente, double debeNuevo, double haberNuevo) {
-        
-        try (Connection conn = Conexion.getConnection()) {
-        Statement stmt = conn.createStatement();
-        stmt.executeUpdate("UPDATE tbl_cliente SET clDebe = " + debeNuevo + ", clHaber = " + haberNuevo + " WHERE clId = '" + Idcliente + "'");
-        
-        System.out.println("Saldo actualizado para el cliente: " + Idcliente);
-    }
-        catch (SQLException e) {
-        e.printStackTrace();
-    
-}}}
 
+}
  
