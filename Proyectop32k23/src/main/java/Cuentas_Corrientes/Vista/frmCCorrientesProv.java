@@ -11,6 +11,7 @@ import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Modelo.Conexion;
+import java.awt.Component;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -36,15 +37,25 @@ import net.sf.jasperreports.view.JasperViewer;
 public class frmCCorrientesProv extends javax.swing.JInternalFrame {
     
 //int codigoAplicacion=preguntar;
-
-    public void llenadoDeCombos() {
+/*public void llenadoDeCB() {
+        clsCCorrientesProv moneda = new clsCCorrientesProv();
+        List<clsCCorrientesProv> listaTipoMonedas = moneda.getListadoProv();
+        cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbIdProv.addItem("Seleccionar...");
+        for (int i = 0; i < listaTipoMonedas.size(); i++) {
+            clsCCorrientesProv prov = listaTipoMonedas.get(i);
+            String item = prov.getProvId() + " - " + prov.getProvNombre();
+            cbIdProv.addItem(item);
+        }
+    }*/
+    //public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
         cbox_empleado.addItem("Seleccione una opción");
         for (int i = 0; i < empleados.size(); i++) {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
-    }
+    //}
 
 public void llenadoDeTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -79,6 +90,7 @@ public void llenadoDeTabla() {
     public frmCCorrientesProv() {
         initComponents();
         llenadoDeTabla();
+        //llenadoDeCB();
        
     }
 
@@ -95,7 +107,6 @@ public void llenadoDeTabla() {
         lbusu = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        txtIdtipoC = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -123,6 +134,7 @@ public void llenadoDeTabla() {
         txtnofac = new javax.swing.JTextField();
         txttipocuenta = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        cbIdProv = new javax.swing.JComboBox<>();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -153,14 +165,6 @@ public void llenadoDeTabla() {
             }
         });
         jScrollPane1.setViewportView(tablaUsuarios);
-
-        txtIdtipoC.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtIdtipoC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtIdtipoC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdtipoCActionPerformed(evt);
-            }
-        });
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         label5.setText("Id proveedor");
@@ -287,6 +291,8 @@ public void llenadoDeTabla() {
             }
         });
 
+        cbIdProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -315,13 +321,13 @@ public void llenadoDeTabla() {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txttipocuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                                    .addComponent(txtIdtipoC)
                                     .addComponent(txtfecha))
                                 .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtsaldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtdeuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,8 +401,8 @@ public void llenadoDeTabla() {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txttipocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdtipoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
                         .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -464,13 +470,22 @@ public void llenadoDeTabla() {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
         transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtIdtipoC.getText()));
+        int tipoMonedaId = transaccion.getIdTipoCCorrienteProv();
+        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
+            String item = cbIdProv.getItemAt(i).toString();
+            int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
+            
+            if (itemId == tipoMonedaId) {
+                cbIdProv.setSelectedIndex(i);
+                break;
+            }
+        }
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(Integer.parseInt(txttotfac.getText()));
+        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
         transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        transaccion.setSaldoCCorrienteProv(Integer.parseInt(txtdeuda.getText()));
+        transaccion.setSaldoCCorrienteProv(Double.parseDouble(txtdeuda.getText()));
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -490,7 +505,16 @@ public void llenadoDeTabla() {
         transaccion = transaccion.getBuscarInformacionCCProvPorId(transaccion);
         System.out.println("Cuenta Corriente retornada:" + transaccion);
         txttipocuenta.setText(transaccion.getTipoCCorrienteProv());
-        txtIdtipoC.setText(String.valueOf(transaccion.getIdTipoCCorrienteProv()));
+        int tipoMonedaId = transaccion.getIdTipoCCorrienteProv();
+        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
+            String item = cbIdProv.getItemAt(i).toString();
+            int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
+            
+            if (itemId == tipoMonedaId) {
+                cbIdProv.setSelectedIndex(i);
+                break;
+            }
+        }
         txtfecha.setText(transaccion.getFechaCCorrienteProv());
         txtnombreC.setText(transaccion.getNombreCCorrienteProv());
         txtnofac.setText(transaccion.getNofacturaCCorrienteProv());
@@ -505,13 +529,13 @@ public void llenadoDeTabla() {
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
         transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
         transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtIdtipoC.getText()));
+        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(Integer.parseInt(txttotfac.getText()));
-        transaccion.setCancelacionProv(Integer.parseInt(txtsaldo.getText()));
-        transaccion.setSaldoCCorrienteProv(Integer.parseInt(txtdeuda.getText()));
+        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
+        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
+        transaccion.setSaldoCCorrienteProv(Double.parseDouble(txtdeuda.getText()));
         transaccion.setModificarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -533,10 +557,6 @@ public void llenadoDeTabla() {
     private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnofacActionPerformed
-
-    private void txtIdtipoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdtipoCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdtipoCActionPerformed
 
     private void txttipocuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttipocuentaActionPerformed
         // TODO add your handling code here:
@@ -565,8 +585,8 @@ public void llenadoDeTabla() {
     public void limpiarTextos()
     {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
+        cbIdProv.setSelectedIndex(0);
         txttipocuenta.setText("");
-        txtIdtipoC.setText("");
         txtfecha.setText("");
         txtnombreC.setText("");
         txtnofac.setText("");
@@ -583,6 +603,7 @@ public void llenadoDeTabla() {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JComboBox<String> cbIdProv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -600,7 +621,6 @@ public void llenadoDeTabla() {
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaUsuarios;
-    private javax.swing.JTextField txtIdtipoC;
     private javax.swing.JTextField txtbuscado;
     private javax.swing.JTextField txtdeuda;
     private javax.swing.JTextField txtfecha;

@@ -19,6 +19,7 @@ public class clsCCorrientesProv {
     private String fechaCCorrienteProv;
     private String nombreCCorrienteProv;
     private String nofacturaCCorrienteProv;
+    //Cambios de string a double de estas tablas por:Luis Diego Cortez Mérida
     private double facturaCCorrienteProv;
     private double CancelaciónProv;
     private double SaldoCCorrienteProv;
@@ -91,7 +92,7 @@ public class clsCCorrientesProv {
         return SaldoCCorrienteProv;
     }
 
-    public void setSaldoCCorrienteProv(int SaldoCCorrienteProv) {
+    public void setSaldoCCorrienteProv(double SaldoCCorrienteProv) {
         this.SaldoCCorrienteProv = SaldoCCorrienteProv;
     }
 
