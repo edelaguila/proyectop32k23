@@ -251,7 +251,7 @@ public class daoFacturas {
         conn = Conexion.getConnection();
 
         // Reemplaza el parámetro en la consulta SQL
-        String sql = SQL_SELECT_COTDET + " WHERE cotid ='"+cotid+"'";
+        String sql = SQL_SELECT_COTDET + " WHERE facid ='"+cotid+"'";
         stmt = conn.prepareStatement(sql);
         
         rs = stmt.executeQuery();
@@ -262,14 +262,14 @@ public class daoFacturas {
             int Codigo = rs.getInt("proCodigo");
             double Precio = rs.getDouble("proPrecios");
             double Cantidad = rs.getInt("facprodcantidad");
-            double Descuento = rs.getDouble("facdescuento");
+            double Descuento = rs.getDouble("factdescuento");
             double Impuestos = rs.getDouble("facimpuestos");
             double Total = rs.getDouble("factotalInd");
 
             
             clsFacturas cotizacion = new clsFacturas();
             cotizacion.setIdFactura(IdFactura);
-            cotizacion.setIdProducto(Codigo);
+            cotizacion.setCodigoProducto(Codigo);
             cotizacion.setPrecioProducto(Precio);
             cotizacion.setCantidadProducto(Cantidad);
             cotizacion.setDescuentoFactura(Descuento);
