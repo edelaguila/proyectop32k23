@@ -11,6 +11,7 @@ package Ventas.Controlador;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import Ventas.Modelo.daoFacturas;
+import Ventas.Modelo.daoPedidos;
 import Ventas.Vista.frmConsultaCotizacion;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,22 +22,29 @@ import java.util.ArrayList;
 
 public class clsFacturas {
     private int IdProducto;
-    private int IdTienda;
+    private int IdFactura;//
+    private int IdTienda;//
     private String NombreProducto;
     private Double PrecioProducto;
     private int ExistenciaProducto;
-    private int CantidadProducto;
-    private int IdCliente;
-    private int IdVendedor;
-    private int IdCot;
-    private String FechaCot;
-    private double TotalCot;
+    private double CantidadProducto;
+    private int IdCliente;//
+    private int IdVendedor;//
+    private int IdPedido;
+    private String FechaFactura;//
+    private double TotalFactura;//
+    private int CodigoProducto;
+    private Double DescuentoFactura;//
+    private Double ImpuestosFactura;
+    private Double TotalIndividualFactura;
+    
+    
 
     public clsFacturas() {
     }
 
     public clsFacturas(int IdCliente) {
-        this.IdProducto = IdCliente;
+        this.IdFactura = IdCliente;
     }
 
     public ArrayList<String> obtenerNombresUsuarios() {
@@ -49,19 +57,19 @@ public class clsFacturas {
         this.ExistenciaProducto = ExistenciaProducto;
     }
 
-    public clsFacturas(int IdProducto, String NombreProducto, double PrecioProducto, int ExistenciaProducto) {
-        this.IdProducto = IdProducto;
+    public clsFacturas(int IdFactura, String NombreProducto, double PrecioProducto, int ExistenciaProducto) {
+        this.IdFactura = IdFactura;
         this.NombreProducto = NombreProducto;
         this.PrecioProducto = PrecioProducto;
         this.ExistenciaProducto = ExistenciaProducto;
     }
 
-    public int getIdProducto() {
-        return IdProducto;
+    public int getIdFactura() {
+        return IdFactura;
     }
 
-    public void setIdProducto(int IdProducto) {
-        this.IdProducto = IdProducto;
+    public void setIdFactura(int IdFactura) {
+        this.IdFactura = IdFactura;
     }
 
     public String getNombreProducto() {
@@ -85,23 +93,23 @@ public int getExistenciaProducto() {
     return ExistenciaProducto;
 }
 
-public void setCantidadProducto(int CantidadProducto) {
+public void setCantidadProducto(double CantidadProducto) {
     this.CantidadProducto = CantidadProducto;
 }
 
-public int getCantidadProducto() {
+public double getCantidadProducto() {
     return CantidadProducto;
 }
 public void setExistenciaProducto(int ExistenciaProducto) {
     this.ExistenciaProducto = ExistenciaProducto;
 }
 
-public int getIdCot() {
-    return IdCot;
+public int getIdPedido() {
+    return IdPedido;
 }
 
-public void setIdCot(int IdCot) {
-    this.IdCot = IdCot;
+public void setIdPedido(int IdPedidos) {
+    this.IdPedido = IdPedidos;
 }
 
 public int getIdCliente() {
@@ -120,25 +128,68 @@ public void setIdVendedor(int IdVendedor) {
     this.IdVendedor = IdVendedor;
 }
 
-public String getFechaCot() {
-    return FechaCot;
+public String getFechaFactura() {
+    return FechaFactura;
 }
 
-public void setFechaCot(String FechaCot) {
-    this.FechaCot = FechaCot;
+public void setFechaFactura(String FechaFactura) {
+    this.FechaFactura = FechaFactura;
 }
 
-public double getTotalCot() {
-    return TotalCot;
+public double getTotalFactura() {
+    return TotalFactura;
 }
 
-public void setTotalCot(double TotalCot) {
-    this.TotalCot = TotalCot;
+public void setTotalFactura(double TotalFactura) {
+    this.TotalFactura = TotalFactura;
 }
+public int getIdTienda() {
+    return IdTienda;
+}
+
+public void setIdTienda(int IdTienda) {
+    this.IdTienda = IdTienda;
+}
+public int getCodigoProducto() {
+    return CodigoProducto;
+}
+
+public void setCodigoProducto(int CodigoProducto) {
+    this.CodigoProducto = CodigoProducto;
+}
+public Double getDescuentoFactura() {
+    return DescuentoFactura;
+}
+
+public void setDescuentoFactura(Double DescuentoFactura) {
+    this.DescuentoFactura = DescuentoFactura;
+}
+public Double getImpuestosFactura() {
+    return ImpuestosFactura;
+}
+
+public void setImpuestosFactura(Double ImpuestosFactura) {
+    this.ImpuestosFactura = ImpuestosFactura;
+}
+public Double getTotalIndividualFactura() {
+    return TotalIndividualFactura;
+}
+
+public void setTotalIndividualFactura(Double TotalIndividualFactura) {
+    this.TotalIndividualFactura = TotalIndividualFactura;
+}
+public int getIdProducto() {
+        return IdProducto;
+    }
+
+    public void setIdProducto(int IdProducto) {
+        this.IdProducto = IdProducto;
+    }
+
 
     @Override
     public String toString() {
-        return "clsFacturas{" + "IdProducto=" + IdProducto + ", NombreProducto=" + NombreProducto + ", PrecioProducto=" + PrecioProducto + ", ExistenciaProducto=" + ExistenciaProducto + "IdCot=" + IdCot + ", IdCliente=" + IdCliente + ", IdVendedor=" + IdVendedor + ", FechaCot=" + FechaCot + ", TotalCot=" + TotalCot +'}';
+        return "clsFacturas{" + "IdFactura=" + IdFactura + ", NombreProducto=" + NombreProducto + ", PrecioProducto=" + PrecioProducto + ", ExistenciaProducto=" + ExistenciaProducto + "IdPedido=" + IdPedido + ", IdCliente=" + IdCliente + ", IdVendedor=" + IdVendedor + ", FechaFactura=" + FechaFactura + ", TotalFactura=" + TotalFactura +", CodigoProducto=" + CodigoProducto +'}';
     }
     //Metodos de acceso a la capa controlador
  
@@ -151,7 +202,7 @@ public void setTotalCot(double TotalCot) {
     
 
     public String toString2() {
-        return "clsFacturas{" + "IdCot=" + IdCot + ", IdCliente=" + IdCliente + ", IdVendedor=" + IdVendedor + ", FechaCot=" + FechaCot + ", TotalCot=" + TotalCot +'}';
+        return "clsFacturas{" + "IdPedido=" + IdPedido + ", IdCliente=" + IdCliente + ", IdVendedor=" + IdVendedor + ", FechaFactura=" + FechaFactura + ", TotalFactura=" + TotalFactura +'}';
     }
     //Metodos de acceso a la capa controlador
  
@@ -168,6 +219,7 @@ public void setTotalCot(double TotalCot) {
     return dao.consultaCotizacionesDetalle(cotid);
 
     }
+    
     public int verificarCotId() {
     frmConsultaCotizacion dao = new frmConsultaCotizacion();
     return dao.obtenerCotidSeleccionado();
@@ -203,12 +255,5 @@ public void setTotalCot(double TotalCot) {
     daoFacturas dao = new daoFacturas();
     return dao.obtenerUltimoIdCotizacion();
 }
-    public boolean verificarSaldoCliente(int IdCliente){
-    daoFacturas dao = new daoFacturas();
-    return dao.verificarSaldoCliente(IdCliente );
-    }
-    public void actualizarSaldoCliente(int Idcliente, double debeNuevo, double haberNuevo){
-    daoFacturas dao = new daoFacturas();
-    dao.actualizarSaldoCliente(  Idcliente,debeNuevo,haberNuevo );
-}
+    
 }
