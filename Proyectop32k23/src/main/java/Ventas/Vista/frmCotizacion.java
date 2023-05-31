@@ -82,6 +82,7 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
         lbInstCot = new javax.swing.JLabel();
         lbIdClienteCot = new javax.swing.JLabel();
         lbIdVendedorCot = new javax.swing.JLabel();
+        btnAyudaCot = new javax.swing.JButton();
 
         lb2Cotizacion.setForeground(new java.awt.Color(204, 204, 204));
         lb2Cotizacion.setText(".");
@@ -175,6 +176,13 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
 
         lbIdVendedorCot.setText("ID del Vendedor:");
 
+        btnAyudaCot.setText("Ayuda");
+        btnAyudaCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaCotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,7 +247,10 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
                                         .addComponent(lbTotalCot))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(125, 125, 125)
-                                        .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(130, 130, 130)
+                                        .addComponent(btnAyudaCot)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -286,7 +297,9 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
                 .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(btnRegistrarCot)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(btnAyudaCot)
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
@@ -495,6 +508,23 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
                 JOptionPane.showMessageDialog(null, "Cotización #" + cotizacionId + " ha sido registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 
     }//GEN-LAST:event_btnRegistrarCotActionPerformed
+
+    private void btnAyudaCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaCotActionPerformed
+        // TODO add your handling code here:
+        try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudacot.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudacot.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaCotActionPerformed
          
     
 
@@ -503,6 +533,7 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCot;
+    private javax.swing.JButton btnAyudaCot;
     private javax.swing.JButton btnEliminarCot;
     private javax.swing.JButton btnModificarCot;
     private javax.swing.JButton btnRegistrarCot;

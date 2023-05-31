@@ -91,6 +91,7 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         txtVenFacPed = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnAyudaConPed = new javax.swing.JButton();
 
         lb2PedCons.setForeground(new java.awt.Color(204, 204, 204));
         lb2PedCons.setText(".");
@@ -161,6 +162,13 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Tienda:");
 
+        btnAyudaConPed.setText("Ayuda");
+        btnAyudaConPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaConPedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,9 +185,13 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnVerDetallePed)
-                            .addComponent(btnFacturarPed))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAyudaConPed)
+                                    .addComponent(btnFacturarPed))
+                                .addGap(1, 1, 1)))
                         .addGap(123, 123, 123))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -200,13 +212,11 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPedReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(lbInsPedReg)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPanePedReg, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPanePedReg, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(btnVerDetallePed)
@@ -224,9 +234,11 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(cbx2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(33, 33, 33)
                         .addComponent(btnFacturarPed)
-                        .addGap(36, 36, 36))))
+                        .addGap(28, 28, 28)
+                        .addComponent(btnAyudaConPed)))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -291,6 +303,23 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnAyudaConPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConPedActionPerformed
+        // TODO add your handling code here:
+        try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaconped.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudaconped.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaConPedActionPerformed
+
      public void llenadoDeTablasCotizaciones() {
         DefaultTableModel modelo = new DefaultTableModel(){
             public boolean isCellEditable(int row, int column) {
@@ -329,6 +358,7 @@ public int obtenerCotidSeleccionado() {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAyudaConPed;
     private javax.swing.JButton btnFacturarPed;
     private javax.swing.JButton btnVerDetallePed;
     private javax.swing.JComboBox<String> cbx;

@@ -237,6 +237,7 @@ public void cargarTabla2(String usuario) {
         btnEliminarTodoPerfilUsuario = new javax.swing.JButton();
         btnEliminarPerfilUsuario = new javax.swing.JButton();
         rptPerfilUsuario = new javax.swing.JButton();
+        btnAyudaPerfilUsuario = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -296,6 +297,13 @@ public void cargarTabla2(String usuario) {
             }
         });
 
+        btnAyudaPerfilUsuario.setText("Ayuda");
+        btnAyudaPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaPerfilUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -319,8 +327,13 @@ public void cargarTabla2(String usuario) {
                                 .addComponent(btnEliminarPerfilUsuario)
                                 .addGap(91, 91, 91))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(rptPerfilUsuario)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(rptPerfilUsuario))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(btnAyudaPerfilUsuario)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)))
                 .addComponent(jScrollPanePerfilUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
@@ -332,7 +345,7 @@ public void cargarTabla2(String usuario) {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(comboBoxPerfilUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -350,7 +363,9 @@ public void cargarTabla2(String usuario) {
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminarTodoPerfilUsuario)
                         .addGap(27, 27, 27)
-                        .addComponent(rptPerfilUsuario)))
+                        .addComponent(rptPerfilUsuario)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAyudaPerfilUsuario)))
                 .addGap(363, 363, 363))
         );
 
@@ -382,12 +397,30 @@ public void cargarTabla2(String usuario) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_rptPerfilUsuarioActionPerformed
+
+    private void btnAyudaPerfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaPerfilUsuarioActionPerformed
+        // TODO add your handling code here:
+        try {
+            if ((new File("src\\main\\java\\seguridad\\ayuda\\ayudaperfusu.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\ayudaperfusu.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaPerfilUsuarioActionPerformed
  
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignarPerfilUsuario;
     private javax.swing.JButton btnAsignarTodoPerfilUsuario;
+    private javax.swing.JButton btnAyudaPerfilUsuario;
     private javax.swing.JButton btnEliminarPerfilUsuario;
     private javax.swing.JButton btnEliminarTodoPerfilUsuario;
     private javax.swing.JComboBox<String> comboBoxPerfilUsuario;

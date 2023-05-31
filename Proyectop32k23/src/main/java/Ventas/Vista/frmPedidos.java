@@ -82,6 +82,7 @@ public class frmPedidos extends javax.swing.JInternalFrame {
         btnRegistrarPed = new javax.swing.JButton();
         lbInstPed = new javax.swing.JLabel();
         lbIdClientePed = new javax.swing.JLabel();
+        btnAyudaPed = new javax.swing.JButton();
 
         lb2Pedido.setForeground(new java.awt.Color(204, 204, 204));
         lb2Pedido.setText(".");
@@ -173,6 +174,13 @@ public class frmPedidos extends javax.swing.JInternalFrame {
 
         lbIdClientePed.setText("ID del Cliente:");
 
+        btnAyudaPed.setText("Ayuda");
+        btnAyudaPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaPedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,14 +227,17 @@ public class frmPedidos extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPanePedActual, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPanePedActual, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(116, 116, 116)
+                                .addComponent(btnAyudaPed))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(376, 376, 376)
                                 .addComponent(lbPedActual))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(245, 245, 245)
                         .addComponent(lbInstPed)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +272,9 @@ public class frmPedidos extends javax.swing.JInternalFrame {
                         .addComponent(txtTotalPed, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
                         .addComponent(btnRegistrarPed)
-                        .addContainerGap(112, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(btnAyudaPed)
+                        .addContainerGap(58, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lbPedActual)
@@ -480,6 +493,23 @@ int codigoProducto = Integer.parseInt(txtCodProdPed.getText());
                 
                 
     }//GEN-LAST:event_btnRegistrarPedActionPerformed
+
+    private void btnAyudaPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaPedActionPerformed
+        // TODO add your handling code here:
+                try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaped.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudaped.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaPedActionPerformed
          
     
 
@@ -488,6 +518,7 @@ int codigoProducto = Integer.parseInt(txtCodProdPed.getText());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarPed;
+    private javax.swing.JButton btnAyudaPed;
     private javax.swing.JButton btnEliminarPed;
     private javax.swing.JButton btnModificarPed;
     private javax.swing.JButton btnRegistrarPed;

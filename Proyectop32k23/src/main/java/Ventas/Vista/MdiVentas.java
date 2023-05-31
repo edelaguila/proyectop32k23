@@ -88,6 +88,7 @@ public class MdiVentas extends javax.swing.JFrame {
         repCliVen = new javax.swing.JMenuItem();
         repTieVen = new javax.swing.JMenuItem();
         mnuAyudasVentas = new javax.swing.JMenu();
+        mnuAyudaMDIVentas = new javax.swing.JMenuItem();
 
         jMenuItem1MdiVentas.setText("jMenuItem1");
 
@@ -380,6 +381,20 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuGeneralVentas.add(mnuReportesVentas);
 
         mnuAyudasVentas.setText("Ayudas");
+        mnuAyudasVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAyudasVentasActionPerformed(evt);
+            }
+        });
+
+        mnuAyudaMDIVentas.setText("Ayuda MDI Ventas");
+        mnuAyudaMDIVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAyudaMDIVentasActionPerformed(evt);
+            }
+        });
+        mnuAyudasVentas.add(mnuAyudaMDIVentas);
+
         mnuGeneralVentas.add(mnuAyudasVentas);
 
         setJMenuBar(mnuGeneralVentas);
@@ -792,6 +807,28 @@ public class MdiVentas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_repTieVenActionPerformed
 
+    private void mnuAyudasVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudasVentasActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_mnuAyudasVentasActionPerformed
+
+    private void mnuAyudaMDIVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudaMDIVentasActionPerformed
+        // TODO add your handling code here:
+                try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\generalayudaventas.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\generalayudaventas.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_mnuAyudaMDIVentasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -849,6 +886,7 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenuItem mantenimientoTiendas;
     private javax.swing.JMenuItem mantenimientoVendedores;
     private javax.swing.JMenu mnuArchivoVentas;
+    private javax.swing.JMenuItem mnuAyudaMDIVentas;
     private javax.swing.JMenu mnuAyudasVentas;
     private javax.swing.JMenu mnuCatalogosMantenimientosVentas;
     private javax.swing.JMenu mnuCatalogosVentas;

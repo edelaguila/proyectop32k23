@@ -83,6 +83,7 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         btnVerDetalleFac = new javax.swing.JButton();
         lbInsPedReg = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnAyudaConFac = new javax.swing.JButton();
 
         lb2PedCons.setForeground(new java.awt.Color(204, 204, 204));
         lb2PedCons.setText(".");
@@ -138,6 +139,13 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
             }
         });
 
+        btnAyudaConFac.setText("Ayuda");
+        btnAyudaConFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaConFacActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +162,10 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnVerDetalleFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAyudaConFac)
+                        .addGap(8, 8, 8)))
                 .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
@@ -162,7 +173,7 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPedReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(lbInsPedReg)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +182,9 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                         .addGap(8, 8, 8)
                         .addComponent(btnVerDetalleFac)
                         .addGap(73, 73, 73)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnAyudaConFac)))
                 .addGap(19, 19, 19))
         );
 
@@ -211,6 +224,23 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnAyudaConFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConFacActionPerformed
+        // TODO add your handling code here:
+        try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaconfac.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudaconfac.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaConFacActionPerformed
 
      public void llenadoDeTablasCotizaciones() {
         DefaultTableModel modelo = new DefaultTableModel(){
@@ -261,6 +291,7 @@ public int obtenerClienteidSeleccionado() {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAyudaConFac;
     private javax.swing.JButton btnVerDetalleFac;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1PedCons;

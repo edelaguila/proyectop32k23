@@ -81,6 +81,7 @@ public class frmConsultaCotizacion extends javax.swing.JInternalFrame {
         btnVerDetalleCot = new javax.swing.JButton();
         btnPedidoCot = new javax.swing.JButton();
         lbInsCotReg = new javax.swing.JLabel();
+        btnAyudaConCot = new javax.swing.JButton();
 
         lb2CotizacionCons.setForeground(new java.awt.Color(204, 204, 204));
         lb2CotizacionCons.setText(".");
@@ -136,6 +137,13 @@ public class frmConsultaCotizacion extends javax.swing.JInternalFrame {
 
         lbInsCotReg.setText("Haz clic en la cotización que quieras trabajar, luego presiona un botón:");
 
+        btnAyudaConCot.setText("Ayuda");
+        btnAyudaConCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaConCotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,14 +164,17 @@ public class frmConsultaCotizacion extends javax.swing.JInternalFrame {
                         .addGap(123, 123, 123))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnPedidoCot)
-                        .addGap(113, 113, 113))))
+                        .addGap(113, 113, 113))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAyudaConCot)
+                        .addGap(130, 130, 130))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbCotReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(lbInsCotReg)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +183,9 @@ public class frmConsultaCotizacion extends javax.swing.JInternalFrame {
                         .addGap(8, 8, 8)
                         .addComponent(btnVerDetalleCot)
                         .addGap(66, 66, 66)
-                        .addComponent(btnPedidoCot)))
+                        .addComponent(btnPedidoCot)
+                        .addGap(59, 59, 59)
+                        .addComponent(btnAyudaConCot)))
                 .addGap(19, 19, 19))
         );
 
@@ -208,6 +221,23 @@ public class frmConsultaCotizacion extends javax.swing.JInternalFrame {
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS"); 
     }//GEN-LAST:event_btnPedidoCotActionPerformed
+
+    private void btnAyudaConCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConCotActionPerformed
+        // TODO add your handling code here:
+        try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaconcot.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudaconcot.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaConCotActionPerformed
 
      public void llenadoDeTablasCotizaciones() {
         DefaultTableModel modelo = new DefaultTableModel(){
@@ -247,6 +277,7 @@ public int obtenerCotidSeleccionado() {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAyudaConCot;
     private javax.swing.JButton btnPedidoCot;
     private javax.swing.JButton btnVerDetalleCot;
     private javax.swing.JScrollPane jScrollPane1CotCons;

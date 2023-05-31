@@ -9,6 +9,7 @@ package Ventas.Vista;
 import Seguridad.Controlador.clsBitacora;
 import Ventas.Controlador.clsFacturas;
 import Seguridad.Controlador.clsUsuarioConectado;
+import java.io.File;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
@@ -81,6 +82,7 @@ public class frmFacturas extends javax.swing.JInternalFrame {
         cbxIdTiendaFac = new javax.swing.JComboBox<>();
         lbDescProdFac = new javax.swing.JLabel();
         cbxDescFac = new javax.swing.JComboBox<>();
+        btnAyudaFac = new javax.swing.JButton();
 
         lb2Factura.setForeground(new java.awt.Color(204, 204, 204));
         lb2Factura.setText(".");
@@ -180,6 +182,13 @@ public class frmFacturas extends javax.swing.JInternalFrame {
 
         cbxDescFac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.0", "0.15", "0.25", "0.50", "0.75", "0.95" }));
 
+        btnAyudaFac.setText("Ayuda");
+        btnAyudaFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaFacActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -237,8 +246,10 @@ public class frmFacturas extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(125, 125, 125)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnRegistrarFac)
-                                    .addComponent(txtTotalFac, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtTotalFac, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnAyudaFac)
+                                        .addComponent(btnRegistrarFac))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(108, 108, 108)
                                 .addComponent(lbTotalFac))))
@@ -303,7 +314,9 @@ public class frmFacturas extends javax.swing.JInternalFrame {
                         .addComponent(txtTotalFac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(btnRegistrarFac)
-                        .addContainerGap(260, Short.MAX_VALUE))))
+                        .addGap(40, 40, 40)
+                        .addComponent(btnAyudaFac)
+                        .addContainerGap(201, Short.MAX_VALUE))))
         );
 
         pack();
@@ -534,6 +547,23 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
                 JOptionPane.showMessageDialog(null, "Factura #" + cotizacionId + " ha sido registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 
     }//GEN-LAST:event_btnRegistrarFacActionPerformed
+
+    private void btnAyudaFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaFacActionPerformed
+        // TODO add your handling code here:
+                try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudafac.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudafac.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaFacActionPerformed
          
     
 
@@ -542,6 +572,7 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarFac;
+    private javax.swing.JButton btnAyudaFac;
     private javax.swing.JButton btnEliminarFac;
     private javax.swing.JButton btnModificarFac;
     private javax.swing.JButton btnRegistrarFac;

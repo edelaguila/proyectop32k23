@@ -140,6 +140,10 @@
                                       <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                                       <Component id="txtTotalCot" min="-2" pref="87" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                                      <Component id="btnAyudaCot" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -203,7 +207,9 @@
               <Component id="txtTotalCot" min="-2" pref="20" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Component id="btnRegistrarCot" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="187" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="btnAyudaCot" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="132" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -334,6 +340,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ID del Vendedor:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAyudaCot">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ayuda"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAyudaCotActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
