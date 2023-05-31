@@ -222,4 +222,26 @@ public class daoProveedor {
         return proveedor;
 
     } 
+
+    private static class Conexion {
+
+        private static Connection getConnection() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        private static void close(ResultSet rs) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        private static void close(PreparedStatement stmt) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        private static void close(Connection conn) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public Conexion() {
+        }
+    }
 }

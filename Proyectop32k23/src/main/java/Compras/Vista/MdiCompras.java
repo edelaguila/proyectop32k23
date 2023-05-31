@@ -6,7 +6,11 @@
 package Compras.Vista;
 
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 /**
  *
@@ -157,6 +161,11 @@ public class MdiCompras extends javax.swing.JFrame {
         mnuGeneral.add(mnuConsultas);
 
         mnuReportes.setText("Reportes");
+        mnuReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuReportesActionPerformed(evt);
+            }
+        });
         mnuGeneral.add(mnuReportes);
 
         mnuAyudas.setText("Ayudas");
@@ -217,6 +226,27 @@ public class MdiCompras extends javax.swing.JFrame {
     private void menuperfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuperfilUsuarioActionPerformed
        
     }//GEN-LAST:event_menuperfilUsuarioActionPerformed
+
+    private void mnuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuReportesActionPerformed
+        // TODO add your handling code here:
+        Connection conn = null;
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+        
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath)()
+                    + "/src/main/java/compras/reportes/rptMdiCompras.jrxml");
+                    print = JasperFillManajer.fillReport(report, p , conn);
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("reporte Compra");
+                    view.setVisible(true);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+      
+    }//GEN-LAST:event_mnuReportesActionPerformed
 
 
     /**
