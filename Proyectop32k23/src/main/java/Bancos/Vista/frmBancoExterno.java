@@ -62,7 +62,7 @@ int codigoAplicacion=5006;
             dato[1] = listadoBanco.get(i).getNombreBanco();
             dato[2] = listadoBanco.get(i).getPaisBanco();
             dato[3] = Integer.toString(listadoBanco.get(i).getTipoMonedaId());
-            dato[4] = listadoBanco.get(i).getEstatus();
+            dato[4] = listadoBanco.get(i).getEstatus().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }

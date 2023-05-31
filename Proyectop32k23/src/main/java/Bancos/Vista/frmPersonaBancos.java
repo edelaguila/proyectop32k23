@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmPersonaBancos extends javax.swing.JInternalFrame {
-int codigoAplicacion= 5002;
+int codigoAplicacion= 5010;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -48,7 +48,7 @@ int codigoAplicacion= 5002;
            dato[0] = Integer.toString(listaPersonaBancos.get(i).getPerId());
             dato[1] = listaPersonaBancos .get(i).getPerNombre();
             dato[2] = Integer.toString(listaPersonaBancos.get(i).getPerTipoId());
-            dato[3] = listaPersonaBancos .get(i).getPerEstatus();
+            dato[3] = listaPersonaBancos .get(i).getPerEstatus().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }

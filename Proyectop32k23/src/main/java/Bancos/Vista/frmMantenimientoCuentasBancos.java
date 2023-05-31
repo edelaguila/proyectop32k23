@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class frmMantenimientoCuentasBancos extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=5006;
+int codigoAplicacion=5005;
 
     public void llenadoDeComboIdPersona() {
         clsPersonaBancos personas = new clsPersonaBancos();
@@ -107,7 +107,7 @@ int codigoAplicacion=5006;
             dato[1] = Double.toString(listaCuenta.get(i).getSaldoCuenta());
             dato[2] = Integer.toString(listaCuenta.get(i).getIdPersona());
             dato[3] = Integer.toString(listaCuenta.get(i).getIdTipoCuenta());
-            dato[4] = listaCuenta.get(i).getEstatusCuenta();
+            dato[4] = listaCuenta.get(i).getEstatusCuenta().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             dato[5] = Integer.toString(listaCuenta.get(i).getTipModId());
             dato[6] = Integer.toString(listaCuenta.get(i).getCodBanco());
             modelo.addRow(dato);

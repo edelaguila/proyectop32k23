@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmMantenimientoTipoPersonaBancos extends javax.swing.JInternalFrame {
-int codigoAplicacion= 5002;
+int codigoAplicacion= 5003;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -45,7 +45,7 @@ int codigoAplicacion= 5002;
         for (int i = 0; i < listaTipoBancos .size(); i++) {
            dato[0] = Integer.toString(listaTipoBancos.get(i).getIdTipoPersonaBancos());
             dato[1] = listaTipoBancos .get(i).getTipoDescripcionBancos();
-            dato[2] = listaTipoBancos .get(i).getTipoEstatusBancos();
+            dato[2] = listaTipoBancos .get(i).getTipoEstatusBancos().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }

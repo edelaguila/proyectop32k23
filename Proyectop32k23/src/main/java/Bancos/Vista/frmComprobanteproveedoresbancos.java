@@ -36,7 +36,7 @@ import javax.swing.JOptionPane;
  */
 public class frmComprobanteproveedoresbancos extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=50015;
+int codigoAplicacion=5011;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
