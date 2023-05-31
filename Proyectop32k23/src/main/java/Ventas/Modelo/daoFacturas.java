@@ -25,7 +25,7 @@ public class daoFacturas {
     String usuariobd = "root";
     String contrabd = "";
     private static final String SQL_SELECT = "SELECT proCodigo, proNombre, proPrecios, proExistencias FROM tbl_productos";
-    private static final String SQL_SELECT_COT = "SELECT facid, pedid, clId, venid, tieid, facfecha, facTotalGeneral FROM tbl_factura";
+    private static final String SQL_SELECT_COT = "SELECT facid, pedid, clId, venid, tieid, facfecha, facTotalGeneral, facEstatus FROM tbl_factura";
     private static final String SQL_SELECT_COTDET = "SELECT facid, proCodigo, proPrecios, facprodcantidad, factdescuento, facimpuestos, factotalInd FROM tbl_facturadetalle";
     private static final String SQL_SELECT_COT2 = "SELECT clId, facfecha, facTotalGeneral FROM tbl_factura";
     private static final String SQL_SELECT_COTDET2 = "SELECT proCodigo, proPrecios, cotprodcantidad, cotTotalInd FROM tbl_facturadetalle";
@@ -120,8 +120,12 @@ public class daoFacturas {
   
   public void registrarCotizacion(int idCliente, int idVendedor, String idTienda, LocalDate fecha, double total) {
         try (Connection conn = Conexion.getConnection()) {
-            String query = "INSERT INTO tbl_factura (clId, venid, tieid, facfecha, facTotalGeneral) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO tbl_factura (clId, venid, tieid, facfecha, facTotalGeneral, facEstatus) VALUES (?, ?, ?, ?, ?, ?)";
             String query2 = "SELECT tieid FROM tbl_tienda WHERE tienombre = ?";
+            String query3 = "SELECT clDebe, clHaber FROM tbl_cliente WHERE clId = ?";
+            double clDebe = 0;
+            double clHaber = 0;
+            String estatus = "Facturado";
             PreparedStatement stmt2 = conn.prepareStatement(query2);
             stmt2.setString(1, idTienda);
             ResultSet resultado = stmt2.executeQuery();
@@ -132,7 +136,22 @@ public class daoFacturas {
             statement.setInt(2, idVendedor);
             statement.setInt(3, tieid);
             statement.setDate(4, java.sql.Date.valueOf(fecha));
-            statement.setDouble(5, total);     
+            statement.setDouble(5, total); 
+            statement.setString(6, estatus);  
+            
+            PreparedStatement stmt3 = conn.prepareStatement(query3);
+            stmt3.setInt(1, idCliente);
+            ResultSet resultado3 = stmt3.executeQuery();
+            resultado3.next();
+            clDebe = resultado3.getDouble("clDebe");
+            clHaber = resultado3.getDouble("clHaber");              
+        clDebe += total;
+        
+        String updateQuery = "UPDATE tbl_cliente SET clDebe = ? WHERE clId = ?";
+        PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
+        updateStmt.setDouble(1, clDebe);
+        updateStmt.setInt(2, idCliente);
+        updateStmt.executeUpdate();
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -204,7 +223,8 @@ public class daoFacturas {
 
         try {
             conn = Conexion.getConnection();
-            stmt = conn.prepareStatement(SQL_SELECT_COT);
+            String estatus = "Facturado";
+            stmt = conn.prepareStatement(SQL_SELECT_COT+ " WHERE facEstatus ='"+estatus+"'");
             rs = stmt.executeQuery();
             while (rs.next()) {
 
@@ -507,6 +527,87 @@ public ArrayList<String> obtenerNombresUsuarios() {
 
     return nombresUsuarios;
 }
+
+   
+        public void cancelarPedido(int cotid, int idcliente) {
+
+    Connection conn = null;
+    ResultSet rs = null;
+    double haber = 0.0;
+    PreparedStatement updateStmt = null;
+    PreparedStatement clienteStmt = null;
+    PreparedStatement clienteStmt2 = null;
+    PreparedStatement productoStmt = null;
+    
+    try {
+        conn = Conexion.getConnection();
+        
+        clienteStmt2 = conn.prepareStatement("SELECT clHaber FROM tbl_cliente WHERE clid = ?");
+        clienteStmt2.setInt(1, idcliente);
+        rs = clienteStmt2.executeQuery();
+        
+        if (rs.next()) {
+            haber = rs.getDouble("clHaber");
+        }
+        
+        String estatus = "Devolución";
+        String updateQuery = "UPDATE tbl_factura SET facEstatus = ? WHERE facid = ?";
+        updateStmt = conn.prepareStatement(updateQuery);
+        updateStmt.setString(1, estatus);
+        updateStmt.setInt(2, cotid);
+        int rowsUpdated = updateStmt.executeUpdate();
+        
+        if (rowsUpdated > 0) {
+            System.out.println("La columna se ha actualizado correctamente.");
+        } else {
+            System.out.println("No se encontró ninguna fila para actualizar.");
+        }
+        
+        String facturaQuery = "SELECT facTotalGeneral FROM tbl_factura WHERE facid = ?";
+        PreparedStatement facturaStmt = conn.prepareStatement(facturaQuery);
+        facturaStmt.setInt(1, cotid);
+        ResultSet facturaRs = facturaStmt.executeQuery();
+        
+        double facTotalGeneral = 0.0;
+        if (facturaRs.next()) {
+            facTotalGeneral = facturaRs.getDouble("facTotalGeneral");
+        }
+        
+        String clienteUpdateQuery = "UPDATE tbl_cliente SET clHaber = clHaber + ? WHERE clid = ?";
+        clienteStmt = conn.prepareStatement(clienteUpdateQuery);
+        clienteStmt.setDouble(1, facTotalGeneral);
+        clienteStmt.setInt(2, idcliente);
+        int rowsUpdated2 = clienteStmt.executeUpdate();
+        
+        if (rowsUpdated2 > 0) {
+            System.out.println("La columna se ha actualizado correctamente.");
+        } else {
+            System.out.println("No se encontró ninguna fila para actualizar.");
+        }
+        
+        String detalleQuery = "SELECT proCodigo, facprodcantidad FROM tbl_facturadetalle WHERE facid = ?";
+        PreparedStatement detalleStmt = conn.prepareStatement(detalleQuery);
+        detalleStmt.setInt(1, cotid);
+        ResultSet detalleRs = detalleStmt.executeQuery();
+        
+        String productoUpdateQuery = "UPDATE tbl_productos SET proExistencias = proExistencias + ? WHERE proCodigo = ?";
+        productoStmt = conn.prepareStatement(productoUpdateQuery);
+        
+        while (detalleRs.next()) {
+            int proCodigo = detalleRs.getInt("proCodigo");
+            int facprodcantidad = detalleRs.getInt("facprodcantidad");
+
+            productoStmt.setInt(1, facprodcantidad);
+            productoStmt.setInt(2, proCodigo);
+            productoStmt.executeUpdate();
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace(System.out);
+    } finally {
+        Conexion.close(updateStmt);
+        Conexion.close(conn);
+    }
+        }
 
 }
  

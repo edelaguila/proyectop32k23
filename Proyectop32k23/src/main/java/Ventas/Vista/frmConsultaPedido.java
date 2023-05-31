@@ -267,7 +267,7 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         int filaSeleccionada = tblPedConsulta.getSelectedRow();
                 int cotidSeleccionado = Integer.valueOf(tblPedConsulta.getValueAt(filaSeleccionada, 0).toString());
                 clsPedidos frmConsulta = new clsPedidos();
-                frmConsulta.RegistrarPedidoCot(cotidSeleccionado, idVendedor, nombretienda);
+                frmConsulta.RegistrarPedidoCot(cotidSeleccionado, idVendedor, nombretienda, descuento);
                 frmConsulta.RegistrarPedidoCotDet(cotidSeleccionado, descuento); 
                     DefaultTableModel model = (DefaultTableModel) tblPedConsulta.getModel();
                     model.setRowCount(0); // Eliminar todas las filas actuales de la tabla

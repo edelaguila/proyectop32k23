@@ -81,8 +81,8 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         tblFacConsulta = new javax.swing.JTable();
         lbPedReg = new javax.swing.JLabel();
         btnVerDetalleFac = new javax.swing.JButton();
-        btnFacturarPed = new javax.swing.JButton();
         lbInsPedReg = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         lb2PedCons.setForeground(new java.awt.Color(204, 204, 204));
         lb2PedCons.setText(".");
@@ -129,14 +129,14 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnFacturarPed.setText("Facturar");
-        btnFacturarPed.addActionListener(new java.awt.event.ActionListener() {
+        lbInsPedReg.setText("Haz clic en el pedido que quieras trabajar, luego presiona un botón:");
+
+        jButton1.setText("Devolucion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFacturarPedActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-
-        lbInsPedReg.setText("Haz clic en el pedido que quieras trabajar, luego presiona un botón:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,9 +152,9 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                     .addComponent(lbInsPedReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPanePedReg, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVerDetalleFac)
-                    .addComponent(btnFacturarPed))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVerDetalleFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
@@ -162,7 +162,7 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPedReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(lbInsPedReg)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,8 +170,8 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(btnVerDetalleFac)
-                        .addGap(65, 65, 65)
-                        .addComponent(btnFacturarPed)))
+                        .addGap(73, 73, 73)
+                        .addComponent(jButton1)))
                 .addGap(19, 19, 19))
         );
 
@@ -197,17 +197,20 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnVerDetalleFacActionPerformed
 
-    private void btnFacturarPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarPedActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        /*        int filaSeleccionada = tblCotConsulta.getSelectedRow();
-                int cotidSeleccionado = Integer.valueOf(tblCotConsulta.getValueAt(filaSeleccionada, 0).toString());
-                clsCotizacion frmConsulta = new clsCotizacion();
-                frmConsulta.RegistrarPedidoCot(cotidSeleccionado);
-                frmConsulta.RegistrarPedidoCotDet(cotidSeleccionado);
-                int resultadoBitacora=0;
-                    clsBitacora bitacoraRegistro = new clsBitacora();
-                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS"); */
-    }//GEN-LAST:event_btnFacturarPedActionPerformed
+        int filaSeleccionada = tblFacConsulta.getSelectedRow();
+        int cotidSeleccionado = Integer.valueOf(tblFacConsulta.getValueAt(filaSeleccionada, 0).toString());
+        int clienteidselect = Integer.valueOf(tblFacConsulta.getValueAt(filaSeleccionada, 2).toString());
+        clsFacturas frmConsulta = new clsFacturas();
+        frmConsulta.CancelarPedido(cotidSeleccionado, clienteidselect);
+        DefaultTableModel model = (DefaultTableModel) tblFacConsulta.getModel();
+        model.setRowCount(0); // Eliminar todas las filas actuales de la tabla
+        llenadoDeTablasCotizaciones();
+        int resultadoBitacora=0;
+        clsBitacora bitacoraRegistro = new clsBitacora();
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
      public void llenadoDeTablasCotizaciones() {
         DefaultTableModel modelo = new DefaultTableModel(){
@@ -248,11 +251,18 @@ public int obtenerCotidSeleccionado() {
     return cotidSeleccionado;
 }
 
+public int obtenerClienteidSeleccionado() {
+    int filaSeleccionada = tblFacConsulta.getSelectedRow();
+    int cotidSeleccionado = (int) tblFacConsulta.getValueAt(filaSeleccionada, 2);
+    return cotidSeleccionado;
+}
+
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFacturarPed;
     private javax.swing.JButton btnVerDetalleFac;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1PedCons;
     private javax.swing.JScrollPane jScrollPanePedReg;
     private javax.swing.JTable jTable1PedCons;

@@ -285,8 +285,8 @@ public class daoPedidos {
             e.printStackTrace();
         }
     }
-    public void registroPedidoCot(int cotid, int idvendedor, String tienda) {
-
+    public void registroPedidoCot(int cotid, int idvendedor, String tienda, double descuento) {
+        double impuesto = 0.12;
         Connection conn = null;
         PreparedStatement stmt = null;
         PreparedStatement stmtUpdate = null;
@@ -294,6 +294,7 @@ public class daoPedidos {
         int Id = 0;
         String fechita = "";
         double Tot = 0;
+        double TotalCalculado = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT_PED2+ " WHERE pedid ='"+cotid+"'");
@@ -316,13 +317,16 @@ public class daoPedidos {
         Id = IdCliente;
         fechita = Fecha;
         Tot = Total;}
+        double impuestocalculado = Tot * impuesto;
+        double descuentocalculado = (Tot + impuestocalculado)*descuento;
+        TotalCalculado = (Tot + impuestocalculado)-descuento;
          PreparedStatement stmt3 = conn.prepareStatement(query3);
             stmt3.setInt(1, Id);
             ResultSet resultado3 = stmt3.executeQuery();
             resultado3.next();
             clDebe = resultado3.getDouble("clDebe");
             clHaber = resultado3.getDouble("clHaber");              
-        clDebe += Tot;
+        clDebe += TotalCalculado;
         
         String updateQuery = "UPDATE tbl_cliente SET clDebe = ? WHERE clId = ?";
         PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
@@ -363,7 +367,7 @@ java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaActual);
     stmtInsert.setInt(3, idvendedor);
     stmtInsert.setInt(4, tieid);
     stmtInsert.setDate(5, fechaSQL);
-    stmtInsert.setDouble(6, Tot);
+    stmtInsert.setDouble(6, TotalCalculado);
     stmtInsert.setString(7, estatus);
     
     // Ejecuta la sentencia INSERT
@@ -475,7 +479,7 @@ java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaActual);
                 stmtUpdate.executeUpdate();*/
             }
             int IdPedido = obtenerUltimoIdPedido();
-            JOptionPane.showMessageDialog(null, "Factura #" + IdPedido + " registrada con éxito", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Factura registrada con éxito", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
         }
 
         // Realiza el commit explícito
@@ -534,13 +538,13 @@ java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaActual);
         public void cancelarPedido(int cotid) {
 
         Connection conn = null;
-        PreparedStatement stmt = null;
+        PreparedStatement updateStmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
         String estatus = "Cancelado";
         String updateQuery = "UPDATE tbl_pedido SET pedEstatus ='"+estatus+"' WHERE pedid = ?";
-        PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
+        updateStmt = conn.prepareStatement(updateQuery);
         updateStmt.setInt(1, cotid);
         updateStmt.executeUpdate();
             /*String sqlInsert = "INSERT INTO tbl_pedido (clid, pedfecha, pedTotalGeneral) VALUES (?, ?, ?)";
@@ -551,8 +555,7 @@ java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaActual);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
-            Conexion.close(rs);
-            Conexion.close(stmt);
+            Conexion.close(updateStmt);
             Conexion.close(conn);
         }
         

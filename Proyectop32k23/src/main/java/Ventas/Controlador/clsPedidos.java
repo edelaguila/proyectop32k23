@@ -178,9 +178,9 @@ public void setEstatusPed(String estatusPed) {
     return dao.obtenerUltimoIdPedido();
 }
     
-        public void RegistrarPedidoCot(int cotid2, int idvendedor, String tienda) {
+        public void RegistrarPedidoCot(int cotid2, int idvendedor, String tienda, double descuento) {
     daoPedidos dao = new daoPedidos();
-    dao.registroPedidoCot(cotid2, idvendedor, tienda);
+    dao.registroPedidoCot(cotid2, idvendedor, tienda, descuento);
 } 
     public ArrayList<String> obtenerNombresUsuarios() {
     daoPedidos dao = new daoPedidos();
