@@ -5,8 +5,18 @@
  */
 package Ventas.Vista;
 
+import Seguridad.Modelo.Conexion;
 import java.awt.Dimension;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -59,8 +69,11 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuConsultasVentas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         mnuReportesVentas = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        rptGeneralPedidos = new javax.swing.JMenuItem();
+        rptPredidosPorCliente = new javax.swing.JMenuItem();
+        rptPedidosPorProducto = new javax.swing.JMenuItem();
         mnuAyudasVentas = new javax.swing.JMenu();
 
         jMenuItem1MdiVentas.setText("jMenuItem1");
@@ -223,17 +236,38 @@ public class MdiVentas extends javax.swing.JFrame {
         });
         mnuConsultasVentas.add(jCheckBoxMenuItem2);
 
-        jMenuItem3.setText("Consulta Facturas");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        mnuConsultasVentas.add(jMenuItem3);
-
         mnuGeneralVentas.add(mnuConsultasVentas);
 
         mnuReportesVentas.setText("Reportes");
+
+        jMenu3.setText("Pedidos");
+
+        rptGeneralPedidos.setText("Reporte General");
+        rptGeneralPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptGeneralPedidosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptGeneralPedidos);
+
+        rptPredidosPorCliente.setText("Reporte Pedidos Por Cliente");
+        rptPredidosPorCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptPredidosPorClienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptPredidosPorCliente);
+
+        rptPedidosPorProducto.setText("Reporte Pedidos Por Producto");
+        rptPedidosPorProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptPedidosPorProductoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptPedidosPorProducto);
+
+        mnuReportesVentas.add(jMenu3);
+
         mnuGeneralVentas.add(mnuReportesVentas);
 
         mnuAyudasVentas.setText("Ayudas");
@@ -366,15 +400,72 @@ public class MdiVentas extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+// María José Véliz Ochoa 
+//9959-21-5909
+    private void rptGeneralPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptGeneralPedidosActionPerformed
         // TODO add your handling code here:
-        frmConsultaFacturas ventana = new frmConsultaFacturas();
-        jDesktopPaneVentas.add(ventana);
-        Dimension desktopSize = jDesktopPaneVentas.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+        
+             Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/main/java/ventas/reportes/rptPedidoGeneral1.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_rptGeneralPedidosActionPerformed
+// María José Véliz Ochoa 
+//9959-21-5909
+    private void rptPedidosPorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptPedidosPorProductoActionPerformed
+        // TODO add your handling code here:
+                     Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/main/java/ventas/reportes/rptPedidosPorProducto.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+    }//GEN-LAST:event_rptPedidosPorProductoActionPerformed
+// María José Véliz Ochoa 
+//9959-21-5909
+    private void rptPredidosPorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptPredidosPorClienteActionPerformed
+        // TODO add your handling code here:
+                     Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/main/java/ventas/reportes/rptPedidosPorCliente.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+    }//GEN-LAST:event_rptPredidosPorClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,11 +514,11 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1MdiVentas;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4MdiVentas;
     private javax.swing.JCheckBoxMenuItem mantenimientoClientes;
     private javax.swing.JMenuItem mantenimientoTiendas;
@@ -443,5 +534,8 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenu mnuProcesosVentas;
     private javax.swing.JMenu mnuReportesVentas;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistemaVentas;
+    private javax.swing.JMenuItem rptGeneralPedidos;
+    private javax.swing.JMenuItem rptPedidosPorProducto;
+    private javax.swing.JMenuItem rptPredidosPorCliente;
     // End of variables declaration//GEN-END:variables
 }

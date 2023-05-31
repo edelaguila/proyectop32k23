@@ -155,7 +155,7 @@ public class frmConsultaFacturaDetalle extends javax.swing.JInternalFrame {
         clsFacturas cotizacion = new clsFacturas();
         List<clsFacturas> listaCotizaciones = cotizacion.getListadoCotizacionesDetalle(cotidSeleccionado);
         tblPedDetCons.setModel(modelo);
-        String[] dato = new String[7];
+        String[] dato = new String[5];
         for (int i = 0; i < listaCotizaciones.size(); i++) {
             dato[0] = Integer.toString(listaCotizaciones.get(i).getIdFactura());
             dato[1] = Integer.toString(listaCotizaciones.get(i).getCodigoProducto());
