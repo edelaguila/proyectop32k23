@@ -73,6 +73,12 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuReportesVentas = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
+        rptGeneral = new javax.swing.JMenuItem();
+        rptCliente = new javax.swing.JMenuItem();
+        rptProducto = new javax.swing.JMenuItem();
+        rptVendedor = new javax.swing.JMenuItem();
+
+
         rptGeneralPedidos = new javax.swing.JMenuItem();
         rptPredidosPorCliente = new javax.swing.JMenuItem();
         rptPedidosPorProducto = new javax.swing.JMenuItem();
@@ -249,6 +255,44 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuGeneralVentas.add(mnuConsultasVentas);
 
         mnuReportesVentas.setText("Reportes");
+
+
+        jMenu3.setText("Cotizacion");
+
+        rptGeneral.setText("Reporte General");
+        rptGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptGeneralActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptGeneral);
+
+        rptCliente.setText("Reporte Cliente");
+        rptCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptClienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptCliente);
+
+        rptProducto.setText("Reporte Producto");
+        rptProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptProductoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptProducto);
+
+        rptVendedor.setText("Reporte Vendedor ");
+        rptVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptVendedorActionPerformed(evt);
+            }
+        });
+        jMenu3.add(rptVendedor);
+
+        mnuReportesVentas.add(jMenu3);
+
 
         jMenu3.setText("Pedidos");
 
@@ -474,6 +518,11 @@ public class MdiVentas extends javax.swing.JFrame {
         JasperReport report;
         JasperPrint print;
 
+    //Meyglin del Rosario Rosales Ochoa
+        // 9959 - 21- 4490
+    private void rptClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptClienteActionPerformed
+        // TODO add your handling code here:
+
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
@@ -534,7 +583,7 @@ public class MdiVentas extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         //Carlos Hernandez 9959-21-363
-        
+
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -543,7 +592,11 @@ public class MdiVentas extends javax.swing.JFrame {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionCliente.jrxml");
+
                     + "/src/main/java/ventas/reportes/rptventasgeneral.jrxml");
+
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
 	    view.setTitle("Reporte Prueba");
@@ -551,12 +604,20 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }//GEN-LAST:event_rptClienteActionPerformed
+        //Meyglin del Rosario Rosales Ochoa
+        // 9959 - 21- 4490
+    private void rptGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptGeneralActionPerformed
+        // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
          //Carlos Hernandez 9959-21-363
         
+
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -565,7 +626,11 @@ public class MdiVentas extends javax.swing.JFrame {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionGeneral.jrxml");
+
                     + "/src/main/java/ventas/reportes/rptventasclientes.jrxml");
+
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
 	    view.setTitle("Reporte Prueba");
@@ -573,6 +638,13 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }//GEN-LAST:event_rptGeneralActionPerformed
+         //Meyglin del Rosario Rosales Ochoa
+        // 9959 - 21- 4490
+    private void rptProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptProductoActionPerformed
+        // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -631,7 +703,11 @@ public class MdiVentas extends javax.swing.JFrame {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionProducto.jrxml");
+
                     + "/src/main/java/ventas/reportes/rptventastiendas.jrxml");
+
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
 	    view.setTitle("Reporte Prueba");
@@ -639,12 +715,21 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }//GEN-LAST:event_rptProductoActionPerformed
+
+    //Meyglin del Rosario Rosales Ochoa
+    // 9959 - 21- 4490
+    private void rptVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptVendedorActionPerformed
+        // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
          //Carlos Hernandez 9959-21-363
         
+
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -653,7 +738,11 @@ public class MdiVentas extends javax.swing.JFrame {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionVendedor.jrxml");
+
                     + "/src/main/java/ventas/reportes/rptventasvendedor.jrxml");
+
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
 	    view.setTitle("Reporte Prueba");
@@ -661,7 +750,11 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }//GEN-LAST:event_rptVendedorActionPerformed
+
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -715,8 +808,10 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
+
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+
     private javax.swing.JMenuItem jMenuItem4MdiVentas;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -737,8 +832,13 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenu mnuProcesosVentas;
     private javax.swing.JMenu mnuReportesVentas;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistemaVentas;
+    private javax.swing.JMenuItem rptCliente;
+    private javax.swing.JMenuItem rptGeneral;
+    private javax.swing.JMenuItem rptProducto;
+    private javax.swing.JMenuItem rptVendedor;
     private javax.swing.JMenuItem rptGeneralPedidos;
     private javax.swing.JMenuItem rptPedidosPorProducto;
     private javax.swing.JMenuItem rptPredidosPorCliente;
+
     // End of variables declaration//GEN-END:variables
 }

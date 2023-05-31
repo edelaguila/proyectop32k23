@@ -196,14 +196,47 @@
             <Menu class="javax.swing.JMenu" name="jMenu3">
               <Properties>
 
+                <Property name="text" type="java.lang.String" value="Cotizacion"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="rptGeneral">
+
                 <Property name="text" type="java.lang.String" value="Pedidos"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="rptGeneralPedidos">
+
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Reporte General"/>
                   </Properties>
                   <Events>
+
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptGeneralActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="rptCliente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reporte Cliente"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptClienteActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="rptProducto">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reporte Producto"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptProductoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="rptVendedor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reporte Vendedor "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptVendedorActionPerformed"/>
+
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptGeneralPedidosActionPerformed"/>
                   </Events>
                 </MenuItem>
