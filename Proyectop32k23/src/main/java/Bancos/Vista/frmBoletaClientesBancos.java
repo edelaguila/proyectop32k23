@@ -78,7 +78,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         }
     }
     
-    public void llenadoCuentas() {
+    /*public void llenadoCuentas() {
        clsCuentasBancos cuentas = new clsCuentasBancos();
         List<clsCuentasBancos> listaCuentas = cuentas.getListadoCuentas();
         cbIdCuenta.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -88,7 +88,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
             String item = cuentasBancos.getIdCuenta()+ " - "+cuentasBancos.getNumeroCuenta();
             cbIdCuenta.addItem(item);
         } 
-    }
+    }*/
      
     public void llenadoMoneda() {
         clsTipoMoneda moneda = new clsTipoMoneda();
@@ -143,7 +143,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         llenadoCodigoBanco();
         llenadoConcepto();
         llenadoTipoMovimiento();
-        llenadoCuentas();
+        //llenadoCuentas();
         llenadoMoneda();
     }
 

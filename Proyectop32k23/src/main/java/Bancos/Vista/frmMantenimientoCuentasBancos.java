@@ -11,6 +11,8 @@ import Seguridad.Controlador.clsBitacora;
 import Bancos.Controlador.clsCuentasBancos;
 import Bancos.Controlador.clsPersonaBancos;
 import Bancos.Controlador.clsTipoCuentas;
+import Bancos.Controlador.clsTipoMoneda;
+import Bancos.Controlador.clsBancoExterno;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.awt.Component;
 import java.util.List;
@@ -50,7 +52,29 @@ int codigoAplicacion=5006;
         } 
         
     }
-
+    
+    public void llenadoDeComboTipoMoneda() {
+        clsTipoMoneda monedas = new clsTipoMoneda();
+        List<clsTipoMoneda> listaTipoMoneda = monedas.getListadoMonedas();
+        cbMoneda.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbMoneda.addItem("Seleccionar...");
+        for (int i = 0; i < listaTipoMoneda.size(); i++) {
+            cbMoneda.addItem(String.valueOf(listaTipoMoneda.get(i).getTipModId()));
+        } 
+        
+    }
+    
+    public void llenadoDeComboBanco() {
+        clsBancoExterno banco = new clsBancoExterno();
+        List<clsBancoExterno> listaBanco = banco.getListadoBancosExternos();
+        cbBanco.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbBanco.addItem("Seleccionar...");
+        for (int i = 0; i < listaBanco.size(); i++) {
+            cbBanco.addItem(String.valueOf(listaBanco.get(i).getCodigoBanco()));
+        } 
+        
+    }
+    
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID Cuenta");
@@ -121,6 +145,10 @@ int codigoAplicacion=5006;
         cbTipoCuenta = new javax.swing.JComboBox<>();
         rbHabilitar = new javax.swing.JRadioButton();
         rbDeshabilitar = new javax.swing.JRadioButton();
+        label11 = new javax.swing.JLabel();
+        label12 = new javax.swing.JLabel();
+        cbMoneda = new javax.swing.JComboBox<>();
+        cbBanco = new javax.swing.JComboBox<>();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -266,6 +294,12 @@ int codigoAplicacion=5006;
         tipoEstatus.add(rbDeshabilitar);
         rbDeshabilitar.setText("Deshabilitado");
 
+        label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label11.setText("Moneda");
+
+        label12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label12.setText("Banco");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -330,14 +364,25 @@ int codigoAplicacion=5006;
                                         .addComponent(label8)
                                         .addGap(310, 310, 310))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label10)
-                                        .addGap(83, 83, 83)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(label10)
+                                                    .addGap(83, 83, 83))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(label11)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(label12)
+                                                .addGap(82, 82, 82)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(rbHabilitar)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(rbDeshabilitar))
-                                            .addComponent(cbTipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(cbTipoCuenta, 0, 260, Short.MAX_VALUE)
+                                            .addComponent(cbMoneda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cbBanco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1)
@@ -375,10 +420,20 @@ int codigoAplicacion=5006;
                             .addComponent(cbTipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rbHabilitar)
-                                .addComponent(rbDeshabilitar))
-                            .addComponent(label10))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(label12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbHabilitar)
+                                    .addComponent(rbDeshabilitar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -398,7 +453,7 @@ int codigoAplicacion=5006;
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnActualizar)
-                        .addContainerGap(106, Short.MAX_VALUE))))
+                        .addContainerGap(110, Short.MAX_VALUE))))
         );
 
         pack();
@@ -605,12 +660,16 @@ int codigoAplicacion=5006;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JComboBox<String> cbBanco;
     private javax.swing.JComboBox<String> cbIdPersona;
+    private javax.swing.JComboBox<String> cbMoneda;
     private javax.swing.JComboBox<String> cbTipoCuenta;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
+    private javax.swing.JLabel label11;
+    private javax.swing.JLabel label12;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
