@@ -164,8 +164,6 @@ public class MdiCompras extends javax.swing.JFrame {
         aplicacionesUsuarios.setText("Aplicaciones Usuarios");
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aplicacionesUsuariosActionPerformed(evt);
-            }
         });
         mnuProcesos.add(aplicacionesUsuarios);
 
@@ -173,8 +171,6 @@ public class MdiCompras extends javax.swing.JFrame {
         menuperfilUsuario.setText("Perfil Usuario");
         menuperfilUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuperfilUsuarioActionPerformed(evt);
-            }
         });
         mnuProcesos.add(menuperfilUsuario);
 
