@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author visitante
+ * @author Bryan Illescas 9959-20-273
  */
 public class frmMantenimientoBodega extends javax.swing.JInternalFrame {
 int codigoAplicacion=190;
@@ -40,9 +40,10 @@ int codigoAplicacion=190;
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("nombre");
-        modelo.addColumn("Estatus");
+        modelo.addColumn("id_bodega");
+        modelo.addColumn("nombre_bodega");
+        modelo.addColumn("direccion_bodega");
+        modelo.addColumn("telefono");
         clsBodega bodega = new clsBodega();
         //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsBodega> listaBodega = bodega.getListadoBodega();
@@ -334,6 +335,7 @@ int codigoAplicacion=190;
         System.out.println("Bodega retornado:" + bodega);        
         txtNombre.setText(bodega.getnombre_bodega());
         txtDireccion.setText(bodega.getdireccion_bodega());
+        txtTelefono.setText(Integer.toString(bodega.gettelefono()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModifitxtEstatusormed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -342,7 +344,7 @@ int codigoAplicacion=190;
         bodega.setid_bodega(Integer.parseInt(txtbuscar.getText()));
         bodega.setnombre_bodega(txtNombre.getText());
         bodega.setdireccion_bodega(txtDireccion.getText());
-        bodega.settelefono(Integer.parseInt(txtbuscar.getText()));
+        bodega.settelefono(Integer.parseInt(txtTelefono.getText()));
         bodega.setModificarBodega(bodega);
         JOptionPane.showMessageDialog(null, "RegisttxtEstatus\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
