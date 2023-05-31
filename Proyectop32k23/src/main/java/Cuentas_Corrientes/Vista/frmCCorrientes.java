@@ -24,6 +24,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
 //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
+//CAMBIOS POR: DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
 
 /**
  *
@@ -45,28 +46,26 @@ public class frmCCorrientes extends javax.swing.JInternalFrame {
 public void llenadoDeTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID CCorrientes");
-        modelo.addColumn("Tipo de Cuenta");
-        modelo.addColumn("ID Tipo Cuenta");
+        modelo.addColumn("ID CCliente");
+        modelo.addColumn("Nombre");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Nombre de Cuenta");
         modelo.addColumn("No. Factura");
-        modelo.addColumn("Total Factura");
+        modelo.addColumn("Haber");
+        modelo.addColumn("Debe");
         modelo.addColumn("Saldo");
-        modelo.addColumn("Deuda");
         clsCCorrientes aplicacion = new clsCCorrientes();
         List<clsCCorrientes> listaAplicaciones = aplicacion.getListadoCC();
         tablaUsuarios.setModel(modelo);
-        String[] dato = new String[9];
+        String[] dato = new String[8];
         for (int i = 0; i < listaAplicaciones.size(); i++) {
             dato[0] = Integer.toString(listaAplicaciones.get(i).getIdCCorriente());
-            dato[1] = listaAplicaciones.get(i).getTipoCCorriente();
-            dato[2] = Integer.toString(listaAplicaciones.get(i).getIdTipoCCorriente());
+            dato[1] = Integer.toString(listaAplicaciones.get(i).getIdCCliente());
+            dato[2] = listaAplicaciones.get(i).getNombreCCliente();
             dato[3] = listaAplicaciones.get(i).getFechaCCorriente();
-            dato[4] = listaAplicaciones.get(i).getNombreCCorriente();
-            dato[5] = listaAplicaciones.get(i).getNoFacturaCCorriente();
-            dato[6] = listaAplicaciones.get(i).getFacturaCCorriente();
-            dato[7] = listaAplicaciones.get(i).getSaldoCCorriente();
-            dato[8] = listaAplicaciones.get(i).getDeudaCCorriente();
+            dato[4] = listaAplicaciones.get(i).getNofacturaCCorriente();
+            dato[5] = Integer.toString(listaAplicaciones.get(i).getHaberCCorriente());
+            dato[6] = Integer.toString(listaAplicaciones.get(i).getDebeCCorriente());
+            dato[7] = Integer.toString(listaAplicaciones.get(i).getSaldoCCorriente());
             modelo.addRow(dato);
         }   
     }
@@ -91,33 +90,31 @@ public void llenadoDeTabla() {
         lbusu = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        txtIdtipoC = new javax.swing.JTextField();
-        label5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
-        txtfecha = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        label3 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
-        txtTipoC = new javax.swing.JTextField();
-        label6 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        txtnombreCl = new javax.swing.JTextField();
+        label5 = new javax.swing.JLabel();
+        label12 = new javax.swing.JLabel();
+        txtHaber = new javax.swing.JTextField();
+        txtfechacl = new javax.swing.JTextField();
+        label3 = new javax.swing.JLabel();
+        txtIdclientes = new javax.swing.JTextField();
+        label6 = new javax.swing.JLabel();
         label8 = new javax.swing.JLabel();
-        txtnombreC = new javax.swing.JTextField();
+        txtNofact = new javax.swing.JTextField();
         label9 = new javax.swing.JLabel();
         label10 = new javax.swing.JLabel();
-        txttotfac = new javax.swing.JTextField();
+        txtDebe = new javax.swing.JTextField();
         txtsaldo = new javax.swing.JTextField();
-        label11 = new javax.swing.JLabel();
-        txtdeuda = new javax.swing.JTextField();
-        label12 = new javax.swing.JLabel();
-        txtnofac = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -149,17 +146,6 @@ public void llenadoDeTabla() {
         });
         jScrollPane1.setViewportView(tablaUsuarios);
 
-        txtIdtipoC.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtIdtipoC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtIdtipoC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdtipoCActionPerformed(evt);
-            }
-        });
-
-        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Id Tipo Cuenta");
-
         jButton2.setText("Ayuda");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,9 +162,6 @@ public void llenadoDeTabla() {
                 btnActualizarActionPerformed(evt);
             }
         });
-
-        txtfecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtfecha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -211,59 +194,10 @@ public void llenadoDeTabla() {
             }
         });
 
-        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Tipo de Cuenta");
-
-        txtTipoC.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtTipoC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label6.setText("Fecha");
-
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
-            }
-        });
-
-        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label8.setText("Nombre de Cuenta");
-
-        txtnombreC.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtnombreC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label9.setText("Total Factura");
-
-        label10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label10.setText("Saldo");
-
-        txttotfac.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txttotfac.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txttotfac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttotfacActionPerformed(evt);
-            }
-        });
-
-        txtsaldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtsaldo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label11.setText("Deuda");
-
-        txtdeuda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtdeuda.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        label12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label12.setText("No. Factura");
-
-        txtnofac.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtnofac.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtnofac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnofacActionPerformed(evt);
             }
         });
 
@@ -274,30 +208,74 @@ public void llenadoDeTabla() {
             }
         });
 
+        txtnombreCl.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtnombreCl.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtnombreCl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreClActionPerformed(evt);
+            }
+        });
+
+        label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label5.setText("Nombre");
+
+        label12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label12.setText("Haber");
+
+        txtHaber.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtHaber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtHaber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHaberActionPerformed(evt);
+            }
+        });
+
+        txtfechacl.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtfechacl.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
+        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label3.setText("ID Cliente");
+
+        txtIdclientes.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtIdclientes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
+        label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label6.setText("Fecha");
+
+        label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label8.setText("No.Factura");
+
+        txtNofact.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtNofact.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
+        label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label9.setText("Debe");
+
+        label10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label10.setText("Saldo");
+
+        txtDebe.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtDebe.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtDebe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDebeActionPerformed(evt);
+            }
+        });
+
+        txtsaldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtsaldo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(label1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label3)
-                                .addGap(57, 57, 57)
-                                .addComponent(txtTipoC, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label3)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(label11)
-                                    .addGap(107, 107, 107)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txttotfac)
-                                        .addComponent(txtsaldo)
-                                        .addComponent(txtdeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(label5)
                                 .addComponent(label6)
                                 .addComponent(label8)
@@ -308,23 +286,35 @@ public void llenadoDeTabla() {
                                     .addGap(146, 146, 146)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtnofac)
-                                            .addComponent(txtfecha)
-                                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txtIdtipoC, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(txtDebe)
+                                            .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtHaber)
+                                            .addComponent(txtfechacl)
+                                            .addComponent(txtNofact, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtnombreCl, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtIdclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(49, 49, 49))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(label1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
@@ -346,64 +336,58 @@ public void llenadoDeTabla() {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label1)
-                        .addGap(276, 276, 276))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label3)
-                            .addComponent(txtTipoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label5)
-                            .addComponent(txtIdtipoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtnofac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtdeuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label11))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrar)
-                            .addComponent(btnEliminar)
-                            .addComponent(btnModificar))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpiar)
-                    .addComponent(jButton2))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addComponent(label1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label4)
                     .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizar)
-                    .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label3)
+                            .addComponent(txtIdclientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label5)
+                            .addComponent(txtnombreCl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtfechacl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNofact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtHaber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDebe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label10))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegistrar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnModificar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimpiar)
+                            .addComponent(jButton2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnActualizar)
+                            .addComponent(jButton1))))
                 .addGap(22, 22, 22))
         );
 
@@ -436,6 +420,7 @@ public void llenadoDeTabla() {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
+        //CAMBIOS POR: DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         int registrosBorrados=0;
         clsCCorrientes transaccion = new clsCCorrientes();
         transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
@@ -452,14 +437,19 @@ public void llenadoDeTabla() {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsCCorrientes transaccion = new clsCCorrientes();
-        transaccion.setTipoCCorriente(txtTipoC.getText());
-        transaccion.setIdTipoCCorriente(Integer.parseInt(txtIdtipoC.getText()));
-        transaccion.setFechaCCorriente(txtfecha.getText());
-        transaccion.setNombreCCorriente(txtnombreC.getText());
-        transaccion.setNoFacturaCCorriente(txtnofac.getText());
-        transaccion.setFacturaCCorriente(txttotfac.getText());
-        transaccion.setSaldoCCorriente(txtsaldo.getText());
-        transaccion.setDeudaCCorriente(txtdeuda.getText());
+        transaccion.setIdCCliente(Integer.parseInt(txtIdclientes.getText()));
+        transaccion.setNombreCCliente(txtnombreCl.getText());
+        transaccion.setFechaCCorriente(txtfechacl.getText());
+        transaccion.setNofacturaCCorriente(txtNofact.getText());
+
+        int chaber = Integer.parseInt(txtHaber.getText());
+        transaccion.setHaberCCorriente(chaber);
+        
+        int cdebe = Integer.parseInt(txtDebe.getText());
+        transaccion.setDebeCCorriente(cdebe);
+        
+        transaccion.setSaldoCCorriente(chaber-cdebe);
+
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -473,34 +463,35 @@ public void llenadoDeTabla() {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
+        //CAMBIOS POR: DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
+        //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
         clsCCorrientes transaccion = new clsCCorrientes();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());
         transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
         transaccion = transaccion.getBuscarInformacionCCPorId(transaccion);
         System.out.println("Cuenta Corriente retornada:" + transaccion);
-        txtTipoC.setText(transaccion.getTipoCCorriente());
-        txtIdtipoC.setText(String.valueOf(transaccion.getIdTipoCCorriente()));
-        txtfecha.setText(transaccion.getFechaCCorriente());
-        txtnombreC.setText(transaccion.getNombreCCorriente());
-        txtnofac.setText(transaccion.getNoFacturaCCorriente());
-        txttotfac.setText(transaccion.getFechaCCorriente());
-        txtsaldo.setText(transaccion.getSaldoCCorriente());
-        txtdeuda.setText(transaccion.getDeudaCCorriente());
+        txtIdclientes.setText(String.valueOf(transaccion.getIdCCliente()));
+        txtnombreCl.setText(transaccion.getNombreCCliente());
+        txtfechacl.setText(transaccion.getFechaCCorriente());
+        txtNofact.setText(transaccion.getNofacturaCCorriente());
+        txtHaber.setText(String.valueOf(transaccion.getHaberCCorriente()));
+        txtDebe.setText(String.valueOf(transaccion.getDebeCCorriente()));
+        txtsaldo.setText(String.valueOf(transaccion.getSaldoCCorriente()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //TODO add your handling code here:
         //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
+        //CAMBIOS POR: DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         clsCCorrientes transaccion = new clsCCorrientes();
         transaccion.setIdCCorriente(Integer.parseInt(txtbuscado.getText()));
-        transaccion.setTipoCCorriente(txtTipoC.getText());
-        transaccion.setIdTipoCCorriente(Integer.parseInt(txtIdtipoC.getText()));
-        transaccion.setFechaCCorriente(txtfecha.getText());
-        transaccion.setNombreCCorriente(txtnombreC.getText());
-        transaccion.setNoFacturaCCorriente(txtnofac.getText());
-        transaccion.setFacturaCCorriente(txttotfac.getText());
-        transaccion.setSaldoCCorriente(txtsaldo.getText());
-        transaccion.setDeudaCCorriente(txtdeuda.getText());
+        transaccion.setIdCCliente(Integer.parseInt(txtIdclientes.getText()));
+        transaccion.setNombreCCliente(txtnombreCl.getText());
+        transaccion.setFechaCCorriente(txtfechacl.getText());
+        transaccion.setNofacturaCCorriente(txtNofact.getText());
+        transaccion.setHaberCCorriente(Integer.parseInt(txtHaber.getText()));
+        transaccion.setDebeCCorriente(Integer.parseInt(txtDebe.getText()));
+        transaccion.setSaldoCCorriente(Integer.parseInt(txtsaldo.getText()));
         transaccion.setModificarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -515,18 +506,6 @@ public void llenadoDeTabla() {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void txttotfacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotfacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttotfacActionPerformed
-
-    private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnofacActionPerformed
-
-    private void txtIdtipoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdtipoCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdtipoCActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
@@ -538,28 +517,41 @@ public void llenadoDeTabla() {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/main/java/seguridad/reportes/ReporteClientes.jrxml");
+                    + "/src/main/java/cuentas_corrientes/reportes/ReporteCCClientes.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte CC Clientes");
+	    view.setTitle("Reporte Cuentas Corrientes Clientes");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void limpiarTextos()
+
+    private void txtnombreClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreClActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreClActionPerformed
+
+    private void txtHaberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHaberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHaberActionPerformed
+
+    private void txtDebeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDebeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDebeActionPerformed
+   public void limpiarTextos()
     {
         //REALIZADO POR: MONICA GABRIELA PEREZ VELASQUEZ; 9959-21-1840
-        txtTipoC.setText("");
-        txtIdtipoC.setText("");
-        txtfecha.setText("");
-        txtnombreC.setText("");
-        txtnofac.setText("");
-        txttotfac.setText("");
+        //CAMBIOS POR: DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
+        txtIdclientes.setText("");
+        txtnombreCl.setText("");
+        txtfechacl.setText("");
+        txtNofact.setText("");
+        txtHaber.setText("");
+        txtDebe.setText("");
         txtsaldo.setText("");
-        txtdeuda.setText("");
+   
     }
-    
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -573,7 +565,6 @@ public void llenadoDeTabla() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
-    private javax.swing.JLabel label11;
     private javax.swing.JLabel label12;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
@@ -584,14 +575,13 @@ public void llenadoDeTabla() {
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaUsuarios;
-    private javax.swing.JTextField txtIdtipoC;
-    private javax.swing.JTextField txtTipoC;
+    private javax.swing.JTextField txtDebe;
+    private javax.swing.JTextField txtHaber;
+    private javax.swing.JTextField txtIdclientes;
+    private javax.swing.JTextField txtNofact;
     private javax.swing.JTextField txtbuscado;
-    private javax.swing.JTextField txtdeuda;
-    private javax.swing.JTextField txtfecha;
-    private javax.swing.JTextField txtnofac;
-    private javax.swing.JTextField txtnombreC;
+    private javax.swing.JTextField txtfechacl;
+    private javax.swing.JTextField txtnombreCl;
     private javax.swing.JTextField txtsaldo;
-    private javax.swing.JTextField txttotfac;
     // End of variables declaration//GEN-END:variables
 }
