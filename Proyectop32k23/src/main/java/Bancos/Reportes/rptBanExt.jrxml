@@ -67,7 +67,7 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="27" y="22" width="100" height="20" uuid="034f6afb-40ba-48ab-bac0-6bf951d19c72"/>
+				<reportElement x="27" y="22" width="110" height="20" uuid="034f6afb-40ba-48ab-bac0-6bf951d19c72"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true" isItalic="true"/>
 				</textElement>
