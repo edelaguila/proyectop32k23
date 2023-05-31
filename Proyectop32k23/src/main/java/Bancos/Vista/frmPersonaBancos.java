@@ -48,7 +48,7 @@ int codigoAplicacion= 5010;
            dato[0] = Integer.toString(listaPersonaBancos.get(i).getPerId());
             dato[1] = listaPersonaBancos .get(i).getPerNombre();
             dato[2] = Integer.toString(listaPersonaBancos.get(i).getPerTipoId());
-            dato[3] = listaPersonaBancos .get(i).getPerEstatus().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";;
+            dato[3] = listaPersonaBancos .get(i).getPerEstatus().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }

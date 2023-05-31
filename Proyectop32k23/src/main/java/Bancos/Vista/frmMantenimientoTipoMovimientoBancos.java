@@ -40,7 +40,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         for (int i = 0; i < listadoTipoMovimientos.size(); i++) {
             dato[0] = Integer.toString(listadoTipoMovimientos.get(i).getTipoMovimientoId());
             dato[1] = listadoTipoMovimientos.get(i).getNombreMovimiento();
-            dato[2] = listadoTipoMovimientos.get(i).getEstatusMovimiento().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";;
+            dato[2] = listadoTipoMovimientos.get(i).getEstatusMovimiento().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }
