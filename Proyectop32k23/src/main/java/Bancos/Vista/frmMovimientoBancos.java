@@ -868,26 +868,45 @@ public void BusquedaDetallesEncabezado() {
         int item7 = Integer.parseInt(selectedItem7.split(" - ")[0]);
         banco.setIdTipoMovimiento(item7);  
         
-        int SeleccionarIndex = tbTipoCargoAbono.getSelectedIndex();
+     int SeleccionarIndex = tbTipoCargoAbono.getSelectedIndex();
     String vacio = ""; 
     String cero = "0";
+    double totales = 0;
       if (SeleccionarIndex == 0){
                banco.setMovimientoCosto(Float.parseFloat(vacio));
                banco.setMovimientoSaldo(Float.parseFloat(vacio)); 
        }
       else if (SeleccionarIndex == 1){
             banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText()));
-            banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));  
+            banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
+            totales =(Float.parseFloat(txtCargo.getText()))-(Float.parseFloat(txtAbono.getText()));
       }
     else if (SeleccionarIndex == 2){
             banco.setMovimientoCosto(Float.parseFloat(cero));
-            banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));  
+            banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
+            totales = (Float.parseFloat(txtCargo.getText()));
       }
     else if (SeleccionarIndex == 3){
             banco.setMovimientoSaldo(Float.parseFloat(cero));
-            banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText())); 
+            banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText()));
+            totales = -Float.parseFloat(txtAbono.getText());
       }
-    banco.setIngresarMovimiento(banco);
+      
+banco.setIngresarMovimiento(banco); 
+
+String selectedItem10 = cbIdCuenEm.getSelectedItem().toString();
+int item10 = Integer.parseInt(selectedItem10.split(" - ")[0]);
+banco.setIdMovimientoDetalles(item10);
+banco = banco.getBuscarInformacionBancoPorTipoMovimientoSaldo(banco, encabezado);
+double saldoActual = banco.getAbonoCargo()+totales;
+
+double resultado = saldoActual;
+
+banco.setAbonoCargo(resultado);
+
+banco.setModificarMovimientoSaldo(banco, encabezado);
+    
+ System. out. println(resultado); 
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
