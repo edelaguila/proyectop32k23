@@ -72,12 +72,12 @@ public class daoCuentasBancos {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, cuenta.getIdCuenta());
-            stmt.setDouble(3, cuenta.getSaldoCuenta());
-            stmt.setInt(4, cuenta.getIdPersona());
-            stmt.setInt(5, cuenta.getIdTipoCuenta());
-            stmt.setString(6, cuenta.getEstatusCuenta());
-            stmt.setInt(7, cuenta.getTipModId());
-            stmt.setInt(8, cuenta.getCodBanco());
+            stmt.setDouble(2, cuenta.getSaldoCuenta());
+            stmt.setInt(3, cuenta.getIdPersona());
+            stmt.setInt(4, cuenta.getIdTipoCuenta());
+            stmt.setString(5, cuenta.getEstatusCuenta());
+            stmt.setInt(6, cuenta.getTipModId());
+            stmt.setInt(7, cuenta.getCodBanco());
             
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
