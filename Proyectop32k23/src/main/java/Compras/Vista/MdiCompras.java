@@ -165,7 +165,7 @@ public class MdiCompras extends javax.swing.JFrame {
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
         });
-        mnuProcesos.add(aplicacionesUsuarios);
+        /*mnuProcesos.add(aplicacionesUsuarios);
 
         menuperfilUsuario.setSelected(true);
         menuperfilUsuario.setText("Perfil Usuario");
@@ -182,7 +182,7 @@ public class MdiCompras extends javax.swing.JFrame {
                 mnuConsultasActionPerformed(evt);
             }
         });
-
+*/
         consultaBitacora.setSelected(true);
         consultaBitacora.setText("Consulta de Bitacora");
         consultaBitacora.addActionListener(new java.awt.event.ActionListener() {
