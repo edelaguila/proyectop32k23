@@ -20,12 +20,12 @@ import java.util.List;
  */
 public class daoClasificacionCompras {
     
-    private static final String SQL_SELECT = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor";
-    private static final String SQL_INSERT = "INSERT INTO tbl_Proveedor(nombre, direccion) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_Proveedor SET nombre=?, direccion=? WHERE id_proveedor = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_Proveedor WHERE id_proveedor=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT id_proveedor, nombre, direccion FROM Proveedor WHERE nombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor WHERE id_proveedor = ?";
+    private static final String SQL_SELECT = "SELECT id_clasificacion, nombre_clasificacion FROM tbl_Clasificacion";
+    private static final String SQL_INSERT = "INSERT INTO tbl_Clasificacion(id_clasificacion, nombre_clasificacion) VALUES(?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_Clasificacion SET nombre_clasificacion=? WHERE id_clasificacion = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_Clasificacion WHERE id_proveedor=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT id_clasificacion, nombre_clasificacion FROM tbl_Clasificacion WHERE nombre_clasificacion = ?";
+    private static final String SQL_SELECT_ID = "SELECT id_clasificacion, nombre_clasificacion FROM tbl_Clasificacion WHERE id_clasificacion = ?";
     
     public List<clsClasificacionCompras> consultaClasificacionCompras() {
 
@@ -42,13 +42,11 @@ public class daoClasificacionCompras {
             rs = stmt.executeQuery();
             while (rs.next()) {
 
-                int id = rs.getInt("id_proveedor");
-                String nombre = rs.getString("nombre");
-                String direccion = rs.getString("direccion");
+                int id = rs.getInt("id_clasificacion");
+                String nombre = rs.getString("nombre_clasificacion");
                 clsClasificacionCompras ccompra = new clsClasificacionCompras();
-                ccompra.setId_proveedor(id);
-               ccompra.setNombre(nombre);
-                ccompra.setDireccion(direccion);
+                ccompra.setid_clasificacion(id);
+               ccompra.setnombre_clasificacion(nombre);
                 ccompra.add(ccompra);
 
             }
@@ -63,7 +61,7 @@ public class daoClasificacionCompras {
         return ClasificacionCompras;
     }
 
-    public int ingresaClasificacionCompras(clsClasificacionCompras ClasificacionCompras) {
+    public int ingresaClasificacionCompras(clsClasificacionCompras ccompra) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -71,9 +69,7 @@ public class daoClasificacionCompras {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-
-            stmt.setString(1, ClasificacionCompras.getNombre());
-            stmt.setString(2, ClasificacionCompras.getDireccion());
+            stmt.setString(1, ccompra.getnombre_clasificacion());
 
 
             System.out.println("ejecutando query:" + SQL_INSERT);
@@ -90,7 +86,7 @@ public class daoClasificacionCompras {
     }
 
 
-    public int actualizaClasificacionCompras(clsClasificacionCompras ClasificacionCompras) {
+    public int actualizaClasificacionCompras(clsClasificacionCompras ccompra) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -100,9 +96,8 @@ public class daoClasificacionCompras {
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
 
-            stmt.setString(1, ClasificacionCompras.getNombre());
-            stmt.setString(2, ClasificacionCompras.getDireccion());
-            stmt.setInt(3, ClasificacionCompras.getId_proveedor());
+            stmt.setString(1, ccompra.getnombre_clasificacion());
+            stmt.setInt(3, ccompra.getid_clasificacion());
 
 
             rows = stmt.executeUpdate();
@@ -119,7 +114,7 @@ public class daoClasificacionCompras {
     }
 
 
-    public int borrarClasificacionCompras(clsClasificacionCompras ClasificacionCompras) {
+    public int borrarClasificacionCompras(clsClasificacionCompras ccompra) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -130,7 +125,7 @@ public class daoClasificacionCompras {
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
 
-            stmt.setInt(1, ClasificacionCompras.getId_proveedor());
+            stmt.setInt(1, ccompra.getid_clasificacion());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
@@ -145,7 +140,7 @@ public class daoClasificacionCompras {
     }
 
 
-    public clsClasificacionCompras consultaClasificacionComprasPorNombre(clsClasificacionCompras ClasificacionCompras) {
+    public clsClasificacionCompras consultaClasificacionComprasPorNombre(clsClasificacionCompras ccompra) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -153,21 +148,19 @@ public class daoClasificacionCompras {
         try {
             conn = Conexion.getConnection();
 
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + ClasificacionCompras);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + ccompra);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            //stmt.setInt(1, proveedor.getIdProveedor());            
-            stmt.setString(1, ClasificacionCompras.getNombre());
+            stmt.setInt(1, ccompra.getid_clasificacion());            
+            stmt.setString(1, ccompra.getnombre_clasificacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("clid");
+                int id = rs.getInt("id_clasificacion");
                 String nombre = rs.getString("nombre");
-                String direccion = rs.getString("direccion");
 
                 //proveedor = new clsProveedor();
-                ClasificacionCompras.setId_proveedor(id);
-                ClasificacionCompras.setNombre(nombre);
-               ClasificacionCompras.setDireccion(direccion);
-                System.out.println(" registro consultado: " + ClasificacionCompras);                
+                ccompra.setid_clasificacion(id);
+                ccompra.setnombre_clasificacion(nombre);
+                System.out.println(" registro consultado: " + ccompra);                
 
             }
             //System.out.println("Registros buscado:" + proveedor);
@@ -181,9 +174,9 @@ public class daoClasificacionCompras {
 
         //return proveedor;  // Si se utiliza un ArrayList
 
-        return ClasificacionCompras;
+        return ccompra;
     }
-    public clsClasificacionCompras consultaClasificacionComprasPorId(clsClasificacionCompras ClasificacionCompras) {
+    public clsClasificacionCompras consultaClasificacionComprasPorId(clsClasificacionCompras ccompra) {
 
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -191,21 +184,19 @@ public class daoClasificacionCompras {
         try {
             conn = Conexion.getConnection();
 
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + proveedor);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + ccompra);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, ClasificacionCompras.getId_proveedor());            
-            //stmt.setString(1, proveedor.getNombreProveedor());
+            stmt.setInt(1, ccompra.getid_clasificacion());            
+            stmt.setString(1, ccompra.getnombre_clasificacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("id_proveedor");
-                String nombre = rs.getString("nombre");
-                String direccion = rs.getString("direccion");
+                int id = rs.getInt("id_clasificacion");
+                String nombre = rs.getString("nombre_clasificacion");
 
                 //proveedor = new clsproveedor();
-               ClasificacionCompras.setId_proveedor(id);
-                ClasificacionCompras.setNombre(nombre);
-               ClasificacionCompras.setDireccion(direccion);
-                System.out.println(" registro consultado: " + ClasificacionCompras);                
+               ccompra.setid_clasificacion(id);
+                ccompra.setnombre_clasificacion(nombre);
+                System.out.println(" registro consultado: " + ccompra);                
 
             }
             //System.out.println("Registros buscado:" + proveedor);
@@ -219,7 +210,7 @@ public class daoClasificacionCompras {
 
         //return proveedor;  // Si se utiliza un ArrayList
 
-        return ClasificacionCompras;
+        return ccompra;
 
     } 
 }

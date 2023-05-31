@@ -5,9 +5,8 @@
  */
 package Compras.Vista;
 
-import Seguridad.Vista.*;
+import Seguridad.Vista.frmMantenimientoBitacora;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +22,7 @@ public class MdiCompras extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setExtendedState(MdiCompras.MAXIMIZED_BOTH);
-        this.setTitle("Ejemplo Capas");
+        this.setTitle("MsiCompras");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -51,6 +50,7 @@ public class MdiCompras extends javax.swing.JFrame {
         MantenimientoCompras = new javax.swing.JCheckBoxMenuItem();
         MantenimientoFactura = new javax.swing.JCheckBoxMenuItem();
         MantenimientoDetalleCompra = new javax.swing.JCheckBoxMenuItem();
+        MantenimientoBodega = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         menuperfilUsuario = new javax.swing.JCheckBoxMenuItem();
@@ -113,7 +113,7 @@ public class MdiCompras extends javax.swing.JFrame {
         ManteminientoProveedores.setText("MantenimientoProveedores");
         ManteminientoProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //ManteminientoProveedoresActionPerformed(evt);
+                ManteminientoProveedoresActionPerformed(evt);
             }
         });
         MantenimientoProveedores.add(ManteminientoProveedores);
@@ -145,6 +145,15 @@ public class MdiCompras extends javax.swing.JFrame {
         });
         MantenimientoProveedores.add(MantenimientoDetalleCompra);
 
+        MantenimientoBodega.setSelected(true);
+        MantenimientoBodega.setText("MantenimientoBodega");
+        MantenimientoBodega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoBodegaActionPerformed(evt);
+            }
+        });
+        MantenimientoProveedores.add(MantenimientoBodega);
+
         mnuCatalogos.add(MantenimientoProveedores);
 
         mnuGeneral.add(mnuCatalogos);
@@ -154,7 +163,7 @@ public class MdiCompras extends javax.swing.JFrame {
         aplicacionesUsuarios.setText("Aplicaciones Usuarios");
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //aplicacionesUsuariosActionPerformed(evt);
+                aplicacionesUsuariosActionPerformed(evt);
             }
         });
         mnuProcesos.add(aplicacionesUsuarios);
@@ -287,6 +296,15 @@ public class MdiCompras extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_MantenimientoDetalleCompraActionPerformed
 
+    private void MantenimientoBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoBodegaActionPerformed
+        // TODO add your handling code here:
+        frmMantenimientoBodega ventana = new frmMantenimientoBodega();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_MantenimientoBodegaActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -305,13 +323,13 @@ public class MdiCompras extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MdiSeguridad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MdiCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MdiSeguridad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MdiCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MdiSeguridad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MdiCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MdiSeguridad.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MdiCompras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -328,6 +346,7 @@ public class MdiCompras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ManteminientoProveedores;
+    private javax.swing.JCheckBoxMenuItem MantenimientoBodega;
     private javax.swing.JCheckBoxMenuItem MantenimientoCompras;
     private javax.swing.JCheckBoxMenuItem MantenimientoDetalleCompra;
     private javax.swing.JCheckBoxMenuItem MantenimientoFactura;
