@@ -265,11 +265,11 @@ public class MdiCompras extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
                                                   
-
+/*
     private void menuperfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuperfilUsuarioActionPerformed
        
     }//GEN-LAST:event_menuperfilUsuarioActionPerformed
-
+*/
     private void MantenimientoComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoComprasActionPerformed
         // TODO add your handling code here:
         frmModuloCompras ventana = new frmModuloCompras();
