@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
+package Compras.Vista;
 
 
+import Compras.Controlador.clsFactura;
 import Seguridad.Controlador.clsAplicacion;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -19,10 +20,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author visitante
+ * @author Bryan Illescas 9959-20-273
  */
-public class frmMantenimientoAplicacion extends javax.swing.JInternalFrame {
-int codigoAplicacion=120;
+public class frmMantenimientoFactura extends javax.swing.JInternalFrame {
+int codigoAplicacion=180;
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -34,23 +35,25 @@ int codigoAplicacion=120;
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("nombre");
-        modelo.addColumn("Estatus");
-        clsAplicacion aplicacion = new clsAplicacion();
+        modelo.addColumn("ID Factura");
+        modelo.addColumn("ID Compra");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Total");
+        clsFactura factura = new clsFactura();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsAplicacion> listaAplicaciones = aplicacion.getListadoAplicaciones();
-        tablaAplicaciones.setModel(modelo);
+        List<clsFactura> listaFactura = factura.getListadoFactura();
+        tablaFactura.setModel(modelo);
         String[] dato = new String[3];
-        for (int i = 0; i < listaAplicaciones.size(); i++) {
-            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdAplicacion());
-            dato[1] = listaAplicaciones.get(i).getNombreAplicacion();
-            dato[2] = listaAplicaciones.get(i).getEstatusAplicacion();
+        for (int i = 0; i < listaFactura.size(); i++) {
+            dato[0] = Integer.toString(listaFactura.get(i).getid_factura());
+            dato[1] = Integer.toString(listaFactura.get(i).getid_compra());
+            dato[2] = listaFactura.get(i).getfecha_factura();
+            dato[3] = Integer.toString((int) listaFactura.get(i).gettotal_factura());
             modelo.addRow(dato);
         }       
     }
 
-    public frmMantenimientoAplicacion() {
+    public frmMantenimientoFactura() {
         initComponents();
         llenadoDeTablas();
         llenadoDeCombos();
@@ -74,11 +77,11 @@ int codigoAplicacion=120;
         btnModificar = new javax.swing.JButton();
         lbNombre = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaAplicaciones = new javax.swing.JTable();
-        txtEstatus = new javax.swing.JTextField();
+        tablaFactura = new javax.swing.JTable();
+        txtTotal = new javax.swing.JTextField();
         lbEstatus = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
         btnAyuda = new javax.swing.JButton();
@@ -92,7 +95,8 @@ int codigoAplicacion=120;
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Aplicaciones");
+        setTitle("Mantenimiento Factura");
+        setToolTipText("");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -105,7 +109,6 @@ int codigoAplicacion=120;
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -117,20 +120,19 @@ int codigoAplicacion=120;
         });
 
         lbNombreTabla.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbNombreTabla.setText("Aplicaciones");
+        lbNombreTabla.setText("Factura");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
             }
         });
 
         lbNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbNombre.setText("Nombre");
+        lbNombre.setText("Fecha");
 
-        txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtFecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtFecha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,30 +141,30 @@ int codigoAplicacion=120;
             }
         });
 
-        tablaAplicaciones.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        tablaAplicaciones.setModel(new javax.swing.table.DefaultTableModel(
+        tablaFactura.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        tablaFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Aplicacion", "Nombre Aplicacion", "Estatus Aplicacion"
+                "ID factura", "ID Compra", "Fecha", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaAplicaciones);
+        jScrollPane1.setViewportView(tablaFactura);
 
-        txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtTotal.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtTotal.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         lbEstatus.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbEstatus.setText("Estatus");
+        lbEstatus.setText("Total");
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
@@ -197,8 +199,8 @@ int codigoAplicacion=120;
                             .addComponent(lbEstatus))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(txtNombre))
+                            .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txtFecha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -229,9 +231,9 @@ int codigoAplicacion=120;
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbNombreTabla)
-                        .addGap(294, 562, Short.MAX_VALUE))
+                        .addGap(294, 609, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -246,11 +248,11 @@ int codigoAplicacion=120;
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbNombre))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbEstatus)))
                             .addComponent(lb))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -278,49 +280,56 @@ int codigoAplicacion=120;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsAplicacion aplicacion = new clsAplicacion();
-        aplicacion.setIdAplicacion(Integer.parseInt(txtbuscar.getText()));
-        registrosBorrados=aplicacion.setBorrarAplicacion(aplicacion);
+        clsFactura factura = new clsFactura();
+        factura.setid_factura(Integer.parseInt(txtbuscar.getText()));
+        registrosBorrados=factura.setBorrarFactura(factura);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
         limpiarTextos();
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+/*
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsAplicacion aplicacion = new clsAplicacion();
-        aplicacion.setNombreAplicacion(txtNombre.getText());
-        aplicacion.setEstatusAplicacion(txtEstatus.getText());
-        aplicacion.setIngresarAplicacion(aplicacion);
-        JOptionPane.showMessageDialog(null, "RegistrtxtEstatus", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        llenadoDeTablas();
-        limpiarTextos();
+       // TODO add your handling code here:
+       clsFactura factura = new clsFactura();
+       factura.setfecha_factura(txtFecha.getText());
+       double totalFactura = Double.parseDouble(txtTotal.getText());
+       factura.settotal_factura(totalFactura);
+       int registrosInsertados = factura.setIngresarFactura(factura);
+       if (registrosInsertados > 0) {
+       JOptionPane.showMessageDialog(null, "Registro Exitoso",
+            "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+       llenadoDeTablas();
+       limpiarTextos();
+     } else {
+       JOptionPane.showMessageDialog(null, "Error al insertar el registro",
+            "Información del Sistema", JOptionPane.ERROR_MESSAGE);
+}
     }//GEN-LAST:event_btnRegistrarActionPerformed
-
+*/
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        
-        clsAplicacion aplicacion = new clsAplicacion();
-        //aplicacion.setNombreAplicacion(txtbuscado.getText());        
-        aplicacion.setIdAplicacion(Integer.parseInt(txtbuscar.getText()));        
-        aplicacion = aplicacion.getBuscarInformacionAplicacionPorId(aplicacion);
-        System.out.println("Usuario retornado:" + aplicacion);        
-        txtNombre.setText(aplicacion.getNombreAplicacion());
-        txtEstatus.setText(aplicacion.getEstatusAplicacion());
+        clsFactura factura = new clsFactura();
+        factura.setid_factura(Integer.parseInt(txtbuscar.getText()));
+        //factura = factura.getconsultaFacturaPorId(factura);
+        System.out.println("Factura retornada: " + factura);
+        txtFecha.setText(factura.getfecha_factura());
+        txtTotal.setText(String.valueOf(factura.gettotal_factura()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModifitxtEstatusormed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        clsAplicacion aplicacion = new clsAplicacion();
-        aplicacion.setIdAplicacion(Integer.parseInt(txtbuscar.getText()));
-        aplicacion.setNombreAplicacion(txtNombre.getText());
-        aplicacion.setEstatusAplicacion(txtEstatus.getText());
-        aplicacion.setModificarAplicacion(aplicacion);
-        JOptionPane.showMessageDialog(null, "RegisttxtEstatus\n", 
-                    "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
+        clsFactura factura = new clsFactura();
+        factura.setid_factura(Integer.parseInt(txtbuscar.getText()));
+        factura.setfecha_factura(txtFecha.getText());
+        double totalFactura = Double.parseDouble(txtTotal.getText());
+        factura.settotal_factura(totalFactura);
+        factura.setModificarFactura(factura);
+        JOptionPane.showMessageDialog(null, "Registro Exitoso",
+        "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
         limpiarTextos();
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -330,8 +339,8 @@ int codigoAplicacion=120;
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
     {
-        txtNombre.setText("");
-        txtEstatus.setText("");
+        txtFecha.setText("");
+        txtTotal.setText("");
         txtbuscar.setText("");
     }
     public void habilitarBotones()
@@ -386,9 +395,9 @@ int codigoAplicacion=120;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbNombreTabla;
     private javax.swing.JLabel lbusu;
-    private javax.swing.JTable tablaAplicaciones;
-    private javax.swing.JTextField txtEstatus;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTable tablaFactura;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 }

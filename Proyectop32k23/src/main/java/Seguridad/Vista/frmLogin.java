@@ -15,6 +15,7 @@ import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
 import Bancos.Vista.MdiBancos;
+import Compras.Vista.MdiCompras;
 /**
  *
  * @author visitante
@@ -162,7 +163,8 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
 
-        if (txtUsuario.getText().trim().isEmpty() || txtContraseña.getText().trim().isEmpty()) {
+        String pass = new String(txtContraseña.getPassword());
+        if (txtUsuario.getText().trim().isEmpty() || pass.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "NO PUEDEN HABER CAMPOS VACIOS", "ERROR", JOptionPane.                  ERROR_MESSAGE);
         } else {
             try {
@@ -175,7 +177,7 @@ public class frmLogin extends javax.swing.JFrame {
                 usuario.setContrasenaUsuario(c.encode(txtContraseña.getText()));
                 
                 usuario = usuario.getBuscarInformacionUsuarioPorNombre(usuario);
-                if (c.encode(txtContraseña.getText()).equals(usuario.getContrasenaUsuario()) && 
+                if (c.encode(pass).equals(usuario.getContrasenaUsuario()) && 
                     txtUsuario.getText().equals(usuario.getNombreUsuario())) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al SISTEMA\n", 
                     "Mensaje de bienvenida", JOptionPane.INFORMATION_MESSAGE);
@@ -210,7 +212,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "Compras":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiCompras menu = new MdiCompras();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {

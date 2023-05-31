@@ -5,15 +5,24 @@
  */
 package Compras.Vista;
 
-//import Seguridad.Controlador.clsModulo;
+import Compras.Controlador.clsBodega;
+import Compras.Controlador.clsProveedor;
+import Compras.Controlador.clsClasificacionCompras;
+import Compras.Controlador.clsDetalleCompra;
+import Compras.Controlador.clsFactura;
+import Compras.Controlador.clsModuloCompras;
+import Compras.Controlador.clsProducto;
+import Compras.Vista.MdiCompras;
 import Compras.Modelo.daoProveedor;
-import Seguridad.Controlador.clsModulo;
+import Compras.Controlador.clsProveedor;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import Seguridad.Controlador.clsUsuarioConectado;
+import java.awt.event.ActionEvent;
 /**
  *
  * @author willy
@@ -30,21 +39,25 @@ public void llenadoDeCombos() {
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("Nombre Modulo");
-        modelo.addColumn("Estatus Modulo");
+        modelo.addColumn("ID Proveedor");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Email");
        
 
-        clsModulo modulos = new clsModulo();
+        clsProveedor proveedor = new clsProveedor();
         daoProveedor Proveedor = new daoProveedor();
-        List<clsModulo> listamodulos = modulos.getListadoModulo();
+        List<clsProveedor> listaProveedor = proveedor.getListadoProveedores();
      
         tablaModulos.setModel(modelo);
         String[] dato = new String[10];
-        for (int i = 0; i < listamodulos.size(); i++) {
-            dato[0] = Integer.toString(listamodulos.get(i).getIdModulo());
-            dato[1] = listamodulos.get(i).getNombreModulo();
-            dato[2] = listamodulos.get(i).getEstatusModulo();
+        for (int i = 0; i < listaProveedor.size(); i++) {
+            dato[0] = Integer.toString(listaProveedor.get(i).getid_proveedor());
+            dato[1] = listaProveedor.get(i).getnombre();
+            dato[2] = listaProveedor.get(i).getdireccion();
+            dato[3] = Integer.toString(listaProveedor.get(i).gettelefono());
+            dato[4] = listaProveedor.get(i).getemail();
             modelo.addRow(dato);
         }       
     }
@@ -79,13 +92,15 @@ public void llenadoDeCombos() {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaModulos = new javax.swing.JTable();
         lb = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAyuda = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         label9 = new javax.swing.JLabel();
-        txtEstatus = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,11 +161,11 @@ public void llenadoDeCombos() {
 
             },
             new String [] {
-                "Codigo", "Nombre Producto", "Total"
+                "ID Proveedor", "Nombre Proveedor", "Dirección", "Telefono", "E-mail"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -162,10 +177,10 @@ public void llenadoDeCombos() {
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
-        jButton2.setText("Ayuda");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAyudaActionPerformed(evt);
             }
         });
 
@@ -180,13 +195,16 @@ public void llenadoDeCombos() {
         });
 
         label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label9.setText("Codigo");
+        label9.setText("Dirección");
 
-        txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtDireccion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtDireccion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel1.setText("Total");
+        jLabel1.setText("Telefono");
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel2.setText("E-mail");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -197,18 +215,6 @@ public void llenadoDeCombos() {
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(380, 380, 380)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label3)
-                            .addComponent(label9)
-                            .addComponent(jLabel1))
-                        .addGap(62, 62, 62)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
@@ -223,9 +229,23 @@ public void llenadoDeCombos() {
                                     .addComponent(btnModificar))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label3)
+                            .addComponent(label9)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(62, 62, 62)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txtDireccion)
+                            .addComponent(txtNombre)
+                            .addComponent(txtTelefono)
+                            .addComponent(txtCorreo))))
                 .addGap(26, 26, 26)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
@@ -233,9 +253,9 @@ public void llenadoDeCombos() {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 572, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -255,25 +275,29 @@ public void llenadoDeCombos() {
                         .addGap(18, 18, 18)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label9)
-                            .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(btnRegistrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(btnRegistrar)
-                                .addGap(18, 18, 18)
                                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnModificar)
                                     .addComponent(btnEliminar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnLimpiar)
-                                    .addComponent(jButton2)))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                                    .addComponent(btnAyuda)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                                .addGap(103, 103, 103)
                                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(label4)
                                     .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,21 +311,20 @@ public void llenadoDeCombos() {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1092, Short.MAX_VALUE)
+            .addGap(0, 1132, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jInternalFrame1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGap(0, 539, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -310,9 +333,13 @@ public void llenadoDeCombos() {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsModulo modulos= new clsModulo();
-        modulos.setIdModulo(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=modulos.setBorrarModulo(modulos);
+        clsProveedor proveedor= new clsProveedor();
+        proveedor.setid_proveedor(Integer.parseInt(txtbuscado.getText()));
+        proveedor.setnombre(txtNombre.getText());
+        proveedor. setdireccion(txtDireccion.getText());
+        proveedor.settelefono(Integer.parseInt(txtbuscado.getText()));
+        proveedor. setemail(txtDireccion.getText());
+        registrosBorrados=proveedor.setBorrarProveedor(proveedor);
 
         JOptionPane.showMessageDialog(null, "Registro Borrado\n",
             "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -321,12 +348,13 @@ public void llenadoDeCombos() {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsModulo modulo = new clsModulo();
-        modulo.setNombreModulo(txtNombre.getText());
-        //modulos.setIdModulos(txtContrasena.getText());
-
-        modulo. setEstatusModulo(txtEstatus.getText());
-        modulo.setIngresarModulo(modulo);
+        clsProveedor proveedor = new clsProveedor();
+        proveedor.setid_proveedor(Integer.parseInt(txtbuscado.getText()));
+        proveedor.setnombre(txtNombre.getText());
+        proveedor. setdireccion(txtDireccion.getText());
+        proveedor.settelefono(Integer.parseInt(txtbuscado.getText()));
+        proveedor. setemail(txtDireccion.getText());
+        proveedor.setIngresarProveedor(proveedor);
 
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n",
             "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -336,26 +364,28 @@ public void llenadoDeCombos() {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        clsModulo modulo = new clsModulo();
-        //usuario.setNombreUsuario(txtbuscado.getText());
-
-        modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));
-        modulo = modulo.getBuscarInformacionModuloPorId(modulo);
-        System.out.println("Modulo retornado:" + modulo);
-        txtNombre.setText(modulo.getNombreModulo());
-        //txtContrasena.setText(modulos.getIdModulos());
-        txtEstatus.setText(modulo.getEstatusModulo());
+        clsProveedor proveedor = new clsProveedor();
+        proveedor.setid_proveedor(Integer.parseInt(txtbuscado.getText()));
+        proveedor.setnombre(txtNombre.getText());
+        proveedor. setdireccion(txtDireccion.getText());
+        proveedor.settelefono(Integer.parseInt(txtbuscado.getText()));
+        proveedor. setemail(txtDireccion.getText());
+        proveedor.setIngresarProveedor(proveedor);
+        proveedor = proveedor.getBuscarInformacionProveedorPorId(proveedor);
+        System.out.println("Modulo retornado:" + proveedor);
+        txtNombre.setText(proveedor.getnombre());
+        txtDireccion.setText(proveedor.getdireccion());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //        // TODO add your handling code here:
-        clsModulo modulo = new clsModulo();
-
-        modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));
-        modulo.setNombreModulo(txtNombre.getText());
-        modulo.setEstatusModulo(txtEstatus.getText());
-
-        modulo.setModificarModulo(modulo);
+        clsProveedor proveedor = new clsProveedor();
+        proveedor.setid_proveedor(Integer.parseInt(txtbuscado.getText()));
+        proveedor.setnombre(txtNombre.getText());
+        proveedor. setdireccion(txtDireccion.getText());
+        proveedor.settelefono(Integer.parseInt(txtbuscado.getText()));
+        proveedor. setemail(txtDireccion.getText());
+        proveedor.setModificarProveedor(proveedor);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n",
             "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -374,7 +404,7 @@ public void llenadoDeCombos() {
       
         txtbuscado.setText("");
        
-        txtEstatus.setText("");
+        txtDireccion.setText("");
         
         
     }
@@ -390,7 +420,7 @@ public void llenadoDeCombos() {
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
     }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
         // TODO add your handling code here:
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
@@ -405,7 +435,7 @@ public void llenadoDeCombos() {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
@@ -449,24 +479,26 @@ public void llenadoDeCombos() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label9;
     private javax.swing.JLabel lb;
     private javax.swing.JTable tablaModulos;
-    private javax.swing.JTextField txtEstatus;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }

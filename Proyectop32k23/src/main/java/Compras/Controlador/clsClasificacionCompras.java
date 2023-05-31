@@ -4,93 +4,76 @@
  */
 
 package Compras.Controlador;
+import Compras.Modelo.daoClasificacionCompras;
 import java.util.List;
-//import Seguridad.Modelo.daoProveedor;
-/**
- *
- * Hecho por Luis Diego Cortez Mérida, 9959-20-7425, Grupo 4
- */
+
 public class clsClasificacionCompras {
-    private int id_proveedor;
-    private String nombre;
-    private String direccion;
+    private int id_clasificacion;
+    private String nombre_clasificacion;
 
-    public int getId_proveedor() {
-        return id_proveedor;
+    public int getid_clasificacion() {
+        return id_clasificacion;
     }
 
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
+    public void setid_clasificacion(int id_clasificacion) {
+        this.id_clasificacion = id_clasificacion;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getnombre_clasificacion() {
+        return nombre_clasificacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setnombre_clasificacion(String nombre_clasificacion) {
+        this.nombre_clasificacion = nombre_clasificacion;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public clsClasificacionCompras(int id_clasificacion, String nombre_clasificacion) {
+        this.id_clasificacion = id_clasificacion;
+        this.nombre_clasificacion = nombre_clasificacion;
     }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    
+    public clsClasificacionCompras(int id_clasificacion) {
+        this.id_clasificacion = id_clasificacion;
     }
 
     public clsClasificacionCompras() {
     }
-
-    public clsClasificacionCompras(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
-    }
-
-    public clsClasificacionCompras(int id_proveedor, String nombre, String direccion) {
-        this.id_proveedor = id_proveedor;
-        this.nombre = nombre;
-        this.direccion = direccion;
-    }
-
-    @Override
-    public String toString() {
-        return "clsProveedor{" + "id_proveedor=" + id_proveedor + ", nombre=" + nombre + ", direccion=" + direccion + '}';
-    }
-    /*Métodos del Dao
-    public clsProveedor getBuscarInformacionProveedorPorNombre(clsProveedor proveedor)
+    //Metodos de acceso a la capa controlador
+    public clsClasificacionCompras consultaClasificacionComprasPorNombre(clsClasificacionCompras ccompra)
     {
-        daoProveedor daoProveedor = new daoProveedor();
-        return daoProveedor.consultaProveedorPorNombre(proveedor);
+        daoClasificacionCompras daoClasificacionCompras = new daoClasificacionCompras();
+        return daoClasificacionCompras.consultaClasificacionComprasPorNombre(ccompra);
     }
-    public clsProveedor getBuscarInformacionProveedorPorId(clsProveedor proveedor)
+    public clsClasificacionCompras consultaClasificacionComprasPorId(clsClasificacionCompras ccompra)
     {
-        daoProveedor daoProveedor = new daoProveedor();
-        return daoProveedor.consultaProveedorPorId(proveedor);
-    }    
-    public List<clsProveedor> getListadoProveedores()
-    {
-        daoProveedor daoProveedor = new daoProveedor();
-        List<clsProveedor> listadoUsuarios = daoProveedor.consultaProveedor();
-        return listadoUsuarios;
+        daoClasificacionCompras daoClasificacionCompras = new daoClasificacionCompras();
+        return daoClasificacionCompras.consultaClasificacionComprasPorId(ccompra);
     }
-    public int setBorrarProveedor(clsProveedor proveedor)
+    public List<clsClasificacionCompras> getListadoClasificacionCompras()
     {
-        daoProveedor daoProveedor = new daoProveedor();
-        return daoProveedor.borrarProveedor(proveedor);
+        daoClasificacionCompras daoClasificacionCompras = new daoClasificacionCompras();
+        List<clsClasificacionCompras> listadoClasificacionCompras = daoClasificacionCompras.consultaClasificacionCompras();
+        return listadoClasificacionCompras;
+    }
+    public int setBorrarClasificacionCompras(clsClasificacionCompras ccompra)
+    {
+        daoClasificacionCompras daoClasificacionCompras = new daoClasificacionCompras();
+        return daoClasificacionCompras.borrarClasificacionCompras(ccompra);
     }          
-    public int setIngresarProveedor(clsProveedor proveedor)
+    public int setIngresarClasificacionCompras(clsClasificacionCompras ccompra)
     {
-        daoProveedor daoProveedor = new daoProveedor();
-        return daoProveedor.ingresaProveedor(proveedor);
+        daoClasificacionCompras daoClasificacionCompras = new daoClasificacionCompras();
+        return daoClasificacionCompras.ingresaClasificacionCompras(ccompra);
     }              
-    public int setModificarProveedor(clsProveedor proveedor)
+    public int setModificarClasificacionCompras(clsClasificacionCompras ccompra)
     {
-        daoProveedor daoProveedor = new daoProveedor();
-        return daoProveedor.actualizaProveedor(proveedor);
-    }*/
+        daoClasificacionCompras daoClasificacionCompras = new daoClasificacionCompras();
+        return daoClasificacionCompras.actualizaClasificacionCompras(ccompra);
+    }              
 
-    public void add(clsClasificacionCompras ClasificacionCompras) {
+    public void add(clsClasificacionCompras ccompra) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }
 

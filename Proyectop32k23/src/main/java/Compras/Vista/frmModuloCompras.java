@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
+package Compras.Vista;
 
-
-//import Seguridad.Controlador.clsModulo;
-import Seguridad.Controlador.clsModulo;
+import Compras.Controlador.clsBodega;
+import Compras.Controlador.clsProveedor;
+import Compras.Controlador.clsClasificacionCompras;
+import Compras.Controlador.clsDetalleCompra;
+import Compras.Controlador.clsFactura;
+import Compras.Controlador.clsProducto;
+import Compras.Controlador.clsModuloCompras;
+import Seguridad.Controlador.clsBitacora;
+import Compras.Modelo.daoModuloCompras;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -17,7 +23,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author visitante
+ * @author Bryan Illescas 9959-20-273
  */
 public class frmModuloCompras extends javax.swing.JInternalFrame {
 
@@ -37,16 +43,16 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
         modelo.addColumn("Estatus Modulo");
        
 
-        clsModulo modulos = new clsModulo();
-        //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsModulo> listamodulos = modulos.getListadoModulo();
+        clsModuloCompras compra = new clsModuloCompras();
+        List<clsModuloCompras> listaCompras = compra.getListadoCompra();
      
-        tablaModulos.setModel(modelo);
+        tablaModuloCompras.setModel(modelo);
         String[] dato = new String[10];
-        for (int i = 0; i < listamodulos.size(); i++) {
-            dato[0] = Integer.toString(listamodulos.get(i).getIdModulo());
-            dato[1] = listamodulos.get(i).getNombreModulo();
-            dato[2] = listamodulos.get(i).getEstatusModulo();
+        for (int i = 0; i < listaCompras.size(); i++) {
+            dato[0] = Integer.toString(listaCompras.get(i).getid_compra());
+            dato[1] = Integer.toString(listaCompras.get(i).getid_proveedor());
+            dato[2] = listaCompras.get(i).getfecha_compra();
+            dato[3] = Double.toString(listaCompras.get(i).gettotal_compra());
             modelo.addRow(dato);
         }       
     }
@@ -78,16 +84,16 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaModulos = new javax.swing.JTable();
+        tablaModuloCompras = new javax.swing.JTable();
         lb = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAyuda = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         label9 = new javax.swing.JLabel();
-        txtEstatus = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jSpinner1 = new javax.swing.JSpinner();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
@@ -144,13 +150,13 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
             }
         });
 
-        tablaModulos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        tablaModulos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaModuloCompras.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        tablaModuloCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre Producto", "Precio", "Stock"
+                "ID Compra", "ID Proveedor", "Fecha De Compra", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -161,20 +167,20 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaModulos);
+        jScrollPane1.setViewportView(tablaModuloCompras);
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
-        jButton2.setText("Ayuda");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAyudaActionPerformed(evt);
             }
         });
 
         label4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label4.setText("Buscar articulo");
+        label4.setText("Buscar ID");
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,10 +190,10 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
         });
 
         label9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label9.setText("Codigo");
+        label9.setText("Codigo Proveedor");
 
-        txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtCodigo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtCodigo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setText("Precio");
@@ -214,9 +220,9 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
+                            .addComponent(txtPrecio)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -232,7 +238,7 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
                                     .addComponent(btnModificar))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26)
@@ -242,9 +248,9 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 565, Short.MAX_VALUE))
+                        .addGap(294, 525, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -260,11 +266,11 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label9)
-                            .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -278,7 +284,7 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2)))
+                            .addComponent(btnAyuda)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,9 +306,9 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsModulo modulos= new clsModulo();
-        modulos.setIdModulo(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=modulos.setBorrarModulo(modulos);
+        clsModuloCompras compra = new clsModuloCompras();
+        compra.setid_compra(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados=compra.setBorrarCompra(compra);
 
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -311,12 +317,11 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsModulo modulo = new clsModulo();
-        modulo.setNombreModulo(txtNombre.getText());
-        //modulos.setIdModulos(txtContrasena.getText());
-
-        modulo. setEstatusModulo(txtEstatus.getText());
-        modulo.setIngresarModulo(modulo);
+        clsModuloCompras compra = new clsModuloCompras();
+        compra.setfecha_compra(txtNombre.getText());
+        compra. settotal_compra(Double.parseDouble(txtbuscado.getText()));
+        compra.setid_compra(Integer.parseInt(txtbuscado.getText()));        
+        compra.setIngresarCompra(compra);
 
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -326,28 +331,22 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        clsModulo modulo = new clsModulo();
-        //usuario.setNombreUsuario(txtbuscado.getText());        
-
-        modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));        
-        modulo = modulo.getBuscarInformacionModuloPorId(modulo);
-        System.out.println("Modulo retornado:" + modulo);        
-        txtNombre.setText(modulo.getNombreModulo());
-        //txtContrasena.setText(modulos.getIdModulos());
-        txtEstatus.setText(modulo.getEstatusModulo());
-
-       
+        clsModuloCompras compra = new clsModuloCompras();
+        compra.setid_compra(Integer.parseInt(txtbuscado.getText()));        
+        compra = compra.getConsultaModuloCompraPorId(compra);
+        System.out.println("Modulo retornado:" + compra);        
+        txtNombre.setText(compra.getfecha_compra());
+        txtCodigo.setText(String.valueOf(compra.gettotal_compra()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        clsModulo modulo = new clsModulo();
-
-        modulo.setIdModulo(Integer.parseInt(txtbuscado.getText()));
-        modulo.setNombreModulo(txtNombre.getText());
-        modulo.setEstatusModulo(txtEstatus.getText());
-
-        modulo.setModificarModulo(modulo);
+        clsModuloCompras compra = new clsModuloCompras();
+        compra.setid_compra(Integer.parseInt(txtbuscado.getText()));
+        compra.setfecha_compra(txtNombre.getText());
+        compra. settotal_compra(Double.parseDouble(txtbuscado.getText()));
+        compra.setid_compra(Integer.parseInt(txtbuscado.getText()));
+        compra.setModificarCompra(compra);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
@@ -365,7 +364,7 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
       
         txtbuscado.setText("");
        
-        txtEstatus.setText("");
+        txtCodigo.setText("");
         
         
     }
@@ -382,7 +381,7 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
         btnEliminar.setEnabled(false);
     }    
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
         // TODO add your handling code here:
         try {
             if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
@@ -397,7 +396,7 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
@@ -407,17 +406,16 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
@@ -425,9 +423,10 @@ public class frmModuloCompras extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
-    private javax.swing.JTable tablaModulos;
-    private javax.swing.JTextField txtEstatus;
+    private javax.swing.JTable tablaModuloCompras;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
 }

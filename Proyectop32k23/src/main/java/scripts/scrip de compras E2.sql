@@ -5,7 +5,7 @@ CREATE TABLE tbl_Proveedor (
   id_proveedor INT PRIMARY KEY,
   nombre VARCHAR(255),
   direccion VARCHAR(255),
-  telefono VARCHAR(20),
+  telefono INT(20),
   email VARCHAR(255)
 ) ENGINE = InnoDB CHARACTER SET = latin1;
 
@@ -47,13 +47,11 @@ CREATE TABLE tbl_Bodega (
 
 CREATE TABLE tbl_Detalle_Compra (
 id_detalle_compra INTEGER PRIMARY KEY,
-id_orden_compra INTEGER NOT NULL,
 id_producto INTEGER NOT NULL,
 cantidad INTEGER NOT NULL,
 precio_unitario DECIMAL(10, 2) NOT NULL,
 id_bodega INTEGER NOT NULL,
 id_clasificacion INTEGER NOT NULL,
-FOREIGN KEY (id_orden_compra) REFERENCES tbl_Orden_Compra(id_orden_compra),
 FOREIGN KEY (id_producto) REFERENCES tbl_Producto(id_producto),
 FOREIGN KEY (id_bodega) REFERENCES tbl_Bodega(id_bodega),
 FOREIGN KEY (id_clasificacion) REFERENCES tbl_Clasificacion(id_clasificacion)
