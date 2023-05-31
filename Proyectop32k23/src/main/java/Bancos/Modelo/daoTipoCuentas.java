@@ -87,7 +87,7 @@ public class daoTipoCuentas {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, cuenta.getEstatusTipoCue());
+            stmt.setString(1, cuenta.getTipoCueDescripcion());
             stmt.setString(2, cuenta.getEstatusTipoCue());
             stmt.setInt(3, cuenta.getTipoCueId());
 
