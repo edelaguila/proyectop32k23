@@ -5,9 +5,17 @@
  */
 package Compras.Vista;
 
+import Seguridad.Modelo.Conexion;
 import Seguridad.Vista.frmMantenimientoBitacora;
 import java.awt.Dimension;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -195,6 +203,11 @@ public class MdiCompras extends javax.swing.JFrame {
         mnuGeneral.add(mnuConsultas);
 */
         mnuReportes.setText("Reportes");
+        mnuReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuReportesActionPerformed(evt);
+            }
+        });
         mnuGeneral.add(mnuReportes);
 
         mnuAyudas.setText("Ayudas");
@@ -311,6 +324,27 @@ public class MdiCompras extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_MantenimientoProveedorActionPerformed
 
+    private void mnuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuReportesActionPerformed
+        // TODO add your handling code here:
+        Connection conn = null;
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+        
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath)()
+                    + "/src/main/java/compras/reportes/rptMdiCompras.jrxml");
+                    print = JasperFillManajer.fillReport(report, p , conn);
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("reporte Compra");
+                    view.setVisible(true);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+      
+    }//GEN-LAST:event_mnuReportesActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -375,4 +409,20 @@ public class MdiCompras extends javax.swing.JFrame {
     private javax.swing.JMenu mnuReportes;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistema;
     // End of variables declaration//GEN-END:variables
+
+    private static class JasperFillManajer {
+
+        private static JasperPrint fillReport(JasperReport report, Map p, Connection conn) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public JasperFillManajer() {
+        }
+    }
+
+    private static class JasperCompileManager {
+
+        public JasperCompileManager() {
+        }
+    }
 }
