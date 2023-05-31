@@ -38,7 +38,7 @@
 			</frame>
 			<image>
 				<reportElement x="670" y="0" width="82" height="79" uuid="feceeb90-3584-43cc-937f-a7b821942e65"/>
-				<imageExpression><![CDATA["C:\\Users\\ll322\\OneDrive\\Documentos\\progra3\\proyectop32k23\\Proyectop32k23\\src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -56,7 +56,7 @@
 				<text><![CDATA[Banco Externo]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="16" y="15" width="142" height="20" forecolor="#FFFFFF" uuid="f1b05ecd-c7b5-445e-a855-da3c8463f28d"/>
+				<reportElement x="16" y="15" width="163" height="20" forecolor="#FFFFFF" uuid="f1b05ecd-c7b5-445e-a855-da3c8463f28d"/>
 				<textElement>
 					<font size="14" isBold="true" isItalic="true"/>
 				</textElement>

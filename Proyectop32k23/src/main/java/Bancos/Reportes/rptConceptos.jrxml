@@ -28,7 +28,7 @@
 		<band height="79" splitType="Stretch">
 			<image>
 				<reportElement x="670" y="0" width="82" height="79" uuid="ffdbae07-5b41-43e6-9241-6709b03facec"/>
-				<imageExpression><![CDATA["C:\\Users\\ll322\\OneDrive\\Documentos\\progra3\\proyectop32k23\\Proyectop32k23\\src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
 			</image>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="670" height="79" backcolor="#000000" uuid="9395ad00-51e5-40cd-8281-953dfb3763e7"/>
@@ -49,7 +49,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="16" y="15" width="142" height="20" forecolor="#FFFFFF" uuid="671bf8e2-4028-49e2-b931-0d9e9b641996"/>
+				<reportElement x="16" y="15" width="163" height="20" forecolor="#FFFFFF" uuid="671bf8e2-4028-49e2-b931-0d9e9b641996"/>
 				<textElement>
 					<font size="14" isBold="true" isItalic="true"/>
 				</textElement>
