@@ -129,8 +129,8 @@ int codigoAplicacion=190;
         lbNombreTabla.setText("Aplicaciones");
 
         btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-        });
+        //btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        //});
 
         lbNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lbNombre.setText("Nombre");
