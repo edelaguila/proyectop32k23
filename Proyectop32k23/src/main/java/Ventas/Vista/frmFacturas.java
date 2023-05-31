@@ -550,6 +550,8 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
 
     private void btnAyudaFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaFacActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
                 try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudafac.chm")).exists()) {
                 Process p = Runtime

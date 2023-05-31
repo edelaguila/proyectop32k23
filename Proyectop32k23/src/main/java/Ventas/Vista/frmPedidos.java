@@ -5,7 +5,9 @@
  */
 package Ventas.Vista;
 
-
+//Carlos Emanuel Hernandez Garcia
+//9959-21-363
+//Vista Pedidos
 
 import Seguridad.Controlador.clsBitacora;
 import Ventas.Controlador.clsCotizacion;
@@ -496,6 +498,8 @@ int codigoProducto = Integer.parseInt(txtCodProdPed.getText());
 
     private void btnAyudaPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaPedActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
                 try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaped.chm")).exists()) {
                 Process p = Runtime

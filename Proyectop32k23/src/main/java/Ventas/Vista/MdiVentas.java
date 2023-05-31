@@ -61,15 +61,16 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuProcesosVentas = new javax.swing.JMenu();
         mnuCotizaciones = new javax.swing.JMenu();
         mnuNuevaCotizacion = new javax.swing.JCheckBoxMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        mnuPedidos = new javax.swing.JMenu();
+        mnuNuevoPed = new javax.swing.JCheckBoxMenuItem();
+        mnuPedCot = new javax.swing.JMenuItem();
+        mnuFacturas = new javax.swing.JMenu();
+        mnuNuevaFac = new javax.swing.JCheckBoxMenuItem();
+        mnuFacPed = new javax.swing.JMenuItem();
         mnuConsultasVentas = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mnuConCot = new javax.swing.JMenuItem();
+        mnuConPed = new javax.swing.JCheckBoxMenuItem();
+        mnuConFac = new javax.swing.JMenuItem();
         mnuReportesVentas = new javax.swing.JMenu();
         mnuRepCot = new javax.swing.JMenu();
         repGenCot = new javax.swing.JMenuItem();
@@ -185,44 +186,52 @@ public class MdiVentas extends javax.swing.JFrame {
 
         mnuProcesosVentas.add(mnuCotizaciones);
 
-        jMenu1.setText("Pedidos");
+        mnuPedidos.setText("Pedidos");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Nuevo Pedido");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuNuevoPed.setSelected(true);
+        mnuNuevoPed.setText("Nuevo Pedido");
+        mnuNuevoPed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
+                mnuNuevoPedActionPerformed(evt);
             }
         });
-        jMenu1.add(jCheckBoxMenuItem1);
+        mnuPedidos.add(mnuNuevoPed);
 
-        jMenuItem2.setText("Realizar Pedidos desde Cotizaciones");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mnuPedCot.setText("Realizar Pedidos desde Cotizaciones");
+        mnuPedCot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mnuPedCotActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        mnuPedidos.add(mnuPedCot);
 
-        mnuProcesosVentas.add(jMenu1);
+        mnuProcesosVentas.add(mnuPedidos);
 
-        jMenu2.setText("Facturas");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        mnuFacturas.setText("Facturas");
+        mnuFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                mnuFacturasActionPerformed(evt);
             }
         });
 
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("Nueva Factura");
-        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        mnuNuevaFac.setSelected(true);
+        mnuNuevaFac.setText("Nueva Factura");
+        mnuNuevaFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem3ActionPerformed(evt);
+                mnuNuevaFacActionPerformed(evt);
             }
         });
-        jMenu2.add(jCheckBoxMenuItem3);
+        mnuFacturas.add(mnuNuevaFac);
 
-        mnuProcesosVentas.add(jMenu2);
+        mnuFacPed.setText("Facturar Pedido");
+        mnuFacPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFacPedActionPerformed(evt);
+            }
+        });
+        mnuFacturas.add(mnuFacPed);
+
+        mnuProcesosVentas.add(mnuFacturas);
 
         mnuGeneralVentas.add(mnuProcesosVentas);
 
@@ -233,30 +242,30 @@ public class MdiVentas extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Consulta Cotizaciones");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuConCot.setText("Consulta Cotizaciones");
+        mnuConCot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuConCotActionPerformed(evt);
             }
         });
-        mnuConsultasVentas.add(jMenuItem1);
+        mnuConsultasVentas.add(mnuConCot);
 
-        jCheckBoxMenuItem2.setSelected(true);
-        jCheckBoxMenuItem2.setText("Consulta Pedidos");
-        jCheckBoxMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mnuConPed.setSelected(true);
+        mnuConPed.setText("Consulta Pedidos");
+        mnuConPed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem2ActionPerformed(evt);
+                mnuConPedActionPerformed(evt);
             }
         });
-        mnuConsultasVentas.add(jCheckBoxMenuItem2);
+        mnuConsultasVentas.add(mnuConPed);
 
-        jMenuItem3.setText("Consulta Facturas");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        mnuConFac.setText("Consulta Facturas");
+        mnuConFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                mnuConFacActionPerformed(evt);
             }
         });
-        mnuConsultasVentas.add(jMenuItem3);
+        mnuConsultasVentas.add(mnuConFac);
 
         mnuGeneralVentas.add(mnuConsultasVentas);
 
@@ -476,66 +485,68 @@ public class MdiVentas extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mnuNuevaCotizacionActionPerformed
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void mnuNuevoPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuNuevoPedActionPerformed
         // TODO add your handling code here:
         frmPedidos ventana = new frmPedidos();
         jDesktopPaneVentas.add(ventana);
         Dimension desktopSize = jDesktopPaneVentas.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuNuevoPedActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mnuPedCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPedCotActionPerformed
         // TODO add your handling code here:
         frmConsultaCotizacion ventana = new frmConsultaCotizacion();
         jDesktopPaneVentas.add(ventana);
         Dimension desktopSize = jDesktopPaneVentas.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mnuPedCotActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mnuConCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConCotActionPerformed
         // TODO add your handling code here:
         frmConsultaCotizacion ventana = new frmConsultaCotizacion();
         jDesktopPaneVentas.add(ventana);
         Dimension desktopSize = jDesktopPaneVentas.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuConCotActionPerformed
 
-    private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
+    private void mnuConPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConPedActionPerformed
         // TODO add your handling code here:
         frmConsultaPedido ventana = new frmConsultaPedido();
         jDesktopPaneVentas.add(ventana);
         Dimension desktopSize = jDesktopPaneVentas.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
+    }//GEN-LAST:event_mnuConPedActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void mnuFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacturasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_mnuFacturasActionPerformed
 
-    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+    private void mnuNuevaFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuNuevaFacActionPerformed
         // TODO add your handling code here:
         frmFacturas ventana = new frmFacturas();
         jDesktopPaneVentas.add(ventana);
         Dimension desktopSize = jDesktopPaneVentas.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+    }//GEN-LAST:event_mnuNuevaFacActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void mnuConFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConFacActionPerformed
         // TODO add your handling code here:
         frmConsultaFacturas ventana = new frmConsultaFacturas();
         jDesktopPaneVentas.add(ventana);
         Dimension desktopSize = jDesktopPaneVentas.getSize();
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_mnuConFacActionPerformed
 
     private void repGenCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenCotActionPerformed
         // TODO add your handling code here:
+        //Meyglin del Rosario Rosales Ochoa 
+        // 9959 - 21 - 4490 
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -557,6 +568,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repCliCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliCotActionPerformed
         // TODO add your handling code here:
+        //Meyglin del Rosario Rosales Ochoa 
+        // 9959 - 21 - 4490 
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -578,6 +591,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repProCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProCotActionPerformed
         // TODO add your handling code here:
+        //Meyglin del Rosario Rosales Ochoa 
+        // 9959 - 21 - 4490 
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -599,6 +614,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repVenCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repVenCotActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -620,6 +637,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repGenPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenPedActionPerformed
         // TODO add your handling code here:
+        //María José Véliz Ochoa 
+        //9959-21-5909
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -641,6 +660,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repCliPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliPedActionPerformed
         // TODO add your handling code here:
+        //María José Véliz Ochoa 
+        //9959-21-5909
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -662,6 +683,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repProPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProPedActionPerformed
         // TODO add your handling code here:
+        //María José Véliz Ochoa 
+        //9959-21-5909
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -683,6 +706,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repGenVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenVenActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -704,6 +729,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repDetVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repDetVenActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -725,6 +752,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repProVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProVenActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -746,6 +775,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repVendVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repVendVenActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -767,6 +798,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repCliVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliVenActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -788,6 +821,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void repTieVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTieVenActionPerformed
         // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
@@ -814,6 +849,8 @@ public class MdiVentas extends javax.swing.JFrame {
 
     private void mnuAyudaMDIVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudaMDIVentasActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
                 try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\generalayudaventas.chm")).exists()) {
                 Process p = Runtime
@@ -828,6 +865,15 @@ public class MdiVentas extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_mnuAyudaMDIVentasActionPerformed
+
+    private void mnuFacPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacPedActionPerformed
+        // TODO add your handling code here:
+        frmConsultaPedido ventana = new frmConsultaPedido();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuFacPedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -868,19 +914,11 @@ public class MdiVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1MdiVentas;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JDesktopPane jDesktopPaneVentas;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1MdiVentas;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4MdiVentas;
     private javax.swing.JCheckBoxMenuItem mantenimientoClientes;
     private javax.swing.JMenuItem mantenimientoTiendas;
@@ -890,10 +928,19 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenu mnuAyudasVentas;
     private javax.swing.JMenu mnuCatalogosMantenimientosVentas;
     private javax.swing.JMenu mnuCatalogosVentas;
+    private javax.swing.JMenuItem mnuConCot;
+    private javax.swing.JMenuItem mnuConFac;
+    private javax.swing.JCheckBoxMenuItem mnuConPed;
     private javax.swing.JMenu mnuConsultasVentas;
     private javax.swing.JMenu mnuCotizaciones;
+    private javax.swing.JMenuItem mnuFacPed;
+    private javax.swing.JMenu mnuFacturas;
     private javax.swing.JMenuBar mnuGeneralVentas;
     private javax.swing.JCheckBoxMenuItem mnuNuevaCotizacion;
+    private javax.swing.JCheckBoxMenuItem mnuNuevaFac;
+    private javax.swing.JCheckBoxMenuItem mnuNuevoPed;
+    private javax.swing.JMenuItem mnuPedCot;
+    private javax.swing.JMenu mnuPedidos;
     private javax.swing.JMenu mnuProcesosVentas;
     private javax.swing.JMenu mnuRepCot;
     private javax.swing.JMenu mnuRepPed;

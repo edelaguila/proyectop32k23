@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
+//Consulta Cotizacion
 package Ventas.Vista;
 
 
@@ -224,6 +227,8 @@ public class frmConsultaCotizacion extends javax.swing.JInternalFrame {
 
     private void btnAyudaConCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConCotActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
         try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaconcot.chm")).exists()) {
                 Process p = Runtime

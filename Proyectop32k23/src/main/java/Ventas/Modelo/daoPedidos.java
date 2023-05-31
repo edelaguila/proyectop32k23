@@ -5,7 +5,7 @@
  */
 //María José Véliz Ochoa 
 //9959-21-5909
-//daoVendedores
+//Modelo Pedidos
 
 package Ventas.Modelo;
 import Ventas.Controlador.clsPedidos;

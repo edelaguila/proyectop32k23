@@ -138,7 +138,9 @@ public class daoFacturas {
             statement.setDate(4, java.sql.Date.valueOf(fecha));
             statement.setDouble(5, total); 
             statement.setString(6, estatus);  
-            
+            //María José Véliz Ochoa 
+            //9959-21-5909
+            //Modificacion del debe y haber
             PreparedStatement stmt3 = conn.prepareStatement(query3);
             stmt3.setInt(1, idCliente);
             ResultSet resultado3 = stmt3.executeQuery();
@@ -189,6 +191,9 @@ public class daoFacturas {
                 int cantidadProducto = (int) model.getValueAt(i, 1);
                 double descuentoFac = descuento;
                 double impuesto = 0.12;
+            //Carlos Javier Sandoval Catalán
+            //9959-21-1324
+            //Calculos de impuestos y descuentos
                 double totalIndividual = (double) model.getValueAt(i, 4);
                 double descuentocalculado = (double) model.getValueAt(i, 2);
                 double impuestocalculado = (double) model.getValueAt(i, 3);

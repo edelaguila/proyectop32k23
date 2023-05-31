@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.JLabel" name="lb2PedConsDet">
+    <Component class="javax.swing.JLabel" name="lb2FacConsDet">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -10,16 +10,16 @@
         <Property name="text" type="java.lang.String" value="."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbusuPedConsDet">
+    <Component class="javax.swing.JLabel" name="lbusuFacConsDet">
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1PedDet">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1FacDet">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1PedDet">
+        <Component class="javax.swing.JTable" name="jTable1FacDet">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -39,7 +39,7 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Pedidos"/>
+    <Property name="title" type="java.lang.String" value="Facturas"/>
     <Property name="visible" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
@@ -64,11 +64,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jScrollPanePedRegDet" min="-2" pref="855" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneFacRegDet" min="-2" pref="855" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="391" max="-2" attributes="0"/>
-                      <Component id="lbPedDet" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbFacDet" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -79,23 +79,23 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="58" max="32767" attributes="0"/>
-              <Component id="lbPedDet" min="-2" max="-2" attributes="0"/>
+              <Component id="lbFacDet" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="jScrollPanePedRegDet" min="-2" pref="300" max="-2" attributes="0"/>
+              <Component id="jScrollPaneFacRegDet" min="-2" pref="300" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPanePedRegDet">
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneFacRegDet">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblPedDetCons">
+        <Component class="javax.swing.JTable" name="tblPedFacCons">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -109,9 +109,9 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lbPedDet">
+    <Component class="javax.swing.JLabel" name="lbFacDet">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Detalle del Pedido:"/>
+        <Property name="text" type="java.lang.String" value="Detalle de la Factura:"/>
       </Properties>
     </Component>
   </SubComponents>

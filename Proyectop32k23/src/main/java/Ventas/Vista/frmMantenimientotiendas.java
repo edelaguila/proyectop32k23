@@ -5,9 +5,9 @@
  */
 
 
-//Carlos Javier Sandoval Catalán
-//9959-21-1324
-//Mantenimiento Clientes
+//Carlos Emanuel Hernandez Garcia
+//9959-21-363
+//Mantenimiento Tiendas
 package Ventas.Vista;
 
 
@@ -395,6 +395,8 @@ int codigoAplicacion = 3002;
     
     private void btnAyudaTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaTiendaActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
         try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudatie.chm")).exists()) {
                 Process p = Runtime

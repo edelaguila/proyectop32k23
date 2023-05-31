@@ -3,6 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
+//Consulta Pedidos
+
 package Ventas.Vista;
 
 
@@ -84,13 +88,13 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         btnVerDetallePed = new javax.swing.JButton();
         btnFacturarPed = new javax.swing.JButton();
         lbInsPedReg = new javax.swing.JLabel();
-        cbx = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        cbx2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cbxTiendaPed = new javax.swing.JComboBox<>();
+        lbDescPed = new javax.swing.JLabel();
+        cbxDescPed = new javax.swing.JComboBox<>();
+        btnCancelarPedido = new javax.swing.JButton();
         txtVenFacPed = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbIdVenPed = new javax.swing.JLabel();
+        lbIdTiePed = new javax.swing.JLabel();
         btnAyudaConPed = new javax.swing.JButton();
 
         lb2PedCons.setForeground(new java.awt.Color(204, 204, 204));
@@ -147,20 +151,20 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
 
         lbInsPedReg.setText("Haz clic en el pedido que quieras trabajar, luego presiona un botón:");
 
-        jLabel3.setText("Descuento:");
+        lbDescPed.setText("Descuento:");
 
-        cbx2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.0", "0.15", "0.25", "0.50", "0.75", "0.95" }));
+        cbxDescPed.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.0", "0.15", "0.25", "0.50", "0.75", "0.95" }));
 
-        jButton1.setText("Cancelar Pedido");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelarPedido.setText("Cancelar Pedido");
+        btnCancelarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCancelarPedidoActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Id del Vendedor:");
+        lbIdVenPed.setText("Id del Vendedor:");
 
-        jLabel2.setText("Tienda:");
+        lbIdTiePed.setText("Tienda:");
 
         btnAyudaConPed.setText("Ayuda");
         btnAyudaConPed.addActionListener(new java.awt.event.ActionListener() {
@@ -196,15 +200,15 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lbIdVenPed, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbIdTiePed, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbDescPed, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtVenFacPed, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                            .addComponent(cbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbx2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbxTiendaPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxDescPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -221,19 +225,19 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
                         .addGap(8, 8, 8)
                         .addComponent(btnVerDetallePed)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnCancelarPedido)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtVenFacPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(lbIdVenPed))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(cbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbIdTiePed)
+                            .addComponent(cbxTiendaPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(cbx2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbDescPed)
+                            .addComponent(cbxDescPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addComponent(btnFacturarPed)
                         .addGap(28, 28, 28)
@@ -267,14 +271,14 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
     ArrayList<String> nombresUsuarios = perfilUsuario.obtenerNombresUsuarios();
 
     nombresUsuarios.forEach(nombreUsuario -> {
-        cbx.addItem(nombreUsuario);
+        cbxTiendaPed.addItem(nombreUsuario);
         });
 }
          
     private void btnFacturarPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarPedActionPerformed
         // TODO add your handling code here:
-               String nombretienda = (String) cbx.getSelectedItem();
-        double descuento = Double.valueOf((String)cbx2.getSelectedItem());
+               String nombretienda = (String) cbxTiendaPed.getSelectedItem();
+        double descuento = Double.valueOf((String)cbxDescPed.getSelectedItem());
         int idVendedor = Integer.parseInt(txtVenFacPed.getText());
         int filaSeleccionada = tblPedConsulta.getSelectedRow();
                 int cotidSeleccionado = Integer.valueOf(tblPedConsulta.getValueAt(filaSeleccionada, 0).toString());
@@ -289,7 +293,7 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS");    
     }//GEN-LAST:event_btnFacturarPedActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
         // TODO add your handling code here:
         int filaSeleccionada = tblPedConsulta.getSelectedRow();
         int cotidSeleccionado = Integer.valueOf(tblPedConsulta.getValueAt(filaSeleccionada, 0).toString());
@@ -301,10 +305,12 @@ public class frmConsultaPedido extends javax.swing.JInternalFrame {
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelarPedidoActionPerformed
 
     private void btnAyudaConPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConPedActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
         try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudaconped.chm")).exists()) {
                 Process p = Runtime
@@ -359,18 +365,18 @@ public int obtenerCotidSeleccionado() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAyudaConPed;
+    private javax.swing.JButton btnCancelarPedido;
     private javax.swing.JButton btnFacturarPed;
     private javax.swing.JButton btnVerDetallePed;
-    private javax.swing.JComboBox<String> cbx;
-    private javax.swing.JComboBox<String> cbx2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> cbxDescPed;
+    private javax.swing.JComboBox<String> cbxTiendaPed;
     private javax.swing.JScrollPane jScrollPane1PedCons;
     private javax.swing.JScrollPane jScrollPanePedReg;
     private javax.swing.JTable jTable1PedCons;
     private javax.swing.JLabel lb2PedCons;
+    private javax.swing.JLabel lbDescPed;
+    private javax.swing.JLabel lbIdTiePed;
+    private javax.swing.JLabel lbIdVenPed;
     private javax.swing.JLabel lbInsPedReg;
     private javax.swing.JLabel lbPedReg;
     private javax.swing.JLabel lbusuPedCons;

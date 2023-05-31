@@ -305,6 +305,8 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Carlos Emanuel Hernandez Garcia
+    //9959-21-363
     private void btnEliminarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCotActionPerformed
         // TODO add your handling code here:
 int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
@@ -336,7 +338,8 @@ txtTotalCot.setText(String.valueOf(suma));
 limpiarTextos(); 
 
     }//GEN-LAST:event_btnEliminarCotActionPerformed
-
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
      public void llenadoDeTablasProductos() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("proCodigo");
@@ -358,7 +361,8 @@ limpiarTextos();
 
 
     }                
-
+//Meyglin del Rosario Rosales Ochoa 
+// 9959 - 21 - 4490
     private void btnModificarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCotActionPerformed
         // TODO add your handling code here:
         
@@ -469,7 +473,8 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
     
     limpiarTextos();
     }//GEN-LAST:event_btnAgregarCotActionPerformed
-
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
     private void btnRegistrarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCotActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tblCotActual.getModel();
@@ -508,9 +513,12 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
                 JOptionPane.showMessageDialog(null, "Cotización #" + cotizacionId + " ha sido registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 
     }//GEN-LAST:event_btnRegistrarCotActionPerformed
-
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
     private void btnAyudaCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaCotActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
         try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudacot.chm")).exists()) {
                 Process p = Runtime

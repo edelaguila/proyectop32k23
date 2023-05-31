@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
+//Consulta Pedidos Detalle
 package Ventas.Vista;
 
 

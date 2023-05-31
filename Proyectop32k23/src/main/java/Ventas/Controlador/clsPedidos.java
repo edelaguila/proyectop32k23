@@ -6,7 +6,7 @@
 
 //Meyglin del Rosario Rosales Ochoa 
 // 9959 - 21 - 4490 
-
+// Controlador Pedidos
 package Ventas.Controlador;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;

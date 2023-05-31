@@ -412,6 +412,8 @@ int codigoAplicacion = 3003;
     
     private void btnAyudaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaVendedorActionPerformed
         // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
         try {
             if ((new File("src\\main\\java\\ventas\\ayuda\\ayudavend.chm")).exists()) {
                 Process p = Runtime
