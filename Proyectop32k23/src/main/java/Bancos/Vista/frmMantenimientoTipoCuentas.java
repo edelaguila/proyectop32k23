@@ -46,7 +46,7 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
         for (int i = 0; i < listadoTipoCuenta.size(); i++) {
             dato[0] = Integer.toString(listadoTipoCuenta.get(i).getTipoCueId());
             dato[1] = listadoTipoCuenta.get(i).getTipoCueDescripcion();
-            dato[2] = listadoTipoCuenta.get(i).getEstatusTipoCue();
+            dato[2] = listadoTipoCuenta.get(i).getEstatusTipoCue().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";;
             modelo.addRow(dato);
         }       
     }

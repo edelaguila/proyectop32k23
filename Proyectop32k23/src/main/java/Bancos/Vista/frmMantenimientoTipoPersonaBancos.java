@@ -45,7 +45,7 @@ int codigoAplicacion= 5003;
         for (int i = 0; i < listaTipoBancos .size(); i++) {
            dato[0] = Integer.toString(listaTipoBancos.get(i).getIdTipoPersonaBancos());
             dato[1] = listaTipoBancos .get(i).getTipoDescripcionBancos();
-            dato[2] = listaTipoBancos .get(i).getTipoEstatusBancos();
+            dato[2] = listaTipoBancos .get(i).getTipoEstatusBancos().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";;
             modelo.addRow(dato);
         }       
     }

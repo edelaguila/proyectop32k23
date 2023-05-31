@@ -70,7 +70,7 @@ public void llenadoDeTablas() {
         dato[0] = Integer.toString(listaCuentaEmpresa.get(i).getIdCuentaEm());
         dato[1] = Integer.toString(listaCuentaEmpresa.get(i).getNumeroCuentaEm());
         dato[2] = Double.toString(listaCuentaEmpresa.get(i).getSaldoCuentaEm());
-        dato[3] = listaCuentaEmpresa.get(i).getEstatusCuentaEm();
+        dato[3] = listaCuentaEmpresa.get(i).getEstatusCuentaEm().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
         dato[4] = Integer.toString(listaCuentaEmpresa.get(i).getCodigoBanco());
         dato[5] = Integer.toString(listaCuentaEmpresa.get(i).getCueTipoId());
         modelo.addRow(dato);

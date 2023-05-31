@@ -53,7 +53,7 @@ int codigoAplicacion=5001;
             dato[1] = listaConcepto.get(i).getNombreConcepto();
             dato[2] = listaConcepto.get(i).getDescripcionConcepto();
             dato[3] = listaConcepto.get(i).getEfectoConcepto();
-            dato[4] = listaConcepto.get(i).getEstatusConcepto();
+            dato[4] = listaConcepto.get(i).getEstatusConcepto().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }

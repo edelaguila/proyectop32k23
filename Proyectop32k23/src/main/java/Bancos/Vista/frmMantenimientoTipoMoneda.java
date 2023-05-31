@@ -54,7 +54,7 @@ int codigoAplicacion=5002;
             dato[1] = listadoMonedas .get(i).getTipMondNombre();
             dato[2] = listadoMonedas .get(i).getTipMondAbreviacion();
             dato[3] = Float.toString(listadoMonedas.get(i).getTipModValor());
-            dato[4] = listadoMonedas.get(i).getEstatus();
+            dato[4] = listadoMonedas.get(i).getEstatus().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";;
             modelo.addRow(dato);
         }       
     }

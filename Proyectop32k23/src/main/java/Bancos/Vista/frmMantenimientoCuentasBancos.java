@@ -71,7 +71,7 @@ int codigoAplicacion=5005;
             dato[2] = Double.toString(listaCuenta.get(i).getSaldoCuenta());
             dato[3] = Integer.toString(listaCuenta.get(i).getIdPersona());
             dato[4] = Integer.toString(listaCuenta.get(i).getIdTipoCuenta());
-            dato[5] = listaCuenta.get(i).getEstatusCuenta();
+            dato[5] = listaCuenta.get(i).getEstatusCuenta().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";;
             modelo.addRow(dato);
         }       
     }
