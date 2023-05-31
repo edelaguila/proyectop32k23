@@ -160,7 +160,7 @@ public class MdiCompras extends javax.swing.JFrame {
         mnuGeneral.add(mnuCatalogos);
 
         mnuProcesos.setText("Procesos");
-
+/*
         aplicacionesUsuarios.setText("Aplicaciones Usuarios");
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +193,7 @@ public class MdiCompras extends javax.swing.JFrame {
         mnuConsultas.add(consultaBitacora);
 
         mnuGeneral.add(mnuConsultas);
-
+*/
         mnuReportes.setText("Reportes");
         mnuGeneral.add(mnuReportes);
 
