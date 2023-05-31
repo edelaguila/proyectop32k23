@@ -78,7 +78,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         }
     }
     
-    public void llenadoCuentas() {
+    /*public void llenadoCuentas() {
        clsCuentasBancos cuentas = new clsCuentasBancos();
         List<clsCuentasBancos> listaCuentas = cuentas.getListadoCuentas();
         cbIdCuenta.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -88,7 +88,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
             String item = cuentasBancos.getIdCuenta()+ " - "+cuentasBancos.getNumeroCuenta();
             cbIdCuenta.addItem(item);
         } 
-    }
+    }*/
      
     public void llenadoMoneda() {
         clsTipoMoneda moneda = new clsTipoMoneda();
@@ -143,7 +143,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         llenadoCodigoBanco();
         llenadoConcepto();
         llenadoTipoMovimiento();
-        llenadoCuentas();
+        //llenadoCuentas();
         llenadoMoneda();
     }
 
@@ -550,12 +550,11 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
-        clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
+       clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
 
         boleta.setIdBoleta(Integer.parseInt(txtCodigoDocumento.getText()));
 
-        /*String selectedItem= cbNombreBanco.getSelectedItem().toString();
+        String selectedItem= cbNombreBanco.getSelectedItem().toString();
         int itemNombreBanco = Integer.parseInt(selectedItem.split(" - ")[0]);
         boleta.setCodigoBanco(itemNombreBanco);
 
@@ -591,7 +590,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
 
         /*String selectedItem = cbNombreCliente.getSelectedItem().toString();
         String itemNombre = selectedItem.split(" - ")[0];
-        boleta.setNombreCliente(itemNombre);*/
+        boleta.setNombreCliente(itemNombre); */
 
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n",
             "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);

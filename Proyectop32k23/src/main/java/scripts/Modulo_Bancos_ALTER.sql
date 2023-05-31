@@ -56,3 +56,21 @@ FOREIGN KEY (movDetId) REFERENCES tbl_movimientosdetallebancos(movDetId);
 
 ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_cpid_ccorrientesprov
 FOREIGN KEY (cpid) REFERENCES tbl_ccorrientesprov(cpid);
+
+--Cambios para Cuentas Bancos
+--Primero cambiamos el parametro de entrada de 5 digitos a 10
+ALTER TABLE tbl_cuentasBancos modify cueId INT(10) NOT NULL;
+
+--Eliminamos la columna de cueNumero
+ALTER TABLE tbl_cuentasBancos DROP COLUMN cueNumero;
+
+--Agregamos parametros/columnas nuevas que se necesitan
+ALTER TABLE tbl_cuentasBancos ADD tipModId INT(5) NOT NULL;
+ALTER TABLE tbl_cuentasBancos ADD codBanco INT(5) NOT NULL;
+
+-- A continuación, agregamos las llaves foráneas
+ALTER TABLE tbl_cuentasBancos ADD CONSTRAINT FK_tipModId_cuentasBancos
+FOREIGN KEY (tipModId) REFERENCES tbl_monedaBancos(tipModId);
+
+ALTER TABLE tbl_cuentasBancos ADD CONSTRAINT FK_codBanco_cuentasBancos
+FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno(codBanco);
