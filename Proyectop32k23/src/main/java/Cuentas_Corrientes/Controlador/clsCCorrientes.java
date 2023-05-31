@@ -14,151 +14,141 @@ import Seguridad.Modelo.daoAplicacion;
  */
 
 public class clsCCorrientes {
+// CAMBIOS HECHOS POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395 Y MONICA GABRIELA PEREZ VELÁSQUEZ; 9959-21-1840.
     private int idCCorriente;
-    private String tipoCCorriente;
-    private int idTipoCCorriente;
+    private int idCCliente;
+    private String nombreCCliente;
     private String fechaCCorriente;
-    private String nombreCCorriente;
     private String nofacturaCCorriente;
-    private String facturaCCorriente;
-    private String saldoCCorriente;
-    private String deudaCCorriente;
-
-    public int getIdCCorriente() {
-        return idCCorriente;
-    }
+    private int haberCCorriente;
+    private int debeCCorriente;
+    private int saldoCCorriente;
 
     public void setIdCCorriente(int idCCorriente) {
         this.idCCorriente = idCCorriente;
     }
 
-    public String getTipoCCorriente() {
-        return tipoCCorriente;
+    public void setIdCCliente(int idCCliente) {
+        this.idCCliente = idCCliente;
     }
 
-    public void setTipoCCorriente(String tipoCCorriente) {
-        this.tipoCCorriente = tipoCCorriente;
-    }
-
-    public int getIdTipoCCorriente() {
-        return idTipoCCorriente;
-    }
-
-    public void setIdTipoCCorriente(int idTipoCCorriente) {
-        this.idTipoCCorriente = idTipoCCorriente;
-    }
-
-    public String getFechaCCorriente() {
-        return fechaCCorriente;
+    public void setNombreCCliente(String nombreCCliente) {
+        this.nombreCCliente = nombreCCliente;
     }
 
     public void setFechaCCorriente(String fechaCCorriente) {
         this.fechaCCorriente = fechaCCorriente;
     }
 
-    public String getNombreCCorriente() {
-        return nombreCCorriente;
+    public void setNofacturaCCorriente(String nofacturaCCorriente) {
+        this.nofacturaCCorriente = nofacturaCCorriente;
     }
 
-    public void setNombreCCorriente(String nombreCCorriente) {
-        this.nombreCCorriente = nombreCCorriente;
+    public void setHaberCCorriente(int haberCCorriente) {
+        this.haberCCorriente = haberCCorriente;
     }
-    public String getNoFacturaCCorriente() {
+
+    public void setDebeCCorriente(int debeCCorriente) {
+        this.debeCCorriente = debeCCorriente;
+    }
+
+    public void setSaldoCCorriente(int saldoCCorriente) {
+        this.saldoCCorriente = saldoCCorriente;
+    }
+
+    public int getIdCCorriente() {
+        return idCCorriente;
+    }
+
+    public int getIdCCliente() {
+        return idCCliente;
+    }
+
+    public String getNombreCCliente() {
+        return nombreCCliente;
+    }
+
+    public String getFechaCCorriente() {
+        return fechaCCorriente;
+    }
+
+    public String getNofacturaCCorriente() {
         return nofacturaCCorriente;
     }
 
-    public void setNoFacturaCCorriente(String facturaCCorriente) {
-        this.nofacturaCCorriente = facturaCCorriente;
-    }
-    
-    public String getFacturaCCorriente() {
-        return facturaCCorriente;
+    public int getHaberCCorriente() {
+        return haberCCorriente;
     }
 
-    public void setFacturaCCorriente(String facturaCCorriente) {
-        this.facturaCCorriente = facturaCCorriente;
+    public int getDebeCCorriente() {
+        return debeCCorriente;
     }
 
-    public String getSaldoCCorriente() {
+    public int getSaldoCCorriente() {
         return saldoCCorriente;
     }
 
-    public void setSaldoCCorriente(String saldoCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente, String nombreCCliente, String fechaCCorriente, String nofacturaCCorriente, int haberCCorriente, int debeCCorriente, int saldoCCorriente) {
+        this.idCCorriente = idCCorriente;
+        this.idCCliente = idCCliente;
+        this.nombreCCliente = nombreCCliente;
+        this.fechaCCorriente = fechaCCorriente;
+        this.nofacturaCCorriente = nofacturaCCorriente;
+        this.haberCCorriente = haberCCorriente;
+        this.debeCCorriente = debeCCorriente;
         this.saldoCCorriente = saldoCCorriente;
     }
 
-    public String getDeudaCCorriente() {
-        return deudaCCorriente;
-    }
-
-    public void setDeudaCCorriente(String deudaCCorriente) {
-        this.deudaCCorriente = deudaCCorriente;
-    }
-
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente, String facturaCCorriente, String saldoCCorriente, String deudaCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente, String nombreCCliente, String fechaCCorriente, String nofacturaCCorriente, int haberCCorriente, int debeCCorriente) {
         this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
-        this.idTipoCCorriente = idTipoCCorriente;
+        this.idCCliente = idCCliente;
+        this.nombreCCliente = nombreCCliente;
         this.fechaCCorriente = fechaCCorriente;
-        this.nombreCCorriente = nombreCCorriente;
-        this.facturaCCorriente = facturaCCorriente;
-        this.saldoCCorriente = saldoCCorriente;
-        this.deudaCCorriente = deudaCCorriente;
+        this.nofacturaCCorriente = nofacturaCCorriente;
+        this.haberCCorriente = haberCCorriente;
+        this.debeCCorriente = debeCCorriente;
     }
 
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente, String facturaCCorriente, String saldoCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente, String nombreCCliente, String fechaCCorriente, String nofacturaCCorriente, int haberCCorriente) {
         this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
-        this.idTipoCCorriente = idTipoCCorriente;
+        this.idCCliente = idCCliente;
+        this.nombreCCliente = nombreCCliente;
         this.fechaCCorriente = fechaCCorriente;
-        this.nombreCCorriente = nombreCCorriente;
-        this.facturaCCorriente = facturaCCorriente;
-        this.saldoCCorriente = saldoCCorriente;
+        this.nofacturaCCorriente = nofacturaCCorriente;
+        this.haberCCorriente = haberCCorriente;
     }
 
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente, String facturaCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente, String nombreCCliente, String fechaCCorriente, String nofacturaCCorriente) {
         this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
-        this.idTipoCCorriente = idTipoCCorriente;
+        this.idCCliente = idCCliente;
+        this.nombreCCliente = nombreCCliente;
         this.fechaCCorriente = fechaCCorriente;
-        this.nombreCCorriente = nombreCCorriente;
-        this.facturaCCorriente = facturaCCorriente;
+        this.nofacturaCCorriente = nofacturaCCorriente;
     }
 
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente, String nombreCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente, String nombreCCliente, String fechaCCorriente) {
         this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
-        this.idTipoCCorriente = idTipoCCorriente;
-        this.fechaCCorriente = fechaCCorriente;
-        this.nombreCCorriente = nombreCCorriente;
-    }
-
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente, String fechaCCorriente) {
-        this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
-        this.idTipoCCorriente = idTipoCCorriente;
+        this.idCCliente = idCCliente;
+        this.nombreCCliente = nombreCCliente;
         this.fechaCCorriente = fechaCCorriente;
     }
 
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente, int idTipoCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente, String nombreCCliente) {
         this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
-        this.idTipoCCorriente = idTipoCCorriente;
+        this.idCCliente = idCCliente;
+        this.nombreCCliente = nombreCCliente;
     }
 
-    public clsCCorrientes(int idCCorriente, String tipoCCorriente) {
+    public clsCCorrientes(int idCCorriente, int idCCliente) {
         this.idCCorriente = idCCorriente;
-        this.tipoCCorriente = tipoCCorriente;
+        this.idCCliente = idCCliente;
     }
 
     public clsCCorrientes(int idCCorriente) {
         this.idCCorriente = idCCorriente;
     }
-
     public clsCCorrientes() {
     }
-    
-
     
     //Metodos de acceso a la capa controlador
     public clsCCorrientes getBuscarInformacionCCPorNombre(clsCCorrientes CCorriente)
@@ -191,5 +181,5 @@ public class clsCCorrientes {
     {
         daoCCorrientes daoCCorrientes = new daoCCorrientes();
         return daoCCorrientes.actualizaCC(CCorriente);
-    }              
-}
+    }
+    }

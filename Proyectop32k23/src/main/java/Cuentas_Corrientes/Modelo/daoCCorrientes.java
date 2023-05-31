@@ -16,13 +16,14 @@ import java.util.List;
  * @author visitante
  */
 public class daoCCorrientes {
-// CAMBIOS HECHOS POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-    private static final String SQL_SELECT = "SELECT ccid,cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes";
-    private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientes(cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda) VALUES(?,?,?,?,?,?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_cCorrientes SET cctipo=?,ccidtipo=?,ccfecha=?,ccnombretipo=?,NoFactura=?,ccTotalFactura=?,ccSaldo=?,ccDeuda=? WHERE ccid = ?";
+// REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395 Y MONICA GABRIELA PEREZ VELÁSQUEZ; 9959-21-1840.
+    
+    private static final String SQL_SELECT = "SELECT ccid,clid,ccnombre,ccfecha,NoFactura,cchaber,ccdebe,ccsaldo FROM tbl_cCorrientes";
+    private static final String SQL_INSERT = "INSERT INTO tbl_cCorrientes(clid,ccnombre,ccfecha,NoFactura,cchaber,ccdebe,ccsaldo) VALUES(?,?,?,?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_cCorrientes SET clid=?,ccnombre=?,ccfecha=?,NoFactura=?,cchaber=?,ccdebe=?,ccsaldo=? WHERE ccid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_cCorrientes WHERE ccid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT ccid,cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes WHERE cctipo=?";
-    private static final String SQL_SELECT_ID = "SELECT ccid,cctipo,ccidtipo,ccfecha,ccnombretipo,NoFactura,ccTotalFactura,ccSaldo,ccDeuda FROM tbl_cCorrientes WHERE ccid=?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT ccid,clid,ccnombre,ccfecha,NoFactura,cchaber,ccdebe,ccsaldo FROM tbl_cCorrientes WHERE clid=?";
+    private static final String SQL_SELECT_ID = "SELECT ccid,clid,ccnombre,ccfecha,NoFactura,cchaber,ccdebe,ccsaldo FROM tbl_cCorrientes WHERE ccid=?";    
 
     public List<clsCCorrientes> consultaCC() {
         Connection conn = null;
@@ -36,24 +37,22 @@ public class daoCCorrientes {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ccid");
-                String nombre = rs.getString("cctipo");
-                int tipo = rs.getInt("ccidtipo");
+                int idcli = rs.getInt("clid");
+                String nombre = rs.getString("ccnombre");
                 String fecha = rs.getString("ccfecha");
-                String nombretipo = rs.getString("ccnombretipo");
                 String factura = rs.getString("NoFactura");
-                String total = rs.getString("ccTotalFactura");
-                String saldo = rs.getString("ccSaldo");
-                String deuda = rs.getString("ccDeuda");
+                int haber = rs.getInt("cchaber");
+                int debe = rs.getInt("ccdebe");
+                int saldo = rs.getInt("ccsaldo");
                 clsCCorrientes cuenta = new clsCCorrientes();
                 cuenta.setIdCCorriente(id);
-                cuenta.setTipoCCorriente(nombre);
-                cuenta.setIdTipoCCorriente(tipo);
+                cuenta.setIdCCliente(idcli);
+                cuenta.setNombreCCliente(nombre);
                 cuenta.setFechaCCorriente(fecha);
-                cuenta.setNombreCCorriente(nombretipo);
-                cuenta.setNoFacturaCCorriente(factura);
-                cuenta.setFacturaCCorriente(total);
+                cuenta.setNofacturaCCorriente(factura);
+                cuenta.setHaberCCorriente(haber);
+                cuenta.setDebeCCorriente(debe);
                 cuenta.setSaldoCCorriente(saldo);
-                cuenta.setDeudaCCorriente(deuda);
                 cuentas.add(cuenta);
             }
         } catch (SQLException ex) {
@@ -72,14 +71,14 @@ public class daoCCorrientes {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, cuenta.getTipoCCorriente());
-            stmt.setInt(2, cuenta.getIdTipoCCorriente());
+            stmt.setInt(1, cuenta.getIdCCliente());
+            stmt.setString(2, cuenta.getNombreCCliente());
             stmt.setString(3, cuenta.getFechaCCorriente());
-            stmt.setString(4, cuenta.getNombreCCorriente());
-            stmt.setString(5, cuenta.getNoFacturaCCorriente());
-            stmt.setString(6, cuenta.getFacturaCCorriente());
-            stmt.setString(7, cuenta.getSaldoCCorriente());
-            stmt.setString(8, cuenta.getDeudaCCorriente());
+            stmt.setString(4, cuenta.getNofacturaCCorriente());
+            stmt.setInt(5, cuenta.getHaberCCorriente());
+            stmt.setInt(6, cuenta.getDebeCCorriente());
+            stmt.setInt(7, cuenta.getSaldoCCorriente());
+            
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
             System.out.println("Registros afectados:" + rows);
@@ -101,15 +100,14 @@ public class daoCCorrientes {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, cuenta.getTipoCCorriente());
-            stmt.setInt(2, cuenta.getIdTipoCCorriente());
+            stmt.setInt(1, cuenta.getIdCCliente());
+            stmt.setString(2, cuenta.getNombreCCliente());
             stmt.setString(3, cuenta.getFechaCCorriente());
-            stmt.setString(4, cuenta.getNombreCCorriente());
-            stmt.setString(5, cuenta.getNoFacturaCCorriente());
-            stmt.setString(6, cuenta.getFacturaCCorriente());
-            stmt.setString(7, cuenta.getSaldoCCorriente());
-            stmt.setString(8, cuenta.getDeudaCCorriente());
-            stmt.setInt(9, cuenta.getIdCCorriente());
+            stmt.setString(4, cuenta.getNofacturaCCorriente());
+            stmt.setInt(5, cuenta.getHaberCCorriente());
+            stmt.setInt(6, cuenta.getDebeCCorriente());
+            stmt.setInt(7, cuenta.getSaldoCCorriente());
+            stmt.setInt(8, cuenta.getIdCCorriente());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
         } catch (SQLException ex) {
@@ -150,27 +148,25 @@ public class daoCCorrientes {
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + cuenta);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
             //stmt.setInt(1, aplicacion.getIdAplicacion());            
-            stmt.setString(1, cuenta.getTipoCCorriente());
+            stmt.setInt(1, cuenta.getIdCCliente());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ccid");
-                String nombre = rs.getString("cctipo");
-                int tipo = rs.getInt("ccidtipo");
+                int idcli = rs.getInt("clid");
+                String nombre = rs.getString("ccnombre");
                 String fecha = rs.getString("ccfecha");
-                String nombretipo = rs.getString("ccnombretipo");
                 String factura = rs.getString("NoFactura");
-                String total = rs.getString("ccTotalFactura");
-                String saldo = rs.getString("ccSaldo");
-                String deuda = rs.getString("ccDeuda");
+                int haber = rs.getInt("cchaber");
+                int debe = rs.getInt("ccdebe");
+                int saldo = rs.getInt("ccsaldo");
                 cuenta.setIdCCorriente(id);
-                cuenta.setTipoCCorriente(nombre);
-                cuenta.setIdTipoCCorriente(tipo);
+                cuenta.setIdCCliente(idcli);
+                cuenta.setNombreCCliente(nombre);
                 cuenta.setFechaCCorriente(fecha);
-                cuenta.setNombreCCorriente(nombretipo);
-                cuenta.setNoFacturaCCorriente(factura);
-                cuenta.setFacturaCCorriente(total);
+                cuenta.setNofacturaCCorriente(factura);
+                cuenta.setHaberCCorriente(haber);
+                cuenta.setDebeCCorriente(debe);
                 cuenta.setSaldoCCorriente(saldo);
-                cuenta.setDeudaCCorriente(deuda);
                 System.out.println(" registro consultado: " + cuenta);                
             }
         } catch (SQLException ex) {
@@ -194,23 +190,21 @@ public class daoCCorrientes {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ccid");
-                String nombre = rs.getString("cctipo");
-                int tipo = rs.getInt("ccidtipo");
+                int idcli = rs.getInt("clid");
+                String nombre = rs.getString("ccnombre");
                 String fecha = rs.getString("ccfecha");
-                String nombretipo = rs.getString("ccnombretipo");
                 String factura = rs.getString("NoFactura");
-                String total = rs.getString("ccTotalFactura");
-                String saldo = rs.getString("ccSaldo");
-                String deuda = rs.getString("ccDeuda");
+                int haber = rs.getInt("cchaber");
+                int debe = rs.getInt("ccdebe");
+                int saldo = rs.getInt("ccsaldo");
                 cuenta.setIdCCorriente(id);
-                cuenta.setTipoCCorriente(nombre);
-                cuenta.setIdTipoCCorriente(tipo);
+                cuenta.setIdCCliente(idcli);
+                cuenta.setNombreCCliente(nombre);
                 cuenta.setFechaCCorriente(fecha);
-                cuenta.setNombreCCorriente(nombretipo);
-                cuenta.setNoFacturaCCorriente(factura);
-                cuenta.setFacturaCCorriente(total);
+                cuenta.setNofacturaCCorriente(factura);
+                cuenta.setHaberCCorriente(haber);
+                cuenta.setDebeCCorriente(debe);
                 cuenta.setSaldoCCorriente(saldo);
-                cuenta.setDeudaCCorriente(deuda);
                 System.out.println(" registro consultado: " + cuenta);                
             }
         } catch (SQLException ex) {
@@ -222,4 +216,5 @@ public class daoCCorrientes {
         }
         return cuenta;
     }    
+
 }
