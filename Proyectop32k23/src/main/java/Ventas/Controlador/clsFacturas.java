@@ -256,10 +256,4 @@ public int getIdProducto() {
     return dao.obtenerUltimoIdCotizacion();
 }
     
-    public void CancelarPedido(int cotid4, int idcliente2){
-            daoFacturas dao = new daoFacturas();
-            dao.cancelarPedido(cotid4, idcliente2);
-        }
-    
-    
 }

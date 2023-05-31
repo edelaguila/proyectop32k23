@@ -12,8 +12,10 @@ package Seguridad.Vista;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsPerfilUsuario;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,8 +23,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 
@@ -227,6 +236,7 @@ public void cargarTabla2(String usuario) {
         btnAsignarTodoPerfilUsuario = new javax.swing.JButton();
         btnEliminarTodoPerfilUsuario = new javax.swing.JButton();
         btnEliminarPerfilUsuario = new javax.swing.JButton();
+        rptPerfilUsuario = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -279,6 +289,13 @@ public void cargarTabla2(String usuario) {
 
         btnEliminarPerfilUsuario.setText("Eliminar");
 
+        rptPerfilUsuario.setText("Reporte Perfil Usuario");
+        rptPerfilUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptPerfilUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,19 +303,25 @@ public void cargarTabla2(String usuario) {
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addComponent(jScrollPanePerfilUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAsignarPerfilUsuario)
-                        .addGap(95, 95, 95))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminarTodoPerfilUsuario)
-                            .addComponent(btnAsignarTodoPerfilUsuario))
-                        .addGap(79, 79, 79))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnEliminarPerfilUsuario)
-                        .addGap(91, 91, 91)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAsignarPerfilUsuario)
+                                .addGap(95, 95, 95))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnEliminarTodoPerfilUsuario)
+                                    .addComponent(btnAsignarTodoPerfilUsuario))
+                                .addGap(79, 79, 79))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnEliminarPerfilUsuario)
+                                .addGap(91, 91, 91))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(rptPerfilUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)))
                 .addComponent(jScrollPanePerfilUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
             .addGroup(layout.createSequentialGroup()
@@ -325,7 +348,9 @@ public void cargarTabla2(String usuario) {
                         .addGap(50, 50, 50)
                         .addComponent(btnEliminarPerfilUsuario)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEliminarTodoPerfilUsuario)))
+                        .addComponent(btnEliminarTodoPerfilUsuario)
+                        .addGap(27, 27, 27)
+                        .addComponent(rptPerfilUsuario)))
                 .addGap(363, 363, 363))
         );
 
@@ -335,6 +360,28 @@ public void cargarTabla2(String usuario) {
     private void btnAsignarPerfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarPerfilUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAsignarPerfilUsuarioActionPerformed
+
+         //Meyglin del Rosario Rosales Ochoa
+        // 9959 - 21- 4490
+    private void rptPerfilUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptPerfilUsuarioActionPerformed
+        // TODO add your handling code here:
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/main/java/seguridad/reportes/PerfilUsuario.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_rptPerfilUsuarioActionPerformed
  
     
 
@@ -350,5 +397,6 @@ public void cargarTabla2(String usuario) {
     private javax.swing.JTable jTablePerfilUsuarioDisponible;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
+    private javax.swing.JButton rptPerfilUsuario;
     // End of variables declaration//GEN-END:variables
 }

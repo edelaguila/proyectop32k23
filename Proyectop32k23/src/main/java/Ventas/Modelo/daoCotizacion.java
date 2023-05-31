@@ -29,7 +29,7 @@ public class daoCotizacion {
     String usuariobd = "root";
     String contrabd = "";
     private static final String SQL_SELECT = "SELECT proCodigo, proNombre, proPrecios, proExistencias FROM tbl_productos";
-    private static final String SQL_SELECT_COT = "SELECT cotid, clId, venid, cotfecha, cotTotalGeneral, cotEstatus FROM tbl_cotizacion";
+    private static final String SQL_SELECT_COT = "SELECT cotid, clId, venid, cotfecha, cotTotalGeneral FROM tbl_cotizacion";
     private static final String SQL_SELECT_COTDET = "SELECT cotid, proCodigo, proPrecios, cotprodcantidad, cotTotalInd FROM tbl_cotdetalle";
     private static final String SQL_SELECT_COT2 = "SELECT clId, cotfecha, cotTotalGeneral FROM tbl_cotizacion";
     private static final String SQL_SELECT_COTDET2 = "SELECT proCodigo, proPrecios, cotprodcantidad, cotTotalInd FROM tbl_cotdetalle";
@@ -124,14 +124,12 @@ public class daoCotizacion {
   
   public void registrarCotizacion(int idCliente, int idVendedor, LocalDate fecha, double total) {
         try (Connection conn = Conexion.getConnection()) {
-            String query = "INSERT INTO tbl_cotizacion (clId, venid, cotfecha, cotTotalGeneral, cotEstatus) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO tbl_cotizacion (clId, venid, cotfecha, cotTotalGeneral) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(query);
-            String estatus = "Registrada";
             statement.setInt(1, idCliente);
             statement.setInt(2, idVendedor);
             statement.setDate(3, java.sql.Date.valueOf(fecha));
             statement.setDouble(4, total);
-            statement.setString(5, estatus);
             
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -194,8 +192,7 @@ public class daoCotizacion {
 
         try {
             conn = Conexion.getConnection();
-            String estatus = "Registrada";
-            stmt = conn.prepareStatement(SQL_SELECT_COT+ " WHERE cotEstatus ='"+estatus+"'");
+            stmt = conn.prepareStatement(SQL_SELECT_COT);
             rs = stmt.executeQuery();
             while (rs.next()) {
 
@@ -204,7 +201,6 @@ public class daoCotizacion {
                 int IdVendedor = rs.getInt("venid");
                 String Fecha = rs.getString("cotFecha");
                 double Total = rs.getDouble("cotTotalGeneral");
-                String status = rs.getString("cotEstatus");
                 
                 clsCotizacion cotizacion = new clsCotizacion();
                 cotizacion.setIdCot(IdCot);
@@ -212,7 +208,6 @@ public class daoCotizacion {
                 cotizacion.setIdVendedor(IdVendedor);
                 cotizacion.setFechaCot(Fecha);
                 cotizacion.setTotalCot(Total);
-                cotizacion.setEstatusCot(status);
                 cotizaciones.add(cotizacion);
 
             }
@@ -275,7 +270,6 @@ public class daoCotizacion {
 
         Connection conn = null;
         PreparedStatement stmt = null;
-        PreparedStatement stmtUpdate = null;
         ResultSet rs = null;
         int Id = 0;
         String fechita = "";
@@ -306,18 +300,17 @@ public class daoCotizacion {
         PreparedStatement stmtInsert = null;
         try {
     conn = Conexion.getConnection();
-    String sqlInsert = "INSERT INTO tbl_pedido (clid, pedfecha, pedTotalGeneral, pedEstatus) VALUES (?, ?, ?, ?)";
+    String sqlInsert = "INSERT INTO tbl_pedido (clid, pedfecha, pedTotalGeneral) VALUES (?, ?, ?)";
     stmtInsert = conn.prepareStatement(sqlInsert);
     // Obtener la fecha actual
 LocalDate fechaActual = LocalDate.now();
-String status = "Pendiente";
+
 // Convertir LocalDate a java.sql.Date
 java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaActual);
     // Establece los valores en los parámetros de la sentencia INSERT
     stmtInsert.setInt(1, Id);
     stmtInsert.setDate(2, fechaSQL);
     stmtInsert.setDouble(3, Tot);
-    stmtInsert.setString(4, status);
     
     // Ejecuta la sentencia INSERT
     int filasInsertadas = stmtInsert.executeUpdate();
@@ -328,11 +321,6 @@ java.sql.Date fechaSQL = java.sql.Date.valueOf(fechaActual);
     } else {
         System.out.println("No se pudo insertar");
     }
-    String estatus = "Pedido";
-    stmtUpdate = conn.prepareStatement("UPDATE tbl_cotizacion SET cotEstatus = ?  WHERE cotid ='"+cotid+"'");
-                stmtUpdate.setString(1, estatus);
-                stmtUpdate.executeUpdate();
-            
 } catch (SQLException ex) {
     ex.printStackTrace(System.out);
 } finally {
@@ -469,3 +457,4 @@ public int obtenerUltimoIdPedido() {
     }
 
 }
+ 
