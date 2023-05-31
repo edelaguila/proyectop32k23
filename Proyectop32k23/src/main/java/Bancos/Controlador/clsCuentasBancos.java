@@ -131,14 +131,14 @@ public class clsCuentasBancos {
     
     @Override
     public String toString() {
-        return "clsCuentas{" + "IdCuenta=" + IdCuenta + ", NumeroCuenta=" + NumeroCuenta + ", SaldoCuenta=" + SaldoCuenta + ", IdPersona=" + IdPersona + ", IdTipoCuenta=" + IdTipoCuenta + ", EstatusCuenta=" + EstatusCuenta + '}';
+        return "clsCuentas{" + "IdCuenta=" + IdCuenta + ", SaldoCuenta=" + SaldoCuenta + ", IdPersona=" + IdPersona + ", IdTipoCuenta=" + IdTipoCuenta + ", EstatusCuenta=" + EstatusCuenta + ", tipModId=" + tipModId + ", codBanco=" + codBanco + '}';
     }
     //Metodos de acceso a la capa controlador
     
-    public clsCuentasBancos getBuscarInformacionNumeroCuenta(clsCuentasBancos cuenta)
+    public clsCuentasBancos getBuscarInformacionPorIdPersona(clsCuentasBancos cuenta)
     {
         daoCuentasBancos daocuentas = new daoCuentasBancos();
-        return daocuentas.consultaNumeroCuenta(cuenta);
+        return daocuentas.consultaPorIdPersona(cuenta);
     }
     public clsCuentasBancos getBuscarInformacionCuentaPorId(clsCuentasBancos cuenta)
     {
