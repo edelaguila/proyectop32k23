@@ -32,7 +32,6 @@ public class clsCotizacion {
     private int IdCot;
     private String FechaCot;
     private double TotalCot;
-    private String estatusCot;
 
     public clsCotizacion() {
     }
@@ -124,14 +123,6 @@ public String getFechaCot() {
 
 public void setFechaCot(String FechaCot) {
     this.FechaCot = FechaCot;
-}
-
-public String getEstatusCot() {
-    return estatusCot;
-}
-
-public void setEstatusCot(String estatusCot) {
-    this.estatusCot = estatusCot;
 }
 
 public double getTotalCot() {
