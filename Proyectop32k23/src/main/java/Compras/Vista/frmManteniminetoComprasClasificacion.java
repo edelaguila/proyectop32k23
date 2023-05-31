@@ -5,7 +5,13 @@
  */
 package Compras.Vista;
 
-//import Seguridad.Controlador.clsModulo;
+import Compras.Controlador.clsBodega;
+import Compras.Controlador.clsProveedor;
+import Compras.Controlador.clsClasificacionCompras;
+import Compras.Controlador.clsDetalleCompra;
+import Compras.Controlador.clsFactura;
+import Compras.Controlador.clsModuloCompras;
+import Compras.Controlador.clsProducto;
 import Compras.Modelo.daoProveedor;
 import Seguridad.Controlador.clsModulo;
 import java.util.List;

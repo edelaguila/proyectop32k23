@@ -4,40 +4,56 @@
  */
 
 package Compras.Controlador;
+import Compras.Modelo.daoProveedor;
 import java.util.List;
-//import Seguridad.Modelo.daoProveedor;
-/**
- *
- * Hecho por Luis Diego Cortez Mérida, 9959-20-7425, Grupo 4
- */
+
 public class clsProveedor {
     private int id_proveedor;
     private String nombre;
     private String direccion;
+    private int telefono;
+    private String email;
 
-    public int getId_proveedor() {
+    public int getid_proveedor() {
         return id_proveedor;
     }
 
-    public void setId_proveedor(int id_proveedor) {
+    public void setid_proveedor(int id_proveedor) {
         this.id_proveedor = id_proveedor;
     }
 
-    public String getNombre() {
+    public String getnombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setnombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDireccion() {
+    public String getdireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setdireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    public int gettelefono() {
+        return id_proveedor;
+    }
+
+    public void settelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getemail() {
+        return email;
+    }
+
+    public void setemail(String email) {
+        this.email = email;
+    }
+
 
     public clsProveedor() {
     }
@@ -46,17 +62,36 @@ public class clsProveedor {
         this.id_proveedor = id_proveedor;
     }
 
+    public clsProveedor(int id_proveedor, String nombre) {
+        this.id_proveedor = id_proveedor;
+        this.nombre = nombre;
+    }
+    
     public clsProveedor(int id_proveedor, String nombre, String direccion) {
         this.id_proveedor = id_proveedor;
         this.nombre = nombre;
         this.direccion = direccion;
     }
+    
+    public clsProveedor(int id_proveedor, String nombre, String direccion, int telefono) {
+        this.id_proveedor = id_proveedor;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+    
+    public clsProveedor(int id_proveedor, String nombre, String direccion, int telefono, String email) {
+        this.id_proveedor = id_proveedor;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+    }
 
     @Override
     public String toString() {
-        return "clsProveedor{" + "id_proveedor=" + id_proveedor + ", nombre=" + nombre + ", direccion=" + direccion + '}';
+        return "clsProveedor{" + "id_proveedor=" + id_proveedor + ", nombre=" + nombre + ", direccion=" + direccion + "telefono=" + telefono + "email=" + email + '}';
     }
-    /*Métodos del Dao
     public clsProveedor getBuscarInformacionProveedorPorNombre(clsProveedor proveedor)
     {
         daoProveedor daoProveedor = new daoProveedor();
@@ -87,7 +122,7 @@ public class clsProveedor {
     {
         daoProveedor daoProveedor = new daoProveedor();
         return daoProveedor.actualizaProveedor(proveedor);
-    }*/
+    }
 
     public void add(clsProveedor proveedor) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

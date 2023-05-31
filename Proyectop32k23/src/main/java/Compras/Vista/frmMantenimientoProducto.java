@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seguridad.Vista;
+package Compras.Vista;
 
-
+import Compras.Controlador.clsBodega;
+import Compras.Controlador.clsProveedor;
+import Compras.Controlador.clsClasificacionCompras;
+import Compras.Controlador.clsDetalleCompra;
+import Compras.Controlador.clsFactura;
+import Compras.Controlador.clsModuloCompras;
+import Compras.Controlador.clsProducto;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuario;
-import Seguridad.Controlador.clsAplicacion;
-import Seguridad.Controlador.clsAplicacionUsuario;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +29,7 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
-public class frmAplicacionUsuario extends javax.swing.JInternalFrame {
+public class frmMantenimientoProducto extends javax.swing.JInternalFrame {
     
 //int codigoAplicacion=preguntar;
 
@@ -40,48 +44,45 @@ public class frmAplicacionUsuario extends javax.swing.JInternalFrame {
 
 public void llenadoDeTabla1() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID Aplicacion");
-        modelo.addColumn("Nombre Aplicacion");
-        clsAplicacion aplicacion = new clsAplicacion();
-        List<clsAplicacion> listaAplicaciones = aplicacion.getListadoAplicaciones();
+        modelo.addColumn("id_clasificacion");
+        modelo.addColumn("nombre_clasificacion");
+        clsClasificacionCompras clasificacionCompras = new clsClasificacionCompras();
+        List<clsClasificacionCompras> listaClasificacionCompras = clasificacionCompras.getListadoClasificacionCompras();
         tablaAplicacionesDisponibles.setModel(modelo);
         String[] dato = new String[2];
-        for (int i = 0; i < listaAplicaciones.size(); i++) {
-            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdAplicacion());
-            dato[1] = listaAplicaciones.get(i).getNombreAplicacion();
+        for (int i = 0; i < listaClasificacionCompras.size(); i++) {
+            dato[0] = Integer.toString(listaClasificacionCompras.get(i).getid_clasificacion());
+            dato[1] = listaClasificacionCompras.get(i).getnombre_clasificacion();
             modelo.addRow(dato);
         }   
     }
     
     public void llenadoDeTabla2() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID Aplicacion");
-        modelo.addColumn("ID Usuario");
-        modelo.addColumn("INS");
-        modelo.addColumn("UPD");
-        modelo.addColumn("DEL");
-        modelo.addColumn("PRI"); 
-        clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-        List<clsAplicacionUsuario> listaAplicacionUsuarios = aplicacionusuario.getListadoAplicacionUsuario();
+        modelo.addColumn("id_producto");
+        modelo.addColumn("nombre_producto");
+        modelo.addColumn("descripcion_producto");
+        modelo.addColumn("precio_unitario");
+        modelo.addColumn("existencias_total");
+        clsProducto producto = new clsProducto();
+        List<clsProducto> listaProducto = producto.getListadoProducto();
         tablaAplicacionesAsignadas.setModel(modelo);
         String[] dato = new String[6];
-        for (int i = 0; i < listaAplicacionUsuarios.size(); i++) {
-            dato[0] = Integer.toString(listaAplicacionUsuarios.get(i).getIdAplicacion());
-            dato[1] = Integer.toString(listaAplicacionUsuarios.get(i).getIdUsuario());
-            dato[2] = listaAplicacionUsuarios.get(i).getRegAplUsu();
-            dato[3] = listaAplicacionUsuarios.get(i).getModAplUsu();
-            dato[4] = listaAplicacionUsuarios.get(i).getEliAplUsu();
-            dato[5] = listaAplicacionUsuarios.get(i).getImpAplUsu();
+        for (int i = 0; i < listaProducto.size(); i++) {
+            dato[0] = Integer.toString(listaProducto.get(i).getid_producto());
+            dato[1] = listaProducto.get(i).getnombre_producto();
+            dato[2] = listaProducto.get(i).getdescripcion_producto();
+            dato[3] = Double.toString(listaProducto.get(i).getprecio_unitario());
+            dato[4] = Integer.toString(listaProducto.get(i).getexistencias_total());
             modelo.addRow(dato);
         }   
     }
     
-    int codigoAplicacion= 12;
-    public frmAplicacionUsuario() {
+    int codigoAplicacion= 200;
+    public frmMantenimientoProducto() {
         initComponents();
         llenadoDeTabla1();
         llenadoDeTabla2();
-        llenadoDeCombos();
     }
 
     /**
@@ -393,19 +394,18 @@ public void llenadoDeTabla1() {
         System.out.println("Usuario retornado:" + usuario);
         txtNombre.setText(usuario.getNombreUsuario());
         txtTipoUsuario.setText(Integer.toString(usuario.getTipoUsuario()));
-        clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-        aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
-        aplicacionusuario = aplicacionusuario.getBuscarInformacionAplicacionUsuarioPorId(aplicacionusuario);
+        clsProducto producto = new clsProducto();
+        producto.setid_producto(Integer.parseInt(txtIdUsuario.getText()));
+        producto = producto.getconsultaProductoPorId(producto);
         DefaultTableModel model = (DefaultTableModel) tablaAplicacionesAsignadas.getModel();
         String[] dato = new String[6];
-        if (aplicacionusuario != null) {
+        if (producto != null) {
             // Rellenar el array con los datos del usuario
-            dato[0] = Integer.toString(aplicacionusuario.getIdAplicacion());
-            dato[1] = Integer.toString(aplicacionusuario.getIdUsuario());
-            dato[2] = aplicacionusuario.getRegAplUsu();
-            dato[3] = aplicacionusuario.getEliAplUsu();
-            dato[4] = aplicacionusuario.getEliAplUsu();
-            dato[5] = aplicacionusuario.getImpAplUsu();
+            dato[0] = Integer.toString(producto.getid_producto());
+            dato[1] = Integer.toString(producto.getexistencias_total());
+            dato[2] = producto.getnombre_producto();
+            dato[3] = producto.getdescripcion_producto();
+            dato[4] = Double.toString(producto.getprecio_unitario());
             // Agregar el array a la tabla
             model.addRow(dato);
         }else{
@@ -439,17 +439,17 @@ public void llenadoDeTabla1() {
         if(is.length()>0){
             DefaultTableModel model = (DefaultTableModel)
             tablaAplicacionesAsignadas.getModel();
-            clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-            aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+            clsProducto producto = new clsProducto();
+            producto.setid_producto(Integer.parseInt(txtIdUsuario.getText()));
             int s = tablaAplicacionesAsignadas.getSelectedRow();
             if (s<0){
                 JOptionPane.showMessageDialog(null,"Debe seleccionar una fila de la tabla" );
             }else {
-                int aid=Integer.parseInt(tablaAplicacionesAsignadas.getValueAt(s, 0).toString());
-                aplicacionusuario.setIdAplicacion(aid);
+                int id=Integer.parseInt(tablaAplicacionesAsignadas.getValueAt(s, 0).toString());
+                producto.setid_producto(id);
                 int confirmar=JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea Eliminar esta aplicacion para usuario? ");
                 if(JOptionPane.OK_OPTION==confirmar) {
-                    aplicacionusuario.setBorrarAplicacion(aplicacionusuario);
+                    producto.setborrarProducto(producto);
                     model.removeRow(s);
                     JOptionPane.showMessageDialog(null,"Aplicacion para el usuario Eliminada exitosamente" );
                 }
@@ -472,11 +472,11 @@ public void llenadoDeTabla1() {
         if(is.length()>0){
             DefaultTableModel modeloDestino = (DefaultTableModel)tablaAplicacionesAsignadas.getModel();
             tablaAplicacionesAsignadas.getModel();{        
-                clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-                aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                clsProducto producto = new clsProducto();
+                producto.setid_producto(Integer.parseInt(txtIdUsuario.getText()));
                 int a = tablaAplicacionesAsignadas.getRowCount();
                 for(int i=a-1; i>=0; i--){
-                    aplicacionusuario.setBorrarTodoAplicacion(aplicacionusuario);
+                    producto.setborrarProducto(producto);
                     modeloDestino.removeRow(i);  
                 }  
                 JOptionPane.showMessageDialog(null,"Aplicaciones para el usuario Eliminada exitosamente");
@@ -500,34 +500,26 @@ public void llenadoDeTabla1() {
             if(rbRegistrar.isSelected()||rbModificar.isSelected()||rbEliminar.isSelected()||rbImprimir.isSelected()){
                 int FilaSeleccionada= tablaAplicacionesDisponibles.getSelectedRow();
                 if(FilaSeleccionada !=-1){
-                    String idAplicacion, idUsuario=txtIdUsuario.getText();
-                    idAplicacion= tablaAplicacionesDisponibles.getValueAt(FilaSeleccionada,0).toString();
-                    idUsuario= tablaAplicacionesDisponibles.getValueAt(FilaSeleccionada,1).toString();
+                    String id_clasificacion, id_producto=txtIdUsuario.getText();
+                    id_clasificacion= tablaAplicacionesDisponibles.getValueAt(FilaSeleccionada,0).toString();
+                    id_producto= tablaAplicacionesDisponibles.getValueAt(FilaSeleccionada,1).toString();
 
-                    String datos[]={idAplicacion, idUsuario};
+                    String datos[]={id_clasificacion, id_producto};
                     DefaultTableModel modeloAplicacionesAsignadas = (DefaultTableModel)tablaAplicacionesAsignadas.getModel();
                     modeloAplicacionesAsignadas.addRow(datos);
-                    clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-                    aplicacionusuario.setIdAplicacion(Integer.parseInt(idAplicacion));
-                    aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                    clsProducto producto = new clsProducto();
+                    producto.setid_clasificacion(Integer.parseInt(id_clasificacion));
+                    producto.setid_producto(Integer.parseInt(txtIdUsuario.getText()));
                     if(rbRegistrar.isSelected()){
-                        aplicacionusuario.setRegAplUsu("T");
+                        producto.setnombre_producto("T");
                     }else{
-                        aplicacionusuario.setRegAplUsu("F");
+                        producto.setnombre_producto("F");
                     }if(rbModificar.isSelected()){
-                        aplicacionusuario.setModAplUsu("T");
+                        producto.setdescripcion_producto("T");
                     }else{
-                        aplicacionusuario.setModAplUsu("F");
-                    }if(rbEliminar.isSelected()){
-                        aplicacionusuario.setEliAplUsu("T");
-                    }else{
-                        aplicacionusuario.setEliAplUsu("F");
-                    }if(rbImprimir.isSelected()){
-                        aplicacionusuario.setImpAplUsu("T");
-                    }else{
-                        aplicacionusuario.setImpAplUsu("F");
+                        producto.setdescripcion_producto("F");
                     }
-                    aplicacionusuario.setIngresarAplicacionUsuario(aplicacionusuario);
+                    producto.setingresaProducto(producto);
                     JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                                 "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
                     llenadoDeTabla2();
@@ -558,30 +550,22 @@ public void llenadoDeTabla1() {
                     Object fila [] = new Object [tablaAplicacionesDisponibles.getColumnCount()];
                     for (int j=0; j<tablaAplicacionesDisponibles.getColumnCount(); j++){
                         fila[j] = tablaAplicacionesDisponibles.getValueAt(i,j);
-                        String idAplicacion= tablaAplicacionesDisponibles.getValueAt(i,j).toString();
+                        String id_clasificacion= tablaAplicacionesDisponibles.getValueAt(i,j).toString();
                     }
-                    String idAplicacion= tablaAplicacionesDisponibles.getValueAt(i,0).toString();
-                    clsAplicacionUsuario aplicacionusuario = new clsAplicacionUsuario();
-                    aplicacionusuario.setIdAplicacion(Integer.parseInt(idAplicacion));
-                    aplicacionusuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+                    String id_clasificacion= tablaAplicacionesDisponibles.getValueAt(i,0).toString();
+                    tbl_Clasificacion producto = new tbl_Clasificacion();
+                    producto.setid_clasificacion(Integer.parseInt(id_clasificacion));
+                    producto.setid_producto(Integer.parseInt(txtIdUsuario.getText()));
                     if(rbRegistrar.isSelected()){
-                        aplicacionusuario.setRegAplUsu("T");
+                        producto.setnombre_producto("T");
                     }else{
-                        aplicacionusuario.setRegAplUsu("F");
+                        producto.setnombre_producto("F");
                     }if(rbModificar.isSelected()){
-                        aplicacionusuario.setModAplUsu("T");
+                        producto.setdescripcion_producto("T");
                     }else{
-                        aplicacionusuario.setModAplUsu("F");
-                    }if(rbEliminar.isSelected()){
-                        aplicacionusuario.setEliAplUsu("T");
-                    }else{
-                        aplicacionusuario.setEliAplUsu("F");
-                    }if(rbImprimir.isSelected()){
-                        aplicacionusuario.setImpAplUsu("T");
-                    }else{
-                        aplicacionusuario.setImpAplUsu("F");
+                        producto.setdescripcion_producto("F");
                     }
-                    aplicacionusuario.setIngresarAplicacionUsuario(aplicacionusuario);
+                    producto.setingresaProducto(producto);
                     JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                                 "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
                     modeloDestino.addRow(fila);

@@ -15,6 +15,7 @@ public class clsBodega {
     private int id_bodega;
     private String nombre_bodega;
     private String direccion_bodega;
+    private int telefono;
 
     public int getid_bodega() {
         return id_bodega;
@@ -39,11 +40,20 @@ public class clsBodega {
     public void setdireccion_bodega(String direccion_bodega) {
         this.direccion_bodega = direccion_bodega;
     }
+    
+    public int gettelefono() {
+        return telefono;
+    }
 
-    public clsBodega(int id_bodega, String nombre_bodega, String direccion_bodega) {
+    public void settelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public clsBodega(int id_bodega, String nombre_bodega, String direccion_bodega, int telefono) {
         this.id_bodega = id_bodega;
         this.nombre_bodega = nombre_bodega;
         this.direccion_bodega = direccion_bodega;
+        this.telefono = telefono;
     }
     
     public clsBodega(int id_bodega, String nombre_bodega) {
@@ -59,6 +69,11 @@ public class clsBodega {
     
 }
 
+    @Override
+    public String toString() {
+        return "clsBodega{" + "id_bodega=" + id_bodega + ", nombre_bodega=" + nombre_bodega + ", direccion_bodega=" + direccion_bodega + "telefono=" + telefono + '}';
+    }
+    
     public clsBodega getBuscarInformacionBodegaPorNombre(clsBodega bodega)
     {
         daoBodega daoBodega = new daoBodega();

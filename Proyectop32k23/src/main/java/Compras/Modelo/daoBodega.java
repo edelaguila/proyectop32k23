@@ -18,12 +18,12 @@ import java.util.List;
  * @author Bryan Illescas 9959-20-273
  */
 public class daoBodega {
-    private static final String SQL_SELECT = "SELECT id_bodega, nombre_bodega, direccion_bodega FROM tbl_Bodega";
-    private static final String SQL_INSERT = "INSERT INTO tbl_Bodega(id_bodega, nombre_bodega, direccion_bodega) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_Bodega SET id_bodega=?, nombre_bodega=?, direccion_bodega=? WHERE id_bodega = ?";
+    private static final String SQL_SELECT = "SELECT id_bodega, nombre_bodega, direccion_bodega, telefono FROM tbl_Bodega";
+    private static final String SQL_INSERT = "INSERT INTO tbl_Bodega(id_bodega, nombre_bodega, direccion_bodega, telefono) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_Bodega SET id_bodega=?, nombre_bodega=?, direccion_bodega=?, telefono=? WHERE id_bodega = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_Bodega WHERE id_bodega=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT id_bodega, direccion_bodega FROM tbl_Bodega WHERE nombre_bodega = ?";
-    private static final String SQL_SELECT_ID = "SELECT id_bodega, nombre_bodega, direccion_bodega FROM tbl_Bodega WHERE id_bodega = ?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT id_bodega, direccion_bodega, telefono FROM tbl_Bodega WHERE nombre_bodega = ?";
+    private static final String SQL_SELECT_ID = "SELECT id_bodega, nombre_bodega, direccion_bodega, telefono FROM tbl_Bodega WHERE id_bodega = ?";    
 
     public List<clsBodega> consultaBodega() {
         Connection conn = null;
@@ -39,11 +39,13 @@ public class daoBodega {
                 int id = rs.getInt("id_bodega");
                 String nombre = rs.getString("nombre_bodega");
                 String direccion = rs.getString("direccion_bodega");
+                int telefono = rs.getInt("telefono");
                 
                 clsBodega bodega = new clsBodega();
                 bodega.setid_bodega(id);
                 bodega.setnombre_bodega(nombre);
                 bodega.setdireccion_bodega(direccion);
+                bodega.settelefono(telefono);
                 bodega.add(bodega);
             }
         } catch (SQLException ex) {
@@ -66,6 +68,7 @@ public class daoBodega {
             stmt.setInt(1, bodega.getid_bodega());
             stmt.setString(2, bodega.getnombre_bodega());
             stmt.setString(3, bodega.getdireccion_bodega());
+            stmt.setInt(1, bodega.gettelefono());
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
             System.out.println("Registros afectados:" + rows);
@@ -90,7 +93,7 @@ public class daoBodega {
             stmt.setInt(1, bodega.getid_bodega());
             stmt.setString(2, bodega.getnombre_bodega());
             stmt.setString(3, bodega.getdireccion_bodega());
-
+            stmt.setInt(1, bodega.gettelefono());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
 
@@ -138,14 +141,15 @@ public class daoBodega {
             stmt.setInt(1, bodega.getid_bodega());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("id_detalle_compra");
+                int id = rs.getInt("id_bodega");
                 String nombre = rs.getString("nombre_bodega");
                 String direccion = rs.getString("direccion_bodega");
-
-                //aplicacion = new clsAplicacion();
+                int telefono = rs.getInt("telefono");
+                
                 bodega.setid_bodega(id);
                 bodega.setnombre_bodega(nombre);
                 bodega.setdireccion_bodega(direccion);
+                bodega.settelefono(telefono);
                 System.out.println(" registro consultado: " + bodega);                
             }
             //System.out.println("Registros buscado:" + persona);
@@ -172,15 +176,16 @@ public class daoBodega {
             //stmt.setString(1, bodega.getNombreAplicacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("id_detalle_compra");
+                int id = rs.getInt("id_bodega");
                 String nombre = rs.getString("nombre_bodega");
                 String direccion = rs.getString("direccion_bodega");
-
-                //aplicacion = new clsAplicacion();
+                int telefono = rs.getInt("telefono");
+                
                 bodega.setid_bodega(id);
                 bodega.setnombre_bodega(nombre);
                 bodega.setdireccion_bodega(direccion);
-                System.out.println(" registro consultado: " + bodega);                
+                bodega.settelefono(telefono);
+                System.out.println(" registro consultado: " + bodega);               
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {

@@ -19,12 +19,12 @@ import java.util.List;
  * @author Joshua Aguilar 9959-20-4660
  */
 public class daoProducto {
-    private static final String SQL_SELECT = "SELECT id_producto, nombre_producto, precio_unitario, existencias_total FROM tbl_Producto";
-    private static final String SQL_INSERT = "INSERT INTO tbl_Producto(id_producto, nombre_producto, precio_unitario, existencias_total) VALUES(?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_Producto SET nombre_producto=?, precio_unitario=?, existencias_total=? WHERE id_producto = ?";
+    private static final String SQL_SELECT = "SELECT id_producto, nombre_producto, descripcion_producto, precio_unitario, existencias_total FROM tbl_Producto";
+    private static final String SQL_INSERT = "INSERT INTO tbl_Producto(id_producto, nombre_producto, descripcion_producto, precio_unitario, existencias_total) VALUES(?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_Producto SET nombre_producto=?, descripcion_producto=?, precio_unitario=?, existencias_total=? WHERE id_producto = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_Producto WHERE id_producto=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT id_producto, precio_unitario, existencias_total FROM tbl_Producto WHERE nombre_producto = ?";
-    private static final String SQL_SELECT_ID = "SELECT nombre_producto, precio_unitario, existencias_total FROM tbl_Producto WHERE id_producto = ?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT id_producto, descripcion_producto, precio_unitario, existencias_total FROM tbl_Producto WHERE nombre_producto = ?";
+    private static final String SQL_SELECT_ID = "SELECT nombre_producto, descripcion_producto, precio_unitario, existencias_total FROM tbl_Producto WHERE id_producto = ?";    
 
     public List<clsProducto> consultaProducto() {
         Connection conn = null;
@@ -39,11 +39,15 @@ public class daoProducto {
             while (rs.next()) {
                 int id = rs.getInt("id_producto");
                 String nombre = rs.getString("nombre_producto");
+                String descripcion = rs.getString("descripcion_producto");
                 Double precio = rs.getDouble("precio_unitario");
+                int existencias = rs.getInt("existencias_total");
                 clsProducto producto = new clsProducto();
                 producto.setid_producto(id);
                 producto.setnombre_producto(nombre);
+                producto.setdescripcion_producto(descripcion);
                 producto.setprecio_unitario(precio);
+                producto.setexistencias_total(existencias);
                 producto.add(producto);
             }
         } catch (SQLException ex) {
@@ -65,7 +69,9 @@ public class daoProducto {
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, producto.getid_producto());
             stmt.setString(1, producto.getnombre_producto());
+            stmt.setString(1, producto.getdescripcion_producto());
             stmt.setDouble(2, producto.getprecio_unitario());
+            stmt.setInt(1, producto.getexistencias_total());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -88,9 +94,11 @@ public class daoProducto {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt.setInt(1, producto.getid_producto());
             stmt.setString(1, producto.getnombre_producto());
+            stmt.setString(1, producto.getdescripcion_producto());
             stmt.setDouble(2, producto.getprecio_unitario());
-            stmt.setInt(3, producto.getid_producto());
+            stmt.setInt(1, producto.getexistencias_total());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -135,18 +143,25 @@ public class daoProducto {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + producto);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            stmt.setInt(1, producto.getid_producto());            
-            stmt.setString(1, producto.getnombre_producto());
+            stmt.setInt(1, producto.getid_producto());
+            stmt.setString(2, producto.getnombre_producto());
+            stmt.setString(3, producto.getdescripcion_producto());
+            stmt.setDouble(4, producto.getprecio_unitario());
+            stmt.setInt(5, producto.getexistencias_total());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_producto");
                 String nombre = rs.getString("nombre_producto");
+                String descripcion = rs.getString("descripcion_producto");
                 Double precio = rs.getDouble("precio_unitario");
-
-                //aplicacion = new clsAplicacion();
+                int existencias = rs.getInt("existencias_total");
+                
                 producto.setid_producto(id);
                 producto.setnombre_producto(nombre);
+                producto.setdescripcion_producto(descripcion);
                 producto.setprecio_unitario(precio);
+                producto.setexistencias_total(existencias);
+                producto.add(producto);
                 System.out.println(" registro consultado: " + producto);                
             }
             //System.out.println("Registros buscado:" + persona);
@@ -161,7 +176,7 @@ public class daoProducto {
         //return personas;  // Si se utiliza un ArrayList
         return producto;
     }
-    public clsProducto setconsultaProductoPorId(clsProducto producto) {
+    public clsProducto consultaProductoPorId(clsProducto producto) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -169,19 +184,24 @@ public class daoProducto {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + producto);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            stmt.setInt(1, producto.getid_producto());            
-            stmt.setString(1, producto.getnombre_producto());
+            stmt.setInt(1, producto.getid_producto());
+            stmt.setString(2, producto.getnombre_producto());
+            stmt.setString(3, producto.getdescripcion_producto());
+            stmt.setDouble(4, producto.getprecio_unitario());
+            stmt.setInt(5, producto.getexistencias_total());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_producto");
                 String nombre = rs.getString("nombre_producto");
+                String descripcion = rs.getString("descripcion_producto");
                 Double precio = rs.getDouble("precio_unitario");
-
-                //aplicacion = new clsAplicacion();
+                int existencias = rs.getInt("existencias_total");
+                
                 producto.setid_producto(id);
                 producto.setnombre_producto(nombre);
+                producto.setdescripcion_producto(descripcion);
                 producto.setprecio_unitario(precio);
-                System.out.println(" registro consultado: " + producto);                              
+                producto.setexistencias_total(existencias);                              
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {

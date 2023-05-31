@@ -81,17 +81,17 @@ public class clsModuloCompras {
 
     public clsModuloCompras() {
     }
-    //Metodos de acceso a la capa controlador
-    /*public clsModuloCompras getBuscarInformacionompraPorFecha(clsModuloCompras compra)
-    {
-        daoModuloCompras daoModuloCompras = new daoModuloCompras();
-        return daoModuloCompras.consultaModuloComprasPorFecha(compra);
+    
+    @Override
+    public String toString() {
+        return "clsModuloCompras{" +"id_compra=" + id_compra + "id_proveedor=" + id_proveedor + ", fecha_compra=" + fecha_compra + ", total_compra=" + total_compra + '}';
     }
-    public clsModuloCompras getBuscarInformacionModuloComprasPorId(clsModuloCompras compra)
+    //Metodos de acceso a la capa controlador
+    public clsModuloCompras getConsultaModuloCompraPorId(clsModuloCompras compra)
     {
         daoModuloCompras daoModuloCompras = new daoModuloCompras();
-        return daoModuloCompras.consultaModuloComprasPorId(compra);
-    }   */ 
+        return daoModuloCompras.consultaModuloCompraPorId(compra);
+    } 
     public List<clsModuloCompras> getListadoCompra()
     {
         daoModuloCompras daoModuloCompras = new daoModuloCompras();

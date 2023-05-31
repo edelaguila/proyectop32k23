@@ -37,7 +37,6 @@ public class daoDetalleCompra {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_detalle_compra");
-                int idoc = rs.getInt("id_orden_compra");
                 int idp = rs.getInt("id_producto");
                 int idb = rs.getInt("id_bodega");
                 int idc = rs.getInt("id_clasificacion");
@@ -45,7 +44,6 @@ public class daoDetalleCompra {
                 Double total = rs.getDouble("precio_unitario");
                 clsDetalleCompra detalleCompra = new clsDetalleCompra();
                 detalleCompra.setid_detalle_compra(id);
-                detalleCompra.setid_orden_compra(idoc);
                 detalleCompra.setid_producto(idp);
                 detalleCompra.setid_bodega(idb);
                 detalleCompra.setid_clasificacion(idc);
@@ -71,7 +69,6 @@ public class daoDetalleCompra {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, detalleCompra.getid_detalle_compra());
-            stmt.setInt(2, detalleCompra.getid_orden_compra());
             stmt.setInt(3, detalleCompra.getid_producto());
             stmt.setInt(4, detalleCompra.getid_bodega());
             stmt.setInt(5, detalleCompra.getid_clasificacion());
@@ -100,7 +97,6 @@ public class daoDetalleCompra {
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setInt(1, detalleCompra.getid_detalle_compra());
-            stmt.setInt(2, detalleCompra.getid_orden_compra());
             stmt.setInt(3, detalleCompra.getid_producto());
             stmt.setInt(4, detalleCompra.getid_bodega());
             stmt.setInt(5, detalleCompra.getid_clasificacion());
@@ -155,7 +151,6 @@ public class daoDetalleCompra {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_detalle_compra");
-                int idoc = rs.getInt("id_orden_compra");
                 int idp = rs.getInt("id_producto");
                 int idb = rs.getInt("id_bodega");
                 int idc = rs.getInt("id_clasificacion");
@@ -164,7 +159,6 @@ public class daoDetalleCompra {
 
                 //aplicacion = new clsAplicacion();
                 detalleCompra.setid_detalle_compra(id);
-                detalleCompra.setid_orden_compra(idoc);
                 detalleCompra.setid_producto(idp);
                 detalleCompra.setid_bodega(idb);
                 detalleCompra.setid_clasificacion(idc);
@@ -197,7 +191,6 @@ public class daoDetalleCompra {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_detalle_compra");
-                int idoc = rs.getInt("id_orden_compra");
                 int idp = rs.getInt("id_producto");
                 int idb = rs.getInt("id_bodega");
                 int idc = rs.getInt("id_clasificacion");
@@ -206,7 +199,6 @@ public class daoDetalleCompra {
 
                 //aplicacion = new clsAplicacion();
                 detalleCompra.setid_detalle_compra(id);
-                detalleCompra.setid_orden_compra(idoc);
                 detalleCompra.setid_producto(idp);
                 detalleCompra.setid_bodega(idb);
                 detalleCompra.setid_clasificacion(idc);

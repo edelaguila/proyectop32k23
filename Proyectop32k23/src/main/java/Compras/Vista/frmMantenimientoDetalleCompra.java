@@ -5,6 +5,13 @@
  */
 package Compras.Vista;
 
+import Compras.Controlador.clsBodega;
+import Compras.Controlador.clsProveedor;
+import Compras.Controlador.clsClasificacionCompras;
+import Compras.Controlador.clsDetalleCompra;
+import Compras.Controlador.clsFactura;
+import Compras.Controlador.clsModuloCompras;
+import Compras.Controlador.clsProducto;
 import Compras.Controlador.clsDetalleCompra;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsModulo;
@@ -33,7 +40,6 @@ public class frmMantenimientoDetalleCompra extends javax.swing.JInternalFrame {
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
-        modelo.addColumn("ID Orden de Compra");
         modelo.addColumn("ID Producto");
         modelo.addColumn("Nombre");
         modelo.addColumn("Precio");
@@ -49,12 +55,11 @@ public class frmMantenimientoDetalleCompra extends javax.swing.JInternalFrame {
         String[] dato = new String[10];
         for (int i = 0; i < listadetalleCompra.size(); i++) {
             dato[0] = Integer.toString(listadetalleCompra.get(i).getid_detalle_compra());
-            dato[1] = Integer.toString(listadetalleCompra.get(i).getid_orden_compra());
-            dato[2] = Integer.toString(listadetalleCompra.get(i).getid_producto());
-            dato[3] = Integer.toString(listadetalleCompra.get(i).getcantidad());
-            dato[4] = Double.toString(listadetalleCompra.get(i).getprecio_unitario());
-            dato[5] = Integer.toString(listadetalleCompra.get(i).getid_bodega());
-            dato[6] = Integer.toString(listadetalleCompra.get(i).getid_clasificacion());
+            dato[1] = Integer.toString(listadetalleCompra.get(i).getid_producto());
+            dato[2] = Integer.toString(listadetalleCompra.get(i).getcantidad());
+            dato[3] = Double.toString(listadetalleCompra.get(i).getprecio_unitario());
+            dato[4] = Integer.toString(listadetalleCompra.get(i).getid_bodega());
+            dato[5] = Integer.toString(listadetalleCompra.get(i).getid_clasificacion());
             modelo.addRow(dato);
         }       
     }
@@ -341,7 +346,6 @@ public class frmMantenimientoDetalleCompra extends javax.swing.JInternalFrame {
         detalleCompra = detalleCompra.getBuscarInformacionDetalleCompraPorId(detalleCompra);
         System.out.println("Modulo retornado:" + detalleCompra);        
         txtIDProducto.setText(Integer.toString(detalleCompra.getid_detalle_compra()));
-        txtIDProducto.setText(Integer.toString(detalleCompra.getid_orden_compra()));
         txtIDProducto.setText(Integer.toString(detalleCompra.getid_producto()));
         txtIDProducto.setText(Integer.toString(detalleCompra.getcantidad()));
         //txtIDProducto.setText(Double.toString(detalleCompra.getprecio_unitario()));
@@ -355,7 +359,6 @@ public class frmMantenimientoDetalleCompra extends javax.swing.JInternalFrame {
         clsDetalleCompra detalleCompra = new clsDetalleCompra();
 
         detalleCompra.setid_detalle_compra(Integer.parseInt(txtbuscado.getText()));
-        detalleCompra.setid_orden_compra(Integer.parseInt(txtbuscado.getText()));
         //detalleCompra.setid_producto(Integer.parseInt(txtbuscado.getText()));
         //detalleCompra.setcantidad(Integer.parseInt(txtbuscado.getText()));
         //detalleCompra.setprecio_unitario(Double.toString(txtbuscado.getText()));

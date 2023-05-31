@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class clsDetalleCompra {
     private int id_detalle_compra;
-    private int id_orden_compra;
     private int id_producto;
     private int id_bodega;
     private int id_clasificacion;
@@ -29,14 +28,6 @@ public class clsDetalleCompra {
         this.id_detalle_compra = id_detalle_compra;
     }
     
-    public int getid_orden_compra() {
-        return id_orden_compra;
-    }
-
-    public void setid_orden_compra(int id_orden_compra) {
-        this.id_orden_compra = id_orden_compra;
-    }
-
     public int getid_producto() {
         return id_producto;
     }
@@ -77,9 +68,8 @@ public class clsDetalleCompra {
         this.precio_unitario = precio_unitario;
     }
 
-    public clsDetalleCompra(int id_detalle_compra, int id_orden_compra, int id_producto, int id_bodega, int id_clasificacion, int cantidad, Double precio_unitario) {
+    public clsDetalleCompra(int id_detalle_compra, int id_producto, int id_bodega, int id_clasificacion, int cantidad, Double precio_unitario) {
         this.id_detalle_compra = id_detalle_compra;
-        this.id_orden_compra = id_orden_compra;
         this.id_producto = id_producto;
         this.id_bodega = id_bodega;
         this.id_clasificacion = id_clasificacion;
@@ -88,9 +78,8 @@ public class clsDetalleCompra {
         
     }
 
-    public clsDetalleCompra(int id_detalle_compra, int id_orden_compra, int id_producto, int id_bodega, int id_clasificacion, int cantidad) {
+    public clsDetalleCompra(int id_detalle_compra, int id_producto, int id_bodega, int id_clasificacion, int cantidad) {
         this.id_detalle_compra = id_detalle_compra;
-        this.id_orden_compra = id_orden_compra;
         this.id_producto = id_producto;
         this.id_bodega = id_bodega;
         this.id_clasificacion = id_clasificacion;
@@ -98,33 +87,24 @@ public class clsDetalleCompra {
         
     }
 
-    public clsDetalleCompra(int id_detalle_compra, int id_orden_compra, int id_producto, int id_bodega, int id_clasificacion) {
+    public clsDetalleCompra(int id_detalle_compra, int id_producto, int id_bodega, int id_clasificacion) {
         this.id_detalle_compra = id_detalle_compra;
-        this.id_orden_compra = id_orden_compra;
         this.id_producto = id_producto;
         this.id_bodega = id_bodega;
         this.id_clasificacion = id_clasificacion;
         
     }
     
-    public clsDetalleCompra(int id_detalle_compra, int id_orden_compra, int id_producto, int id_bodega) {
+    public clsDetalleCompra(int id_detalle_compra, int id_producto, int id_bodega) {
         this.id_detalle_compra = id_detalle_compra;
-        this.id_orden_compra = id_orden_compra;
         this.id_producto = id_producto;
         this.id_bodega = id_bodega;
         
     }
     
-    public clsDetalleCompra(int id_detalle_compra, int id_orden_compra, int id_producto) {
+    public clsDetalleCompra(int id_detalle_compra, int id_producto) {
         this.id_detalle_compra = id_detalle_compra;
-        this.id_orden_compra = id_orden_compra;
         this.id_producto = id_producto;
-        
-    }
-    
-    public clsDetalleCompra(int id_detalle_compra, int id_orden_compra) {
-        this.id_detalle_compra = id_detalle_compra;
-        this.id_orden_compra = id_orden_compra;
         
     }
     
@@ -132,16 +112,15 @@ public class clsDetalleCompra {
         this.id_detalle_compra = id_detalle_compra;
         
     }
-
-
+    
     public clsDetalleCompra() {
     }
-    //Metodos de acceso a la capa controlador
-    /*public clsDetalleCompras getconsultaDetalleCompraPorId(clsModuloCompras DetalleCompra)
-    {
-        daoDetalleCompra daoDetalleCompra = new daoDetalleCompra();
-        return daoDetalleCompra.consultaDetalleCompraPorId(DetalleCompra);
-    }*/
+    
+    @Override
+    public String toString() {
+        return "clsDetalleCompra{" + "id_detalle_compra=" + id_detalle_compra + ", id_producto=" + id_producto + ", id_bodega=" + id_bodega + "id_clasificacion=" + id_clasificacion + "cantidad=" + cantidad + "precio_unitario" + precio_unitario + '}';
+    }
+    
     public clsDetalleCompra getBuscarInformacionDetalleCompraPorId(clsDetalleCompra DetalleCompra)
     {
         daoDetalleCompra daoDetalleCompra = new daoDetalleCompra();

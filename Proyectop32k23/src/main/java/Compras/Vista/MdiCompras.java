@@ -46,11 +46,11 @@ public class MdiCompras extends javax.swing.JFrame {
         mnuSalirSistema = new javax.swing.JCheckBoxMenuItem();
         mnuCatalogos = new javax.swing.JMenu();
         MantenimientoProveedores = new javax.swing.JMenu();
-        ManteminientoProveedores = new javax.swing.JMenuItem();
         MantenimientoCompras = new javax.swing.JCheckBoxMenuItem();
         MantenimientoFactura = new javax.swing.JCheckBoxMenuItem();
         MantenimientoDetalleCompra = new javax.swing.JCheckBoxMenuItem();
         MantenimientoBodega = new javax.swing.JCheckBoxMenuItem();
+        MantenimientoProveedor = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         menuperfilUsuario = new javax.swing.JCheckBoxMenuItem();
@@ -110,13 +110,6 @@ public class MdiCompras extends javax.swing.JFrame {
             }
         });
 
-        ManteminientoProveedores.setText("MantenimientoProveedores");
-        ManteminientoProveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
-        MantenimientoProveedores.add(ManteminientoProveedores);
-
         MantenimientoCompras.setSelected(true);
         MantenimientoCompras.setText("MantenimientoCompras");
         MantenimientoCompras.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +146,15 @@ public class MdiCompras extends javax.swing.JFrame {
         });
         MantenimientoProveedores.add(MantenimientoBodega);
 
+        MantenimientoProveedor.setSelected(true);
+        MantenimientoProveedor.setText("MantenimientoProveedor");
+        MantenimientoProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoProveedorActionPerformed(evt);
+            }
+        });
+        MantenimientoProveedores.add(MantenimientoProveedor);
+
         mnuCatalogos.add(MantenimientoProveedores);
 
         mnuGeneral.add(mnuCatalogos);
@@ -162,6 +164,7 @@ public class MdiCompras extends javax.swing.JFrame {
         aplicacionesUsuarios.setText("Aplicaciones Usuarios");
         aplicacionesUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aplicacionesUsuariosActionPerformed(evt);
             }
         });
         mnuProcesos.add(aplicacionesUsuarios);
@@ -303,6 +306,15 @@ public class MdiCompras extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_MantenimientoBodegaActionPerformed
 
+    private void MantenimientoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoProveedorActionPerformed
+        // TODO add your handling code here:
+        frmManteniminetoProveedores ventana = new frmManteniminetoProveedores();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_MantenimientoProveedorActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -343,11 +355,11 @@ public class MdiCompras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ManteminientoProveedores;
     private javax.swing.JCheckBoxMenuItem MantenimientoBodega;
     private javax.swing.JCheckBoxMenuItem MantenimientoCompras;
     private javax.swing.JCheckBoxMenuItem MantenimientoDetalleCompra;
     private javax.swing.JCheckBoxMenuItem MantenimientoFactura;
+    private javax.swing.JCheckBoxMenuItem MantenimientoProveedor;
     private javax.swing.JMenu MantenimientoProveedores;
     private javax.swing.JMenuItem aplicacionesUsuarios;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;

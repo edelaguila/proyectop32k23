@@ -15,6 +15,7 @@ import java.util.List;
 public class clsProducto {
     private int id_producto;
     private String nombre_producto;
+    private String descripcion_producto;
     private Double precio_unitario;
     private int existencias_total;
     
@@ -34,6 +35,14 @@ public class clsProducto {
     public void setnombre_producto(String nombre_producto) {
         this.nombre_producto = nombre_producto;
     }
+    
+    public String getdescripcion_producto() {
+        return descripcion_producto;
+    }
+
+    public void setdescripcion_producto(String descripcion_producto) {
+        this.descripcion_producto = descripcion_producto;
+    }
 
     public Double getprecio_unitario() {
         return precio_unitario;
@@ -51,9 +60,10 @@ public class clsProducto {
         this.existencias_total = existencias_total;
     }
 
-    public clsProducto(int id_producto, String nombre_producto, Double precio_unitario, int existencias_total) {
+    public clsProducto(int id_producto, String nombre_producto, String descripcion_producto, Double precio_unitario, int existencias_total) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
+        this.descripcion_producto = descripcion_producto;
         this.precio_unitario = precio_unitario;
         this.existencias_total = existencias_total;
         
@@ -77,34 +87,40 @@ public class clsProducto {
 
     public clsProducto() {
     }
-    //Metodos de acceso a la capa controlador
-    /*public clsModuloCompras getconsultaFacturaPorFecha(clsModuloCompras factura)
-    {
-        daoFactura daoFactura = new daoFactura();
-        return daoFactura.consultaFacturaPorFecha(factura);
+    
+    @Override
+    public String toString() {
+        return "clsProducto{" + "id_producto=" + id_producto + ", nombre_producto=" + nombre_producto + ", descripcion_producto=" + descripcion_producto + "precio_unitario=" + precio_unitario + "existencias_total=" + existencias_total + '}';
     }
-    public clsModuloCompras getconsultaFacturaPorId(clsFactura factura)
+    
+    //Metodos de acceso a la capa controlador
+    public clsProducto getconsultaProductoPorNombre(clsProducto producto)
     {
-        daoFactura daoFactura = new daoFactura();
-        return daoFactura.consultaFacturaPorId(factura);
-    }*/
+        daoProducto daoProducto = new daoProducto();
+        return daoProducto.consultaProductoPorNombre(producto);
+    }
+    public clsProducto getconsultaProductoPorId(clsProducto producto)
+    {
+        daoProducto daoProducto = new daoProducto();
+        return daoProducto.consultaProductoPorId(producto);
+    }
     public List<clsProducto> getListadoProducto()
     {
         daoProducto daoProducto = new daoProducto();
         List<clsProducto> listadoProducto = daoProducto.consultaProducto();
         return listadoProducto;
     }
-    public int setBorrarProducto(clsProducto producto)
+    public int setborrarProducto(clsProducto producto)
     {
         daoProducto daoProducto = new daoProducto();
         return daoProducto.borrarProducto(producto);
     }          
-    public int setIngresarFactura(clsProducto producto)
+    public int setingresaProducto(clsProducto producto)
     {
         daoProducto daoProducto = new daoProducto();
         return daoProducto.ingresaProducto(producto);
     }              
-    public int setModificaringresaProducto(clsProducto producto)
+    public int setactualizaProducto(clsProducto producto)
     {
         daoProducto daoProducto = new daoProducto();
         return daoProducto.actualizaProducto(producto);

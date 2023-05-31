@@ -3,10 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-
-// Bryan Illescas
-//9959-20-273
-
 package Compras.Modelo;
 
 import Compras.Controlador.clsProveedor;
@@ -16,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  *
- * @author illescas
+ * @author Bryan Illescas 9959-20-273
  */
 public class daoProveedor {
     
-    private static final String SQL_SELECT = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor";
-    private static final String SQL_INSERT = "INSERT INTO tbl_Proveedor(nombre, direccion) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_Proveedor SET nombre=?, direccion=? WHERE id_proveedor = ?";
+    private static final String SQL_SELECT = "SELECT id_proveedor, nombre, direccion, telefono, email FROM tbl_Proveedor";
+    private static final String SQL_INSERT = "INSERT INTO tbl_Proveedor(id_proveedor, nombre, direccion, telefono, email) VALUES(?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_Proveedor SET nombre=?, direccion=?, telefono=?, email=? WHERE id_proveedor = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_Proveedor WHERE id_proveedor=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT id_proveedor, nombre, direccion FROM Proveedor WHERE nombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT id_proveedor, nombre, direccion FROM tbl_Proveedor WHERE id_proveedor = ?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT id_proveedor, nombre, direccion, telefono, email FROM Proveedor WHERE nombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT id_proveedor, nombre, direccion, telefono, email FROM tbl_Proveedor WHERE id_proveedor = ?";
     
     public List<clsProveedor> consultaProveedor() {
 
@@ -45,10 +41,12 @@ public class daoProveedor {
                 int id = rs.getInt("id_proveedor");
                 String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
+                int telefono = rs.getInt("telefono");
+                String correo = rs.getString("email");
                 clsProveedor proveedor = new clsProveedor();
-                proveedor.setId_proveedor(id);
-                proveedor.setNombre(nombre);
-                proveedor.setDireccion(direccion);
+                proveedor.setid_proveedor(id);
+                proveedor.setnombre(nombre);
+                proveedor.setdireccion(direccion);
                 proveedor.add(proveedor);
 
             }
@@ -72,9 +70,10 @@ public class daoProveedor {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
 
-            stmt.setString(1, proveedor.getNombre());
-            stmt.setString(2, proveedor.getDireccion());
-
+            stmt.setString(1, proveedor.getnombre());
+            stmt.setString(2, proveedor.getdireccion());
+            stmt.setInt(2, proveedor.gettelefono());
+            stmt.setString(2, proveedor.getemail());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -100,9 +99,11 @@ public class daoProveedor {
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
 
-            stmt.setString(1, proveedor.getNombre());
-            stmt.setString(2, proveedor.getDireccion());
-            stmt.setInt(3, proveedor.getId_proveedor());
+            stmt.setString(1, proveedor.getnombre());
+            stmt.setString(2, proveedor.getdireccion());
+            stmt.setInt(3, proveedor.getid_proveedor());
+            stmt.setInt(4, proveedor.gettelefono());
+            stmt.setString(5, proveedor.getemail());
 
 
             rows = stmt.executeUpdate();
@@ -130,7 +131,11 @@ public class daoProveedor {
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
 
-            stmt.setInt(1, proveedor.getId_proveedor());
+            stmt.setInt(1, proveedor.getid_proveedor());
+            stmt.setString(2, proveedor.getnombre());
+            stmt.setString(3, proveedor.getdireccion());
+            stmt.setInt(4, proveedor.gettelefono());
+            stmt.setString(5, proveedor.getemail());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
@@ -156,17 +161,25 @@ public class daoProveedor {
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + proveedor);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
             //stmt.setInt(1, proveedor.getIdProveedor());            
-            stmt.setString(1, proveedor.getNombre());
+            stmt.setInt(1, proveedor.getid_proveedor());
+            stmt.setString(2, proveedor.getnombre());
+            stmt.setString(3, proveedor.getdireccion());
+            stmt.setInt(4, proveedor.gettelefono());
+            stmt.setString(5, proveedor.getemail());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("clid");
+                int id = rs.getInt("id_proveedor");
                 String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
+                int telefono = rs.getInt("telefono");
+                String correo = rs.getString("email");
 
                 //proveedor = new clsProveedor();
-                proveedor.setId_proveedor(id);
-                proveedor.setNombre(nombre);
-                proveedor.setDireccion(direccion);
+                proveedor.setid_proveedor(id);
+                proveedor.setnombre(nombre);
+                proveedor.setdireccion(direccion);
+                proveedor.settelefono(telefono);
+                proveedor.setemail(correo);
                 System.out.println(" registro consultado: " + proveedor);                
 
             }
@@ -193,18 +206,25 @@ public class daoProveedor {
 
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + proveedor);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, proveedor.getId_proveedor());            
-            //stmt.setString(1, proveedor.getNombreProveedor());
+            stmt.setInt(1, proveedor.getid_proveedor());
+            stmt.setString(2, proveedor.getnombre());
+            stmt.setString(3, proveedor.getdireccion());
+            stmt.setInt(4, proveedor.gettelefono());
+            stmt.setString(5, proveedor.getemail());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_proveedor");
                 String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
+                int telefono = rs.getInt("telefono");
+                String correo = rs.getString("email");
 
-                //proveedor = new clsproveedor();
-                proveedor.setId_proveedor(id);
-                proveedor.setNombre(nombre);
-                proveedor.setDireccion(direccion);
+                //proveedor = new clsProveedor();
+                proveedor.setid_proveedor(id);
+                proveedor.setnombre(nombre);
+                proveedor.setdireccion(direccion);
+                proveedor.settelefono(telefono);
+                proveedor.setemail(correo);
                 System.out.println(" registro consultado: " + proveedor);                
 
             }
