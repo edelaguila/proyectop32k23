@@ -129,9 +129,6 @@ int codigoAplicacion=190;
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
         });
 
         lbNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
