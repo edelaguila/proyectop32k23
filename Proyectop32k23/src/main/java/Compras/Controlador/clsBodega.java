@@ -66,12 +66,6 @@ public class clsBodega {
     }
     
     public clsBodega(){
-    
-}
-
-    @Override
-    public String toString() {
-        return "clsBodega{" + "id_bodega=" + id_bodega + ", nombre_bodega=" + nombre_bodega + ", direccion_bodega=" + direccion_bodega + "telefono=" + telefono + '}';
     }
     
     public clsBodega getBuscarInformacionBodegaPorNombre(clsBodega bodega)
