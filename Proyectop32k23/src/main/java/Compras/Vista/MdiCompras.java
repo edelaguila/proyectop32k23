@@ -5,13 +5,17 @@
  */
 package Compras.Vista;
 
+import Seguridad.Modelo.Conexion;
 import Seguridad.Vista.frmMantenimientoBitacora;
 import java.awt.Dimension;
+import java.io.File;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -405,4 +409,20 @@ public class MdiCompras extends javax.swing.JFrame {
     private javax.swing.JMenu mnuReportes;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistema;
     // End of variables declaration//GEN-END:variables
+
+    private static class JasperFillManajer {
+
+        private static JasperPrint fillReport(JasperReport report, Map p, Connection conn) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public JasperFillManajer() {
+        }
+    }
+
+    private static class JasperCompileManager {
+
+        public JasperCompileManager() {
+        }
+    }
 }

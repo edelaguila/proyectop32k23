@@ -18,11 +18,18 @@ import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -123,6 +130,7 @@ public void llenadoDeTabla1() {
         rbImprimir = new javax.swing.JRadioButton();
         btnActualizar = new javax.swing.JButton();
         cbUsuarios = new javax.swing.JComboBox<>();
+        btnreporte = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -142,14 +150,12 @@ public void llenadoDeTabla1() {
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtNombre.setOpaque(false);
 
         tablaAplicacionesAsignadas.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(tablaAplicacionesAsignadas);
 
         txtIdUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtIdUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtIdUsuario.setOpaque(false);
         txtIdUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdUsuarioActionPerformed(evt);
@@ -180,7 +186,6 @@ public void llenadoDeTabla1() {
 
         txtTipoUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtTipoUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtTipoUsuario.setOpaque(false);
         txtTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTipoUsuarioActionPerformed(evt);
@@ -261,6 +266,13 @@ public void llenadoDeTabla1() {
             }
         });
 
+        btnreporte.setText("reporte");
+        btnreporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -288,7 +300,9 @@ public void llenadoDeTabla1() {
                                 .addComponent(cbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
-                                .addComponent(btnActualizar)))
+                                .addComponent(btnActualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnreporte)))
                         .addContainerGap(362, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +357,9 @@ public void llenadoDeTabla1() {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnActualizar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnActualizar)
+                            .addComponent(btnreporte))
                         .addGap(27, 27, 27)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label1)
@@ -597,6 +613,26 @@ public void llenadoDeTabla1() {
             cbUsuarios.addItem(String.valueOf(usu.getIdUsuario()));
         }
     }//GEN-LAST:event_cbUsuariosActionPerformed
+
+    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
+        // TODO add your handling code here:
+        Connection conn = null;
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+        
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath)()
+                    + "/src/main/java/compras/reportes/rptProducto.jrxml");
+                    print = JasperFillManajer.fillReport(report, p , conn);
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("reporte Compra");
+                    view.setVisible(true);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnreporteActionPerformed
     public void limpiarTextos()
     {
         txtNombre.setText("");
@@ -625,6 +661,7 @@ public void llenadoDeTabla1() {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnQuitarTodos;
     private javax.swing.JButton btnQuitarUno;
+    private javax.swing.JButton btnreporte;
     private javax.swing.JComboBox<String> cbUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -648,4 +685,24 @@ public void llenadoDeTabla1() {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTipoUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private static class Conexion {
+
+        private static Connection getConnection() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public Conexion() {
+        }
+    }
+
+    private static class JasperFillManajer {
+
+        private static JasperPrint fillReport(JasperReport report, Map p, Connection conn) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public JasperFillManajer() {
+        }
+    }
 }

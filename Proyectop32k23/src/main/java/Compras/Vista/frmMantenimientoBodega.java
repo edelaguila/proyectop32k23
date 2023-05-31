@@ -15,13 +15,18 @@ import Compras.Controlador.clsProducto;
 import Compras.Controlador.clsBodega;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -93,6 +98,7 @@ int codigoAplicacion=190;
         btnActualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
+        btnreporte = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -129,8 +135,11 @@ int codigoAplicacion=190;
         lbNombreTabla.setText("Aplicaciones");
 
         btnModificar.setText("Modificar");
-        //btnModificar.addActionListener(new java.awt.event.ActionListener() {
-        //});
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         lbNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lbNombre.setText("Nombre");
@@ -198,6 +207,13 @@ int codigoAplicacion=190;
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel1.setText("Telefono");
 
+        btnreporte.setText("Reporte");
+        btnreporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -208,7 +224,9 @@ int codigoAplicacion=190;
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnreporte))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -283,7 +301,9 @@ int codigoAplicacion=190;
                             .addComponent(btnModificar)
                             .addComponent(btnEliminar))
                         .addGap(18, 18, 18)
-                        .addComponent(btnAyuda)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAyuda)
+                            .addComponent(btnreporte))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -402,6 +422,27 @@ int codigoAplicacion=190;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 
+    private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
+        // TODO add your handling code here:Connection conn = null;
+        Connection conn = null;
+        java.util.Map p = new java.util.HashMap();
+        JasperReport report;
+        JasperPrint print;
+        
+        try {
+            conn = Conexion.getConnection();
+            report = MdiCompras.JasperCompileManager.compileReport(new File("").getAbsolutePath)()
+                    + "/src/main/java/compras/reportes/rptBodega.jrxml");
+                    print = MdiCompras.JasperFillManajer.fillReport(report, p , conn);
+                    JasperViewer view = new JasperViewer(print, false);
+                    view.setTitle("reporte Compra");
+                    view.setVisible(true);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_btnreporteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -411,6 +452,7 @@ int codigoAplicacion=190;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnreporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb;
@@ -426,4 +468,16 @@ int codigoAplicacion=190;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
+
+    private static class HashMap {
+
+        public HashMap() {
+        }
+    }
+
+    private static class Map {
+
+        public Map() {
+        }
+    }
 }
