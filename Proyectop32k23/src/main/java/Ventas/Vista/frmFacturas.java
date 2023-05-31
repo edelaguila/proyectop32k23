@@ -470,7 +470,7 @@ int codigoProducto = Integer.parseInt(txtCodProdFac.getText());
         double impuestocalculado = sumaProd * impuesto;
         double sumaImp = sumaProd + (impuestocalculado);
         double descuentocalculado = sumaImp * descuento;
-        double sumaSubTotal = sumaImp - (descuentocalculado);
+        double sumaSubTotal = (sumaProd + impuestocalculado) - descuentocalculado;
         
         // Agregar los datos a la tabla
         Object[] fila = {codigoProducto, cantidad, descuentocalculado, impuestocalculado, sumaSubTotal};
