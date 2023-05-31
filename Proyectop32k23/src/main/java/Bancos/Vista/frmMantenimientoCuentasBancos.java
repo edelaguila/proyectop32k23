@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  */
 public class frmMantenimientoCuentasBancos extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=5006;
+int codigoAplicacion=5005;
 
     public void llenadoDeComboIdPersona() {
         clsPersonaBancos personas = new clsPersonaBancos();

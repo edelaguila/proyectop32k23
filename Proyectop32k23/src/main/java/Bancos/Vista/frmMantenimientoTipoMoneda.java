@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class frmMantenimientoTipoMoneda extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=5003;
+int codigoAplicacion=5002;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();

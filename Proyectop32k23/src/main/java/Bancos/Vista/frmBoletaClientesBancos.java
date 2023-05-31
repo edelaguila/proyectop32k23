@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
-    int codigoAplicacion= 5005;
+    int codigoAplicacion= 5012;
 
     public void llenadoCodigoBanco() {
        clsBancoExterno banco = new clsBancoExterno();
