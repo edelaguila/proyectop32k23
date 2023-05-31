@@ -186,6 +186,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consulta Facturas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuReportesVentas">
@@ -193,118 +201,127 @@
             <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu3">
+            <Menu class="javax.swing.JMenu" name="mnuRepCot">
               <Properties>
-
-                <Property name="text" type="java.lang.String" value="Cotizacion"/>
+                <Property name="text" type="java.lang.String" value="Cotizaciones"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="rptGeneral">
-
-                <Property name="text" type="java.lang.String" value="Pedidos"/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="rptGeneralPedidos">
-
+                <MenuItem class="javax.swing.JMenuItem" name="repGenCot">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Reporte General"/>
                   </Properties>
                   <Events>
-
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptGeneralActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repGenCotActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="rptCliente">
+                <MenuItem class="javax.swing.JMenuItem" name="repCliCot">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Cliente"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Cliente"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptClienteActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repCliCotActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="rptProducto">
+                <MenuItem class="javax.swing.JMenuItem" name="repProCot">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Producto"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Producto"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptProductoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repProCotActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="rptVendedor">
+                <MenuItem class="javax.swing.JMenuItem" name="repVenCot">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Vendedor "/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Vendedor"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptVendedorActionPerformed"/>
-
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptGeneralPedidosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repVenCotActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="rptPredidosPorCliente">
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuRepPed">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pedidos"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="repGenPed">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Pedidos Por Cliente"/>
+                    <Property name="text" type="java.lang.String" value="Reporte General"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptPredidosPorClienteActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repGenPedActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="rptPedidosPorProducto">
+                <MenuItem class="javax.swing.JMenuItem" name="repCliPed">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Pedidos Por Producto"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Cliente"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rptPedidosPorProductoActionPerformed"/>
-
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repCliPedActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="repProPed">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reporte por Producto"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repProPedActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuRepVentas">
+              <Properties>
                 <Property name="text" type="java.lang.String" value="Ventas"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+                <MenuItem class="javax.swing.JMenuItem" name="repGenVen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte general"/>
+                    <Property name="text" type="java.lang.String" value="Reporte General"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repGenVenActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+                <MenuItem class="javax.swing.JMenuItem" name="repDetVen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Clientes"/>
+                    <Property name="text" type="java.lang.String" value="Reporte Detalle"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repDetVenActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+                <MenuItem class="javax.swing.JMenuItem" name="repProVen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Detalles"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Producto"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repProVenActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+                <MenuItem class="javax.swing.JMenuItem" name="repVendVen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reporte Productos"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Vendedor"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repVendVenActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+                <MenuItem class="javax.swing.JMenuItem" name="repCliVen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reportes Tiendas"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Cliente"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repCliVenActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+                <MenuItem class="javax.swing.JMenuItem" name="repTieVen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Reportes vendedores"/>
+                    <Property name="text" type="java.lang.String" value="Reporte por Tienda"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem9ActionPerformed"/>
-
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="repTieVenActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

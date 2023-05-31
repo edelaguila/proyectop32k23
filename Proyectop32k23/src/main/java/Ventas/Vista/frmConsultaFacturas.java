@@ -226,7 +226,7 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsFacturas> listaCotizaciones = cotizacion.getListadoCotizaciones();
         tblFacConsulta.setModel(modelo);
-        String[] dato = new String[4];
+        String[] dato = new String[7];
         for (int i = 0; i < listaCotizaciones.size(); i++) {
             dato[0] = Integer.toString(listaCotizaciones.get(i).getIdFactura());
             dato[1] = Integer.toString(listaCotizaciones.get(i).getIdPedido());

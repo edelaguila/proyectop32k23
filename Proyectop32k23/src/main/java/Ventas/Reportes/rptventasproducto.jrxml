@@ -40,7 +40,7 @@
 			<band height="37">
 				<frame>
 					<reportElement mode="Opaque" x="0" y="7" width="555" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="f5600317-79ee-4710-a884-2d0ab559dd29"/>
-					<textField isStretchWithOverflow="true">
+					<textField textAdjust="StretchHeight">
 						<reportElement style="SubTitle" isPrintRepeatedValues="false" x="2" y="0" width="479" height="24" forecolor="#FFFFFF" uuid="63e1b13a-d27a-4481-8f5b-e534833dc67e"/>
 						<textElement>
 							<font isBold="false"/>
@@ -61,7 +61,7 @@
 		<band height="132" splitType="Stretch">
 			<image>
 				<reportElement x="456" y="0" width="99" height="132" uuid="54704d30-2cfe-42f9-a051-4b3410c7c374"/>
-				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+				
 			</image>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="ceadf1b9-9e28-40ba-b70f-f927a64a1ce0"/>
