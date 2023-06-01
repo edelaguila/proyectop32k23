@@ -8,7 +8,6 @@ package Cuentas_Corrientes.Vista;
 
 //import Seguridad.Vista.*;
 import Cuentas_Corrientes.Controlador.clsProveedoresCC;
-import Cuentas_Corrientes.Modelo.daoProveedoresCC;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Modelo.Conexion;
@@ -40,7 +39,7 @@ public class frmProveedoresCC extends javax.swing.JInternalFrame {
 //int codigoAplicacion=preguntar;
 public void llenadoDeCB() {
         clsProveedoresCC prov = new clsProveedoresCC();
-        List<clsProveedoresCC> listaProv = prov.getListadoT();
+        List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
         cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdProv.addItem("Seleccionar...");
         for (int i = 0; i < listaProv.size(); i++) {
@@ -462,10 +461,10 @@ public void llenadoDeTabla() {
         clsProveedoresCC transaccion = new clsProveedoresCC();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());
         transaccion.setIdProv(Integer.parseInt(txtbuscado.getText()));
-        transaccion = transaccion.getBuscarInformacionProvPorId(transaccion);
+        transaccion = transaccion.getBuscarInformacionProvId(transaccion);
         System.out.println("Cuenta Corriente retornada:" + transaccion);
-        txtnit.setText(transaccion.getTipoCCorrienteProv());
-        int tipoMonedaId = transaccion.getIdTipoCCorrienteProv();
+        txtnit.setText(transaccion.getNitProv());
+        int tipoMonedaId = transaccion.getIdProv();
         for (int i = 1; i < cbIdProv.getItemCount(); i++) {
             String item = cbIdProv.getItemAt(i).toString();
             int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
@@ -475,26 +474,24 @@ public void llenadoDeTabla() {
                 break;
             }
         }
-        txtfecha.setText(transaccion.getFechaCCorrienteProv());
-        txtnombreC.setText(transaccion.getNombreCCorrienteProv());
-        txtnofac.setText(transaccion.getNofacturaCCorrienteProv());
-        txttotfac.setText(String.valueOf(transaccion.getFacturaCCorrienteProv()));
-        txtsaldo.setText(String.valueOf(transaccion.getCancelacionProv()));
+        txtfecha.setText(transaccion.getFechaProv());
+        txtnombreC.setText(transaccion.getNombreProv());
+        txtnofac.setText(transaccion.getFactProv());
+        txttotfac.setText(String.valueOf(transaccion.getTotFacturaProv()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //TODO add your handling code here:
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        transaccion.setTipoCCorrienteProv(txtnit.getText());
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
-        transaccion.setFechaCCorrienteProv(txtfecha.getText());
-        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
-        transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
-        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        transaccion.setModificarCC(transaccion);
+        clsProveedoresCC prov = new clsProveedoresCC();
+        prov.setIdProv(Integer.parseInt(txtbuscado.getText()));
+        prov.setNitProv(txtnit.getText());
+        prov.setIdProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
+        prov.setFechaProv(txtfecha.getText());
+        prov.setNombreProv(txtnombreC.getText());
+        prov.setFactProv(txtnofac.getText());
+        prov.setTotFacturaProv(Double.parseDouble(txttotfac.getText()));
+        prov.setModificarProv(prov);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -527,7 +524,6 @@ public void llenadoDeTabla() {
         Map p = new HashMap();
         JasperReport report;
         JasperPrint print;
-
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
@@ -549,10 +545,7 @@ public void llenadoDeTabla() {
         txtnombreC.setText("");
         txtnofac.setText("");
         txttotfac.setText("");
-        txtsaldo.setText("");
     }
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;

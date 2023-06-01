@@ -7,9 +7,7 @@ package Cuentas_Corrientes.Vista;
 
 
 //import Seguridad.Vista.*;
-import Cuentas_Corrientes.Controlador.clsProveedoresCC;
 import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
-import Cuentas_Corrientes.Modelo.daoCCorrientesProv;
 import Cuentas_Corrientes.Controlador.clsProveedoresCC;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
@@ -22,8 +20,10 @@ import java.sql.Connection;
 //import java.sql.ResultSet;
 //import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 //import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 //import java.util.Set;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -36,37 +36,21 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author visitante
  */
-public class frmCCorrientesProv extends javax.swing.JInternalFrame {
+public class frmCCorrientesProvPagoTodos extends javax.swing.JInternalFrame {
+    
 //int codigoAplicacion=preguntar;
-/*public void llenadoDeCB() {
-        clsProveedoresCC proveedoresC = new clsProveedoresCC();
-        List<clsProveedoresCC> ListadoProveedores = proveedoresC.getListadoProv();
-=======
     /*
 public void llenadoDeCB() {
         clsProveedoresCC proveedoresC = new clsProveedoresCC();
         List<clsProveedoresCC> ListadoProveedores = proveedoresC.getListadoT();
->>>>>>> 5da0ece71c26d9f3633c060eeeeb20f6c4ca53ce
         cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdProv.addItem("Seleccionar...");
         for (int i = 0; i < ListadoProveedores.size(); i++) {
             cbIdProv.addItem(String.valueOf(ListadoProveedores.get(i).getIdProv));
-<<<<<<< HEAD
         }
-    }*/
-         
-    public void llenadoDeCB() {
-        clsProveedoresCC prov = new clsProveedoresCC();
-        List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
-        cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
-        cbIdProv.addItem("Seleccionar...");
-        for (int i = 0; i < listaProv.size(); i++) {
-            clsProveedoresCC provee = listaProv.get(i);
-            String item = provee.getIdProv() + " - " +  prov.getFactProv();
-            cbIdProv.addItem(item);
-        }
-        
     }
+    */
+    
     
     //public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -76,6 +60,23 @@ public void llenadoDeCB() {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     //}
+
+    public void llenarIDProveedores(){
+     clsCCorrientesProv prov = new clsCCorrientesProv();
+    List<clsCCorrientesProv> listaProv = prov.getListadoCC();
+     cbIdProve.removeAllItems();
+    Set <Integer> idSet= new HashSet<>();
+    cbIdProve.addItem("Mostrar Todo");
+    cbIdProve.setAlignmentX(Component.CENTER_ALIGNMENT);
+    for (clsCCorrientesProv idDeProv : listaProv){
+        int Id = idDeProv.getIdTipoCCorrienteProv();
+        if(!idSet.contains(Id)){
+            cbIdProve.addItem(String.valueOf(Id));
+            idSet.add(Id);    }
+    }
+    }
+    
+    
 public void llenadoDeTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID CCorrientes");
@@ -104,12 +105,16 @@ public void llenadoDeTabla() {
             modelo.addRow(dato);
         }   
     }
+    
     int codigoAplicacion= 12;
-    public frmCCorrientesProv() {
+    public frmCCorrientesProvPagoTodos() {
         initComponents();
         llenadoDeTabla();
-        llenadoDeCB();       
+        llenarIDProveedores();
+        txtsaldo.setEnabled(false);
+        txttotfac.setEnabled(false);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,11 +134,9 @@ public void llenadoDeTabla() {
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         txtfecha = new javax.swing.JTextField();
-        btnEliminar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
-        btnModificar = new javax.swing.JButton();
         label3 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
         label6 = new javax.swing.JLabel();
@@ -147,8 +150,11 @@ public void llenadoDeTabla() {
         label12 = new javax.swing.JLabel();
         txtnofac = new javax.swing.JTextField();
         txttipocuenta = new javax.swing.JTextField();
-        btnReporte = new javax.swing.JButton();
-        cbIdProv = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        cbIdProve = new javax.swing.JComboBox<>();
+        btnClasificar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -206,14 +212,7 @@ public void llenadoDeTabla() {
         txtfecha.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtfecha.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Realizar Cancelación");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -229,13 +228,6 @@ public void llenadoDeTabla() {
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         label1.setText("Cuentas Corrientes Proveedores");
-
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
 
         label3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         label3.setText("Tipo de Cuenta");
@@ -292,12 +284,23 @@ public void llenadoDeTabla() {
             }
         });
 
-        btnReporte.setText("Reporte");
-        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Reporte");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReporteActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+
+        btnClasificar.setText("Clasificar");
+        btnClasificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClasificarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Paso 1:");
+
+        jLabel2.setText("Paso 2:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -306,7 +309,7 @@ public void llenadoDeTabla() {
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(label1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(968, 968, 968))
             .addGroup(layout.createSequentialGroup()
@@ -325,24 +328,26 @@ public void llenadoDeTabla() {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txttipocuenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                             .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                             .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                             .addComponent(txtnombreC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtsaldo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                            .addComponent(cbIdProve, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClasificar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -357,7 +362,7 @@ public void llenadoDeTabla() {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(109, 109, 109))))
         );
         layout.setVerticalGroup(
@@ -373,7 +378,7 @@ public void llenadoDeTabla() {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
-                    .addComponent(btnReporte))
+                    .addComponent(jButton1))
                 .addGap(44, 44, 44))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -399,7 +404,7 @@ public void llenadoDeTabla() {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txttipocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbIdProve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
@@ -410,12 +415,15 @@ public void llenadoDeTabla() {
                         .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(84, 84, 84)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModificar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnRegistrar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnClasificar)
+                    .addComponent(jLabel1))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
                     .addComponent(jButton2))
@@ -448,47 +456,36 @@ public void llenadoDeTabla() {
         llenadoDeTabla();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        int registrosBorrados=0;
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=transaccion.setBorrarCC(transaccion);
-        JOptionPane.showMessageDialog(null, "Registro Borrado\n","Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"DEL");
-        llenadoDeTabla();
-        limpiarTextos();
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //Alan Abimael Galicia Ruano, Luis Diego Cortez
+        
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
         transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
         transaccion.setFechaCCorrienteProv(txtfecha.getText());
         transaccion.setNombreCCorrienteProv(txtnombreC.getText());
         transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
-        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        String selectedItem = cbIdProv.getSelectedItem().toString();
+
+        String selectedItem = cbIdProve.getSelectedItem().toString();
             int itemId = Integer.parseInt(selectedItem.split(" - ")[0]);
             transaccion.setIdTipoCCorrienteProv(itemId);
+            
+        
+        
         transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
         transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
+
         double TotalEnFactura = Double.parseDouble(txttotfac.getText());
-        transaccion.setFacturaCCorrienteProv(TotalEnFactura);
+        transaccion.setFacturaCCorrienteProv(0);
         double TotalSaldo = Double.parseDouble(txtsaldo.getText());
         transaccion.setCancelacionProv(TotalSaldo);
-        transaccion.setSaldoCCorrienteProv(TotalSaldo-TotalEnFactura);
+        transaccion.setSaldoCCorrienteProv(0);
         transaccion.setIngresarCC(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTabla();
+        llenarIDProveedores();
         limpiarTextos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -502,12 +499,12 @@ public void llenadoDeTabla() {
         System.out.println("Cuenta Corriente retornada:" + transaccion);
         txttipocuenta.setText(transaccion.getTipoCCorrienteProv());
         int tipoMonedaId = transaccion.getIdTipoCCorrienteProv();
-        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
-            String item = cbIdProv.getItemAt(i).toString();
+        for (int i = 1; i < cbIdProve.getItemCount(); i++) {
+            String item = cbIdProve.getItemAt(i).toString();
             int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
             
             if (itemId == tipoMonedaId) {
-                cbIdProv.setSelectedIndex(i);
+                cbIdProve.setSelectedIndex(i);
                 break;
             }
         }
@@ -516,30 +513,6 @@ public void llenadoDeTabla() {
         txttotfac.setText(String.valueOf(transaccion.getFacturaCCorrienteProv()));
         txtsaldo.setText(String.valueOf(transaccion.getCancelacionProv()));
     }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        //TODO add your handling code here:
-        // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        
-            String selectedItem = cbIdProv.getSelectedItem().toString();
-        String id = selectedItem.split(" - ")[0]; // Obtiene solo la ID
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(id));
-        
-        transaccion.setFechaCCorrienteProv(txtfecha.getText());
-        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
-        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        transaccion.setModificarCC(transaccion);
-        JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "UPD");
-        llenadoDeTabla();
-        limpiarTextos();
-    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarTextos();
@@ -554,13 +527,14 @@ public void llenadoDeTabla() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttipocuentaActionPerformed
 
-    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         Connection conn = null;        
         Map p = new HashMap();
         JasperReport report;
         JasperPrint print;
+
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
@@ -572,35 +546,87 @@ public void llenadoDeTabla() {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btnReporteActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnofacActionPerformed
+
+    private void btnClasificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClasificarActionPerformed
+        // TODO add your handling code here:
+        clsCCorrientesProv tipou = new clsCCorrientesProv();
+   List<clsCCorrientesProv> listaProveedores = tipou.getListadoCC();
+ int seleccionar = cbIdProve.getSelectedIndex();
+if (seleccionar == 0) {
+    llenadoDeTabla();
+    }
+else{
+         DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID CCorrientes");
+        modelo.addColumn("Tipo de Cuenta");
+        modelo.addColumn("ID Tipo Proveedor");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Nombre de Proveedor");
+        modelo.addColumn("No. Factura");
+        modelo.addColumn("Factura");
+        modelo.addColumn("Cancelacion");
+        modelo.addColumn("Saldo");
+        tablaUsuarios.setModel(modelo);
+    int comparar;
+    comparar = Integer.parseInt(cbIdProve.getSelectedItem().toString());
+   modelo.setRowCount(0);
+   double TotalSaldo =0;
+   double TotalFact=0;
+   double TotalCancel=0;
+   
+   for (clsCCorrientesProv movimiento : listaProveedores) {
+    if (movimiento.getIdTipoCCorrienteProv() == comparar) {
+        String[] dato = new String[9];
+        dato[0] = Integer.toString(movimiento.getIdCCorrienteProv());
+            dato[1] = movimiento.getTipoCCorrienteProv();
+            dato[2] = Integer.toString(movimiento.getIdTipoCCorrienteProv());
+            dato[3] = movimiento.getFechaCCorrienteProv();
+            dato[4] = movimiento.getNombreCCorrienteProv();
+            dato[5] = movimiento.getNofacturaCCorrienteProv();
+            dato[6] = Double.toString(movimiento.getFacturaCCorrienteProv());
+            dato[7] = Double.toString(movimiento.getCancelacionProv());
+            dato[8] = Double.toString(movimiento.getSaldoCCorrienteProv());
+        modelo.addRow(dato); 
+        TotalCancel += movimiento.getCancelacionProv();
+        TotalFact += movimiento.getFacturaCCorrienteProv();
+        TotalSaldo += movimiento.getSaldoCCorrienteProv();
+        
+   }
+    
+    }
+    txttotfac.setText(Double.toString(TotalFact-TotalCancel));
+    txtsaldo.setText(Double.toString(TotalFact-TotalCancel));
+}
+    }//GEN-LAST:event_btnClasificarActionPerformed
     public void limpiarTextos()
     {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        cbIdProv.setSelectedIndex(0);
+        cbIdProve.setSelectedIndex(0);
         txtnofac.setText("");
         txttipocuenta.setText("");
         txtfecha.setText("");
         txtnombreC.setText("");
         txttotfac.setText("");
         txtsaldo.setText("");
-        }
-       
-        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnClasificar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnReporte;
-    private javax.swing.JComboBox<String> cbIdProv;
+    private javax.swing.JComboBox<String> cbIdProve;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
