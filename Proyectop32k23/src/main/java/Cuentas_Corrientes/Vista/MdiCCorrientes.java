@@ -51,6 +51,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         MantenimientoCC = new javax.swing.JMenuItem();
         MantenimientoCCProv = new javax.swing.JMenuItem();
         mnuProcesosVentas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuConsultasVentas = new javax.swing.JMenu();
         mnuReportesVentas = new javax.swing.JMenu();
         mnuAyudasVentas = new javax.swing.JMenu();
@@ -152,6 +153,15 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         mnuGeneralVentas.add(mnuCatalogosVentas);
 
         mnuProcesosVentas.setText("Procesos");
+
+        jMenuItem1.setText("PagoTodasFacturas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuProcesosVentas.add(jMenuItem1);
+
         mnuGeneralVentas.add(mnuProcesosVentas);
 
         mnuConsultasVentas.setText("Consultas");
@@ -237,6 +247,15 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_MantenimientoCCProvActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        frmCCorrientesProvPagoTodos ventana = new frmCCorrientesProvPagoTodos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,6 +306,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPaneVentas;
     private javax.swing.JMenu jMenu1MdiVentas;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1MdiVentas;
     private javax.swing.JMenuItem jMenuItem2MdiVentas;
     private javax.swing.JMenuItem jMenuItem4MdiVentas;
