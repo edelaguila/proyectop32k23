@@ -61,10 +61,8 @@ public class MdiInventario extends javax.swing.JFrame {
         mantenimientoMarcas = new javax.swing.JCheckBoxMenuItem();
         mantenimientoProductos = new javax.swing.JCheckBoxMenuItem();
         mantenimientoBodegas = new javax.swing.JCheckBoxMenuItem();
-        mantenimientoExistencias = new javax.swing.JCheckBoxMenuItem();
         mantenimientoMovimientos = new javax.swing.JCheckBoxMenuItem();
         mnuProcesos = new javax.swing.JMenu();
-        movTransaccion = new javax.swing.JCheckBoxMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         consultaBitacora = new javax.swing.JCheckBoxMenuItem();
         mnuReportes = new javax.swing.JMenu();
@@ -165,15 +163,6 @@ public class MdiInventario extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientos.add(mantenimientoBodegas);
 
-        mantenimientoExistencias.setSelected(true);
-        mantenimientoExistencias.setText("Mantenimiento Existencias");
-        mantenimientoExistencias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mantenimientoExistenciasActionPerformed(evt);
-            }
-        });
-        mnuCatalogosMantenimientos.add(mantenimientoExistencias);
-
         mantenimientoMovimientos.setSelected(true);
         mantenimientoMovimientos.setText("Mantenimiento Movimientos");
         mantenimientoMovimientos.addActionListener(new java.awt.event.ActionListener() {
@@ -188,16 +177,6 @@ public class MdiInventario extends javax.swing.JFrame {
         mnuGeneral.add(mnuCatalogos);
 
         mnuProcesos.setText("Procesos");
-
-        movTransaccion.setSelected(true);
-        movTransaccion.setText("Transaccion de movimientos");
-        movTransaccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                movTransaccionActionPerformed(evt);
-            }
-        });
-        mnuProcesos.add(movTransaccion);
-
         mnuGeneral.add(mnuProcesos);
 
         mnuConsultas.setText("Consultas");
@@ -316,15 +295,6 @@ public class MdiInventario extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_consultaBitacoraActionPerformed
 
-    private void mantenimientoExistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoExistenciasActionPerformed
-        // TODO add your handling code here:
-        frmExistencias ventana = new frmExistencias();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_mantenimientoExistenciasActionPerformed
-
     private void mantenimientoMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantenimientoMovimientosActionPerformed
         // TODO add your handling code here:
         frmMovimientos ventana = new frmMovimientos();
@@ -333,16 +303,6 @@ public class MdiInventario extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mantenimientoMovimientosActionPerformed
-
-    private void movTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movTransaccionActionPerformed
-        // TODO add your handling code here:
-
-        frmMovDet ventana = new frmMovDet();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_movTransaccionActionPerformed
 
     private void MantenimientoDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoDetallesActionPerformed
         // TODO add your handling code here:
@@ -402,7 +362,6 @@ public class MdiInventario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JLabel lbl;
     private javax.swing.JCheckBoxMenuItem mantenimientoBodegas;
-    private javax.swing.JCheckBoxMenuItem mantenimientoExistencias;
     private javax.swing.JMenuItem mantenimientoLineas;
     private javax.swing.JCheckBoxMenuItem mantenimientoMarcas;
     private javax.swing.JCheckBoxMenuItem mantenimientoMovimientos;
@@ -416,6 +375,5 @@ public class MdiInventario extends javax.swing.JFrame {
     private javax.swing.JMenu mnuProcesos;
     private javax.swing.JMenu mnuReportes;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistema;
-    private javax.swing.JCheckBoxMenuItem movTransaccion;
     // End of variables declaration//GEN-END:variables
 }        
