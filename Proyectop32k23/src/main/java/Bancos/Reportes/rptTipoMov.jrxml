@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80497b67-730e-4674-ace8-5d7c13b8ff48">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT*FROM tbl_tipoMovimientoBancos]]>
+	</queryString>
+	<field name="tipMovId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipMovNombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipMovEstatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="670" height="79" backcolor="#000000" uuid="8009aa51-5d13-4839-8a91-fa349c032fe2"/>
+				<staticText>
+					<reportElement x="201" y="15" width="315" height="44" forecolor="#FFFFFF" uuid="07bffd9c-8d19-4507-9c95-5615e2df04a2"/>
+					<textElement>
+						<font size="32" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Bancos, Reportes]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="670" y="0" width="82" height="79" uuid="cd225d51-7cdc-42c7-80e9-82e3fd6c8268"/>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="35" forecolor="#CC0033" backcolor="#CC0033" uuid="ab35c7c8-6bcb-446a-a2b8-62d1e024e5ea"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="23" y="15" width="156" height="20" forecolor="#FFFFFF" uuid="56e2f35b-2f2d-4f40-8e5f-97e4864d3528"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="531" y="0" width="236" height="35" forecolor="#FFFFFF" uuid="68822299-4276-4f55-b235-8206f97d2e18"/>
+				<textElement>
+					<font size="18" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipos de Movimientos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="62" y="20" width="100" height="20" uuid="eefa865d-1981-4bc5-86d5-820dc8d14e51"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="20" width="100" height="20" uuid="64da0aa1-5cc0-401f-8ce0-c388bc193a08"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Movimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="570" y="20" width="100" height="20" uuid="0d6febbc-e997-4ca5-8450-d016bafd23b9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="62" y="21" width="100" height="20" uuid="71416f41-4002-4ec0-b485-a7977ea88808"/>
+				<textFieldExpression><![CDATA[$F{tipMovId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="21" width="100" height="20" uuid="7531eff5-f629-49d2-a1dd-5c9280140ef0"/>
+				<textFieldExpression><![CDATA[$F{tipMovNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="570" y="21" width="100" height="20" uuid="18e6f99f-ff18-42b0-909e-374a2f7e0e87"/>
+				<textFieldExpression><![CDATA[$F{tipMovEstatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="8c64a363-d76f-44b0-8b1b-4f4620eba3a0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Página No. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="30" backcolor="#000000" uuid="c614a6b9-3993-4603-86a3-22724c62cff1"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="618ea4b3-ddd9-4704-9df5-0857feadcc18"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

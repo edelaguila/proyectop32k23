@@ -6,7 +6,7 @@
 //Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 package Bancos.Vista;
 
-
+import Bancos.Controlador.clsReportes;
 import Seguridad.Controlador.clsBitacora;
 import Bancos.Controlador.clsCuentasBancos;
 import Bancos.Controlador.clsPersonaBancos;
@@ -37,24 +37,24 @@ int codigoAplicacion=5005;
         cbIdPersona.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdPersona.addItem("Seleccionar...");
         for (int i = 0; i < listaPersonas.size(); i++) {
-            //clsPersonaBancos personaBanco = listaPersonas.get(i);
-            //String item = personaBanco.getPerId()+ " - "+personaBanco.getPerNombre();
-            //cbIdPersona.addItem(item);
-            cbIdPersona.addItem(String.valueOf(listaPersonas.get(i).getPerId()));
+            clsPersonaBancos personaBanco = listaPersonas.get(i);
+            String item = personaBanco.getPerId()+ " - "+personaBanco.getPerNombre();
+            cbIdPersona.addItem(item);
+            //cbIdPersona.addItem(String.valueOf(listaPersonas.get(i).getPerId()));
         } 
         
     }
 
     public void llenadoDeComboTipoCuenta() {
-        clsTipoCuentas cuentas = new clsTipoCuentas();
-        List<clsTipoCuentas> listaTipoCuentas = cuentas.getListadoTipoCuentas();
+        clsTipoCuentas cuenta = new clsTipoCuentas();
+        List<clsTipoCuentas> listaTipoCuentas = cuenta.getListadoTipoCuentas();
         cbTipoCuenta.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbTipoCuenta.addItem("Seleccionar...");
         for (int i = 0; i < listaTipoCuentas.size(); i++) {
-            //clsTipoCuentas cuentasbanco = listaTipoCuentas.get(i);
-            //String item = cuentasbanco.getTipoCueId()+ " - "+cuentasbanco.getTipoCueDescripcion();
-            //cbTipoCuenta.addItem(item);  
-            cbTipoCuenta.addItem(String.valueOf(listaTipoCuentas.get(i).getTipoCueId()));
+            clsTipoCuentas cuentasbanco = listaTipoCuentas.get(i);
+            String item = cuentasbanco.getTipoCueId()+ " - "+cuentasbanco.getTipoCueDescripcion();
+            cbTipoCuenta.addItem(item);  
+            //cbTipoCuenta.addItem(String.valueOf(listaTipoCuentas.get(i).getTipoCueId()));
         } 
         
     }
@@ -65,10 +65,10 @@ int codigoAplicacion=5005;
         cbMoneda.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbMoneda.addItem("Seleccionar...");
         for (int i = 0; i < listaTipoMoneda.size(); i++) {
-            //clsTipoMoneda tipoMoneda = listaTipoMoneda.get(i);
-            //String item = tipoMoneda.getTipModId()+ " - "+tipoMoneda.getTipMondNombre();
-            //cbMoneda.addItem(item);
-            cbMoneda.addItem(String.valueOf(listaTipoMoneda.get(i).getTipModId()));
+            clsTipoMoneda tipoMoneda = listaTipoMoneda.get(i);
+            String item = tipoMoneda.getTipModId()+ " - "+tipoMoneda.getTipMondNombre();
+            cbMoneda.addItem(item);
+            //cbMoneda.addItem(String.valueOf(listaTipoMoneda.get(i).getTipModId()));
         } 
         
     }
@@ -79,10 +79,10 @@ int codigoAplicacion=5005;
         cbBanco.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbBanco.addItem("Seleccionar...");
         for (int i = 0; i < listaBanco.size(); i++) {
-            //clsBancoExterno bancoExterno = listaBanco.get(i);
-            //String item = bancoExterno.getCodigoBanco()+ " - "+bancoExterno.getNombreBanco();
-            //cbBanco.addItem(item);
-            cbBanco.addItem(String.valueOf(listaBanco.get(i).getCodigoBanco()));
+            clsBancoExterno bancoExterno = listaBanco.get(i);
+            String item = bancoExterno.getCodigoBanco()+ " - "+bancoExterno.getNombreBanco();
+            cbBanco.addItem(item);
+            //cbBanco.addItem(String.valueOf(listaBanco.get(i).getCodigoBanco()));
         } 
         
     }
@@ -163,6 +163,7 @@ int codigoAplicacion=5005;
         label12 = new javax.swing.JLabel();
         cbMoneda = new javax.swing.JComboBox<>();
         cbBanco = new javax.swing.JComboBox<>();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -307,6 +308,13 @@ int codigoAplicacion=5005;
         label12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label12.setText("Banco");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -341,7 +349,9 @@ int codigoAplicacion=5005;
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(14, 14, 14)
-                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                            .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(406, 406, 406)
                                 .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -435,7 +445,8 @@ int codigoAplicacion=5005;
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(btnReportes))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -446,7 +457,7 @@ int codigoAplicacion=5005;
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnActualizar)
-                        .addContainerGap(110, Short.MAX_VALUE))))
+                        .addContainerGap(114, Short.MAX_VALUE))))
         );
 
         pack();
@@ -472,11 +483,6 @@ int codigoAplicacion=5005;
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         clsCuentasBancos cuenta = new clsCuentasBancos();
         
-        cuenta.setIdCuenta(Integer.parseInt(txtId.getText()));    
-        cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
-        cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
-        cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
-
         if(rbHabilitar.isSelected()){
             cuenta.setEstatusCuenta("T");
         }
@@ -488,9 +494,33 @@ int codigoAplicacion=5005;
             JOptionPane.showMessageDialog(null, "Debe seleccionar un estatus.");
             return;
         }
+       
+        cuenta.setIdCuenta(Integer.parseInt(txtId.getText()));    
+        cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
         
-        cuenta.setTipModId(Integer.parseInt(cbMoneda.getSelectedItem().toString()));
-        cuenta.setCodBanco(Integer.parseInt(cbBanco.getSelectedItem().toString()));
+        String selectedItem = cbIdPersona.getSelectedItem().toString();
+        int item = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setIdPersona(item);
+        
+        //cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
+        String selectedItem2 = cbTipoCuenta.getSelectedItem().toString();
+        int item2 = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setIdTipoCuenta(item);
+        
+        //cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
+
+       
+        String selectedItem3 = cbMoneda.getSelectedItem().toString();
+        int item3 = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setTipModId(item);
+        
+        //cuenta.setTipModId(Integer.parseInt(cbMoneda.getSelectedItem().toString()));
+        
+        String selectedItem4 = cbBanco.getSelectedItem().toString();
+        int item4 = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setCodBanco(item);
+        
+        //cuenta.setCodBanco(Integer.parseInt(cbBanco.getSelectedItem().toString()));
         
         cuenta.setIngresarCuenta(cuenta);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
@@ -667,6 +697,14 @@ int codigoAplicacion=5005;
         // TODO add your handling code here:
     }//GEN-LAST:event_rbHabilitarActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptCuentas.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -675,6 +713,7 @@ int codigoAplicacion=5005;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JComboBox<String> cbBanco;
     private javax.swing.JComboBox<String> cbIdPersona;
     private javax.swing.JComboBox<String> cbMoneda;
