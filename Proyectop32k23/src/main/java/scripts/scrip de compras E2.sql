@@ -1,8 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS `proyectop3` DEFAULT CHARACTER SET utf8 ;
 USE `proyectop3` ;
 
-CREATE TABLE tbl_Proveedor (
-  id_proveedor INT PRIMARY KEY,
+CREATE TABLE tblProveedor (
+  idproveedor INT PRIMARY KEY,
   nombre VARCHAR(255),
   direccion VARCHAR(255),
   telefono INT(20),
