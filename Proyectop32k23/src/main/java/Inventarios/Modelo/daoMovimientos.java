@@ -5,6 +5,8 @@
  */
 package Inventarios.Modelo;
 
+//Se agrega TODO el codigo para la parte del modelo del mantenimiento de movimientos.
+//Victor Josué Jerez Mijangos 9959-21-2081
 import Seguridad.Modelo.*;
 import Inventarios.Controlador.clsMovimientos;
 import java.sql.*;

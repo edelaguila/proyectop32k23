@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//Codigo para la parte de la vista del mantenimiento lineas.
+//Victor Josué Jerez Mijangos 9959-21-2081
 package Inventarios.Vista;
 
 import Seguridad.Controlador.clsBitacora;
@@ -39,7 +42,8 @@ public class frmLineas extends javax.swing.JInternalFrame {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     }
-
+//Codigo para el llenado de la tabla del mantenimiento lineas.
+//Victor Josué Jerez Mijangos 9959-21-2081
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -313,8 +317,8 @@ public class frmLineas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
      int clsBitacora = 1003;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        //----------
+        ///Codigo para el boton "eliminar" del mantenimiento lineas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
@@ -330,6 +334,8 @@ public class frmLineas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        ///Codigo para el boton "Registrar" del mantenimiento lineas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "INS");
@@ -346,7 +352,8 @@ public class frmLineas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        ///Codigo para el boton "Buscar" del mantenimiento lineas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "READ");
@@ -363,7 +370,8 @@ public class frmLineas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+        //Codigo para el boton "Modificar" del mantenimiento lineas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "UPD");
@@ -382,15 +390,14 @@ public class frmLineas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        ///Codigo para el boton "Limpiar" del mantenimiento lineas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         limpiarTextos();
         habilitarBotones();
         
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
-        
-        
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
     {

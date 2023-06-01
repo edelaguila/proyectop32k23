@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Codigo para la parte de la vista del mantenimiento Bodegas.
+//Victor Josué Jerez Mijangos 9959-21-2081
+
 package Inventarios.Vista;
 
 import Seguridad.Controlador.clsBitacora;
@@ -40,7 +43,8 @@ public class frmBodegas extends javax.swing.JInternalFrame {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     }
-
+//Codigo para el llenado de la tabla del mantenimiento de Bodegas
+//Victor Josué Jerez Mijangos 9959-21-2081
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -98,7 +102,7 @@ public class frmBodegas extends javax.swing.JInternalFrame {
         txtFechaIngreso = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAyuda = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         txtFechaSalida = new javax.swing.JTextField();
@@ -189,10 +193,10 @@ public class frmBodegas extends javax.swing.JInternalFrame {
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
-        jButton2.setText("Ayuda");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAyuda.setText("Ayuda");
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAyudaActionPerformed(evt);
             }
         });
 
@@ -251,7 +255,7 @@ public class frmBodegas extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(14, 14, 14)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
@@ -331,7 +335,7 @@ public class frmBodegas extends javax.swing.JInternalFrame {
                             .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnLimpiar)
-                                .addComponent(jButton2)))
+                                .addComponent(btnAyuda)))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -346,8 +350,8 @@ public class frmBodegas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
      int clsBitacora = 1002;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        //----------
+        //Codigo para el boton "eliminar" del mantenimiento bodegas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
@@ -363,6 +367,8 @@ public class frmBodegas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //Codigo para el boton "Registrar" del mantenimiento bodegas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "INS");
@@ -383,7 +389,8 @@ public class frmBodegas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        //Codigo para el boton "buscar" del mantenimiento bodegas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "READ");
@@ -402,7 +409,8 @@ public class frmBodegas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+        //Codigo para el boton "Modificar" del mantenimiento bodegas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "UPD");
@@ -423,6 +431,8 @@ public class frmBodegas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //Codigo para el boton "Limpiar" del mantenimiento bodegas y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         limpiarTextos();
         habilitarBotones();
         
@@ -453,7 +463,7 @@ public class frmBodegas extends javax.swing.JInternalFrame {
         btnEliminar.setEnabled(false);
     }    
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
         // TODO add your handling code here:
          int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -472,7 +482,7 @@ public class frmBodegas extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAyudaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
@@ -516,6 +526,7 @@ public class frmBodegas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -523,7 +534,6 @@ public class frmBodegas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnReporte;
     private javax.swing.JComboBox<String> cboEstatus;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label3;

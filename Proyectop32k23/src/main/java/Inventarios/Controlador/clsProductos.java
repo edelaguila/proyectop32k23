@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Se agrega TODO el codigo para la parte del controlador del mantenimiento de productos
+//Victor Josué Jerez Mijangos 9959-21-2081
+
 package Inventarios.Controlador;
 import java.util.List;
 import Inventarios.Modelo.daoProductos;

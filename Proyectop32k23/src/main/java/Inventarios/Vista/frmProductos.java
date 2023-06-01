@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//Codigo para la parte de la vista del mantenimiento productos.
+//Victor Josué Jerez Mijangos 9959-21-2081
 package Inventarios.Vista;
 
 import Seguridad.Controlador.clsBitacora;
@@ -40,7 +43,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     }
-
+//Codigo para el llenado de la tabla del mantenimiento de productos
+//Victor Josué Jerez Mijangos 9959-21-2081
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID Producto");
@@ -365,8 +369,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
      int clsBitacora = 1004;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        //----------
+        //Codigo para el boton "eliminar" del mantenimiento productos y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
@@ -382,6 +386,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //Codigo para el boton "registrar" del mantenimiento productos y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "INS");
@@ -402,7 +408,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        //Codigo para el boton "buscar" del mantenimiento productos y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "READ");
@@ -423,7 +430,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+        //Codigo para el boton "Modificar" del mantenimiento productos y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081.
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "UPD");
@@ -445,6 +453,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //Codigo para el boton "limpiar" del mantenimiento productos y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         limpiarTextos();
         habilitarBotones();
         
@@ -452,8 +462,6 @@ public class frmProductos extends javax.swing.JInternalFrame {
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
         
-        
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
     {

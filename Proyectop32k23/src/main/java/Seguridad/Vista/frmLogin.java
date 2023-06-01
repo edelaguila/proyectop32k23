@@ -192,8 +192,8 @@ public class frmLogin extends javax.swing.JFrame {
                     menuGeneral.setVisible(true);
                     this.dispose();*/
                     
-                    //---Agregando switch case para funcionalidad de todos los módulos(incompleto porque aún no hay MDI'S de todos)
-                    //Victor Jerez
+                    //Agregando switch case para funcionalidad de todos los módulos(Agregar MDI's al switch)
+                    //Victor Josué Jerez Mijangos 9959-21-2081
                     String areaSeleccionada;
                     areaSeleccionada = cboOpciones.getSelectedItem().toString();
                     

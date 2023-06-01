@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Codigo para la parte de la vista del mantenimiento movimientos.
+//Victor Josué Jerez Mijangos 9959-21-2081
 package Inventarios.Vista;
 
 import Seguridad.Controlador.clsBitacora;
@@ -39,7 +41,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     }
-
+//Codigo para el llenado de la tabla del mantenimiento de movimientos
+//Victor Josué Jerez Mijangos 9959-21-2081
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
@@ -315,8 +318,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
      int clsBitacora = 1010;
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        //----------
+        //Codigo para el boton "eliminar" del mantenimiento movimiento y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "DEL");
@@ -332,6 +335,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        //Codigo para el boton "registrar" del mantenimiento movimiento y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "INS");
@@ -348,7 +353,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        //Codigo para el boton "buscar" del mantenimiento movimiento y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "READ");
@@ -365,7 +371,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
+        //Codigo para el boton "modificar" del mantenimiento movimiento y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "UPD");
@@ -384,6 +391,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //Codigo para el boton "limpiar" del mantenimiento movimiento y su registro en bitacora.
+        //Victor Josué Jerez Mijangos 9959-21-2081
         limpiarTextos();
         habilitarBotones();
         

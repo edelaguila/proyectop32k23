@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Se agrega TODO el codigo para la parte del modelo del mantenimiento de Bodegas.
+//Victor Josué Jerez Mijangos 9959-21-2081
 package Inventarios.Modelo;
 
 import Seguridad.Modelo.*;
