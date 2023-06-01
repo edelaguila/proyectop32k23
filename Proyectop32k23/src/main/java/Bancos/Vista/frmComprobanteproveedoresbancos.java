@@ -136,7 +136,7 @@ int codigoAplicacion=5011;
         modelo.addColumn("concId");
         modelo.addColumn("codBanco");
         modelo.addColumn("movDetId");
-        modelo.addColumn("cpid");
+        modelo.addColumn("idproveedor");
 
         clsComprobanteProveedoresBancos compPr = new clsComprobanteProveedoresBancos();
         //VendedorDAO vendedorDAO = new VendedorDAO();
@@ -152,7 +152,7 @@ int codigoAplicacion=5011;
             dato[4] = Integer.toString(listadoComprobante.get(i).getConcId());
             dato[5] = Integer.toString(listadoComprobante.get(i).getCodBanco());
             dato[6] = Integer.toString(listadoComprobante.get(i).getMovDetId());
-            dato[7] = Integer.toString(listadoComprobante.get(i).getcpid ());
+            dato[7] = Integer.toString(listadoComprobante.get(i).getidproveedor ());
             modelo.addRow(dato);
         }       
     }
@@ -526,7 +526,7 @@ int codigoAplicacion=5011;
         Comprobante.setConcId(Integer.parseInt(cbIdConcepto.getSelectedItem().toString()));
         Comprobante.setCodBanco(Integer.parseInt(cbIdBanco.getSelectedItem().toString()));
         Comprobante.setMovDetId(Integer.parseInt(cbIdMovD.getSelectedItem().toString()));
-        Comprobante.setcpid(Integer.parseInt(cbIdPr.getSelectedItem().toString()));
+        Comprobante.setidproveedor(Integer.parseInt(cbIdPr.getSelectedItem().toString()));
 
     
     Comprobante.setIngresarComprobanteProveedores(Comprobante);
@@ -597,7 +597,7 @@ int codigoAplicacion=5011;
             }
         }
         
-                int prov = comp.getcpid();
+                int prov = comp.getidproveedor();
         for (int i = 1; i < cbIdPr.getItemCount(); i++) {
             int item = Integer.parseInt(cbIdPr.getItemAt(i).toString());
             if (item == prov) {
@@ -620,7 +620,7 @@ int codigoAplicacion=5011;
         Comprobante.setConcId(Integer.parseInt(cbIdConcepto.getSelectedItem().toString()));
         Comprobante.setCodBanco(Integer.parseInt(cbIdBanco.getSelectedItem().toString()));
         Comprobante.setMovDetId(Integer.parseInt(cbIdMovD.getSelectedItem().toString()));
-        Comprobante.setcpid(Integer.parseInt(cbIdPr.getSelectedItem().toString()));
+        Comprobante.setidproveedor(Integer.parseInt(cbIdPr.getSelectedItem().toString()));
         Comprobante.setModificarComprobanteProveedores(Comprobante);
      
     

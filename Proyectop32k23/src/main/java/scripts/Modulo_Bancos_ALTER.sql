@@ -43,7 +43,7 @@ ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prDeuda;
 ALTER TABLE tbl_comprobanteProveedoresBancos ADD concId INT(5) NOT NULL;
 ALTER TABLE tbl_comprobanteProveedoresBancos ADD codBanco INT(5) NOT NULL;
 ALTER TABLE tbl_comprobanteProveedoresBancos ADD movDetId INT(5) NOT NULL;
-ALTER TABLE tbl_comprobanteProveedoresBancos ADD cpid INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD idproveedor INT(5) NOT NULL;
 
 ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_concId_comprobanteProveedoresBancos
 FOREIGN KEY (concId) REFERENCES tbl_conceptosbancos(concId);
@@ -54,8 +54,8 @@ FOREIGN KEY (codBanco) REFERENCES tbl_bancoexterno (codBanco);
 ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_movDetId_comprobanteProveedoresBancos
 FOREIGN KEY (movDetId) REFERENCES tbl_movimientosdetallebancos(movDetId);
 
-ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_cpid_ccorrientesprov
-FOREIGN KEY (cpid) REFERENCES tbl_ccorrientesprov(cpid);
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_idproveedor_ccorrientesprov
+FOREIGN KEY (idproveedor) REFERENCES tblProveedor(idproveedor);
 
 --Cambios para Cuentas Bancos
 --Primero cambiamos el parametro de entrada de 5 digitos a 10

@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class daoComprobanteProveedoresBancos {
 
-    private static final String SQL_SELECT = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid    FROM tbl_comprobanteProveedoresBancos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_comprobanteProveedoresBancos(conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid ) VALUES(?, ?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_comprobanteProveedoresBancos SET conFechaEmision=?, tipMovid=?, cueId=?, concId=?, codBanco=?, movDetId=?, cpid=? WHERE comId = ?";
+    private static final String SQL_SELECT = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, idproveedor    FROM tbl_comprobanteProveedoresBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_comprobanteProveedoresBancos(conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, idproveedor ) VALUES(?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_comprobanteProveedoresBancos SET conFechaEmision=?, tipMovid=?, cueId=?, concId=?, codBanco=?, movDetId=?, idproveedor=? WHERE comId = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_comprobanteProveedoresBancos WHERE comId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid  FROM tbl_comprobanteProveedoresBancos WHERE conFechaEmision = ?";
-    private static final String SQL_SELECT_ID = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, cpid   FROM tbl_comprobanteProveedoresBancos WHERE tipModId = ?";     
+    private static final String SQL_SELECT_NOMBRE = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, idproveedor  FROM tbl_comprobanteProveedoresBancos WHERE conFechaEmision = ?";
+    private static final String SQL_SELECT_ID = "SELECT comId, conFechaEmision, tipMovid, cueId, concId, codBanco , movDetId, idproveedor   FROM tbl_comprobanteProveedoresBancos WHERE tipModId = ?";     
 
 
 
@@ -45,7 +45,7 @@ public class daoComprobanteProveedoresBancos {
                 int conceptoId = rs.getInt("concId");
                 int bancoId = rs.getInt("codBanco");
                 int movDId = rs.getInt("movDetId");
-                int cpid  = rs.getInt("cpid ");
+                int idproveedor  = rs.getInt("idproveedor ");
                 clsComprobanteProveedoresBancos ComprobanteProv = new clsComprobanteProveedoresBancos();
                 ComprobanteProv.setComId(id);
                 ComprobanteProv.setConFechaEmision(fechaE);
@@ -54,7 +54,7 @@ public class daoComprobanteProveedoresBancos {
                 ComprobanteProv.setConcId(conceptoId);
                 ComprobanteProv.setCodBanco(bancoId);
                 ComprobanteProv.setMovDetId(movDId);
-                ComprobanteProv.setcpid (cpid );
+                ComprobanteProv.setidproveedor (idproveedor );
                 ComprobanteProveedor.add(ComprobanteProv);
             }
         } catch (SQLException ex) {
@@ -81,7 +81,7 @@ public class daoComprobanteProveedoresBancos {
             stmt.setInt(4, comprobante.getConcId());
             stmt.setInt(5, comprobante.getCodBanco());
             stmt.setInt(6, comprobante.getMovDetId());
-            stmt.setInt(7, comprobante.getcpid ());
+            stmt.setInt(7, comprobante.getidproveedor ());
             
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -110,7 +110,7 @@ public class daoComprobanteProveedoresBancos {
             stmt.setInt(4, comprobante.getConcId());
             stmt.setInt(5, comprobante.getCodBanco());
             stmt.setInt(6, comprobante.getMovDetId());
-            stmt.setInt(7, comprobante.getcpid());
+            stmt.setInt(7, comprobante.getidproveedor());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -165,7 +165,7 @@ public class daoComprobanteProveedoresBancos {
                 int conceptoId = rs.getInt("concId");
                 int bancoId = rs.getInt("codBanco");
                 int movDId = rs.getInt("movDetId");
-                int cpid  = rs.getInt("cpid ");
+                int idproveedor  = rs.getInt("idproveedor ");
                 //comprobante = new comprobante();
                 comprobante.setComId(id);
                 comprobante.setConFechaEmision(fechaE);
@@ -174,7 +174,7 @@ public class daoComprobanteProveedoresBancos {
                 comprobante.setConcId(conceptoId);
                 comprobante.setCodBanco(bancoId);
                 comprobante.setMovDetId(movDId);
-                comprobante.setcpid (cpid );
+                comprobante.setidproveedor (idproveedor );
                 System.out.println(" registro consultado: " + comprobante);                
             }
             //System.out.println("Registros buscado:" + persona);
@@ -208,7 +208,7 @@ public class daoComprobanteProveedoresBancos {
                 int conceptoId = rs.getInt("concId");
                 int bancoId = rs.getInt("codBanco");
                 int movDId = rs.getInt("movDetId");
-                int cpid  = rs.getInt("cpid ");
+                int idproveedor  = rs.getInt("idproveedor ");
                 //comprobante = new comprobante();
                 comprobante.setComId(id);
                 comprobante.setConFechaEmision(fechaE);
@@ -217,7 +217,7 @@ public class daoComprobanteProveedoresBancos {
                 comprobante.setConcId(conceptoId);
                 comprobante.setCodBanco(bancoId);
                 comprobante.setMovDetId(movDId);
-                comprobante.setcpid (cpid );
+                comprobante.setidproveedor (idproveedor );
                 System.out.println(" registro consultado: " + comprobante);                
             }
             //System.out.println("Registros buscado:" + persona);
