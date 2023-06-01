@@ -105,10 +105,35 @@ public class clsProveedoresCC {
     }
     
     //Metodos de acceso a la capa controlador   
- public List<clsProveedoresCC> getListadoT()
+ public clsProveedoresCC getBuscarInformacionProvNombre(clsProveedoresCC Prov)
+    {
+        daoProveedoresCC daoProveedoresCC = new daoProveedoresCC();
+        return daoProveedoresCC.consultaProveedorNombre(Prov);
+    }
+ public clsProveedoresCC getBuscarInformacionProvId(clsProveedoresCC Prov)
+    {
+        daoProveedoresCC daoProveedoresCC = new daoProveedoresCC();
+        return daoProveedoresCC.consultaProveedorId(Prov);
+    }    
+ public List<clsProveedoresCC> getListadoProveedores()
     {
         daoProveedoresCC daoProveedoresCC = new daoProveedoresCC();
         List<clsProveedoresCC> ListadoProveedores = daoProveedoresCC.consultaProveedores();
         return ListadoProveedores;
+    }
+ public int setBorrarProv(clsProveedoresCC Prov)
+    {
+        daoProveedoresCC daoProveedoresCC = new daoProveedoresCC();
+        return daoProveedoresCC.borrarProveedor(Prov);
+    }          
+    public int setIngresarProv(clsProveedoresCC Prov)
+    {
+        daoProveedoresCC daoProveedoresCC = new daoProveedoresCC();
+        return daoProveedoresCC.ingresaProveedor(Prov);
+    }              
+    public int setModificarProv(clsProveedoresCC Prov)
+    {
+        daoProveedoresCC daoProveedoresCC = new daoProveedoresCC();
+        return daoProveedoresCC.actualizaProveedor(Prov);
     }
 }

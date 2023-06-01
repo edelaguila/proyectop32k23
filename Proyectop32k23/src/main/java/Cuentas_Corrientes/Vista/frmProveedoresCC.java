@@ -8,9 +8,6 @@ package Cuentas_Corrientes.Vista;
 
 //import Seguridad.Vista.*;
 import Cuentas_Corrientes.Controlador.clsProveedoresCC;
-import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
-import Cuentas_Corrientes.Modelo.daoCCorrientesProv;
-import Cuentas_Corrientes.Controlador.clsProveedoresCC;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Modelo.Conexion;
@@ -32,42 +29,25 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
+// REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
 /**
  *
  * @author visitante
  */
-public class frmCCorrientesProv extends javax.swing.JInternalFrame {
+public class frmProveedoresCC extends javax.swing.JInternalFrame {
+    
 //int codigoAplicacion=preguntar;
-/*public void llenadoDeCB() {
-        clsProveedoresCC proveedoresC = new clsProveedoresCC();
-        List<clsProveedoresCC> ListadoProveedores = proveedoresC.getListadoProv();
-=======
-    /*
 public void llenadoDeCB() {
-        clsProveedoresCC proveedoresC = new clsProveedoresCC();
-        List<clsProveedoresCC> ListadoProveedores = proveedoresC.getListadoT();
->>>>>>> 5da0ece71c26d9f3633c060eeeeb20f6c4ca53ce
-        cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
-        cbIdProv.addItem("Seleccionar...");
-        for (int i = 0; i < ListadoProveedores.size(); i++) {
-            cbIdProv.addItem(String.valueOf(ListadoProveedores.get(i).getIdProv));
-<<<<<<< HEAD
-        }
-    }*/
-         
-    public void llenadoDeCB() {
         clsProveedoresCC prov = new clsProveedoresCC();
         List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
         cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdProv.addItem("Seleccionar...");
         for (int i = 0; i < listaProv.size(); i++) {
-            clsProveedoresCC provee = listaProv.get(i);
-            String item = provee.getIdProv() + " - " +  prov.getFactProv();
+            //clsProveedoresCC prov = listadoT.get(i);
+            String item = prov.getIdProv() + " - " + prov.getNombreProv();
             cbIdProv.addItem(item);
         }
-        
     }
-    
     //public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         List<Empleado> empleados = empleadoDAO.select();
@@ -76,40 +56,38 @@ public void llenadoDeCB() {
             cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
         } */
     //}
+
 public void llenadoDeTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID CCorrientes");
-        modelo.addColumn("Tipo de Cuenta");
-        modelo.addColumn("ID Tipo Proveedor");
+        modelo.addColumn("ID proveedor");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Nombre de Proveedor");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nit");
         modelo.addColumn("No. Factura");
-        modelo.addColumn("Factura");
-        modelo.addColumn("Cancelacion");
-        modelo.addColumn("Saldo");
-        clsCCorrientesProv aplicacion = new clsCCorrientesProv();
-        List<clsCCorrientesProv> listaAplicaciones = aplicacion.getListadoCC();
+        modelo.addColumn("Total factura");
+        clsProveedoresCC aplicacion = new clsProveedoresCC();
+        List<clsProveedoresCC> listaAplicaciones = aplicacion.getListadoProveedores();
         tablaUsuarios.setModel(modelo);
         String[] dato = new String[9];
         for (int i = 0; i < listaAplicaciones.size(); i++) {
-            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdCCorrienteProv());
-            dato[1] = listaAplicaciones.get(i).getTipoCCorrienteProv();
-            dato[2] = Integer.toString(listaAplicaciones.get(i).getIdTipoCCorrienteProv());
-            dato[3] = listaAplicaciones.get(i).getFechaCCorrienteProv();
-            dato[4] = listaAplicaciones.get(i).getNombreCCorrienteProv();
-            dato[5] = listaAplicaciones.get(i).getNofacturaCCorrienteProv();
-            dato[6] = Double.toString(listaAplicaciones.get(i).getFacturaCCorrienteProv());
-            dato[7] = Double.toString(listaAplicaciones.get(i).getCancelacionProv());
-            dato[8] = Double.toString(listaAplicaciones.get(i).getSaldoCCorrienteProv());
+            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdProv());
+            dato[1] = listaAplicaciones.get(i).getFechaProv();
+            dato[2] = listaAplicaciones.get(i).getNombreProv();
+            dato[3] = listaAplicaciones.get(i).getNitProv();
+            dato[4] = listaAplicaciones.get(i).getFactProv();
+            dato[5] = Double.toString(listaAplicaciones.get(i).getTotFacturaProv());
             modelo.addRow(dato);
         }   
     }
+    
     int codigoAplicacion= 12;
-    public frmCCorrientesProv() {
+    public frmProveedoresCC() {
         initComponents();
         llenadoDeTabla();
-        llenadoDeCB();       
+        //llenadoDeCB();
+       
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,12 +119,10 @@ public void llenadoDeTabla() {
         label8 = new javax.swing.JLabel();
         txtnombreC = new javax.swing.JTextField();
         label9 = new javax.swing.JLabel();
-        label10 = new javax.swing.JLabel();
         txttotfac = new javax.swing.JTextField();
-        txtsaldo = new javax.swing.JTextField();
         label12 = new javax.swing.JLabel();
         txtnofac = new javax.swing.JTextField();
-        txttipocuenta = new javax.swing.JTextField();
+        txtnit = new javax.swing.JTextField();
         btnReporte = new javax.swing.JButton();
         cbIdProv = new javax.swing.JComboBox<>();
 
@@ -228,7 +204,7 @@ public void llenadoDeTabla() {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        label1.setText("Cuentas Corrientes Proveedores");
+        label1.setText("Proveedores");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +214,7 @@ public void llenadoDeTabla() {
         });
 
         label3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        label3.setText("Tipo de Cuenta");
+        label3.setText("Nit");
 
         label6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         label6.setText("Fecha");
@@ -251,16 +227,13 @@ public void llenadoDeTabla() {
         });
 
         label8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        label8.setText("Nombre de Cuenta");
+        label8.setText("Nombre");
 
         txtnombreC.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtnombreC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         label9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         label9.setText("Total Factura");
-
-        label10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        label10.setText("Cancelación");
 
         txttotfac.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txttotfac.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -269,9 +242,6 @@ public void llenadoDeTabla() {
                 txttotfacActionPerformed(evt);
             }
         });
-
-        txtsaldo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtsaldo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         label12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         label12.setText("No. Factura");
@@ -284,11 +254,11 @@ public void llenadoDeTabla() {
             }
         });
 
-        txttipocuenta.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txttipocuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txttipocuenta.addActionListener(new java.awt.event.ActionListener() {
+        txtnit.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtnit.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtnit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttipocuentaActionPerformed(evt);
+                txtnitActionPerformed(evt);
             }
         });
 
@@ -298,6 +268,8 @@ public void llenadoDeTabla() {
                 btnReporteActionPerformed(evt);
             }
         });
+
+        cbIdProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -314,7 +286,6 @@ public void llenadoDeTabla() {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label10)
                             .addComponent(label9)
                             .addComponent(label12)
                             .addComponent(label8)
@@ -322,14 +293,15 @@ public void llenadoDeTabla() {
                             .addComponent(label3)
                             .addComponent(label5))
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txttipocuenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtnit, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                                    .addComponent(txtfecha))
+                                .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,7 +314,7 @@ public void llenadoDeTabla() {
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -393,11 +365,9 @@ public void llenadoDeTabla() {
                         .addGap(7, 7, 7)
                         .addComponent(label12)
                         .addGap(7, 7, 7)
-                        .addComponent(label9)
-                        .addGap(7, 7, 7)
-                        .addComponent(label10))
+                        .addComponent(label9))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txttipocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
@@ -407,10 +377,8 @@ public void llenadoDeTabla() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtnofac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(84, 84, 84)
+                        .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
@@ -452,9 +420,9 @@ public void llenadoDeTabla() {
         // TODO add your handling code here:
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         int registrosBorrados=0;
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=transaccion.setBorrarCC(transaccion);
+        clsProveedoresCC transaccion = new clsProveedoresCC();
+        transaccion.setIdProv(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados=transaccion.setBorrarProv(transaccion);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n","Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -465,43 +433,38 @@ public void llenadoDeTabla() {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        //Alan Abimael Galicia Ruano, Luis Diego Cortez
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        transaccion.setFechaCCorrienteProv(txtfecha.getText());
-        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
-        transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
-        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        String selectedItem = cbIdProv.getSelectedItem().toString();
-            int itemId = Integer.parseInt(selectedItem.split(" - ")[0]);
-            transaccion.setIdTipoCCorrienteProv(itemId);
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
-        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        double TotalEnFactura = Double.parseDouble(txttotfac.getText());
-        transaccion.setFacturaCCorrienteProv(TotalEnFactura);
-        double TotalSaldo = Double.parseDouble(txtsaldo.getText());
-        transaccion.setCancelacionProv(TotalSaldo);
-        transaccion.setSaldoCCorrienteProv(TotalSaldo-TotalEnFactura);
-        transaccion.setIngresarCC(transaccion);
+        // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
+        clsProveedoresCC prov = new clsProveedoresCC();
+        prov.setNombreProv(txtnombreC.getText());
+        int proveedor = prov.getIdProv();
+        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
+            String item = cbIdProv.getItemAt(i).toString();
+            int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
+            
+            if (itemId == proveedor) {
+                cbIdProv.setSelectedIndex(i);
+                break;
+            }
+        }
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "INS");
         llenadoDeTabla();
         limpiarTextos();
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
+        clsProveedoresCC transaccion = new clsProveedoresCC();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        transaccion = transaccion.getBuscarInformacionCCProvPorId(transaccion);
+        transaccion.setIdProv(Integer.parseInt(txtbuscado.getText()));
+        transaccion = transaccion.getBuscarInformacionProvId(transaccion);
         System.out.println("Cuenta Corriente retornada:" + transaccion);
-        txttipocuenta.setText(transaccion.getTipoCCorrienteProv());
-        int tipoMonedaId = transaccion.getIdTipoCCorrienteProv();
+        txtnit.setText(transaccion.getNitProv());
+        int tipoMonedaId = transaccion.getIdProv();
         for (int i = 1; i < cbIdProv.getItemCount(); i++) {
             String item = cbIdProv.getItemAt(i).toString();
             int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
@@ -511,28 +474,24 @@ public void llenadoDeTabla() {
                 break;
             }
         }
-        txtfecha.setText(transaccion.getFechaCCorrienteProv());
-        txtnombreC.setText(transaccion.getNombreCCorrienteProv());
-        txttotfac.setText(String.valueOf(transaccion.getFacturaCCorrienteProv()));
-        txtsaldo.setText(String.valueOf(transaccion.getCancelacionProv()));
+        txtfecha.setText(transaccion.getFechaProv());
+        txtnombreC.setText(transaccion.getNombreProv());
+        txtnofac.setText(transaccion.getFactProv());
+        txttotfac.setText(String.valueOf(transaccion.getTotFacturaProv()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         //TODO add your handling code here:
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
-        transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        
-            String selectedItem = cbIdProv.getSelectedItem().toString();
-        String id = selectedItem.split(" - ")[0]; // Obtiene solo la ID
-        transaccion.setIdTipoCCorrienteProv(Integer.parseInt(id));
-        
-        transaccion.setFechaCCorrienteProv(txtfecha.getText());
-        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
-        transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
-        transaccion.setModificarCC(transaccion);
+        clsProveedoresCC prov = new clsProveedoresCC();
+        prov.setIdProv(Integer.parseInt(txtbuscado.getText()));
+        prov.setNitProv(txtnit.getText());
+        prov.setIdProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
+        prov.setFechaProv(txtfecha.getText());
+        prov.setNombreProv(txtnombreC.getText());
+        prov.setFactProv(txtnofac.getText());
+        prov.setTotFacturaProv(Double.parseDouble(txttotfac.getText()));
+        prov.setModificarProv(prov);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -550,9 +509,13 @@ public void llenadoDeTabla() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttotfacActionPerformed
 
-    private void txttipocuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttipocuentaActionPerformed
+    private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txttipocuentaActionPerformed
+    }//GEN-LAST:event_txtnofacActionPerformed
+
+    private void txtnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnitActionPerformed
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
         // TODO add your handling code here:
@@ -573,24 +536,16 @@ public void llenadoDeTabla() {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnReporteActionPerformed
-
-    private void txtnofacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnofacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnofacActionPerformed
     public void limpiarTextos()
     {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         cbIdProv.setSelectedIndex(0);
-        txtnofac.setText("");
-        txttipocuenta.setText("");
+        txtnit.setText("");
         txtfecha.setText("");
         txtnombreC.setText("");
+        txtnofac.setText("");
         txttotfac.setText("");
-        txtsaldo.setText("");
-        }
-       
-        
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
@@ -603,7 +558,6 @@ public void llenadoDeTabla() {
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
-    private javax.swing.JLabel label10;
     private javax.swing.JLabel label12;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
@@ -617,10 +571,9 @@ public void llenadoDeTabla() {
     private javax.swing.JTable tablaUsuarios;
     private javax.swing.JTextField txtbuscado;
     private javax.swing.JTextField txtfecha;
+    private javax.swing.JTextField txtnit;
     private javax.swing.JTextField txtnofac;
     private javax.swing.JTextField txtnombreC;
-    private javax.swing.JTextField txtsaldo;
-    private javax.swing.JTextField txttipocuenta;
     private javax.swing.JTextField txttotfac;
     // End of variables declaration//GEN-END:variables
 }
