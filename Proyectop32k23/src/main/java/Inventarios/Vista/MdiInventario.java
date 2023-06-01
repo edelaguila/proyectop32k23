@@ -234,7 +234,7 @@ public class MdiInventario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -418,4 +418,4 @@ public class MdiInventario extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem mnuSalirSistema;
     private javax.swing.JCheckBoxMenuItem movTransaccion;
     // End of variables declaration//GEN-END:variables
-        
+}   

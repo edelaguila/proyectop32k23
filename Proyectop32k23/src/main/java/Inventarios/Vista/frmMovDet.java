@@ -65,7 +65,7 @@ public class frmMovDet extends javax.swing.JInternalFrame {
             datos[1] = Integer.toString(listadoEncabezados.get(i).getIdMovimiento());
             datos[6] = listadoEncabezados.get(i).getFechaMovimiento();
             datos[7] = listadoEncabezados.get(i).getEstatusMovimiento();
-            modelo.addRow(dato);
+            modelo.addRow(datos);
         }    
     }
 
