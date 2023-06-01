@@ -29,6 +29,7 @@ public class frmLogin extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
+        //Corregui el diseño del login y le agregue el combobox para las diferentres areas= hector Ronaldo Rosales Perez
         setSize(350, 250);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }

@@ -423,6 +423,8 @@ public class frmMovimientos extends javax.swing.JInternalFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         // Se agrega codigo para desplegar la ayuda de Movimientos  y para que se registre en la bitacora
+        // Hector Ronaldo Rosales Perez  9959-20-3188
          int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), clsBitacora, "HELP");
