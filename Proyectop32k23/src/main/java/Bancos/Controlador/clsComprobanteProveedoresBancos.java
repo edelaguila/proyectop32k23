@@ -19,7 +19,7 @@ public class clsComprobanteProveedoresBancos {
     private int concId ;
     private int codBanco;
     private int movDetId;
-    private int cpid ;
+    private int idproveedor ;
 
     public int getComId() {
         return comId;
@@ -77,12 +77,12 @@ public class clsComprobanteProveedoresBancos {
         this.movDetId = movDetId;
     }
 
-    public int getcpid () {
-        return cpid ;
+    public int getidproveedor () {
+        return idproveedor ;
     }
 
-    public void setcpid (int cpid ) {
-        this.cpid  = cpid ;
+    public void setidproveedor (int idproveedor ) {
+        this.idproveedor  = idproveedor ;
     }
 
     public clsComprobanteProveedoresBancos() {
@@ -137,7 +137,7 @@ public class clsComprobanteProveedoresBancos {
         this.movDetId = movDetId;
     }
 
-    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId, int concId, int codBanco, int movDetId, int cpid ) {
+    public clsComprobanteProveedoresBancos(int comId, String conFechaEmision, int tipMovid, int cueId, int concId, int codBanco, int movDetId, int idproveedor ) {
         this.comId = comId;
         this.conFechaEmision = conFechaEmision;
         this.tipMovid = tipMovid;
@@ -145,12 +145,12 @@ public class clsComprobanteProveedoresBancos {
         this.concId = concId;
         this.codBanco = codBanco;
         this.movDetId = movDetId;
-        this.cpid  = cpid;
+        this.idproveedor  = idproveedor;
     }
 
     @Override
     public String toString() {
-        return "clsComprobanteProveedoresBancos{" + "comId =" + comId    + ", conFechaEmision  =" + conFechaEmision   + ", tipMovid  =" + tipMovid + ", cueId=" + cueId + ", concId  =" + concId    + ", banId  =" + codBanco +  ", movdetId  =" + movDetId +  ", cpid   =" + cpid  + '}';
+        return "clsComprobanteProveedoresBancos{" + "comId =" + comId    + ", conFechaEmision  =" + conFechaEmision   + ", tipMovid  =" + tipMovid + ", cueId=" + cueId + ", concId  =" + concId    + ", banId  =" + codBanco +  ", movdetId  =" + movDetId +  ", idproveedor   =" + idproveedor  + '}';
     }
     //Metodos de acceso a la capa controlador
     public clsComprobanteProveedoresBancos getBuscarInformacionComprobanteProveedoresPorNombre(clsComprobanteProveedoresBancos comprobante)
