@@ -22,8 +22,10 @@ import java.sql.Connection;
 //import java.sql.ResultSet;
 //import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 //import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 //import java.util.Set;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -57,14 +59,18 @@ public void llenadoDeCB() {
          
     public void llenadoDeCB() {
         clsProveedoresCC prov = new clsProveedoresCC();
-        List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
-        cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
-        cbIdProv.addItem("Seleccionar...");
-        for (int i = 0; i < listaProv.size(); i++) {
-            clsProveedoresCC provee = listaProv.get(i);
-            String item = provee.getIdProv() + " - " +  prov.getFactProv();
-            cbIdProv.addItem(item);
-        }
+    List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
+     cbIdProv.removeAllItems();
+    Set <Integer> idSet= new HashSet<>();
+    cbIdProv.addItem("Seleccionar");
+    cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
+    for (clsProveedoresCC idDeProv : listaProv){
+        int Id = idDeProv.getIdProv();
+        String Nombre = idDeProv.getNombreProv();
+        if(!idSet.contains(Id+" - "+Nombre)){
+            cbIdProv.addItem(String.valueOf(Id)+" - "+Nombre);
+            idSet.add(Id);    }
+    }
         
     }
     
@@ -467,11 +473,13 @@ public void llenadoDeTabla() {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         //Alan Abimael Galicia Ruano, Luis Diego Cortez
         clsCCorrientesProv transaccion = new clsCCorrientesProv();
-        transaccion.setTipoCCorrienteProv(txttipocuenta.getText());
-        transaccion.setFechaCCorrienteProv(txtfecha.getText());
-        transaccion.setNombreCCorrienteProv(txtnombreC.getText());
-        transaccion.setNofacturaCCorrienteProv(txtnofac.getText());
-        transaccion.setFacturaCCorrienteProv(Double.parseDouble(txttotfac.getText()));
+        transaccion.setIdCCorrienteProv(Integer.parseInt(txtbuscado.getText()));
+        transaccion = transaccion.getBuscarInformacionCCProvPorId(transaccion);
+        transaccion.setTipoCCorrienteProv(transaccion.getTipoCCorrienteProv());
+        transaccion.setFechaCCorrienteProv(transaccion.getFechaCCorrienteProv());
+        transaccion.setNombreCCorrienteProv(transaccion.getNombreCCorrienteProv());
+        transaccion.setNofacturaCCorrienteProv(transaccion.getNofacturaCCorrienteProv());
+        //transaccion.setFacturaCCorrienteProv(Double.parseDouble(transaccion.setFacturaCCorrienteProv()));
         transaccion.setCancelacionProv(Double.parseDouble(txtsaldo.getText()));
         String selectedItem = cbIdProv.getSelectedItem().toString();
             int itemId = Integer.parseInt(selectedItem.split(" - ")[0]);
