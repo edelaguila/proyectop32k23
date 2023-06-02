@@ -62,7 +62,7 @@ public void llenadoDeCB() {
     List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
      cbIdProv.removeAllItems();
     Set <Integer> idSet= new HashSet<>();
-    cbIdProv.addItem("Mostrar Todo");
+    cbIdProv.addItem("Seleccionar");
     cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
     for (clsProveedoresCC idDeProv : listaProv){
         int Id = idDeProv.getIdProv();
