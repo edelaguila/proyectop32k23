@@ -14,12 +14,20 @@ package Ventas.Vista;
 import Seguridad.Controlador.clsBitacora;
 import Ventas.Controlador.clsTienda;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -96,6 +104,7 @@ int codigoAplicacion = 3002;
         btnActualizarTienda = new javax.swing.JButton();
         lbTipoTienda = new javax.swing.JLabel();
         txtTipoTienda = new javax.swing.JTextField();
+        btnReporteTiendas = new javax.swing.JButton();
 
         lb2Tienda.setForeground(new java.awt.Color(204, 204, 204));
         lb2Tienda.setText(".");
@@ -202,6 +211,13 @@ int codigoAplicacion = 3002;
             }
         });
 
+        btnReporteTiendas.setText("Reporte");
+        btnReporteTiendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteTiendasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,13 +242,6 @@ int codigoAplicacion = 3002;
                         .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lbBuscarTienda)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTiendabuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscarTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +254,17 @@ int codigoAplicacion = 3002;
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAyudaTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(14, 14, 14)
-                                .addComponent(btnEliminarTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnEliminarTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lbBuscarTienda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnReporteTiendas)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtTiendabuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnBuscarTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(19, 19, 19)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -294,7 +313,9 @@ int codigoAplicacion = 3002;
                             .addComponent(lbBuscarTienda))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizarTienda)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReporteTiendas)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -425,6 +446,30 @@ int codigoAplicacion = 3002;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTiendabuscadoActionPerformed
 
+    private void btnReporteTiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteTiendasActionPerformed
+        // TODO add your handling code here:
+         //María José Véliz Ochoa 
+        //9959-21-5909
+        Connection conn = null;        
+        Map p = new HashMap();
+        net.sf.jasperreports.engine.JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptTiendas.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                                              
+    }//GEN-LAST:event_btnReporteTiendasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarTienda;
@@ -434,6 +479,7 @@ int codigoAplicacion = 3002;
     private javax.swing.JButton btnLimpiarTienda;
     private javax.swing.JButton btnModificarTienda;
     private javax.swing.JButton btnRegistrarTienda;
+    private javax.swing.JButton btnReporteTiendas;
     private javax.swing.JScrollPane jScrollPane1Tienda;
     private javax.swing.JLabel lb2Tienda;
     private javax.swing.JLabel lbBuscarTienda;
