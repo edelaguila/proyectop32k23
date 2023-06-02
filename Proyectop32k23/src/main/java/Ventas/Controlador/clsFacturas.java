@@ -220,6 +220,20 @@ public int getIdProducto() {
 
     }
     
+        public List<clsFacturas> getListadoDevoluciones()
+    {
+        daoFacturas daoCots = new daoFacturas();
+        List<clsFacturas> listadoCotizaciones = daoCots.consultaDevoluciones();
+        return listadoCotizaciones;
+    }
+    
+    public List<clsFacturas> getListadoDevolucionesDetalle(int cotid)
+    {
+        daoFacturas dao = new daoFacturas();
+    return dao.consultaDevolucionesDetalle(cotid);
+
+    }
+    
     public int verificarCotId() {
     frmConsultaCotizacion dao = new frmConsultaCotizacion();
     return dao.obtenerCotidSeleccionado();

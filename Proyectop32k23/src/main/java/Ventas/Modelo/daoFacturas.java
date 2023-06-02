@@ -314,6 +314,105 @@ public class daoFacturas {
 
     return cotizaciones;
 }
+    
+    public List<clsFacturas> consultaDevoluciones() {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+
+        List<clsFacturas> cotizaciones = new ArrayList<>();
+
+        try {
+            conn = Conexion.getConnection();
+            String estatus = "Devolución";
+            stmt = conn.prepareStatement(SQL_SELECT_COT+ " WHERE facEstatus ='"+estatus+"'");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+
+                
+                int IdFactura = rs.getInt("facid");
+                int IdPedido = rs.getInt("pedid");
+                int IdCliente = rs.getInt("clId");
+                int IdVendedor = rs.getInt("venid");
+                int IdTienda = rs.getInt("tieid");
+                String Fecha = rs.getString("facfecha");
+                double Total = rs.getDouble("facTotalGeneral");
+                
+                clsFacturas cotizacion = new clsFacturas();
+                cotizacion.setIdFactura(IdFactura);
+                cotizacion.setIdPedido(IdPedido);
+                cotizacion.setIdCliente(IdCliente);
+                cotizacion.setIdVendedor(IdVendedor);
+                cotizacion.setIdTienda(IdTienda);
+                cotizacion.setFechaFactura(Fecha);
+                cotizacion.setTotalFactura(Total);
+                cotizaciones.add(cotizacion);
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return cotizaciones;
+    }
+    
+    public List<clsFacturas> consultaDevolucionesDetalle(int cotid) {
+
+          Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
+    List<clsFacturas> cotizaciones = new ArrayList<>();
+
+    try {
+        conn = Conexion.getConnection();
+
+        // Reemplaza el parámetro en la consulta SQL
+        String sql = SQL_SELECT_COTDET + " WHERE facid ='"+cotid+"'";
+        stmt = conn.prepareStatement(sql);
+        
+        rs = stmt.executeQuery();
+        
+        while (rs.next()) {
+            
+            int IdFactura = rs.getInt("facid");
+            int Codigo = rs.getInt("proCodigo");
+            double Precio = rs.getDouble("proPrecios");
+            double Cantidad = rs.getInt("facprodcantidad");
+            double Descuento = rs.getDouble("factdescuento");
+            double Impuestos = rs.getDouble("facimpuestos");
+            double Total = rs.getDouble("factotalInd");
+
+            
+            clsFacturas cotizacion = new clsFacturas();
+            cotizacion.setIdFactura(IdFactura);
+            cotizacion.setCodigoProducto(Codigo);
+            cotizacion.setPrecioProducto(Precio);
+            cotizacion.setCantidadProducto(Cantidad);
+            cotizacion.setDescuentoFactura(Descuento);
+            cotizacion.setImpuestosFactura(Impuestos);
+            
+            
+            cotizacion.setTotalIndividualFactura(Total);
+            cotizaciones.add(cotizacion);
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace(System.out);
+    } finally {
+        Conexion.close(rs);
+        Conexion.close(stmt);
+        Conexion.close(conn);
+    }
+
+    return cotizaciones;
+}
+    
     public void registroPedidoCot(int cotid) {
 
         Connection conn = null;

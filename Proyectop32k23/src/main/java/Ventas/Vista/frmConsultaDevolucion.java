@@ -42,7 +42,7 @@ import javax.swing.table.TableColumn;
  *
  * @author visitante
  */
-public class frmConsultaFacturas extends javax.swing.JInternalFrame {
+public class frmConsultaDevolucion extends javax.swing.JInternalFrame {
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -56,13 +56,13 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modeloTabla;
     
-    public frmConsultaFacturas() {
+    public frmConsultaDevolucion() {
         initComponents();
         llenadoDeTablasCotizaciones();
         llenadoDeCombos();
     }
 
-    int codigoAplicacion = 3007;
+    int codigoAplicacion = 3008;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,22 +73,21 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lb2FacCons = new javax.swing.JLabel();
-        lbusuFacCons = new javax.swing.JLabel();
-        jScrollPane1FacCons = new javax.swing.JScrollPane();
-        jTable1FacCons = new javax.swing.JTable();
-        jScrollPaneFacReg = new javax.swing.JScrollPane();
-        tblFacConsulta = new javax.swing.JTable();
-        lbFacReg = new javax.swing.JLabel();
-        btnVerDetalleFac = new javax.swing.JButton();
-        lbInsFacReg = new javax.swing.JLabel();
-        btnDevolucionFac = new javax.swing.JButton();
-        btnAyudaConFac = new javax.swing.JButton();
+        lb2DevCons = new javax.swing.JLabel();
+        lbusuDevCons = new javax.swing.JLabel();
+        jScrollPane1DevCons = new javax.swing.JScrollPane();
+        jTable1DevCons = new javax.swing.JTable();
+        jScrollPaneDevReg = new javax.swing.JScrollPane();
+        tblDevConsulta = new javax.swing.JTable();
+        lbDevReg = new javax.swing.JLabel();
+        btnVerDetalleDev = new javax.swing.JButton();
+        lbInsDevReg = new javax.swing.JLabel();
+        btnAyudaConDev = new javax.swing.JButton();
 
-        lb2FacCons.setForeground(new java.awt.Color(204, 204, 204));
-        lb2FacCons.setText(".");
+        lb2DevCons.setForeground(new java.awt.Color(204, 204, 204));
+        lb2DevCons.setText(".");
 
-        jTable1FacCons.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1DevCons.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -99,16 +98,16 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1FacCons.setViewportView(jTable1FacCons);
+        jScrollPane1DevCons.setViewportView(jTable1DevCons);
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Facturas");
+        setTitle("Devoluciones");
         setVisible(true);
 
-        tblFacConsulta.setModel(new javax.swing.table.DefaultTableModel(
+        tblDevConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -119,30 +118,23 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPaneFacReg.setViewportView(tblFacConsulta);
+        jScrollPaneDevReg.setViewportView(tblDevConsulta);
 
-        lbFacReg.setText("Facturas Registradas:");
+        lbDevReg.setText("Ventas Devueltas:");
 
-        btnVerDetalleFac.setText("Ver Detalle");
-        btnVerDetalleFac.addActionListener(new java.awt.event.ActionListener() {
+        btnVerDetalleDev.setText("Ver Detalle");
+        btnVerDetalleDev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDetalleFacActionPerformed(evt);
+                btnVerDetalleDevActionPerformed(evt);
             }
         });
 
-        lbInsFacReg.setText("Haz clic en la factura que quieras trabajar, luego presiona un botón:");
+        lbInsDevReg.setText("Haz clic en la factura que quieras trabajar, luego presiona un botón:");
 
-        btnDevolucionFac.setText("Devolucion");
-        btnDevolucionFac.addActionListener(new java.awt.event.ActionListener() {
+        btnAyudaConDev.setText("Ayuda");
+        btnAyudaConDev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolucionFacActionPerformed(evt);
-            }
-        });
-
-        btnAyudaConFac.setText("Ayuda");
-        btnAyudaConFac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAyudaConFacActionPerformed(evt);
+                btnAyudaConDevActionPerformed(evt);
             }
         });
 
@@ -152,54 +144,50 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(394, 394, 394)
-                .addComponent(lbFacReg)
+                .addComponent(lbDevReg)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbInsFacReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneFacReg, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
+                    .addComponent(lbInsDevReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneDevReg, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVerDetalleFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDevolucionFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAyudaConFac)
-                        .addGap(8, 8, 8)))
-                .addGap(123, 123, 123))
+                        .addComponent(btnAyudaConDev)
+                        .addGap(131, 131, 131))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnVerDetalleDev)
+                        .addGap(123, 123, 123))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbFacReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(lbInsFacReg)
+                .addComponent(lbDevReg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(lbInsDevReg)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneFacReg, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneDevReg, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(btnVerDetalleFac)
-                        .addGap(73, 73, 73)
-                        .addComponent(btnDevolucionFac)
-                        .addGap(52, 52, 52)
-                        .addComponent(btnAyudaConFac)))
+                        .addComponent(btnVerDetalleDev)
+                        .addGap(148, 148, 148)
+                        .addComponent(btnAyudaConDev)))
                 .addGap(19, 19, 19))
         );
-
-        getAccessibleContext().setAccessibleName("Facturas");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVerDetalleFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDetalleFacActionPerformed
+    private void btnVerDetalleDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDetalleDevActionPerformed
         // TODO add your handling code here:
         
 // Crea una instancia de FrmConsultaCotizacionDetalle
-                int filaSeleccionada = tblFacConsulta.getSelectedRow();
-                int cotidSeleccionado = Integer.valueOf(tblFacConsulta.getValueAt(filaSeleccionada, 0).toString());
-                frmConsultaFacturaDetalle frmConsulta = new frmConsultaFacturaDetalle(cotidSeleccionado);
+                int filaSeleccionada = tblDevConsulta.getSelectedRow();
+                int cotidSeleccionado = Integer.valueOf(tblDevConsulta.getValueAt(filaSeleccionada, 0).toString());
+                frmConsultaDevolucionDetalle frmConsulta = new frmConsultaDevolucionDetalle(cotidSeleccionado);
 
                 // Agrega el FrmConsultaCotizacionDetalle al JDesktopPane
                 JDesktopPane desktopPane = getDesktopPane();
@@ -210,24 +198,9 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"QRY"); 
 
-    }//GEN-LAST:event_btnVerDetalleFacActionPerformed
+    }//GEN-LAST:event_btnVerDetalleDevActionPerformed
 
-    private void btnDevolucionFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionFacActionPerformed
-        // TODO add your handling code here:
-        int filaSeleccionada = tblFacConsulta.getSelectedRow();
-        int cotidSeleccionado = Integer.valueOf(tblFacConsulta.getValueAt(filaSeleccionada, 0).toString());
-        int clienteidselect = Integer.valueOf(tblFacConsulta.getValueAt(filaSeleccionada, 2).toString());
-        clsFacturas frmConsulta = new clsFacturas();
-        frmConsulta.CancelarPedido(cotidSeleccionado, clienteidselect);
-        DefaultTableModel model = (DefaultTableModel) tblFacConsulta.getModel();
-        model.setRowCount(0); // Eliminar todas las filas actuales de la tabla
-        llenadoDeTablasCotizaciones();
-        int resultadoBitacora=0;
-        clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS");
-    }//GEN-LAST:event_btnDevolucionFacActionPerformed
-
-    private void btnAyudaConFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConFacActionPerformed
+    private void btnAyudaConDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConDevActionPerformed
         // TODO add your handling code here:
         //Carlos Javier Sandoval Catalán
         //9959-21-1324
@@ -244,7 +217,7 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_btnAyudaConFacActionPerformed
+    }//GEN-LAST:event_btnAyudaConDevActionPerformed
 
      public void llenadoDeTablasCotizaciones() {
         DefaultTableModel modelo = new DefaultTableModel(){
@@ -261,8 +234,8 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         modelo.addColumn("Total");
         clsFacturas cotizacion = new clsFacturas();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsFacturas> listaCotizaciones = cotizacion.getListadoCotizaciones();
-        tblFacConsulta.setModel(modelo);
+        List<clsFacturas> listaCotizaciones = cotizacion.getListadoDevoluciones();
+        tblDevConsulta.setModel(modelo);
         String[] dato = new String[7];
         for (int i = 0; i < listaCotizaciones.size(); i++) {
             dato[0] = Integer.toString(listaCotizaciones.get(i).getIdFactura());
@@ -280,14 +253,14 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
 }
     
 public int obtenerCotidSeleccionado() {
-    int filaSeleccionada = tblFacConsulta.getSelectedRow();
-    int cotidSeleccionado = (int) tblFacConsulta.getValueAt(filaSeleccionada, 0);
+    int filaSeleccionada = tblDevConsulta.getSelectedRow();
+    int cotidSeleccionado = (int) tblDevConsulta.getValueAt(filaSeleccionada, 0);
     return cotidSeleccionado;
 }
 
 public int obtenerClienteidSeleccionado() {
-    int filaSeleccionada = tblFacConsulta.getSelectedRow();
-    int cotidSeleccionado = (int) tblFacConsulta.getValueAt(filaSeleccionada, 2);
+    int filaSeleccionada = tblDevConsulta.getSelectedRow();
+    int cotidSeleccionado = (int) tblDevConsulta.getValueAt(filaSeleccionada, 2);
     return cotidSeleccionado;
 }
 
@@ -295,17 +268,16 @@ public int obtenerClienteidSeleccionado() {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAyudaConFac;
-    private javax.swing.JButton btnDevolucionFac;
-    private javax.swing.JButton btnVerDetalleFac;
-    private javax.swing.JScrollPane jScrollPane1FacCons;
-    private javax.swing.JScrollPane jScrollPaneFacReg;
-    private javax.swing.JTable jTable1FacCons;
-    private javax.swing.JLabel lb2FacCons;
-    private javax.swing.JLabel lbFacReg;
-    private javax.swing.JLabel lbInsFacReg;
-    private javax.swing.JLabel lbusuFacCons;
-    private javax.swing.JTable tblFacConsulta;
+    private javax.swing.JButton btnAyudaConDev;
+    private javax.swing.JButton btnVerDetalleDev;
+    private javax.swing.JScrollPane jScrollPane1DevCons;
+    private javax.swing.JScrollPane jScrollPaneDevReg;
+    private javax.swing.JTable jTable1DevCons;
+    private javax.swing.JLabel lb2DevCons;
+    private javax.swing.JLabel lbDevReg;
+    private javax.swing.JLabel lbInsDevReg;
+    private javax.swing.JLabel lbusuDevCons;
+    private javax.swing.JTable tblDevConsulta;
     // End of variables declaration//GEN-END:variables
 
 

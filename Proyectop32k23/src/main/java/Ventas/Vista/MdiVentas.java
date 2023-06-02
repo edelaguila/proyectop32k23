@@ -71,6 +71,7 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuConCot = new javax.swing.JMenuItem();
         mnuConPed = new javax.swing.JCheckBoxMenuItem();
         mnuConFac = new javax.swing.JMenuItem();
+        mnuConsDev = new javax.swing.JMenuItem();
         mnuReportesVentas = new javax.swing.JMenu();
         mnuRepCot = new javax.swing.JMenu();
         repGenCot = new javax.swing.JMenuItem();
@@ -88,6 +89,7 @@ public class MdiVentas extends javax.swing.JFrame {
         repVendVen = new javax.swing.JMenuItem();
         repCliVen = new javax.swing.JMenuItem();
         repTieVen = new javax.swing.JMenuItem();
+        repDev = new javax.swing.JMenuItem();
         mnuAyudasVentas = new javax.swing.JMenu();
         mnuAyudaMDIVentas = new javax.swing.JMenuItem();
 
@@ -267,6 +269,14 @@ public class MdiVentas extends javax.swing.JFrame {
         });
         mnuConsultasVentas.add(mnuConFac);
 
+        mnuConsDev.setText("Consulta Devoluciones");
+        mnuConsDev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConsDevActionPerformed(evt);
+            }
+        });
+        mnuConsultasVentas.add(mnuConsDev);
+
         mnuGeneralVentas.add(mnuConsultasVentas);
 
         mnuReportesVentas.setText("Reportes");
@@ -384,6 +394,14 @@ public class MdiVentas extends javax.swing.JFrame {
             }
         });
         mnuRepVentas.add(repTieVen);
+
+        repDev.setText("Reporte Devoluciones");
+        repDev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repDevActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repDev);
 
         mnuReportesVentas.add(mnuRepVentas);
 
@@ -560,7 +578,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptCotizacionGeneral.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Cotizaciones");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -583,7 +601,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptCotizacionCliente.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Cotizaciones");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -606,7 +624,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptCotizacionProducto.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Cotizaciones");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -629,7 +647,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptCotizacionVendedor.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Cotizaciones");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -652,7 +670,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptPedidoGeneral1.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Pedidos");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -675,7 +693,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptPedidosPorCliente.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Pedidos");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -698,7 +716,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptPedidosPorProducto.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Pedidos");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -721,7 +739,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptventasgeneral.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Ventas");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -744,7 +762,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptventasdetalle.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Ventas");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -767,7 +785,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptventasproducto.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Ventas");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -790,7 +808,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptventasvendedor.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Ventas");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -813,7 +831,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptventasclientes.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Ventas");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -836,7 +854,7 @@ public class MdiVentas extends javax.swing.JFrame {
                     + "/src/main/java/Ventas/Reportes/rptventastiendas.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Prueba");
+	    view.setTitle("Reporte Ventas");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -875,6 +893,38 @@ public class MdiVentas extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mnuFacPedActionPerformed
+
+    private void mnuConsDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsDevActionPerformed
+        // TODO add your handling code here:
+        frmConsultaDevolucion ventana = new frmConsultaDevolucion();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuConsDevActionPerformed
+
+    private void repDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repDevActionPerformed
+        // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptDevolciones.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Devoluciones");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_repDevActionPerformed
 
     /**
      * @param args the command line arguments
@@ -932,6 +982,7 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuConCot;
     private javax.swing.JMenuItem mnuConFac;
     private javax.swing.JCheckBoxMenuItem mnuConPed;
+    private javax.swing.JMenuItem mnuConsDev;
     private javax.swing.JMenu mnuConsultasVentas;
     private javax.swing.JMenu mnuCotizaciones;
     private javax.swing.JMenuItem mnuFacPed;
@@ -952,6 +1003,7 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenuItem repCliPed;
     private javax.swing.JMenuItem repCliVen;
     private javax.swing.JMenuItem repDetVen;
+    private javax.swing.JMenuItem repDev;
     private javax.swing.JMenuItem repGenCot;
     private javax.swing.JMenuItem repGenPed;
     private javax.swing.JMenuItem repGenVen;

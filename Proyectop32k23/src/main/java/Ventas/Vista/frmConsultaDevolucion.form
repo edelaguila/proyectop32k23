@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.JLabel" name="lb2FacCons">
+    <Component class="javax.swing.JLabel" name="lb2DevCons">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -10,16 +10,16 @@
         <Property name="text" type="java.lang.String" value="."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbusuFacCons">
+    <Component class="javax.swing.JLabel" name="lbusuDevCons">
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1FacCons">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1DevCons">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1FacCons">
+        <Component class="javax.swing.JTable" name="jTable1DevCons">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -39,7 +39,7 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Facturas"/>
+    <Property name="title" type="java.lang.String" value="Devoluciones"/>
     <Property name="visible" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
@@ -62,25 +62,26 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="394" max="-2" attributes="0"/>
-              <Component id="lbFacReg" min="-2" max="-2" attributes="0"/>
+              <Component id="lbDevReg" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lbInsFacReg" max="32767" attributes="0"/>
-                  <Component id="jScrollPaneFacReg" pref="572" max="32767" attributes="0"/>
+                  <Component id="lbInsDevReg" max="32767" attributes="0"/>
+                  <Component id="jScrollPaneDevReg" pref="572" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="131" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnVerDetalleFac" max="32767" attributes="0"/>
-                  <Component id="btnDevolucionFac" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnAyudaConFac" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="btnAyudaConDev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btnVerDetalleDev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,19 +89,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lbFacReg" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="44" max="32767" attributes="0"/>
-              <Component id="lbInsFacReg" min="-2" max="-2" attributes="0"/>
+              <Component id="lbDevReg" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <Component id="lbInsDevReg" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPaneFacReg" min="-2" pref="316" max="-2" attributes="0"/>
+                  <Component id="jScrollPaneDevReg" min="-2" pref="316" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="btnVerDetalleFac" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btnDevolucionFac" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Component id="btnAyudaConFac" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVerDetalleDev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="btnAyudaConDev" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -109,14 +108,14 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPaneFacReg">
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneDevReg">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblFacConsulta">
+        <Component class="javax.swing.JTable" name="tblDevConsulta">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -130,38 +129,30 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lbFacReg">
+    <Component class="javax.swing.JLabel" name="lbDevReg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Facturas Registradas:"/>
+        <Property name="text" type="java.lang.String" value="Ventas Devueltas:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnVerDetalleFac">
+    <Component class="javax.swing.JButton" name="btnVerDetalleDev">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ver Detalle"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerDetalleFacActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerDetalleDevActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbInsFacReg">
+    <Component class="javax.swing.JLabel" name="lbInsDevReg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Haz clic en la factura que quieras trabajar, luego presiona un bot&#xf3;n:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDevolucionFac">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Devolucion"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolucionFacActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAyudaConFac">
+    <Component class="javax.swing.JButton" name="btnAyudaConDev">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ayuda"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAyudaConFacActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAyudaConDevActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
