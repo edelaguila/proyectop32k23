@@ -161,7 +161,7 @@
                           <Component id="lbEstatusCliente3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNitCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbEstatusCliente4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbEstatusCliente5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -174,12 +174,18 @@
                           <Component id="btnEliminarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnModificarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAyudaCliente" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLimpiarCliente" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="btnLimpiarCliente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAyudaCliente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtClientebuscado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
