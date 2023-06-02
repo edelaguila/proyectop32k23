@@ -149,7 +149,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoCCProv);
 
-        MantenimientoProv.setText("Mantenimiento Proveedores");
+        MantenimientoProv.setText("MantenimientoProveedores");
         MantenimientoProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MantenimientoProvActionPerformed(evt);
