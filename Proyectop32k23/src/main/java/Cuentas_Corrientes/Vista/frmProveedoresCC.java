@@ -134,7 +134,7 @@ public void llenadoDeTabla() {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Cuentas Corrientes Proveedores");
+        setTitle("Proveedores");
         setToolTipText("");
         setVisible(true);
 
@@ -409,7 +409,7 @@ public void llenadoDeTabla() {
         // TODO add your handling code here:
         // REAIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
          try {
-            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_proveedoresayuda.chm")).exists()) {
+            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_proveedorayuda2.chm")).exists()) {
                 Process p = Runtime
                 .getRuntime()
                 .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_proveedoresayuda.chm");
@@ -548,7 +548,7 @@ public void llenadoDeTabla() {
                     + "/src/main/java/seguridad/reportes/reporteProveedoresCC.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte CC Proveedores");
+	    view.setTitle("Reporte Proveedores (solo proveedores)");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
