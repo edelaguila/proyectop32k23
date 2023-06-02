@@ -8,15 +8,16 @@ import java.util.List;
 /**
  *
  * @author visitante
+ Hecho por: LUIS DIEGO CORTEZ MÉRIDA, 9959-20-7425
  */
 public class daoProveedoresCC {
 
     private static final String SQL_SELECT = "SELECT prID, prFecha, prNombre, prNit, prNoFactura, prTotalFactura FROM tbl_Proveedores";
-    private static final String SQL_INSERT = "INSERT INTO tbl_transaciones_cc(traNombre, traEstatus, traEfecto) VALUES(?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_transaciones_cc SET traNombre=?, traEstatus=?,traEfecto=? WHERE tracodigo = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_transaciones_cc WHERE tracodigo=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT tracodigo, traNombre, traEstatus, traEfecto FROM tbl_transaciones_cc WHERE traNombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT tracodigo, traNombre, traEstatus, traEfecto FROM tbl_transaciones_cc WHERE tracodigo = ?";    
+    private static final String SQL_INSERT = "INSERT INTO tbl_proveedores(prId,prFecha,prNombre,prNit,prNoFactura,prTotalFactura) VALUES(?,?,?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_proveedores SET prId=?,prFecha=?,prNombre=?,prNit=?,prNoFactura=?,prTotalFactura=? WHERE prId = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_proveedores WHERE prId=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT prId,prFecha,prNombre,prNit,prNoFactura,prTotalFactura FROM tbl_proveedores WHERE prNombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT prId,prFecha,prNombre,prNit,prNoFactura,prTotalFactura FROM tbl_proveedores WHERE prId = ?";    
 
     public List<clsProveedoresCC> consultaProveedores() {
         Connection conn = null;
@@ -60,11 +61,12 @@ public int ingresaProveedor(clsProveedoresCC prov) {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, prov.getFechaProv());
-            stmt.setString(2, prov.getNombreProv());
-            stmt.setString(3, prov.getNitProv());
-            stmt.setString(4, prov.getFactProv());
-            stmt.setDouble(5, prov.getTotFacturaProv());
+            stmt.setInt(1, prov.getIdProv());
+            stmt.setString(2, prov.getFechaProv());
+            stmt.setString(3, prov.getNombreProv());
+            stmt.setString(4, prov.getNitProv());
+            stmt.setString(5, prov.getFactProv());
+            stmt.setDouble(6, prov.getTotFacturaProv());
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
             System.out.println("Registros afectados:" + rows);
@@ -84,11 +86,13 @@ public int actualizaProveedor(clsProveedoresCC prov) {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, prov.getFechaProv());
-            stmt.setString(2, prov.getNombreProv());
-            stmt.setString(3, prov.getNitProv());
-            stmt.setString(4, prov.getFactProv());
-            stmt.setDouble(5, prov.getTotFacturaProv());
+            stmt.setInt(1, prov.getIdProv());
+            stmt.setString(2, prov.getFechaProv());
+            stmt.setString(3, prov.getNombreProv());
+            stmt.setString(4, prov.getNitProv());
+            stmt.setString(5, prov.getFactProv());
+            stmt.setDouble(6, prov.getTotFacturaProv());
+            stmt.setInt(7, prov.getIdProv());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
         } catch (SQLException ex) {

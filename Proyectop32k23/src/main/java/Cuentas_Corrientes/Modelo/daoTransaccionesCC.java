@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Hecho por: LUIS DIEGO CORTEZ MÉRIDA, 9959-20-7425
  * @author visitante
  */
 public class daoTransaccionesCC {

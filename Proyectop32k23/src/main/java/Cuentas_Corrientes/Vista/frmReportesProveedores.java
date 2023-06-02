@@ -4,7 +4,7 @@
  */
 package Cuentas_Corrientes.Vista;
 
-import Cuentas_Corrientes.Controlador.clsCCorrientesProv;
+import Cuentas_Corrientes.Controlador.clsProveedoresCC;
 import Seguridad.Modelo.Conexion;
 import java.io.File;
 
@@ -28,29 +28,23 @@ public class frmReportesProveedores extends javax.swing.JInternalFrame {
     //REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
     public void llenadoDeTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID CCorrientes");
-        modelo.addColumn("Tipo de Cuenta");
-        modelo.addColumn("ID Tipo Proveedor");
+        modelo.addColumn("ID proveedor");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Nombre de Proveedor");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nit");
         modelo.addColumn("No. Factura");
-        modelo.addColumn("Factura");
-        modelo.addColumn("Cancelacion");
-        modelo.addColumn("Saldo");
-        clsCCorrientesProv aplicacion = new clsCCorrientesProv();
-        List<clsCCorrientesProv> listaAplicaciones = aplicacion.getListadoCC();
+        modelo.addColumn("Total factura");
+        clsProveedoresCC provCC = new clsProveedoresCC();
+        List<clsProveedoresCC> prov = provCC.getListadoProveedores();
         tablaUsuarios.setModel(modelo);
         String[] dato = new String[9];
-        for (int i = 0; i < listaAplicaciones.size(); i++) {
-            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdCCorrienteProv());
-            dato[1] = listaAplicaciones.get(i).getTipoCCorrienteProv();
-            dato[2] = Integer.toString(listaAplicaciones.get(i).getIdTipoCCorrienteProv());
-            dato[3] = listaAplicaciones.get(i).getFechaCCorrienteProv();
-            dato[4] = listaAplicaciones.get(i).getNombreCCorrienteProv();
-            dato[5] = listaAplicaciones.get(i).getNofacturaCCorrienteProv();
-            dato[6] = Double.toString(listaAplicaciones.get(i).getFacturaCCorrienteProv());
-            dato[7] = Double.toString(listaAplicaciones.get(i).getCancelacionProv());
-            dato[8] = Double.toString(listaAplicaciones.get(i).getSaldoCCorrienteProv());
+        for (int i = 0; i < prov.size(); i++) {
+            dato[0] = Integer.toString(prov.get(i).getIdProv());
+            dato[1] = prov.get(i).getFechaProv();
+            dato[2] = prov.get(i).getNombreProv();
+            dato[3] = prov.get(i).getNitProv();
+            dato[4] = prov.get(i).getFactProv();
+            dato[5] = Double.toString(prov.get(i).getTotFacturaProv());
             modelo.addRow(dato);
         }   
     }
@@ -162,7 +156,7 @@ public class frmReportesProveedores extends javax.swing.JInternalFrame {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/main/java/seguridad/reportes/reporteProveedoresCC.jrxml");
+                    + "/src/main/java/Cuentas_Corrientes/reportes/reporteProveedoresCC.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
 	    view.setTitle("Reporte CC Proveedores");
