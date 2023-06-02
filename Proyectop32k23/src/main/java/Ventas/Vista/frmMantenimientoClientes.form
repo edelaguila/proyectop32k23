@@ -62,7 +62,11 @@
                                   <Component id="lbBuscarCliente" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnAyudaCliente" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="btnAyudaCliente" min="-2" pref="95" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="reporteclientes" min="-2" pref="95" max="-2" attributes="0"/>
+                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="txtClientebuscado" min="-2" pref="95" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -82,9 +86,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNitCliente" pref="263" max="32767" attributes="0"/>
-                                  <Component id="txtEmailCliente" pref="263" max="32767" attributes="0"/>
-                                  <Component id="txtTelefonoCliente" pref="263" max="32767" attributes="0"/>
+                                  <Component id="txtNitCliente" max="32767" attributes="0"/>
+                                  <Component id="txtEmailCliente" max="32767" attributes="0"/>
+                                  <Component id="txtTelefonoCliente" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtDireccionCliente" pref="263" max="32767" attributes="0"/>
                                       <Component id="txtNombreCliente" max="32767" attributes="0"/>
@@ -176,7 +180,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAyudaCliente" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="btnAyudaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="reporteclientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="btnLimpiarCliente" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -489,6 +496,14 @@
           </Border>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="reporteclientes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reportes"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reporteclientesActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
