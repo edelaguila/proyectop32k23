@@ -30,6 +30,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
 // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
+// MODIFICACIONES POR : LUIS DIEGO CORTEZ MÉRIDA;9959-20-7425
 /**
  *
  * @author visitante
@@ -65,17 +66,17 @@ public void llenadoDeTabla() {
         modelo.addColumn("Nit");
         modelo.addColumn("No. Factura");
         modelo.addColumn("Total factura");
-        clsProveedoresCC aplicacion = new clsProveedoresCC();
-        List<clsProveedoresCC> listaAplicaciones = aplicacion.getListadoProveedores();
+        clsProveedoresCC provCC = new clsProveedoresCC();
+        List<clsProveedoresCC> prov = provCC.getListadoProveedores();
         tablaUsuarios.setModel(modelo);
         String[] dato = new String[9];
-        for (int i = 0; i < listaAplicaciones.size(); i++) {
-            dato[0] = Integer.toString(listaAplicaciones.get(i).getIdProv());
-            dato[1] = listaAplicaciones.get(i).getFechaProv();
-            dato[2] = listaAplicaciones.get(i).getNombreProv();
-            dato[3] = listaAplicaciones.get(i).getNitProv();
-            dato[4] = listaAplicaciones.get(i).getFactProv();
-            dato[5] = Double.toString(listaAplicaciones.get(i).getTotFacturaProv());
+        for (int i = 0; i < prov.size(); i++) {
+            dato[0] = Integer.toString(prov.get(i).getIdProv());
+            dato[1] = prov.get(i).getFechaProv();
+            dato[2] = prov.get(i).getNombreProv();
+            dato[3] = prov.get(i).getNitProv();
+            dato[4] = prov.get(i).getFactProv();
+            dato[5] = Double.toString(prov.get(i).getTotFacturaProv());
             modelo.addRow(dato);
         }   
     }
@@ -282,9 +283,7 @@ public void llenadoDeTabla() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(label1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(968, 968, 968))
             .addGroup(layout.createSequentialGroup()
@@ -302,7 +301,7 @@ public void llenadoDeTabla() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label9)
                             .addComponent(label12)
@@ -313,12 +312,15 @@ public void llenadoDeTabla() {
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtnit)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txtnofac, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                            .addComponent(txtfecha)
+                            .addComponent(txtnofac)
+                            .addComponent(txtnombreC)
                             .addComponent(txtidprov, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                            .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(label1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -339,11 +341,12 @@ public void llenadoDeTabla() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label4))
+                    .addComponent(label4)
+                    .addComponent(label1))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -352,11 +355,9 @@ public void llenadoDeTabla() {
                     .addComponent(btnReporte))
                 .addGap(44, 44, 44))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb)
-                    .addComponent(label1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(lb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label5)
                     .addComponent(txtidprov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,7 +384,7 @@ public void llenadoDeTabla() {
                         .addComponent(txtnofac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(158, 158, 158)
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
@@ -405,7 +406,7 @@ public void llenadoDeTabla() {
             if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_proveedorayuda2.chm")).exists()) {
                 Process p = Runtime
                 .getRuntime()
-                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_proveedoresayuda.chm");
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_proveedorayuda2.chm");
                 p.waitFor();
             } else {
                 System.out.println("La ayuda no fue encontrada");
@@ -446,8 +447,9 @@ public void llenadoDeTabla() {
         prov.setNitProv(txtnit.getText());
         prov.setFactProv(txtnofac.getText());
         prov.setTotFacturaProv(Double.parseDouble(txttotfac.getText()));
-        int proveedor = prov.getIdProv();
-        /*for (int i = 1; i < cbIdProv.getItemCount(); i++) {
+        prov.setIngresarProv(prov);
+        /*int proveedor = prov.getIdProv();
+        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
             String item = cbIdProv.getItemAt(i).toString();
             int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
             
@@ -530,7 +532,7 @@ public void llenadoDeTabla() {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/main/java/seguridad/reportes/reporteProveedoresCC.jrxml");
+                    + "/src/main/java/Cuentas_Corrientes/reportes/reporteProveedoresCC.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
 	    view.setTitle("Reporte Proveedores (solo proveedores)");

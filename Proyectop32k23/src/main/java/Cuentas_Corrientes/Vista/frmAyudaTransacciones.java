@@ -10,12 +10,12 @@ import java.io.File;
  *
  * @author halld
  */
-public class frmAyudaProveedores extends javax.swing.JInternalFrame {
+public class frmAyudaTransacciones extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmAyudaCCProveedores
      */
-    public frmAyudaProveedores() {
+    public frmAyudaTransacciones() {
         initComponents();
     }
 
@@ -36,12 +36,12 @@ public class frmAyudaProveedores extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Ayuda Cuentas Corrientes Proveedores");
+        setTitle("Ayuda Cuentas Corrientes Transacciones");
         setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ayuda Proveedores");
+        jLabel1.setText("Ayuda Transacciones");
 
         jButton1.setText("Ayuda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,14 +50,14 @@ public class frmAyudaProveedores extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setText("Si necesita ayuda en el modulo de Proveedores presione el siguiente boton");
+        jLabel3.setText("Si necesita ayuda en el modulo de Transacciones presione el siguiente boton");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -88,10 +88,10 @@ public class frmAyudaProveedores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
           //REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         try {
-            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_proveedorayuda2.chm")).exists()) {
+            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_transaccionayuda.chm")).exists()) {
                 Process p = Runtime
                 .getRuntime()
-                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_proveedorayuda2.chm");
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_transaccionayuda.chm");
                 p.waitFor();
             } else {
                 System.out.println("La ayuda no fue encontrada");
