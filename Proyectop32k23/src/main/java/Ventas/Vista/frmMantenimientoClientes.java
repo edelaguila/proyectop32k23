@@ -539,6 +539,9 @@ int codigoAplicacion = 3001;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"RPT"); 
     }//GEN-LAST:event_reporteclientesActionPerformed
 
 

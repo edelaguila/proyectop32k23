@@ -5,6 +5,8 @@
  */
 package Ventas.Vista;
 
+import Seguridad.Controlador.clsBitacora;
+import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Modelo.Conexion;
 import java.awt.Dimension;
 import java.io.File;
@@ -583,6 +585,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repGenCotActionPerformed
 
     private void repCliCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliCotActionPerformed
@@ -606,6 +611,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repCliCotActionPerformed
 
     private void repProCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProCotActionPerformed
@@ -629,6 +637,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repProCotActionPerformed
 
     private void repVenCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repVenCotActionPerformed
@@ -652,6 +663,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repVenCotActionPerformed
 
     private void repGenPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenPedActionPerformed
@@ -675,6 +689,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repGenPedActionPerformed
 
     private void repCliPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliPedActionPerformed
@@ -698,6 +715,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repCliPedActionPerformed
 
     private void repProPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProPedActionPerformed
@@ -721,6 +741,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repProPedActionPerformed
 
     private void repGenVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenVenActionPerformed
@@ -744,6 +767,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repGenVenActionPerformed
 
     private void repDetVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repDetVenActionPerformed
@@ -767,6 +793,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repDetVenActionPerformed
 
     private void repProVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProVenActionPerformed
@@ -790,6 +819,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repProVenActionPerformed
 
     private void repVendVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repVendVenActionPerformed
@@ -813,6 +845,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repVendVenActionPerformed
 
     private void repCliVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliVenActionPerformed
@@ -836,6 +871,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repCliVenActionPerformed
 
     private void repTieVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTieVenActionPerformed
@@ -859,6 +897,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repTieVenActionPerformed
 
     private void mnuAyudasVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudasVentasActionPerformed
@@ -924,6 +965,9 @@ public class MdiVentas extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
     }//GEN-LAST:event_repDevActionPerformed
 
     /**

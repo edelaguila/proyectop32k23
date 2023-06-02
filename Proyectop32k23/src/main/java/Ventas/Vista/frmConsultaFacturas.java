@@ -224,7 +224,7 @@ public class frmConsultaFacturas extends javax.swing.JInternalFrame {
         llenadoDeTablasCotizaciones();
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
-        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),codigoAplicacion,"INS");
+        resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3008,"INS");
     }//GEN-LAST:event_btnDevolucionFacActionPerformed
 
     private void btnAyudaConFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaConFacActionPerformed
