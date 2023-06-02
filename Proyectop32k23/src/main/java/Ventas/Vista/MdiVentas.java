@@ -543,6 +543,7 @@ public class MdiVentas extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mnuConFacActionPerformed
 
+    
     private void repGenCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenCotActionPerformed
         // TODO add your handling code here:
         //Meyglin del Rosario Rosales Ochoa 
