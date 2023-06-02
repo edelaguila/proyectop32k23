@@ -59,8 +59,8 @@
 				</staticText>
 			</frame>
 			<image>
-				<reportElement x="724" y="16" width="78" height="76" uuid="2706bcb4-5df2-48b3-bb19-866a20e4502f"/>
-				<imageExpression><![CDATA["C:\\Users\\nelso\\OneDrive\\Escritorio\\5 Proyecto original del equipo\\proyectop32k23\\Proyectop32k23\\src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+				<reportElement x="721" y="5" width="82" height="77" uuid="4340ddd6-bd01-4e2a-85a6-131180665a2f"/>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
