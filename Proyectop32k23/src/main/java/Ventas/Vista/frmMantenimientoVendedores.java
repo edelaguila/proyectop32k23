@@ -14,12 +14,21 @@ package Ventas.Vista;
 import Seguridad.Controlador.clsBitacora;
 import Ventas.Controlador.clsVendedores;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -100,6 +109,7 @@ int codigoAplicacion = 3003;
         txtTelefonoVendedor = new javax.swing.JTextField();
         lbEmailVendedor = new javax.swing.JLabel();
         txtEmailVendedor = new javax.swing.JTextField();
+        rptVendedores = new javax.swing.JButton();
 
         lb2Vendedores.setForeground(new java.awt.Color(204, 204, 204));
         lb2Vendedores.setText(".");
@@ -208,6 +218,13 @@ int codigoAplicacion = 3003;
         lbEmailVendedor.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lbEmailVendedor.setText("Email");
 
+        rptVendedores.setText("Reporte");
+        rptVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptVendedoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,8 +251,13 @@ int codigoAplicacion = 3003;
                                         .addComponent(btnLimpiarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAyudaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(14, 14, 14)
-                                .addComponent(btnEliminarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(btnEliminarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rptVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -299,7 +321,8 @@ int codigoAplicacion = 3003;
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiarVendedor)
-                            .addComponent(btnAyudaVendedor))
+                            .addComponent(btnAyudaVendedor)
+                            .addComponent(rptVendedores))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscarVendedor)
@@ -442,6 +465,29 @@ int codigoAplicacion = 3003;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionVendedorActionPerformed
 
+    //Meyglin del Rosario Rosales Ochoa
+    //9959 - 21 - 4490
+    private void rptVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptVendedoresActionPerformed
+        // TODO add your handling code here:
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptVendedores.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_rptVendedoresActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarVendedor;
@@ -460,6 +506,7 @@ int codigoAplicacion = 3003;
     private javax.swing.JLabel lbTelefonoVendedor;
     private javax.swing.JLabel lbVendedoresT;
     private javax.swing.JLabel lbusuVendedores;
+    private javax.swing.JButton rptVendedores;
     private javax.swing.JTable tablaVendedores;
     private javax.swing.JTextField txtDireccionVendedor;
     private javax.swing.JTextField txtEmailVendedor;
