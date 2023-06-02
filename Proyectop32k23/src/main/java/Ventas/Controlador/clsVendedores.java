@@ -21,6 +21,7 @@ public class clsVendedores {
     private String DireccionVendedor;
     private String TelefonoVendedor;
     private String EmailVendedor;
+    private String EstatusVendedor;
     
     
     public int getIdVendedor() {
@@ -60,6 +61,14 @@ public class clsVendedores {
 
     public void setEmailVendedor(String EmailVendedor) {
         this.EmailVendedor = EmailVendedor;
+    }
+    
+public String getEstatusVendedor() {
+        return EstatusVendedor;
+    }
+
+    public void setEstatusVendedor(String EstatusVendedor) {
+        this.EstatusVendedor = EstatusVendedor;
     }
     
      public clsVendedores(int IdVendedor, String NombreVendedor, String DireccionVendedor,String TelefonoVendedor, String EmailVendedor ) {

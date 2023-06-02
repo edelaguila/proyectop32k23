@@ -75,7 +75,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbnombreCliente" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -86,27 +86,38 @@
                               </Group>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNitCliente" max="32767" attributes="0"/>
+                                  <Component id="txtNitCliente" pref="263" max="32767" attributes="0"/>
                                   <Component id="txtEmailCliente" max="32767" attributes="0"/>
                                   <Component id="txtTelefonoCliente" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtDireccionCliente" pref="263" max="32767" attributes="0"/>
-                                      <Component id="txtNombreCliente" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtDireccionCliente" pref="263" max="32767" attributes="0"/>
+                                              <Component id="txtNombreCliente" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lbEstatusCliente4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtHaberCliente" min="-2" pref="86" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="lbEstatusCliente5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtDebeCliente" min="-2" pref="86" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbEstatusCliente4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtHaberCliente" min="-2" pref="86" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="lbEstatusCliente5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtDebeCliente" min="-2" pref="86" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lbEstatusCliente6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -165,7 +176,12 @@
                           <Component id="lbEstatusCliente3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNitCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbEstatusCliente6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbEstatusCliente4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbEstatusCliente5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -179,13 +195,11 @@
                           <Component id="btnModificarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                               <Component id="btnAyudaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="reporteclientes" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="btnLimpiarCliente" min="-2" max="-2" attributes="0"/>
-
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtClientebuscado" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -504,6 +518,27 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reporteclientesActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbEstatusCliente6">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Estatus"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="V"/>
+            <StringItem index="1" value="F"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

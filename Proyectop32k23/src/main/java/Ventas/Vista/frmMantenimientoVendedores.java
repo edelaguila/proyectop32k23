@@ -52,17 +52,19 @@ public class frmMantenimientoVendedores extends javax.swing.JInternalFrame {
         modelo.addColumn("direccion");
         modelo.addColumn("Telefono");
         modelo.addColumn("Email");
+        modelo.addColumn("Estatus");
         clsVendedores vendedor = new clsVendedores();
         //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsVendedores> listaVendedores = vendedor.getListadoVendedores();
         tablaVendedores.setModel(modelo);
-        String[] dato = new String[5];
+        String[] dato = new String[6];
         for (int i = 0; i < listaVendedores.size(); i++) {
             dato[0] = Integer.toString(listaVendedores.get(i).getIdVendedor());
             dato[1] = listaVendedores.get(i).getNombreVendedor();
             dato[2] = listaVendedores.get(i).getDireccionVendedor();
             dato[3] = listaVendedores.get(i).getTelefonoVendedor();
             dato[4] = listaVendedores.get(i).getEmailVendedor();
+            dato[5] = listaVendedores.get(i).getEstatusVendedor();
             modelo.addRow(dato);
         }       
 
@@ -110,6 +112,8 @@ int codigoAplicacion = 3003;
         lbEmailVendedor = new javax.swing.JLabel();
         txtEmailVendedor = new javax.swing.JTextField();
         rptVendedores = new javax.swing.JButton();
+        lbEmailVendedor1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         lb2Vendedores.setForeground(new java.awt.Color(204, 204, 204));
         lb2Vendedores.setText(".");
@@ -225,40 +229,17 @@ int codigoAplicacion = 3003;
             }
         });
 
+        lbEmailVendedor1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lbEmailVendedor1.setText("Estatus");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lbBuscarVendedor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtVendedorbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnRegistrarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnModificarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnLimpiarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnAyudaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(btnEliminarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rptVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +257,41 @@ int codigoAplicacion = 3003;
                                         .addComponent(txtDireccionVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                         .addComponent(txtNombreVendedor)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(lbBuscarVendedor)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtVendedorbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnBuscarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(52, 52, 52)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnRegistrarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btnModificarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnLimpiarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btnAyudaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(14, 14, 14)
+                                            .addComponent(btnEliminarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(rptVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lbEmailVendedor1)
+                                .addGap(49, 49, 49)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnActualizarVendedor)
@@ -313,6 +328,10 @@ int codigoAplicacion = 3003;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmailVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbEmailVendedor))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbEmailVendedor1)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrarVendedor)
@@ -330,7 +349,7 @@ int codigoAplicacion = 3003;
                             .addComponent(lbBuscarVendedor))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizarVendedor)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -359,6 +378,8 @@ int codigoAplicacion = 3003;
         vendedor.setDireccionVendedor(txtDireccionVendedor.getText());
         vendedor.setTelefonoVendedor(txtTelefonoVendedor.getText());
         vendedor.setEmailVendedor(txtEmailVendedor.getText());
+        String estatus = (String)jComboBox1.getSelectedItem();     
+        vendedor.setEstatusVendedor(estatus);
         vendedor.setIngresarVendedor(vendedor);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -397,6 +418,8 @@ int codigoAplicacion = 3003;
         vendedor.setDireccionVendedor(txtDireccionVendedor.getText());
         vendedor.setTelefonoVendedor(txtTelefonoVendedor.getText());
         vendedor.setEmailVendedor(txtEmailVendedor.getText());
+        String estatus = (String)jComboBox1.getSelectedItem();     
+        vendedor.setEstatusVendedor(estatus);
         vendedor.setModificarVendedor(vendedor);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);      
@@ -501,11 +524,13 @@ int codigoAplicacion = 3003;
     private javax.swing.JButton btnLimpiarVendedor;
     private javax.swing.JButton btnModificarVendedor;
     private javax.swing.JButton btnRegistrarVendedor;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1Vendedor;
     private javax.swing.JLabel lb2Vendedores;
     private javax.swing.JLabel lbBuscarVendedor;
     private javax.swing.JLabel lbDireccionVendedor;
     private javax.swing.JLabel lbEmailVendedor;
+    private javax.swing.JLabel lbEmailVendedor1;
     private javax.swing.JLabel lbNombreVendedor;
     private javax.swing.JLabel lbTelefonoVendedor;
     private javax.swing.JLabel lbVendedoresT;
