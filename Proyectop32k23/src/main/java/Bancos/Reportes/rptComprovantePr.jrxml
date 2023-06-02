@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df3868aa-9088-4934-9793-03c280f60a0f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM tbl_comprobanteProveedoresBancos]]>
+	</queryString>
+	<field name="comId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="conFechaEmision" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipMovid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cueId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="concId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codBanco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="movDetId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idproveedor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="720" height="79" backcolor="#000000" uuid="ad4b383c-7665-42a9-add7-26b67bd070c8"/>
+				<staticText>
+					<reportElement x="231" y="16" width="315" height="44" forecolor="#FFFFFF" uuid="67514779-d2cf-43d3-ac67-564b1875a7aa"/>
+					<textElement>
+						<font size="32" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Bancos, Reportes]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="720" y="0" width="82" height="79" uuid="e47e8d49-2040-48bb-ab9e-acf903a3625f"/>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="35" forecolor="#CC0033" backcolor="#CC0033" uuid="55cc6aaa-7121-43f2-a704-cbfcf2b0daab"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="21" y="15" width="163" height="20" forecolor="#FFFFFF" uuid="136e6d98-abc2-4bbf-90c4-81385459e58b"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="519" y="0" width="283" height="35" forecolor="#FFFFFF" uuid="d76ef145-5dc3-4ec2-9acb-86c330050a78"/>
+				<textElement>
+					<font size="18" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTE PROVEEDOR]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="25" width="58" height="20" uuid="472ef92b-c0af-4268-9431-af27fbfc2e20"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="25" width="100" height="20" uuid="5bc0731e-69c2-457f-9365-bb900c961687"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="25" width="87" height="20" uuid="728e9d93-eecb-4e0f-8fba-d07f9bddcf0b"/>
+				<text><![CDATA[MOVIMIENTO ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="25" width="61" height="20" uuid="bbc7241b-617a-4769-ada2-3ed65c8aef4d"/>
+				<text><![CDATA[CUENTA ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="25" width="80" height="20" uuid="1d5f073e-d64a-43d7-b098-cf3f275e5f6f"/>
+				<text><![CDATA[CONCEPTO ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="509" y="25" width="113" height="20" uuid="bb0c20cb-894e-4189-9105-2c2cc6d366c0"/>
+				<text><![CDATA[CONCEPTO BANCO ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="633" y="25" width="61" height="20" uuid="ea8f7b67-bf24-43a7-83e6-43de46f23b53"/>
+				<text><![CDATA[DETALLE ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="719" y="25" width="83" height="20" uuid="bdcbae49-cb63-4a82-962c-debfd0e335ca"/>
+				<text><![CDATA[PROVEEDOR ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="16" width="58" height="20" uuid="95b64128-a4e4-4939-887b-b6529984d018"/>
+				<textFieldExpression><![CDATA[$F{comId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="16" width="100" height="20" uuid="c07838d0-7664-412c-9878-5e50dd718bb9"/>
+				<textFieldExpression><![CDATA[$F{conFechaEmision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="16" width="58" height="20" uuid="2140c5ed-8ffc-4c92-9754-bc0eec52d3f6"/>
+				<textFieldExpression><![CDATA[$F{tipMovid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="16" width="61" height="20" uuid="4d02c519-259e-46e9-bcea-943e7ccce876"/>
+				<textFieldExpression><![CDATA[$F{cueId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="16" width="48" height="20" uuid="d5865872-71e8-428f-87f7-6123bbf9169e"/>
+				<textFieldExpression><![CDATA[$F{concId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="16" width="54" height="20" uuid="42e029e0-aa70-4aa4-9f4d-146b977eb4f8"/>
+				<textFieldExpression><![CDATA[$F{codBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="633" y="16" width="61" height="20" uuid="331528bf-d013-4360-ab18-5c99414de883"/>
+				<textFieldExpression><![CDATA[$F{movDetId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="720" y="16" width="72" height="20" uuid="0360f7a9-9e9c-4891-88af-8e95150264bb"/>
+				<textFieldExpression><![CDATA[$F{idproveedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="30" backcolor="#000000" uuid="65d717a7-02a0-415a-b3d1-47b7e30cae31"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="6ab10dcd-7470-4ed3-812f-cb4dd341b12d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Página No. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="5ac8f666-38ad-4839-9bf5-5cee01129725"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
