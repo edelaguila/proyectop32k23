@@ -124,8 +124,8 @@ int codigoAplicacion = 3001;
         txtHaberCliente = new javax.swing.JTextField();
         txtDebeCliente = new javax.swing.JTextField();
         reporteclientes = new javax.swing.JButton();
-        lbEstatusCliente6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lbEstCliente = new javax.swing.JLabel();
+        cbxEstCliente = new javax.swing.JComboBox<>();
 
         lb2Tienda.setForeground(new java.awt.Color(204, 204, 204));
         lb2Tienda.setText(".");
@@ -260,10 +260,10 @@ int codigoAplicacion = 3001;
             }
         });
 
-        lbEstatusCliente6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbEstatusCliente6.setText("Estatus");
+        lbEstCliente.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lbEstCliente.setText("Estatus");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
+        cbxEstCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,7 +312,7 @@ int codigoAplicacion = 3001;
                                     .addComponent(txtTelefonoCliente)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxEstCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(txtDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                                 .addComponent(txtNombreCliente)))
@@ -329,7 +329,7 @@ int codigoAplicacion = 3001;
                                 .addComponent(lbEstatusCliente5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtDebeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbEstatusCliente6))
+                            .addComponent(lbEstCliente))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -376,8 +376,8 @@ int codigoAplicacion = 3001;
                             .addComponent(txtNitCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEstatusCliente6)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbEstCliente)
+                            .addComponent(cbxEstCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbEstatusCliente4)
@@ -430,7 +430,7 @@ int codigoAplicacion = 3001;
         cliente.setNitCliente(txtNitCliente.getText());
         cliente.setHaberCliente(Double.valueOf(txtHaberCliente.getText()));
         cliente.setDebeCliente(Double.valueOf(txtDebeCliente.getText()));
-        String Estatus = (String) jComboBox1.getSelectedItem();
+        String Estatus = (String) cbxEstCliente.getSelectedItem();
         cliente.setEstatusCliente2(Estatus);
         cliente.setIngresarCliente(cliente);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
@@ -476,7 +476,7 @@ int codigoAplicacion = 3001;
         cliente.setNitCliente(txtNitCliente.getText());
         cliente.setHaberCliente(Double.valueOf(txtHaberCliente.getText()));
         cliente.setDebeCliente(Double.valueOf(txtDebeCliente.getText()));
-        cliente.setEstatusCliente2((String)jComboBox1.getSelectedItem());
+        cliente.setEstatusCliente2((String)cbxEstCliente.getSelectedItem());
         cliente.setModificarCliente(cliente);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);      
@@ -575,18 +575,18 @@ int codigoAplicacion = 3001;
     private javax.swing.JButton btnLimpiarCliente;
     private javax.swing.JButton btnModificarCliente;
     private javax.swing.JButton btnRegistrarCliente;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbxEstCliente;
     private javax.swing.JScrollPane jScrollPaneClientes;
     private javax.swing.JLabel lb2Tienda;
     private javax.swing.JLabel lbBuscarCliente;
     private javax.swing.JLabel lbClienteT;
+    private javax.swing.JLabel lbEstCliente;
     private javax.swing.JLabel lbEstatusCliente;
     private javax.swing.JLabel lbEstatusCliente1;
     private javax.swing.JLabel lbEstatusCliente2;
     private javax.swing.JLabel lbEstatusCliente3;
     private javax.swing.JLabel lbEstatusCliente4;
     private javax.swing.JLabel lbEstatusCliente5;
-    private javax.swing.JLabel lbEstatusCliente6;
     private javax.swing.JLabel lbnombreCliente;
     private javax.swing.JLabel lbusuTienda;
     private javax.swing.JButton reporteclientes;

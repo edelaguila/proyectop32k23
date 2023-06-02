@@ -112,8 +112,8 @@ int codigoAplicacion = 3003;
         lbEmailVendedor = new javax.swing.JLabel();
         txtEmailVendedor = new javax.swing.JTextField();
         rptVendedores = new javax.swing.JButton();
-        lbEmailVendedor1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lbEstVendedor = new javax.swing.JLabel();
+        cbxEstVendedor = new javax.swing.JComboBox<>();
 
         lb2Vendedores.setForeground(new java.awt.Color(204, 204, 204));
         lb2Vendedores.setText(".");
@@ -229,10 +229,10 @@ int codigoAplicacion = 3003;
             }
         });
 
-        lbEmailVendedor1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbEmailVendedor1.setText("Estatus");
+        lbEstVendedor.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lbEstVendedor.setText("Estatus");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
+        cbxEstVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,9 +288,9 @@ int codigoAplicacion = 3003;
                                             .addComponent(rptVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(lbEmailVendedor1)
+                                .addComponent(lbEstVendedor)
                                 .addGap(49, 49, 49)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbxEstVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -330,8 +330,8 @@ int codigoAplicacion = 3003;
                             .addComponent(lbEmailVendedor))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbEmailVendedor1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbEstVendedor)
+                            .addComponent(cbxEstVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrarVendedor)
@@ -378,7 +378,7 @@ int codigoAplicacion = 3003;
         vendedor.setDireccionVendedor(txtDireccionVendedor.getText());
         vendedor.setTelefonoVendedor(txtTelefonoVendedor.getText());
         vendedor.setEmailVendedor(txtEmailVendedor.getText());
-        String estatus = (String)jComboBox1.getSelectedItem();     
+        String estatus = (String)cbxEstVendedor.getSelectedItem();     
         vendedor.setEstatusVendedor(estatus);
         vendedor.setIngresarVendedor(vendedor);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
@@ -418,7 +418,7 @@ int codigoAplicacion = 3003;
         vendedor.setDireccionVendedor(txtDireccionVendedor.getText());
         vendedor.setTelefonoVendedor(txtTelefonoVendedor.getText());
         vendedor.setEmailVendedor(txtEmailVendedor.getText());
-        String estatus = (String)jComboBox1.getSelectedItem();     
+        String estatus = (String)cbxEstVendedor.getSelectedItem();     
         vendedor.setEstatusVendedor(estatus);
         vendedor.setModificarVendedor(vendedor);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
@@ -524,13 +524,13 @@ int codigoAplicacion = 3003;
     private javax.swing.JButton btnLimpiarVendedor;
     private javax.swing.JButton btnModificarVendedor;
     private javax.swing.JButton btnRegistrarVendedor;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbxEstVendedor;
     private javax.swing.JScrollPane jScrollPane1Vendedor;
     private javax.swing.JLabel lb2Vendedores;
     private javax.swing.JLabel lbBuscarVendedor;
     private javax.swing.JLabel lbDireccionVendedor;
     private javax.swing.JLabel lbEmailVendedor;
-    private javax.swing.JLabel lbEmailVendedor1;
+    private javax.swing.JLabel lbEstVendedor;
     private javax.swing.JLabel lbNombreVendedor;
     private javax.swing.JLabel lbTelefonoVendedor;
     private javax.swing.JLabel lbVendedoresT;

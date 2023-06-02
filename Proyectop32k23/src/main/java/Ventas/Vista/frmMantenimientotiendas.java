@@ -107,8 +107,8 @@ int codigoAplicacion = 3002;
         lbTipoTienda = new javax.swing.JLabel();
         txtTipoTienda = new javax.swing.JTextField();
         btnReporteTiendas = new javax.swing.JButton();
-        lbTipoTienda1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lbEstTienda = new javax.swing.JLabel();
+        cbxEstTienda = new javax.swing.JComboBox<>();
 
         lb2Tienda.setForeground(new java.awt.Color(204, 204, 204));
         lb2Tienda.setText(".");
@@ -222,10 +222,10 @@ int codigoAplicacion = 3002;
             }
         });
 
-        lbTipoTienda1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        lbTipoTienda1.setText("Estatus");
+        lbEstTienda.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        lbEstTienda.setText("Estatus");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
+        cbxEstTienda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "V", "F" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,7 +249,7 @@ int codigoAplicacion = 3002;
                                 .addGap(61, 61, 61)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbxEstTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(txtTipoTienda, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))))
                         .addGap(42, 42, 42))
@@ -280,7 +280,7 @@ int codigoAplicacion = 3002;
                                         .addComponent(btnBuscarTienda, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(lbTipoTienda1)))
+                                .addComponent(lbEstTienda)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -315,8 +315,8 @@ int codigoAplicacion = 3002;
                             .addComponent(txtTipoTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbTipoTienda1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbEstTienda)
+                            .addComponent(cbxEstTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrarTienda)
@@ -362,7 +362,7 @@ int codigoAplicacion = 3002;
         tienda.setNombreTienda(txtNombreTienda.getText());
         tienda.setDireccionTienda(txtDireccionTienda.getText());
         tienda.setTipoTienda(txtTipoTienda.getText());
-        String estatus = (String) jComboBox1.getSelectedItem();
+        String estatus = (String) cbxEstTienda.getSelectedItem();
         tienda.setEstatusTienda(estatus);
         tienda.setIngresarTienda(tienda);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
@@ -393,6 +393,7 @@ int codigoAplicacion = 3002;
         
     }//GEN-LAST:event_btnBuscarTiendaActionPerformed
 
+   
     private void btnModificarTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarTiendaActionPerformed
 //        // TODO add your handling code here:
         clsTienda tienda = new clsTienda();
@@ -400,7 +401,7 @@ int codigoAplicacion = 3002;
         tienda.setNombreTienda(txtNombreTienda.getText());
         tienda.setDireccionTienda(txtDireccionTienda.getText());
         tienda.setTipoTienda(txtTipoTienda.getText());
-        String estatus = (String) jComboBox1.getSelectedItem();
+        String estatus = (String) cbxEstTienda.getSelectedItem();
         tienda.setEstatusTienda(estatus);
         tienda.setModificarTienda(tienda);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
@@ -505,15 +506,15 @@ int codigoAplicacion = 3002;
     private javax.swing.JButton btnModificarTienda;
     private javax.swing.JButton btnRegistrarTienda;
     private javax.swing.JButton btnReporteTiendas;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbxEstTienda;
     private javax.swing.JScrollPane jScrollPane1Tienda;
     private javax.swing.JLabel lb2Tienda;
     private javax.swing.JLabel lbBuscarTienda;
     private javax.swing.JLabel lbDireccionTienda;
+    private javax.swing.JLabel lbEstTienda;
     private javax.swing.JLabel lbNombreTienda;
     private javax.swing.JLabel lbTiendaT;
     private javax.swing.JLabel lbTipoTienda;
-    private javax.swing.JLabel lbTipoTienda1;
     private javax.swing.JLabel lbusuTienda;
     private javax.swing.JTable tablaTiendas;
     private javax.swing.JTextField txtDireccionTienda;
