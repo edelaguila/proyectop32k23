@@ -12,6 +12,7 @@ import Bancos.Controlador.clsConceptosBancos;
 import Bancos.Controlador.clsCuentaEmpresa;
 import Bancos.Controlador.clsCuentasBancos;
 import Bancos.Controlador.clsMovimientosEncabezadoBancos;
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsTipoMovimientoBancos;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -299,7 +300,7 @@ public void BusquedaDetallesEncabezado() {
         label24 = new javax.swing.JLabel();
         TotalCargo = new javax.swing.JLabel();
         TotalDiferencia = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         label26 = new javax.swing.JLabel();
         cbBusquedaID = new javax.swing.JComboBox<>();
@@ -602,7 +603,12 @@ public void BusquedaDetallesEncabezado() {
         TotalDiferencia.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         TotalDiferencia.setText("0");
 
-        jButton1.setText("Reporte");
+        btnReportes.setText("Reporte");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -757,7 +763,7 @@ public void BusquedaDetallesEncabezado() {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
+                                .addComponent(btnReportes)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(16, Short.MAX_VALUE))))
@@ -778,7 +784,7 @@ public void BusquedaDetallesEncabezado() {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(jButton3)
-                    .addComponent(jButton1)
+                    .addComponent(btnReportes)
                     .addComponent(btnLimpiar))
                 .addGap(18, 18, 18)
                 .addComponent(label1)
@@ -825,7 +831,7 @@ public void BusquedaDetallesEncabezado() {
               
  if (codigo.equals("Seleccionar...")|| cuenta.equals("Seleccionar...")||tipmovimiento.equals("Seleccionar...")||cuentaempresa.equals("Seleccionar...")||
         Concepto.equals("Seleccionar...")||TipoMoneda.equals("Seleccionar...")||CargoAbono.equals("Seleccionar...")) {
-   JOptionPane.showMessageDialog(null, "Error! Debe seleccionar todos los Id", 
+   JOptionPane.showMessageDialog(null, "Error! Debe seleccionar todas las opciones", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
 }else{
      
@@ -856,9 +862,13 @@ public void BusquedaDetallesEncabezado() {
 
            clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
     banco.setIdMovimientoDetalles(Integer.parseInt(txtIdMovDetalles.getText()));
-   
+  
+     int UltimoRegistro = 0;
       int item5 = Integer.parseInt(txtid.getText());
-                       banco.setIdMovimiento(item5);  
+        if (item5 != UltimoRegistro){
+    UltimoRegistro = item5;
+}  
+        banco.setIdMovimiento(item5);  
         
      String selectedItem6 = cbConcepto.getSelectedItem().toString();
         int item6 = Integer.parseInt(selectedItem6.split(" - ")[0]);
@@ -873,23 +883,30 @@ public void BusquedaDetallesEncabezado() {
     String cero = "0";
     double totales = 0;
       if (SeleccionarIndex == 0){
+    txtAbono.setText("");
+          txtCargo.setText("");
                banco.setMovimientoCosto(Float.parseFloat(vacio));
                banco.setMovimientoSaldo(Float.parseFloat(vacio)); 
+           
        }
       else if (SeleccionarIndex == 1){
             banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText()));
             banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
             totales =(Float.parseFloat(txtCargo.getText()))-(Float.parseFloat(txtAbono.getText()));
+         
       }
     else if (SeleccionarIndex == 2){
+        
             banco.setMovimientoCosto(Float.parseFloat(cero));
             banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
             totales = (Float.parseFloat(txtCargo.getText()));
+       
       }
     else if (SeleccionarIndex == 3){
             banco.setMovimientoSaldo(Float.parseFloat(cero));
             banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText()));
             totales = -Float.parseFloat(txtAbono.getText());
+         
       }
       
 banco.setIngresarMovimiento(banco); 
@@ -906,7 +923,7 @@ banco.setAbonoCargo(resultado);
 
 banco.setModificarMovimientoSaldo(banco, encabezado);
     
- System. out. println(resultado); 
+
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
@@ -915,7 +932,7 @@ banco.setModificarMovimientoSaldo(banco, encabezado);
         llenarClasificacionDetalles();
         BusquedaDetallesEncabezado ();
         llenadoDeTablas();
-
+LimpiarSoloTipoCuenta();
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -927,7 +944,7 @@ banco.setModificarMovimientoSaldo(banco, encabezado);
  
    txtAbono.setEnabled(true);
     txtCargo.setEnabled(true);
-    
+      PonerPosicion1();
    clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
         banco.setIdMovimientoDetalles(Integer.parseInt(cbBusquedaID.getSelectedItem().toString())); 
         banco = banco.getBuscarInformacionBancoPorTipoMovimiento(banco);
@@ -1031,16 +1048,12 @@ for (int i = 1; i < cbTipMov.getItemCount(); i++) {
 //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
 //KARLA SOFÍA GOMEZ TOBAR -
  // TODO add your handling code here:
+       
+  clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
         clsMovimientoDetallesBancos banco = new clsMovimientoDetallesBancos();
-        banco.setIdMovimientoDetalles(Integer.parseInt(cbBusquedaID.getSelectedItem().toString()));
-        banco.setMovimientoCosto (Float.parseFloat(txtAbono.getText()));
-        banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
-           String selectItem = cbConcepto.getSelectedItem().toString();
-   int Movid = 0; // Variable para almacenar el valor de Movid
-
-if (banco != null) {
-    Movid = banco.getIdMovimiento();
-}
+        banco.setIdMovimientoDetalles(Integer.parseInt(cbBusquedaID.getSelectedItem().toString()));    
+        String selectItem = cbConcepto.getSelectedItem().toString();
+                
         String concep = selectItem.split(" - ")[0]; // Obtiene solo la ID
          banco.setIdConcepto(Integer.parseInt(concep));
         
@@ -1048,12 +1061,42 @@ if (banco != null) {
         String Tip = selectItem2.split(" - ")[0]; // Obtiene solo la ID
          banco.setIdTipoMovimiento(Integer.parseInt(Tip));
         
+int SeleccionarIndex = tbTipoCargoAbono.getSelectedIndex();
+    String vacio = ""; 
+    String cero = "0";
+    double totales = 0;
+      if (SeleccionarIndex == 0){
+     
+               banco.setMovimientoCosto(Float.parseFloat(vacio));
+               banco.setMovimientoSaldo(Float.parseFloat(vacio)); 
+       }
+      else if (SeleccionarIndex == 1){
+            banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText()));
+            banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
+            totales =(Float.parseFloat(txtCargo.getText()))-(Float.parseFloat(txtAbono.getText()));
+      }
+    else if (SeleccionarIndex == 2){
+            banco.setMovimientoCosto(Float.parseFloat(cero));
+            banco.setMovimientoSaldo(Float.parseFloat(txtCargo.getText()));
+            totales = (Float.parseFloat(txtCargo.getText()));
+      }
+    else if (SeleccionarIndex == 3){
+  
+            banco.setMovimientoSaldo(Float.parseFloat(cero));
+            banco.setMovimientoCosto(Float.parseFloat(txtAbono.getText()));
+            totales = -Float.parseFloat(txtAbono.getText());
+      }
+       int Movid =0;
+       
+  // Variable para almacenar el valor de Movid
+if(banco !=null){
+    Movid = banco.getIdMovimientoDetalles();   
+         }  
+
+
+         
 // Codigo Encabezado:
 
-
-
-// encabezados: 
-  clsMovimientosEncabezadoBancos encabezado = new clsMovimientosEncabezadoBancos();
         encabezado.setMovId(Movid);
         
            String selectItem3 =cbCodigo.getSelectedItem().toString();
@@ -1077,12 +1120,24 @@ if (banco != null) {
         String CueE= selectItem6.split(" - ")[0]; // Obtiene solo la ID
          encabezado.setCueEmId(Integer.parseInt(CueE));
         
-  
+ 
+         
+         
             
          banco.setModificarMovimiento(banco);
-   
-        encabezado.setModificarMovimientosEncabezado(encabezado);
-       
+   encabezado.setModificarMovimientosEncabezado(encabezado);
+        
+ String selectedItem10 = cbIdCuenEm.getSelectedItem().toString();
+int item10 = Integer.parseInt(selectedItem10.split(" - ")[0]);
+banco.setIdMovimientoDetalles(item10);
+banco = banco.getBuscarInformacionBancoPorTipoMovimientoSaldo(banco, encabezado);
+double saldoActual = banco.getAbonoCargo()+totales;
+
+double resultado = saldoActual;
+
+banco.setAbonoCargo(resultado);
+
+banco.setModificarMovimientoSaldo(banco, encabezado);         
        
   
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
@@ -1090,9 +1145,7 @@ if (banco != null) {
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
         resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(), codigoAplicacion, "UPD");
-        BusquedaDetallesEncabezado ();
         llenadoDeTablas();
-        limpiarTextos();
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -1107,14 +1160,18 @@ if (banco != null) {
     }//GEN-LAST:event_btnLimpiarActionPerformed
     public void limpiarTextos()
     {
-      
         cbConcepto.setSelectedIndex(0);
         cbMovimientoMoneda.setSelectedIndex(0);
         tbTipoCargoAbono.setSelectedIndex(0);
         txtAbono.setText("");
         txtIdMovDetalles.setText("");
-        txtCargo.setText("");
-        
+        txtCargo.setText("");    
+    }
+    public void LimpiarSoloTipoCuenta(){
+        tbTipoCargoAbono.setSelectedIndex(0);
+    }
+    public void PonerPosicion1(){
+        tbTipoCargoAbono.setSelectedIndex(1);
     }
     public void habilitarBotones()
     {
@@ -1236,11 +1293,13 @@ if (Seleccionar.equals("Ambos")) {
 } else if (Seleccionar.equals("Cargo")) {
     txtAbono.setEnabled(false);
     txtCargo.setEnabled(true);
- 
+ txtAbono.setText("");
+    txtCargo.setText("");
 } else if (Seleccionar.equals("Abono")) {
     txtAbono.setEnabled(true);
     txtCargo.setEnabled(false);
- 
+txtAbono.setText("");
+    txtCargo.setText("");
 }else if (Seleccionar.equals("Seleccionar...")) {
     txtAbono.setEnabled(false);
     txtCargo.setEnabled(false);
@@ -1308,6 +1367,13 @@ else{
         // TODO add your handling code here:
     }//GEN-LAST:event_cbIdCuentaActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+ clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptMovimientoBancos.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TotalAbono;
@@ -1319,6 +1385,7 @@ else{
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JComboBox<String> cbBusquedaID;
     private javax.swing.JComboBox<String> cbClasificacion;
     private javax.swing.JComboBox<String> cbCodigo;
@@ -1327,7 +1394,6 @@ else{
     private javax.swing.JComboBox<String> cbIdCuenta;
     private javax.swing.JComboBox<String> cbMovimientoMoneda;
     private javax.swing.JComboBox<String> cbTipMov;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

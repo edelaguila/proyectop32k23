@@ -5,6 +5,7 @@
  */
 package Bancos.Vista;
 
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsTipoPersonaBancos;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -90,6 +91,7 @@ int codigoAplicacion= 5003;
         label7 = new javax.swing.JLabel();
         RBHabilitado = new javax.swing.JRadioButton();
         RBDeshabilitado = new javax.swing.JRadioButton();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -205,6 +207,13 @@ int codigoAplicacion= 5003;
         buttonGroup1.add(RBDeshabilitado);
         RBDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,7 +240,9 @@ int codigoAplicacion= 5003;
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(14, 14, 14)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +316,8 @@ int codigoAplicacion= 5003;
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(btnReportes))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -313,7 +325,7 @@ int codigoAplicacion= 5003;
                             .addComponent(label4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -457,6 +469,13 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+ clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptTipoPersona.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton RBDeshabilitado;
@@ -467,6 +486,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
