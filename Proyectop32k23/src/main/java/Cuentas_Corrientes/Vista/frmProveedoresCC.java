@@ -103,7 +103,7 @@ public void llenadoDeTabla() {
         tablaUsuarios = new javax.swing.JTable();
         label5 = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
-        btnAyuda = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         txtfecha = new javax.swing.JTextField();
@@ -125,7 +125,6 @@ public void llenadoDeTabla() {
         txtnit = new javax.swing.JTextField();
         btnReporte = new javax.swing.JButton();
         cbIdProv = new javax.swing.JComboBox<>();
-        txtidprov = new javax.swing.JTextField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -134,7 +133,7 @@ public void llenadoDeTabla() {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Proveedores");
+        setTitle("Cuentas Corrientes Proveedores");
         setToolTipText("");
         setVisible(true);
 
@@ -163,10 +162,10 @@ public void llenadoDeTabla() {
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
 
-        btnAyuda.setText("Ayuda");
-        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Ayuda");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAyudaActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -272,14 +271,6 @@ public void llenadoDeTabla() {
 
         cbIdProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtidprov.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtidprov.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtidprov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidprovActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,6 +284,25 @@ public void llenadoDeTabla() {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label9)
+                            .addComponent(label12)
+                            .addComponent(label8)
+                            .addComponent(label6)
+                            .addComponent(label3)
+                            .addComponent(label5))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtnit, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                                    .addComponent(txtfecha))
+                                .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtnofac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbIdProv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -303,27 +313,7 @@ public void llenadoDeTabla() {
                         .addGap(173, 173, 173)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label9)
-                            .addComponent(label12)
-                            .addComponent(label8)
-                            .addComponent(label6)
-                            .addComponent(label3)
-                            .addComponent(label5))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtidprov))
-                            .addComponent(txtnit)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnofac, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -345,7 +335,7 @@ public void llenadoDeTabla() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,18 +352,13 @@ public void llenadoDeTabla() {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb)
                     .addComponent(label1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label5)
-                    .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtidprov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label3)
-                    .addComponent(txtnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label3)
+                        .addGap(12, 12, 12)
+                        .addComponent(label5)
+                        .addGap(12, 12, 12)
                         .addComponent(label6)
                         .addGap(9, 9, 9)
                         .addComponent(label8)
@@ -382,7 +367,10 @@ public void llenadoDeTabla() {
                         .addGap(7, 7, 7)
                         .addComponent(label9))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addComponent(txtnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
                         .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(txtnombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,7 +378,7 @@ public void llenadoDeTabla() {
                         .addComponent(txtnofac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txttotfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(158, 158, 158)
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
@@ -398,18 +386,18 @@ public void llenadoDeTabla() {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
-                    .addComponent(btnAyuda))
+                    .addComponent(jButton2))
                 .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         // REAIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
          try {
-            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_proveedorayuda2.chm")).exists()) {
+            if ((new File("src\\main\\java\\seguridad\\ayuda\\cc_proveedoresayuda.chm")).exists()) {
                 Process p = Runtime
                 .getRuntime()
                 .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\cc_proveedoresayuda.chm");
@@ -421,7 +409,7 @@ public void llenadoDeTabla() {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_btnAyudaActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
@@ -447,11 +435,7 @@ public void llenadoDeTabla() {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         clsProveedoresCC prov = new clsProveedoresCC();
-        prov.setIdProv(Integer.parseInt(txtidprov.getText()));
         prov.setNombreProv(txtnombreC.getText());
-        prov.setFechaProv(txtfecha.getText());
-        prov.setFactProv(txtnofac.getText());
-        prov.setTotFacturaProv(Double.parseDouble(txttotfac.getText()));
         int proveedor = prov.getIdProv();
         for (int i = 1; i < cbIdProv.getItemCount(); i++) {
             String item = cbIdProv.getItemAt(i).toString();
@@ -490,7 +474,6 @@ public void llenadoDeTabla() {
                 break;
             }
         }
-        txtidprov.setText(String.valueOf(transaccion.getIdProv()));
         txtfecha.setText(transaccion.getFechaProv());
         txtnombreC.setText(transaccion.getNombreProv());
         txtnofac.setText(transaccion.getFactProv());
@@ -501,7 +484,6 @@ public void llenadoDeTabla() {
         //TODO add your handling code here:
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
         clsProveedoresCC prov = new clsProveedoresCC();
-        prov.setIdProv(Integer.parseInt(txtidprov.getText()));
         prov.setIdProv(Integer.parseInt(txtbuscado.getText()));
         prov.setNitProv(txtnit.getText());
         prov.setIdProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
@@ -545,19 +527,15 @@ public void llenadoDeTabla() {
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
-                    + "/src/main/java/seguridad/reportes/reporteProveedoresCC.jrxml");
+                    + "/src/main/java/seguridad/reportes/ReporteProveedores.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte Proveedores (solo proveedores)");
+	    view.setTitle("Reporte CC Proveedores");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnReporteActionPerformed
-
-    private void txtidprovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidprovActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidprovActionPerformed
     public void limpiarTextos()
     {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
@@ -567,11 +545,9 @@ public void llenadoDeTabla() {
         txtnombreC.setText("");
         txtnofac.setText("");
         txttotfac.setText("");
-        txtidprov.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
@@ -579,6 +555,7 @@ public void llenadoDeTabla() {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnReporte;
     private javax.swing.JComboBox<String> cbIdProv;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label12;
@@ -594,7 +571,6 @@ public void llenadoDeTabla() {
     private javax.swing.JTable tablaUsuarios;
     private javax.swing.JTextField txtbuscado;
     private javax.swing.JTextField txtfecha;
-    private javax.swing.JTextField txtidprov;
     private javax.swing.JTextField txtnit;
     private javax.swing.JTextField txtnofac;
     private javax.swing.JTextField txtnombreC;

@@ -438,13 +438,14 @@ int codigoAplicacion = 40;
         Map p = new HashMap();
         JasperReport report;
         JasperPrint print;
+
         try {
             conn = Conexion.getConnection();
             report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
                     + "/src/main/java/seguridad/reportes/ReporteTransacciones.jrxml");
 	    print = JasperFillManager.fillReport(report, p, conn);
             JasperViewer view = new JasperViewer(print, false);
-	    view.setTitle("Reporte de transacciones");
+	    view.setTitle("Reporte CC Clientes");
             view.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
