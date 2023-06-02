@@ -5,7 +5,7 @@
  */
 package Cuentas_Corrientes.Vista;
 
-
+//Comentario para subit
 //import Seguridad.Vista.*;
 import Cuentas_Corrientes.Controlador.clsProveedoresCC;
 import Seguridad.Controlador.clsUsuarioConectado;
