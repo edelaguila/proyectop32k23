@@ -50,6 +50,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         MantenimientoTransacciones = new javax.swing.JCheckBoxMenuItem();
         MantenimientoCC = new javax.swing.JMenuItem();
         MantenimientoCCProv = new javax.swing.JMenuItem();
+        MantenimientoProv = new javax.swing.JMenuItem();
         mnuProcesosVentas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         mnuConsultasVentas = new javax.swing.JMenu();
@@ -147,6 +148,14 @@ public class MdiCCorrientes extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientosVentas.add(MantenimientoCCProv);
+
+        MantenimientoProv.setText("MantenimientoProveedores");
+        MantenimientoProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoProvActionPerformed(evt);
+            }
+        });
+        mnuCatalogosMantenimientosVentas.add(MantenimientoProv);
 
         mnuCatalogosVentas.add(mnuCatalogosMantenimientosVentas);
 
@@ -256,6 +265,15 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void MantenimientoProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoProvActionPerformed
+        // TODO add your handling code here:
+        frmProveedoresCC ventana = new frmProveedoresCC();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_MantenimientoProvActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +319,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MantenimientoCC;
     private javax.swing.JMenuItem MantenimientoCCProv;
+    private javax.swing.JMenuItem MantenimientoProv;
     private javax.swing.JCheckBoxMenuItem MantenimientoTransacciones;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1MdiVentas;
     private javax.swing.JDesktopPane jDesktopPane1;
