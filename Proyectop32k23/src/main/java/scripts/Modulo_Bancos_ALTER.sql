@@ -74,3 +74,32 @@ FOREIGN KEY (tipModId) REFERENCES tbl_monedaBancos(tipModId);
 
 ALTER TABLE tbl_cuentasBancos ADD CONSTRAINT FK_codBanco_cuentasBancos
 FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno(codBanco);
+
+-- eliminamos los datos no necesarios de la tabla boletaClientesBancos, para poder eliminarlos si las llaves foraneas contienen información de la tabla de donde se realiza el llamado, es necesario que se vacien
+
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN bolCodigo;            //llave
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN bolFechaEmision;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concId;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concNombre;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN cueNumero;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concEfecto;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN perTipoId;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concEstatus;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN clNombre;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN clId;                //llave
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN clNit;
+
+
+--Luego agregamos los nuevas variables
+	bolId int (5) NOT NULL,
+	codBanco INT(5) NOT NULL,
+	bolFechaEmision date NOT NULL,
+	clId int auto_increment,
+	bolSaldo DECIMAL(20,5) NOT NULL,
+	tipMovId INT(5) NOT NULL,	
+	PRIMARY KEY (bolId),
+	FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno (codBanco),
+	FOREIGN KEY (clId) REFERENCES tbl_cliente (clId),
+	FOREIGN KEY (tipMovId) REFERENCES tbl_tipoMovimientoBancos (tipMovId),
+	FOREIGN KEY (tipModId) REFERENCES tbl_monedaBancos (tipModId))
+ENGINE = InnoDB CHARACTER SET = latin1;

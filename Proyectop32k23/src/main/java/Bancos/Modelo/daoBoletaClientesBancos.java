@@ -17,12 +17,12 @@ import java.util.List;
  * @author visitante
  */
 public class daoBoletaClientesBancos {
-    private static final String SQL_SELECT = "SELECT bolId, codBanco, bolFechaEmision, bolNombreCliente, bolSaldo, concId, tipMovId, cueId, bolEfecto, tipModId FROM tbl_boletaClientesBancos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_boletaClientesBancos(bolId, codBanco, bolFechaEmision, bolNombreCliente, bolSaldo, concId, tipMovId, cueId, bolEfecto, tipModId) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_boletaClientesBancos SET codBanco=?, bolFechaEmision=?, bolNombreCliente=?, bolSaldo=?, concId=?, tipMovId=?, cueId=?, bolEfecto=?, tipModId=? WHERE bolId = ?";
+    private static final String SQL_SELECT = "SELECT bolId, codBanco, bolFechaEmision, clId, bolSaldo, tipMovId, cueId, bolEfecto, tipModId FROM tbl_boletaClientesBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_boletaClientesBancos(bolId, codBanco, bolFechaEmision, clId, bolSaldo, tipMovId, cueId, bolEfecto, tipModId) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_boletaClientesBancos SET codBanco=?, bolFechaEmision=?, clId=?, bolSaldo=?, tipMovId=?, cueId=?, bolEfecto=?, tipModId=? WHERE bolId = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_boletaClientesBancos WHERE bolId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT bolId, bolFechaEmision, bolNombreCliente, bolSaldo, concId, tipMovId, cueId, bolEfecto, tipModId FROM tbl_boletaClientesBancos WHERE codBanco = ?";
-    private static final String SQL_SELECT_ID = "SELECT bolId, codBanco, bolFechaEmision, bolNombreCliente, bolSaldo, concId, tipMovId, cueId, bolEfecto, tipModId FROM tbl_boletaClientesBancos WHERE bolId = ?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT bolId, bolFechaEmision, clId, bolSaldo, tipMovId, cueId, bolEfecto, tipModId FROM tbl_boletaClientesBancos WHERE codBanco = ?";
+    private static final String SQL_SELECT_ID = "SELECT bolId, codBanco, bolFechaEmision, clId, bolSaldo, tipMovId, cueId, bolEfecto, tipModId FROM tbl_boletaClientesBancos WHERE bolId = ?";    
 
     public List<clsBoletaClientesBancos> consultaBoleta() {
         Connection conn = null;
@@ -38,23 +38,17 @@ public class daoBoletaClientesBancos {
                 int id_boleta = rs.getInt("bolId");
                 int codigo_banco = rs.getInt("codBanco");
                 String fecha_emision = rs.getString("bolFechaEmision");
-                String nombre_cliente = rs.getString("bolNombreCliente");
-                float saldo_boleta = rs.getFloat("bolSaldo");
-                int id_concepto = rs.getInt("conId");
+                int nombre_cliente = rs.getInt("clId");
+                float saldo_boleta = rs.getFloat("bolSaldo");     
                 int id_tipoMovimiento = rs.getInt("tipMovId");
-                int id_cuenta = rs.getInt("cueId");
-                String efecto_boleta = rs.getString("bolEfecto");
                 int id_tipoMoneda = rs.getInt("tipModId");
                 clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
                 boleta.setIdBoleta(id_boleta);
                 boleta.setCodigoBanco(codigo_banco);
                 boleta.setFechaEmisionBoleta(fecha_emision);
-                boleta.setNombreCliente(nombre_cliente);
+                boleta.setIdCliente(nombre_cliente);
                 boleta.setSaldoBoleta(saldo_boleta);
-                boleta.setIdConcepto(id_concepto);
                 boleta.setIdTipoMovimiento(id_tipoMovimiento);
-                boleta.setIdCuenta(id_cuenta);
-                boleta.setEfectoBoleta(efecto_boleta);
                 boleta.setIdTipoMoneda(id_tipoMoneda);
                 boletas.add(boleta);
             }
@@ -78,12 +72,9 @@ public class daoBoletaClientesBancos {
             stmt.setInt(1, boleta.getIdBoleta());
             stmt.setInt(2, boleta.getCodigoBanco());
             stmt.setString(3, boleta.getFechaEmisionBoleta());
-            stmt.setString(4, boleta.getNombreCliente());
+            stmt.setInt(4, boleta.getIdCliente());
             stmt.setDouble(5, boleta.getSaldoBoleta());
-            stmt.setInt(6, boleta.getIdConcepto());
             stmt.setInt(7, boleta.getIdTipoMovimiento());
-            stmt.setInt(8, boleta.getIdCuenta());
-            stmt.setString(9, boleta.getEfectoBoleta());
             stmt.setInt(10, boleta.getIdTipoMoneda());
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -108,14 +99,11 @@ public class daoBoletaClientesBancos {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setInt(1, boleta.getCodigoBanco());
             stmt.setString(2, boleta.getFechaEmisionBoleta());
-            stmt.setString(3, boleta.getNombreCliente());
+            stmt.setInt(3, boleta.getIdCliente());
             stmt.setDouble(4, boleta.getSaldoBoleta());
-            stmt.setInt(5, boleta.getIdConcepto());
-            stmt.setInt(6, boleta.getIdTipoMovimiento());
-            stmt.setInt(7, boleta.getIdCuenta());
-            stmt.setString(8, boleta.getEfectoBoleta());
-            stmt.setInt(9, boleta.getIdTipoMoneda());
-            stmt.setInt(10, boleta.getIdBoleta());
+            stmt.setInt(5, boleta.getIdTipoMovimiento());
+            stmt.setInt(6, boleta.getIdTipoMoneda());
+            stmt.setInt(7, boleta.getIdBoleta());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -167,23 +155,17 @@ public class daoBoletaClientesBancos {
                 int id_boleta = rs.getInt("bolId");
                 int codigo_banco = rs.getInt("codBanco");
                 String fecha_emision = rs.getString("bolFechaEmision");
-                String nombre_cliente = rs.getString("bolNombreCliente");
+                int nombre_cliente = rs.getInt("clId");
                 float saldo_boleta = rs.getFloat("bolSaldo");
-                int id_concepto = rs.getInt("concId");
                 int id_tipoMovimiento = rs.getInt("tipMovId");
-                int id_cuenta = rs.getInt("cueId");
-                String efecto_boleta = rs.getString("bolEfecto");
                 int id_tipoMoneda = rs.getInt("tip;ovId");
                 //boleta = new clsModulo();
                 boleta.setIdBoleta(id_boleta);
                 boleta.setCodigoBanco(codigo_banco);
                 boleta.setFechaEmisionBoleta(fecha_emision);
-                boleta.setNombreCliente(nombre_cliente);
-                boleta.setSaldoBoleta(saldo_boleta);
-                boleta.setIdConcepto(id_concepto);
+                boleta.setIdCliente(nombre_cliente);
+                boleta.setSaldoBoleta(saldo_boleta);   
                 boleta.setIdTipoMovimiento(id_tipoMovimiento);
-                boleta.setIdCuenta(id_cuenta);
-                boleta.setEfectoBoleta(efecto_boleta);
                 boleta.setIdTipoMoneda(id_tipoMoneda);
                 System.out.println(" registro consultado: " + boleta);                
             }
@@ -214,24 +196,18 @@ public class daoBoletaClientesBancos {
                 int id_boleta = rs.getInt("bolId");
                 int codigo_banco = rs.getInt("codBanco");
                 String fecha_emision = rs.getString("bolFechaEmision");
-                String nombre_cliente = rs.getString("bolNombreCliente");
-                float saldo_boleta = rs.getFloat("bolSaldo");
-                int id_concepto = rs.getInt("conId");
+                int nombre_cliente = rs.getInt("clId");
+                float saldo_boleta = rs.getFloat("bolSaldo");     
                 int id_tipoMovimiento = rs.getInt("tipMovId");
-                int id_cuenta = rs.getInt("cueId");
-                String efecto_boleta = rs.getString("bolEfecto");
                 int id_tipoMoneda = rs.getInt("tipModId");
 
                 //modulo = new clsModulo();
                 boleta.setIdBoleta(id_boleta);
                 boleta.setCodigoBanco(codigo_banco);
                 boleta.setFechaEmisionBoleta(fecha_emision);
-                boleta.setNombreCliente(nombre_cliente);
+                boleta.setIdCliente(nombre_cliente);
                 boleta.setSaldoBoleta(saldo_boleta);
-                boleta.setIdConcepto(id_concepto);
                 boleta.setIdTipoMovimiento(id_tipoMovimiento);
-                boleta.setIdCuenta(id_cuenta);
-                boleta.setEfectoBoleta(efecto_boleta);
                 boleta.setIdTipoMoneda(id_tipoMoneda);
                 System.out.println(" registro consultado: " + boleta);                
             }
