@@ -9,7 +9,7 @@ package Bancos.Vista;
 
 import Bancos.Controlador.clsBoletaClientesBancos;
 import Bancos.Controlador.clsBancoExterno;
-//import Bancos.Controlador.clsClientes;
+import Ventas.Controlador.clsClientes;
 import Bancos.Controlador.clsConceptosBancos;
 import Bancos.Controlador.clsTipoMovimientoBancos;
 import Bancos.Controlador.clsCuentasBancos;
@@ -42,19 +42,38 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
             cbNombreBanco.addItem(item);
         }
     }
-        
-     /* public void llenadoDeComboNombreCliente() {
+    
+    //No encontre el numero de la factura
+    /*public void actionPerformed(clsBoletaClientesBancos factura) {
+        String seleccionado = (String) cbNombreCliente.getSelectedItem();
+        if (!seleccionado.equals("Seleccionar...")) {
+            // Obtener el número de factura asociado al cliente seleccionado
+            String[] partes = seleccionado.split(" - ");
+            String idCliente = partes[0];
+            String numeroFactura = obtenerNumeroFactura(idCliente);
+
+            // Mostrar el número de factura en el TextField
+            txtFactura.setText(numeroFactura);
+        } else {
+            // Limpiar el TextField si no se selecciona ningún cliente
+            txtFactura.setText("");
+        }
+    }*/
+    
+    
+     public void llenadoDeComboNombreCliente() {
         clsClientes cliente = new clsClientes();
         List<clsClientes> listaClientes = cliente.getListadoClientes();
         cbNombreCliente.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbNombreCliente.addItem("Seleccionar...");
         for (int i = 0; i < listaClientes.size(); i++) {
-            clsClientes clientenombre = listaClientes.get(i);
-            String item = clientenombre.getTipModId() + " - " + clientenombre.getNombreCliente();
+            clsClientes clienteNombre = listaClientes.get(i);
+            String item = clienteNombre.getIdCliente() + " - " + clienteNombre.getNombreCliente();
             cbNombreCliente.addItem(item);
-        }*/
+        }
+     }
      
-    public void llenadoConcepto() {
+    /*public void llenadoConcepto() {
        clsConceptosBancos concepto = new clsConceptosBancos();
         List<clsConceptosBancos> listaConcepto = concepto.getListadoConceptos();
         cbConcepto.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -64,7 +83,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
             String item = conceptosBancos.getIdConcepto()+ " - "+conceptosBancos.getNombreConcepto();
             cbConcepto.addItem(item);
         }
-    }
+    }*/
     
     public void llenadoTipoMovimiento() {
        clsTipoMovimientoBancos movimiento = new clsTipoMovimientoBancos();
@@ -84,9 +103,10 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         cbIdCuenta.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdCuenta.addItem("Seleccionar...");
         for (int i = 0; i < listaCuentas.size(); i++) {
-            clsCuentasBancos cuentasBancos = listaCuentas.get(i);
-            String item = cuentasBancos.getIdCuenta()+ " - "+cuentasBancos.getNumeroCuenta();
-            cbIdCuenta.addItem(item);
+            //clsCuentasBancos cuentasBancos = listaCuentas.get(i);
+            //String item = cuentasBancos.getIdCuenta()+ " - "+cuentasBancos.getCodBanco();
+            //cbIdCuenta.addItem(item);
+            cbIdCuenta.addItem(String.valueOf(listaCuentas.get(i).getIdCuenta()));
         } 
     }*/
      
@@ -97,7 +117,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         cbTipoMoneda.addItem("Seleccionar...");
         for (int i = 0; i < listaTipoMonedas.size(); i++) {
             clsTipoMoneda tipoMoneda = listaTipoMonedas.get(i);
-            String item = tipoMoneda.getTipModId() + " - " + tipoMoneda.getTipMondAbreviacion();
+            String item = tipoMoneda.getTipModId() + " - " + tipoMoneda.getTipMondNombre();
             cbTipoMoneda.addItem(item);
         }
     }
@@ -110,10 +130,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         modelo.addColumn("Fecha");
         modelo.addColumn("Cliente");
         modelo.addColumn("Saldo");      
-        modelo.addColumn("Concepto");
         modelo.addColumn("Movimiento");
-        modelo.addColumn("Cuenta");
-        modelo.addColumn("Efecto"); 
         modelo.addColumn("Moneda");
         
         clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
@@ -121,18 +138,15 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         List<clsBoletaClientesBancos> listadoBoletaCliente = boleta.getListadoBoletas();
      
         tablaMovimientos.setModel(modelo);
-        String[] dato = new String[10];
+        String[] dato = new String[6];
         for (int i = 0; i < listadoBoletaCliente.size(); i++) {
             dato[0] = Integer.toString(listadoBoletaCliente.get(i).getIdBoleta());
             dato[1] = Integer.toString(listadoBoletaCliente.get(i).getCodigoBanco());
             dato[2] = listadoBoletaCliente.get(i).getFechaEmisionBoleta();
-            dato[3] = listadoBoletaCliente.get(i).getNombreCliente();
+            dato[3] = Integer.toString(listadoBoletaCliente.get(i).getIdCliente());
             dato[4] = Float.toString(listadoBoletaCliente.get(i).getSaldoBoleta());
-            dato[5] = Integer.toString(listadoBoletaCliente.get(i).getIdConcepto());
-            dato[6] = Integer.toString(listadoBoletaCliente.get(i).getIdTipoMovimiento());
-            dato[7] = Integer.toString(listadoBoletaCliente.get(i).getIdCuenta());
-            dato[8] = listadoBoletaCliente.get(i).getEfectoBoleta();
-            dato[9] = Integer.toString(listadoBoletaCliente.get(i).getIdTipoMoneda());
+            dato[5] = Integer.toString(listadoBoletaCliente.get(i).getIdTipoMovimiento());
+            dato[6] = Integer.toString(listadoBoletaCliente.get(i).getIdTipoMoneda());
             modelo.addRow(dato);
         }       
     }
@@ -141,10 +155,11 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         initComponents();
         llenadoDeTablas();
         llenadoCodigoBanco();
-        llenadoConcepto();
+        //llenadoConcepto();
         llenadoTipoMovimiento();
         //llenadoCuentas();
         llenadoMoneda();
+        llenadoDeComboNombreCliente();
     }
 
 
@@ -160,6 +175,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         lb2 = new javax.swing.JLabel();
         lbusu = new javax.swing.JLabel();
         tipoEstatus = new javax.swing.ButtonGroup();
+        Efecto = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMovimientos = new javax.swing.JTable();
         lb = new javax.swing.JLabel();
@@ -171,18 +187,14 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtCodigoDocumento = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        cbConcepto = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        cbNombreBanco = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        cbIdCuenta = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        cbTipoMoneda = new javax.swing.JComboBox<>();
-        txtNombreCliente = new javax.swing.JTextField();
+        cbNombreCliente = new javax.swing.JComboBox<>();
+        txtNoDeposito = new javax.swing.JTextField();
+        btRegistro = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtFactura = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtValorDeposito = new javax.swing.JTextField();
         label24 = new javax.swing.JLabel();
         label23 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -192,14 +204,20 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         label4 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
         label25 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        panel = new javax.swing.JPanel();
         cbCodigoMov = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         rbcargo = new javax.swing.JRadioButton();
         rbabono = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         txtvalor = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cbNombreBanco = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        cbTipoMoneda = new javax.swing.JComboBox<>();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -266,15 +284,15 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,26 +308,28 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel1.setText("No. Documento");
+        jLabel1.setText("No. Deposito");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel3.setText("Fecha Emisión");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel4.setText("Nombre Cliente");
         jLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel6.setText("Concepto");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btRegistro.setText("+ Crear Deposito");
+        btRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistroActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setText("Banco");
-        jLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel2.setText("No.Factura");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel11.setText("Cuenta");
-        jLabel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtFactura.setEditable(false);
 
-        jLabel12.setText("Moneda");
-        jLabel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel5.setText("Valor ");
+        jLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        txtValorDeposito.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -317,64 +337,48 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(btRegistro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCodigoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(txtNoDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreCliente))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbConcepto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbNombreBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbIdCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbTipoMoneda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(txtCodigoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(cbNombreBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCodigoDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNoDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodigoDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel11)
-                    .addComponent(cbIdCuenta)
-                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cbConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(cbTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btRegistro)
                 .addContainerGap())
         );
 
@@ -440,60 +444,105 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label4)
                     .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         label25.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label25.setText("TOTAL :");
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalle", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalle", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        jLabel8.setText("Código");
-        jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel9.setText("Cargo");
+        jLabel9.setText("Efecto");
         jLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        rbcargo.setText("Cargo");
+        Efecto.add(rbcargo);
+        rbcargo.setText("Cargo -");
 
-        rbabono.setText("Abono");
+        Efecto.add(rbabono);
+        rbabono.setText("Abono +");
 
         jLabel10.setText("Valor");
         jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbCodigoMov, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(rbcargo)
-                .addGap(30, 30, 30)
-                .addComponent(rbabono)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+        jLabel6.setText("Concepto");
+        jLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel3.setText("Fecha Emisión");
+        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel7.setText("Banco");
+        jLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel12.setText("Moneda");
+        jLabel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addGap(29, 29, 29)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(cbCodigoMov, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbNombreBanco, 0, 148, Short.MAX_VALUE)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                        .addGap(170, 170, 170)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rbcargo)
+                                    .addComponent(rbabono))
+                                .addGap(101, 101, 101))
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(jLabel12)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cbCodigoMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(rbcargo)
-                    .addComponent(rbabono)
-                    .addComponent(jLabel10)
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(cbNombreBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(rbcargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbabono)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(cbCodigoMov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10))
                     .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(cbTipoMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -502,48 +551,51 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label24)
-                            .addGap(207, 207, 207)
-                            .addComponent(label23)
-                            .addGap(201, 201, 201)
-                            .addComponent(label25)
-                            .addGap(89, 89, 89))
-                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(85, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(label24)
+                        .addGap(211, 211, 211)
+                        .addComponent(label23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label25)
+                        .addGap(203, 203, 203))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label24)
+                    .addComponent(label23)
+                    .addComponent(label25))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label24)
-                            .addComponent(label23)
-                            .addComponent(label25))))
-                .addGap(0, 22, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -551,32 +603,39 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
        clsBoletaClientesBancos boleta = new clsBoletaClientesBancos();
-
+       
         boleta.setIdBoleta(Integer.parseInt(txtCodigoDocumento.getText()));
-
+        
         String selectedItem= cbNombreBanco.getSelectedItem().toString();
         int itemNombreBanco = Integer.parseInt(selectedItem.split(" - ")[0]);
         boleta.setCodigoBanco(itemNombreBanco);
-
+        
         boleta.setFechaEmisionBoleta(txtFecha.getText());
-
-        String selectedItem3= cbConcepto.getSelectedItem().toString();
-        int itemConcepto = Integer.parseInt(selectedItem.split(" - ")[0]);
-        boleta.setIdConcepto(itemConcepto);
-
-        String selectedItem4= cbIdCuenta.getSelectedItem().toString();
-        int itemCuenta = Integer.parseInt(selectedItem.split(" - ")[0]);
-        boleta.setIdCuenta(itemCuenta);
-
-        boleta.setNombreCliente(txtNombreCliente.getText());
-
-        String selectedItem5 = cbTipoMoneda.getSelectedItem().toString();
+        
+        String selectedItem5= cbNombreCliente.getSelectedItem().toString();
+        int itemNombre = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdCliente(itemNombre);
+      
+        boleta.setSaldoBoleta(Float.parseFloat(txtvalor.getText()));
+        
+        String selectedItem6 = cbCodigoMov.getSelectedItem().toString();
+        int itemTipMov = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdTipoMovimiento(itemTipMov);
+        
+        String selectedItem7 = cbTipoMoneda.getSelectedItem().toString();
         int itemTipoMoneda = Integer.parseInt(selectedItem.split(" - ")[0]);
         boleta.setIdTipoMoneda(itemTipoMoneda);
+        
 
-        boleta.setSaldoBoleta(Float.parseFloat(txtvalor.getText()));
+        /*String selectedItem3= cbConcepto.getSelectedItem().toString();
+        int itemConcepto = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdConcepto(itemConcepto);*/
 
-        if(rbcargo.isSelected()){
+        /*String selectedItem4= cbIdCuenta.getSelectedItem().toString();
+        int itemCuenta = Integer.parseInt(selectedItem.split(" - ")[0]);
+        boleta.setIdCuenta(itemCuenta);*/
+
+        /*if(rbcargo.isSelected()){
             boleta.setEfectoBoleta("Cargo");
         }
 
@@ -586,11 +645,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
         else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un Cargo.");
             return;
-        }
-
-        /*String selectedItem = cbNombreCliente.getSelectedItem().toString();
-        String itemNombre = selectedItem.split(" - ")[0];
-        boleta.setNombreCliente(itemNombre); */
+        }*/
 
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n",
             "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -702,10 +757,40 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistroActionPerformed
+        /*txtFecha.setEnabled(false);
+        cbNombreBanco.setEnabled(false);
+        cbCodigoMov.setEnabled(false);
+        rbcargo.setEnabled(false);
+        rbabono.setEnabled(false);
+        txtvalor.setEnabled(false);
+        cbTipoMoneda.setEnabled(false);
+
+        String deposito = txtNoDeposito.getText();
+        String nombre = cbNombreCliente.getSelectedItem().toString();
+
+        if (deposito.isEmpty() || nombre.equals("Seleccionar...")) {
+        JOptionPane.showMessageDialog(null, "Error! Debe llenar todos los campos",
+            "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+         boolean seleccionado = btRegistro.isSelected();
+
+        if (seleccionado) {
+        txtFecha.setEnabled(true);
+        cbNombreBanco.setEnabled(true);
+        cbCodigoMov.setEnabled(true);
+        rbcargo.setEnabled(true);
+        rbabono.setEnabled(true);
+        txtvalor.setEnabled(true);
+        cbTipoMoneda.setEnabled(true);
+    }
+}*/
+    }//GEN-LAST:event_btRegistroActionPerformed
     public void limpiarTextos() {
         txtbuscado.setText("");
         tipoEstatus.clearSelection();
-        cbConcepto.setSelectedIndex(0);
+        //cbConcepto.setSelectedIndex(0);
             
     }
     public void habilitarBotones()
@@ -729,6 +814,8 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
     }   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup Efecto;
+    private javax.swing.JButton btRegistro;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
@@ -736,25 +823,23 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cbCodigoMov;
-    private javax.swing.JComboBox<String> cbConcepto;
-    private javax.swing.JComboBox<String> cbIdCuenta;
     private javax.swing.JComboBox<String> cbNombreBanco;
+    private javax.swing.JComboBox<String> cbNombreCliente;
     private javax.swing.JComboBox<String> cbTipoMoneda;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label23;
     private javax.swing.JLabel label24;
@@ -763,13 +848,16 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
+    private javax.swing.JPanel panel;
     private javax.swing.JRadioButton rbabono;
     private javax.swing.JRadioButton rbcargo;
     private javax.swing.JTable tablaMovimientos;
     private javax.swing.ButtonGroup tipoEstatus;
     private javax.swing.JLabel txtCodigoDocumento;
+    private javax.swing.JTextField txtFactura;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txtNoDeposito;
+    private javax.swing.JTextField txtValorDeposito;
     private javax.swing.JTextField txtbuscado;
     private javax.swing.JTextField txtvalor;
     // End of variables declaration//GEN-END:variables
