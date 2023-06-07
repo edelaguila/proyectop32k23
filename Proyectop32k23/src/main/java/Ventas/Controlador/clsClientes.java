@@ -18,6 +18,7 @@ public class clsClientes {
     private int IdCliente;
     private String NombreCliente;
     private String EstatusCliente;
+    private String EstatusCliente2;
     private String TelefonoCliente;
     private String EmailCliente;
     private String NitCliente;
@@ -31,7 +32,7 @@ public class clsClientes {
         this.IdCliente = IdCliente;
     }
 
-    public clsClientes(String NombreCliente, String EstatusCliente, String TelefonoCliente, String EmailCliente, String NitCliente, double HaberCliente, double DebeCliente) {
+    public clsClientes(String NombreCliente, String EstatusCliente, String TelefonoCliente, String EmailCliente, String NitCliente, double HaberCliente, double DebeCliente, String EstatusCliente2) {
         this.NombreCliente = NombreCliente;
         this.EstatusCliente = EstatusCliente;
         this.TelefonoCliente = TelefonoCliente;
@@ -39,9 +40,10 @@ public class clsClientes {
         this.NitCliente = NitCliente;
         this.HaberCliente = HaberCliente;
         this.DebeCliente = DebeCliente;
+        this.EstatusCliente2 = EstatusCliente2;
     }
 
-    public clsClientes(int IdCliente, String NombreCliente, String EstatusCliente, String TelefonoCliente, String EmailCliente, String NitCliente, double HaberCliente, double DebeCliente) {
+    public clsClientes(int IdCliente, String NombreCliente, String EstatusCliente, String TelefonoCliente, String EmailCliente, String NitCliente, double HaberCliente, double DebeCliente, String EstatusCliente2) {
         this.IdCliente = IdCliente;
         this.NombreCliente = NombreCliente;
         this.EstatusCliente = EstatusCliente;
@@ -50,6 +52,7 @@ public class clsClientes {
         this.NitCliente = NitCliente;
         this.HaberCliente = HaberCliente;
         this.DebeCliente = DebeCliente;
+        this.EstatusCliente2 = EstatusCliente2;
     }
 
     public int getIdCliente() {
@@ -74,6 +77,14 @@ public class clsClientes {
 
     public void setEstatusCliente(String EstatusCliente) {
         this.EstatusCliente = EstatusCliente;
+    }
+    
+        public String getEstatusCliente2() {
+        return EstatusCliente2;
+    }
+
+    public void setEstatusCliente2(String EstatusCliente2) {
+        this.EstatusCliente2 = EstatusCliente2;
     }
 
     public String getTelefonoCliente() {

@@ -71,12 +71,38 @@
                   <Component id="lbInsPedReg" max="32767" attributes="0"/>
                   <Component id="jScrollPanePedReg" pref="572" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="131" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnVerDetallePed" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnFacturarPed" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="131" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnVerDetallePed" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnAyudaConPed" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnFacturarPed" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbIdVenPed" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbIdTiePed" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbDescPed" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtVenFacPed" alignment="0" pref="115" max="32767" attributes="0"/>
+                          <Component id="cbxTiendaPed" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxDescPed" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelarPedido" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,16 +111,35 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lbPedReg" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
               <Component id="lbInsPedReg" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPanePedReg" min="-2" pref="316" max="-2" attributes="0"/>
+                  <Component id="jScrollPanePedReg" alignment="0" min="-2" pref="316" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="btnVerDetallePed" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnCancelarPedido" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtVenFacPed" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbIdVenPed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbIdTiePed" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxTiendaPed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbDescPed" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxDescPed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btnFacturarPed" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="btnAyudaConPed" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -149,6 +194,66 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Haz clic en el pedido que quieras trabajar, luego presiona un bot&#xf3;n:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxTiendaPed">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbDescPed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descuento:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxDescPed">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="6">
+            <StringItem index="0" value="0.0"/>
+            <StringItem index="1" value="0.15"/>
+            <StringItem index="2" value="0.25"/>
+            <StringItem index="3" value="0.50"/>
+            <StringItem index="4" value="0.75"/>
+            <StringItem index="5" value="0.95"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCancelarPedido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar Pedido"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarPedidoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVenFacPed">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbIdVenPed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Id del Vendedor:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbIdTiePed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tienda:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAyudaConPed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ayuda"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAyudaConPedActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

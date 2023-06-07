@@ -21,12 +21,12 @@ import java.util.List;
  * @author maria
  */
 public class daoVendedores {
-   private static final String SQL_SELECT = "SELECT venid, vennombre, vendireccion, ventelefono, venemail FROM tbl_vendedores";
-    private static final String SQL_INSERT = "INSERT INTO tbl_vendedores(vennombre, vendireccion, ventelefono, venemail) VALUES(?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_vendedores SET vennombre=?, vendireccion=?, ventelefono=?, venemail=? WHERE venid = ?";
+   private static final String SQL_SELECT = "SELECT venid, vennombre, vendireccion, ventelefono, venemail, venEstatus FROM tbl_vendedores";
+    private static final String SQL_INSERT = "INSERT INTO tbl_vendedores(vennombre, vendireccion, ventelefono, venemail, venEstatus) VALUES(?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_vendedores SET vennombre=?, vendireccion=?, ventelefono=?, venemail=?, venEstatus=? WHERE venid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_vendedores WHERE venid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT venid, vennombre, vendireccion, ventelefono, venemail FROM tbl_vendedores WHERE vennombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT venid, vennombre, vendireccion, ventelefono, venemail  FROM tbl_vendedores WHERE venid = ?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT venid, vennombre, vendireccion, ventelefono, venemail, venEstatus FROM tbl_vendedores WHERE vennombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT venid, vennombre, vendireccion, ventelefono, venemail, venEstatus  FROM tbl_vendedores WHERE venid = ?";    
 
     public List<clsVendedores> consultaVendedor() {
 
@@ -47,12 +47,14 @@ public class daoVendedores {
                 String direccion = rs.getString("vendireccion");
                 String telefono = rs.getString("ventelefono");
                 String email = rs.getString("venemail");
+                String estatus = rs.getString("venEstatus");
                 clsVendedores vendedor = new clsVendedores();
                 vendedor.setIdVendedor(id);
                 vendedor.setNombreVendedor(nombre);
                 vendedor.setDireccionVendedor(direccion);
                 vendedor.setTelefonoVendedor(telefono);
                 vendedor.setEmailVendedor(email);
+                vendedor.setEstatusVendedor(estatus);
                 vendedores.add(vendedor);
 
             }
@@ -80,6 +82,7 @@ public class daoVendedores {
             stmt.setString(2, vendedor.getDireccionVendedor());
             stmt.setString(3, vendedor.getTelefonoVendedor());
             stmt.setString(4, vendedor.getEmailVendedor());
+            stmt.setString(5, vendedor.getEstatusVendedor());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -109,7 +112,8 @@ public class daoVendedores {
             stmt.setString(2, vendedor.getDireccionVendedor());
             stmt.setString(3, vendedor.getTelefonoVendedor());
             stmt.setString(4, vendedor.getEmailVendedor());
-            stmt.setInt(5, vendedor.getIdVendedor());
+            stmt.setString(5, vendedor.getEstatusVendedor());
+            stmt.setInt(6, vendedor.getIdVendedor());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -170,6 +174,7 @@ public class daoVendedores {
                 String direccion = rs.getString("vendireccion");
                 String telefono = rs.getString("ventelefono");
                 String email = rs.getString("venemail");
+                String estatus = rs.getString("venEstatus");
                 //perfil = new clsPerfil();
        
                 vendedor.setIdVendedor(id);
@@ -177,6 +182,7 @@ public class daoVendedores {
                 vendedor.setDireccionVendedor(direccion);
                 vendedor.setTelefonoVendedor(telefono);
                 vendedor.setEmailVendedor(email);
+                vendedor.setEstatusVendedor(estatus);
                 System.out.println(" registro consultado: " + vendedor);                
 
             }
@@ -212,12 +218,14 @@ public class daoVendedores {
                 String direccion = rs.getString("vendireccion");
                 String telefono = rs.getString("ventelefono");
                 String email = rs.getString("venemail");
+                String estatus = rs.getString("venEstatus");
        
                 vendedor.setIdVendedor(id);
                 vendedor.setNombreVendedor(nombre);
                 vendedor.setDireccionVendedor(direccion);
                 vendedor.setTelefonoVendedor(telefono);
                 vendedor.setEmailVendedor(email);
+                vendedor.setEstatusVendedor(estatus);
                 System.out.println(" registro consultado: " + vendedor);                
 
             }
