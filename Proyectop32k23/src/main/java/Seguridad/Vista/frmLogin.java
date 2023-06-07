@@ -6,6 +6,7 @@
 package Seguridad.Vista;
 
 import Inventarios.Vista.MdiInventario;
+import Cuentas_Corrientes.Vista.MdiCCorrientes;
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
@@ -15,6 +16,7 @@ import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Ventas.Vista.MdiVentas;
 import Bancos.Vista.MdiBancos;
+import Cuentas_Corrientes.Vista.MdiCCorrientes;
 /**
  *
  * @author visitante
@@ -188,9 +190,9 @@ public class frmLogin extends javax.swing.JFrame {
                     clsBitacora bitacoraRegistro = new clsBitacora();
                     resultadoBitacora = bitacoraRegistro.setIngresarBitacora(usuarioRegistrado.getIdUsuario(), codigoAplicacion, "BEG");
                     // Menu general---
-                    /*MdiSeguridad menuGeneral = new MdiSeguridad();
+                    MdiSeguridad menuGeneral = new MdiSeguridad();
                     menuGeneral.setVisible(true);
-                    this.dispose();*/
+                    this.dispose();
                     
                     //---Agregando switch case para funcionalidad de todos los módulos(incompleto porque aún no hay MDI'S de todos)
                     //Victor Jerez
@@ -219,7 +221,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "Cuentas Corrientes":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
+                            MdiCCorrientes menu = new MdiCCorrientes();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
