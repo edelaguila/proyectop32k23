@@ -5,6 +5,8 @@
  */
 package Bancos.Vista;
 
+//Inicializado por Carlos González, 9959-20-6164
+//Luego cada integrante fue colocando todo lo necesario para que funcionaran sus tablas
 
 import Seguridad.Vista.frmMantenimientoBitacora;
 import java.awt.Dimension;
@@ -58,6 +60,8 @@ public class MdiBancos extends javax.swing.JFrame {
         cuentaEmpresa = new javax.swing.JCheckBoxMenuItem();
         MovDetallesBancos = new javax.swing.JMenuItem();
         PersonaBancoss = new javax.swing.JMenuItem();
+        comrpobante = new javax.swing.JCheckBoxMenuItem();
+        Boletas = new javax.swing.JCheckBoxMenuItem();
         mnuConsultas = new javax.swing.JMenu();
         consultaBitacora = new javax.swing.JCheckBoxMenuItem();
         mnuReportes = new javax.swing.JMenu();
@@ -207,6 +211,24 @@ public class MdiBancos extends javax.swing.JFrame {
             }
         });
         mnuProcesos.add(PersonaBancoss);
+
+        comrpobante.setSelected(true);
+        comrpobante.setText("comprobantes Proveedores");
+        comrpobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comrpobanteActionPerformed(evt);
+            }
+        });
+        mnuProcesos.add(comrpobante);
+
+        Boletas.setSelected(true);
+        Boletas.setText("Boleta Clientes");
+        Boletas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BoletasActionPerformed(evt);
+            }
+        });
+        mnuProcesos.add(Boletas);
 
         mnuGeneral.add(mnuProcesos);
 
@@ -377,6 +399,25 @@ public class MdiBancos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_PersonaBancossActionPerformed
 
+    private void comrpobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comrpobanteActionPerformed
+        //Hecho por: Karla Sofia Góomez Tobar 9959-21-1896
+// TODO add your handling code here:
+        frmComprobanteproveedoresbancos ventana = new frmComprobanteproveedoresbancos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_comrpobanteActionPerformed
+
+    private void BoletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoletasActionPerformed
+        // TODO add your handling code here:
+        frmBoletaClientesBancos ventana = new frmBoletaClientesBancos();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_BoletasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,9 +461,11 @@ public class MdiBancos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem Boletas;
     private javax.swing.JCheckBoxMenuItem MantenimientoTipoMoneda;
     private javax.swing.JMenuItem MovDetallesBancos;
     private javax.swing.JMenuItem PersonaBancoss;
+    private javax.swing.JCheckBoxMenuItem comrpobante;
     private javax.swing.JCheckBoxMenuItem consultaBitacora;
     private javax.swing.JCheckBoxMenuItem cuentaEmpresa;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;

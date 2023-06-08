@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @author cdavi
  */
+//Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 public class daoTipoMovimientoBancos {
     private static final String SQL_SELECT = "SELECT tipMovId , tipMovNombre, tipMovEstatus FROM tbl_tipomovimientoBancos";
     private static final String SQL_INSERT = "INSERT INTO tbl_tipomovimientoBancos(tipMovId, tipMovNombre, tipMovEstatus) VALUES(?, ?, ?)";

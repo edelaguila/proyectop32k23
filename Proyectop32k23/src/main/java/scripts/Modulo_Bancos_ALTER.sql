@@ -25,6 +25,81 @@ ALTER TABLE tbl_movimientosencabezadobancos modify movFecha DATE;
 
 -- agregamos status a tipo moneda
 ALTER TABLE tbl_monedabancos add estatus varchar(1) not null;
--- Modificamos el tipo de dato de la tabla comprobante proveedor de DATETIME a DATE
+
+-- modificamos los datos de fecha en comprobante proveedores
 ALTER TABLE tbl_comprobanteProveedoresBancos modify conFechaEmision DATE;
-ALTER TABLE tbl_comprobanteProveedoresBancos modify conFechaVencimiento DATE;
+-- eliminamos las columnas redundantes en comprobante proveedores
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN concNombre;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN banNombre;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN conFechaVencimiento;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prNombre;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN MovCosto;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN ConcDescripcion;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN cueNumero;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prSaldo;
+ALTER TABLE tbl_comprobanteProveedoresBancos DROP COLUMN prDeuda;
+
+-- Agregamos las nuevos campos que serian llaves foraneas
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD concId INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD codBanco INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD movDetId INT(5) NOT NULL;
+ALTER TABLE tbl_comprobanteProveedoresBancos ADD idproveedor INT(5) NOT NULL;
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_concId_comprobanteProveedoresBancos
+FOREIGN KEY (concId) REFERENCES tbl_conceptosbancos(concId);
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_codBanco_comprobanteProveedoresBancos
+FOREIGN KEY (codBanco) REFERENCES tbl_bancoexterno (codBanco);
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_movDetId_comprobanteProveedoresBancos
+FOREIGN KEY (movDetId) REFERENCES tbl_movimientosdetallebancos(movDetId);
+
+ALTER TABLE tbl_comprobanteProveedoresBancos  ADD CONSTRAINT FK_idproveedor_ccorrientesprov
+FOREIGN KEY (idproveedor) REFERENCES tblProveedor(idproveedor);
+
+--Cambios para Cuentas Bancos
+--Primero cambiamos el parametro de entrada de 5 digitos a 10
+ALTER TABLE tbl_cuentasBancos modify cueId INT(10) NOT NULL;
+
+--Eliminamos la columna de cueNumero
+ALTER TABLE tbl_cuentasBancos DROP COLUMN cueNumero;
+
+--Agregamos parametros/columnas nuevas que se necesitan
+ALTER TABLE tbl_cuentasBancos ADD tipModId INT(5) NOT NULL;
+ALTER TABLE tbl_cuentasBancos ADD codBanco INT(5) NOT NULL;
+
+-- A continuación, agregamos las llaves foráneas
+ALTER TABLE tbl_cuentasBancos ADD CONSTRAINT FK_tipModId_cuentasBancos
+FOREIGN KEY (tipModId) REFERENCES tbl_monedaBancos(tipModId);
+
+ALTER TABLE tbl_cuentasBancos ADD CONSTRAINT FK_codBanco_cuentasBancos
+FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno(codBanco);
+
+-- eliminamos los datos no necesarios de la tabla boletaClientesBancos, para poder eliminarlos si las llaves foraneas contienen información de la tabla de donde se realiza el llamado, es necesario que se vacien
+
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN bolCodigo;            //llave
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN bolFechaEmision;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concId;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concNombre;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN cueNumero;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concEfecto;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN perTipoId;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN concEstatus;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN clNombre;
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN clId;                //llave
+ALTER TABLE tbl_boletaClientesBancos DROP COLUMN clNit;
+
+
+--Luego agregamos los nuevas variables
+	bolId int (5) NOT NULL,
+	codBanco INT(5) NOT NULL,
+	bolFechaEmision date NOT NULL,
+	clId int auto_increment,
+	bolSaldo DECIMAL(20,5) NOT NULL,
+	tipMovId INT(5) NOT NULL,	
+	PRIMARY KEY (bolId),
+	FOREIGN KEY (codBanco) REFERENCES tbl_bancoExterno (codBanco),
+	FOREIGN KEY (clId) REFERENCES tbl_cliente (clId),
+	FOREIGN KEY (tipMovId) REFERENCES tbl_tipoMovimientoBancos (tipMovId),
+	FOREIGN KEY (tipModId) REFERENCES tbl_monedaBancos (tipModId))
+ENGINE = InnoDB CHARACTER SET = latin1;

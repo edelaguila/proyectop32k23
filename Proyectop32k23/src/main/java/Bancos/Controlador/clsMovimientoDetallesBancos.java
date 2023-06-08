@@ -6,10 +6,13 @@
 package Bancos.Controlador;
 import java.util.List;
 import Bancos.Modelo.daoMovimientoDetallesBancos;
+import Bancos.Modelo.daoMovimientosEncabezadoBancos;
 /**
  *
  * @author visitante
  */
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//Todo en ClsMovimientoDetallesBancos.
 public class clsMovimientoDetallesBancos {
     private int IdMovimientoDetalles;
     private int IdMovimiento;
@@ -17,17 +20,21 @@ public class clsMovimientoDetallesBancos {
     private int IdConcepto;
     private float MovimientoSaldo;
     private int IdTipoMovimiento;
+    private double AbonoCargo;
+
+    
 
     public clsMovimientoDetallesBancos() {
     }
 
-    public clsMovimientoDetallesBancos(int IdMovimientoDetalles, int IdMovimiento, float MovimientoCosto, int IdConcepto, float MovimientoSaldo, int IdTipoMovimiento) {
+    public clsMovimientoDetallesBancos(int IdMovimientoDetalles, int IdMovimiento, float MovimientoCosto, int IdConcepto, float MovimientoSaldo, int IdTipoMovimiento, double AbonoCargo) {
         this.IdMovimientoDetalles = IdMovimientoDetalles;
         this.IdMovimiento = IdMovimiento;
         this.MovimientoCosto = MovimientoCosto;
         this.IdConcepto = IdConcepto;
         this.MovimientoSaldo = MovimientoSaldo;
         this.IdTipoMovimiento = IdTipoMovimiento;
+        this.AbonoCargo=AbonoCargo;
     }
 
     public clsMovimientoDetallesBancos(int IdConcepto, float MovimientoSaldo, int IdTipoMovimiento) {
@@ -91,14 +98,21 @@ public class clsMovimientoDetallesBancos {
     }
 
   
+public double getAbonoCargo() {
+        return AbonoCargo;
+    }
 
+    public void setAbonoCargo(double AbonoCargo) {
+        this.AbonoCargo = AbonoCargo;
+    }
+    
 
   
 
   @Override
     public String toString() {
         return "clsBancos{" + "IdMovimientoDetalles=" + IdMovimientoDetalles+ ", IdMovimiento=" + IdMovimiento + ", MovimientoCosto=" + MovimientoCosto + ", IdConcepto=" + IdConcepto +
-          ",MovimientoSaldo="+ MovimientoSaldo + ", IdTipoMovimiento=" + IdTipoMovimiento +   '}';
+          ",MovimientoSaldo="+ MovimientoSaldo + ", IdTipoMovimiento=" + IdTipoMovimiento + ", AbonoCargo=" + AbonoCargo +  '}';
     }
 
     
@@ -112,7 +126,12 @@ public class clsMovimientoDetallesBancos {
     {
         daoMovimientoDetallesBancos daoBancos= new daoMovimientoDetallesBancos();
         return daoBancos.consultaBancoPorTipoMovimiento(banco);
-    }    
+    } 
+    public clsMovimientoDetallesBancos getBuscarInformacionBancoPorTipoMovimientoSaldo(clsMovimientoDetallesBancos banco, clsMovimientosEncabezadoBancos encabezado )
+    {
+        daoMovimientoDetallesBancos daoBancos= new daoMovimientoDetallesBancos();
+        return daoBancos.consultaBancoPorTipoMovimientoSaldo(banco, encabezado);
+    }  
     public List<clsMovimientoDetallesBancos> getListadoMovimiento()
     {
         daoMovimientoDetallesBancos daoBancos = new daoMovimientoDetallesBancos();
@@ -134,5 +153,11 @@ public class clsMovimientoDetallesBancos {
         daoMovimientoDetallesBancos daoBancos = new daoMovimientoDetallesBancos();
         return daoBancos.actualizaBanco(banco);
 
-    }              
+    }   
+    public int setModificarMovimientoSaldo(clsMovimientoDetallesBancos banco , clsMovimientosEncabezadoBancos encabezado)
+    {
+        daoMovimientoDetallesBancos daoBancos = new daoMovimientoDetallesBancos();
+        return daoBancos.actualizaBancoSaldo(banco, encabezado);
+
+    }   
 }

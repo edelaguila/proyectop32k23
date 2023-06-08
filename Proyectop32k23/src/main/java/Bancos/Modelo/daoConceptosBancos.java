@@ -15,6 +15,9 @@ import java.util.List;
  *
  * @author visitante
  */
+
+//Hecho por Carlos González, 9959-20-6164
+
 public class daoConceptosBancos {
 
     private static final String SQL_SELECT = "SELECT concId, concNombre, concDescripcion, concEfecto, concEstatus FROM tbl_conceptosBancos";

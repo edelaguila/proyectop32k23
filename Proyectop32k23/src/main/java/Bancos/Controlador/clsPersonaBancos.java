@@ -10,6 +10,8 @@ import Bancos.Modelo.daoPersonaBancos;
  *
  * @author visitante
  */
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//Hecho completo ClsPersonasBancos
 public class clsPersonaBancos {
     private int PerId;
     private String PerNombre;

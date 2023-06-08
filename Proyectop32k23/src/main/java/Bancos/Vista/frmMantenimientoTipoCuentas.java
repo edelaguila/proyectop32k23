@@ -5,7 +5,9 @@
  */
 package Bancos.Vista;
 
+//Hecho por Carlos González, 9959-20-6164
 
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsTipoCuentas;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -21,7 +23,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
-    int codigoAplicacion= 50011;
+    int codigoAplicacion= 5007;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -44,7 +46,7 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
         for (int i = 0; i < listadoTipoCuenta.size(); i++) {
             dato[0] = Integer.toString(listadoTipoCuenta.get(i).getTipoCueId());
             dato[1] = listadoTipoCuenta.get(i).getTipoCueDescripcion();
-            dato[2] = listadoTipoCuenta.get(i).getEstatusTipoCue();
+            dato[2] = listadoTipoCuenta.get(i).getEstatusTipoCue().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }
@@ -87,6 +89,7 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
         txtId = new javax.swing.JTextField();
         rbHabilitado = new javax.swing.JRadioButton();
         rbDeshabilitado = new javax.swing.JRadioButton();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -201,6 +204,13 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
         estatus.add(rbDeshabilitado);
         rbDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -230,7 +240,9 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(14, 14, 14)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                    .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +277,7 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lb)
                 .addGap(32, 32, 32)
@@ -289,7 +301,8 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnReportes))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
@@ -411,15 +424,15 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaTipoCuenta.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaTipoCuenta.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -434,6 +447,14 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptTipoCue.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -442,6 +463,7 @@ public class frmMantenimientoTipoCuentas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.ButtonGroup estatus;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;

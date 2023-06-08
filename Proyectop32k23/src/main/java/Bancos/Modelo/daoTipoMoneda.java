@@ -99,8 +99,8 @@ public class daoTipoMoneda {
             stmt.setString(1, moneda.getTipMondNombre());
             stmt.setString(2, moneda.getTipMondAbreviacion());
             stmt.setFloat(3, moneda.getTipModValor());
-            stmt.setInt(4, moneda.getTipModId());
-            stmt.setString(5, moneda.getEstatus());
+            stmt.setString(4, moneda.getEstatus());
+            stmt.setInt(5, moneda.getTipModId());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);

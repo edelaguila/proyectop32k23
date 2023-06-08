@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be2a7329-85f0-45f9-9cfd-f3c94f7b8dd4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT*FROM tbl_cuentasBancos]]>
+	</queryString>
+	<field name="cueId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cueSaldo" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="perId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cueTipoId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cueestatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipModId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codBanco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="670" height="79" backcolor="#000000" uuid="c63ee232-8cca-4e4f-bdb3-bd842e0011dd"/>
+				<staticText>
+					<reportElement x="201" y="15" width="315" height="44" forecolor="#FFFFFF" uuid="c9cfe980-adb3-43e4-9da4-13b1239eb791"/>
+					<textElement>
+						<font size="32" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Bancos, Reportes]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="670" y="0" width="82" height="79" uuid="ceae2b7e-e597-4e45-8bd2-b51788608b27"/>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="35" forecolor="#CC0033" backcolor="#CC0033" uuid="dbe40fee-eebf-44ed-9d76-4ed2b828bc4a"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="0" width="236" height="35" forecolor="#FFFFFF" uuid="2c0b770e-4326-4d00-aa4a-58ebbad348d5"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Cuentas]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="25" y="15" width="156" height="20" forecolor="#FFFFFF" uuid="cf9fa74a-69bf-4017-9ace-185f573bb81b"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="79" height="20" uuid="2626bd6f-4f93-4f66-8a9b-61658c60e8fe"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[No. Cuenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="0" width="84" height="20" uuid="fbc0fb81-375d-4af2-9a16-d96646150b85"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="0" width="78" height="20" uuid="98cd208d-8e6e-4d02-a2bd-d3af2acd3a89"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Cuenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="0" width="77" height="20" uuid="e1093b36-74e2-452c-bd21-427e93813817"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Moneda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="0" width="78" height="20" uuid="4f49688a-46ab-4e67-8497-a8df35301df2"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="0" width="90" height="20" uuid="6c28c287-9ccf-4286-af80-3c0244f9a80b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="652" y="0" width="83" height="20" uuid="676c0a63-be62-49a4-be3c-f17a4eae1eee"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="31" width="79" height="20" uuid="3a97db85-e9ef-4c1e-aeb0-bf771978bf9f"/>
+				<textFieldExpression><![CDATA[$F{cueId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="31" width="84" height="20" uuid="f4dde239-bbff-451b-a68f-ea2900a73e3d"/>
+				<textFieldExpression><![CDATA[$F{perId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="31" width="78" height="20" uuid="8804d252-011e-4c41-8fd1-591db267d410"/>
+				<textFieldExpression><![CDATA[$F{cueTipoId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="31" width="77" height="20" uuid="44a3e521-543b-417f-88e5-cc69184922fc"/>
+				<textFieldExpression><![CDATA[$F{tipModId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="31" width="78" height="20" uuid="52260e3f-f298-450d-b92d-1eb77e173ed5"/>
+				<textFieldExpression><![CDATA[$F{codBanco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="31" width="90" height="20" uuid="b5146ba5-1d7b-4a12-afcd-8d300f86c616"/>
+				<textFieldExpression><![CDATA[$F{cueSaldo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="652" y="31" width="83" height="20" uuid="69026f1b-cf92-4ab1-84ea-46e01c787bb3"/>
+				<textFieldExpression><![CDATA[$F{cueestatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="30" backcolor="#000000" uuid="26fdbf03-48f2-45b0-85dd-756d4f079da9"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="a986c3ee-0dfa-427e-86bc-cd4699ac3a85"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="37" splitType="Stretch"/>
+	</summary>
+</jasperReport>

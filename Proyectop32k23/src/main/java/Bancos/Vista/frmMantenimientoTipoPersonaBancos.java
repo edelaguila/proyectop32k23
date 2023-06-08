@@ -5,6 +5,7 @@
  */
 package Bancos.Vista;
 
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsTipoPersonaBancos;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -21,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class frmMantenimientoTipoPersonaBancos extends javax.swing.JInternalFrame {
-int codigoAplicacion= 5002;
+int codigoAplicacion= 5003;
 
     public void llenadoDeCombos() {
         /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
@@ -45,7 +46,7 @@ int codigoAplicacion= 5002;
         for (int i = 0; i < listaTipoBancos .size(); i++) {
            dato[0] = Integer.toString(listaTipoBancos.get(i).getIdTipoPersonaBancos());
             dato[1] = listaTipoBancos .get(i).getTipoDescripcionBancos();
-            dato[2] = listaTipoBancos .get(i).getTipoEstatusBancos();
+            dato[2] = listaTipoBancos .get(i).getTipoEstatusBancos().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }
@@ -90,6 +91,7 @@ int codigoAplicacion= 5002;
         label7 = new javax.swing.JLabel();
         RBHabilitado = new javax.swing.JRadioButton();
         RBDeshabilitado = new javax.swing.JRadioButton();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -205,6 +207,13 @@ int codigoAplicacion= 5002;
         buttonGroup1.add(RBDeshabilitado);
         RBDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,7 +240,9 @@ int codigoAplicacion= 5002;
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(14, 14, 14)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +316,8 @@ int codigoAplicacion= 5002;
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(btnReportes))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -313,7 +325,7 @@ int codigoAplicacion= 5002;
                             .addComponent(label4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -321,6 +333,7 @@ int codigoAplicacion= 5002;
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         int registrosBorrados=0;
         clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
         banco.setIdTipoPersonaBancos(Integer.parseInt(txtbuscado.getText()));
@@ -336,7 +349,9 @@ int codigoAplicacion= 5002;
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-  clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
+
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+        clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
 banco.setIdTipoPersonaBancos(Integer.parseInt(txtTipoPersona.getText()));
 banco.setTipoDescripcionBancos(txtDescripcion.getText());
 
@@ -362,6 +377,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
         //aplicacion.setNombreAplicacion(txtbuscado.getText());        
         banco.setIdTipoPersonaBancos(Integer.parseInt(txtbuscado.getText()));        
@@ -378,6 +394,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         clsTipoPersonaBancos banco = new clsTipoPersonaBancos();
         banco.setIdTipoPersonaBancos(Integer.parseInt(txtbuscado.getText()));
         banco.setTipoDescripcionBancos(txtDescripcion.getText());
@@ -403,6 +420,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         limpiarTextos();
         habilitarBotones();
         // TODO add your handling code here:
@@ -429,25 +447,36 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+        
+   try {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaTipoPersona.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaTipoPersona.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            
         }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
+        //NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+ clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptTipoPersona.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -459,6 +488,7 @@ if (!RBHabilitado.isSelected() && !RBDeshabilitado.isSelected()) {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;

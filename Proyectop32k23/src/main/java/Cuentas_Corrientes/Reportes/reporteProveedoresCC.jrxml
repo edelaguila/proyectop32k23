@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29997530-02ba-499a-997b-bddeca610981">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM tbl_proveedores]]>
+	</queryString>
+	<field name="prId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prFecha" class="java.time.LocalDateTime">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prNombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prNit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prNoFactura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prTotalFactura" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="25" width="540" height="33" forecolor="#000066" uuid="9596a9a0-3d5d-48d9-bf7d-026add9727eb"/>
+				<textElement>
+					<font size="24" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Reporte Proveedores de cuentas corrientes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="28" width="74" height="18" forecolor="#000066" uuid="c00536ac-f281-42d8-bbb0-ba15158a0cc8"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Id proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="28" width="74" height="18" forecolor="#000066" uuid="3fad6021-adbe-477b-9dd6-e215166133bf"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="28" width="74" height="38" forecolor="#000066" uuid="c561d7cc-a266-4377-a269-b80d281ad523"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nombre del proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="28" width="74" height="38" forecolor="#000066" uuid="afcd14e7-14a8-4010-8339-ca54b54f8fd1"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nit del proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="28" width="74" height="38" forecolor="#000066" uuid="bf8f9e57-fca2-4739-8dc0-93dd4cb0f93b"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Número de factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="66" width="98" height="18" forecolor="#000066" uuid="997a8554-72f9-40c4-aff7-b8fda82a6e44"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Total de factura]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="18" width="100" height="20" uuid="11616597-c2ec-4671-a6b7-964cefbcec15"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="18" width="100" height="20" uuid="03845a93-4092-43ac-9cde-2459d64a055d"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prFecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="18" width="100" height="20" uuid="a79228f1-87aa-4ee7-9461-7d3a8880f42a"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prNombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="18" width="100" height="20" uuid="dc325608-9b63-4d65-89c4-456ee6b6dbaf"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prNit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="18" width="100" height="20" uuid="163394c7-bf2f-40b2-9dfd-b7de3fe90d65"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prNoFactura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="64" width="123" height="20" uuid="0dd8b374-ece8-43d1-9f39-1f99a73447c7"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prTotalFactura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

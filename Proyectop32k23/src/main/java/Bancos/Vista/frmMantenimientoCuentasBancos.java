@@ -6,11 +6,13 @@
 //Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 package Bancos.Vista;
 
-
+import Bancos.Controlador.clsReportes;
 import Seguridad.Controlador.clsBitacora;
 import Bancos.Controlador.clsCuentasBancos;
 import Bancos.Controlador.clsPersonaBancos;
 import Bancos.Controlador.clsTipoCuentas;
+import Bancos.Controlador.clsTipoMoneda;
+import Bancos.Controlador.clsBancoExterno;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.awt.Component;
 import java.util.List;
@@ -27,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class frmMantenimientoCuentasBancos extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=5006;
+int codigoAplicacion=5005;
 
     public void llenadoDeComboIdPersona() {
         clsPersonaBancos personas = new clsPersonaBancos();
@@ -35,43 +37,79 @@ int codigoAplicacion=5006;
         cbIdPersona.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbIdPersona.addItem("Seleccionar...");
         for (int i = 0; i < listaPersonas.size(); i++) {
-            cbIdPersona.addItem(String.valueOf(listaPersonas.get(i).getPerId()));
+            clsPersonaBancos personaBanco = listaPersonas.get(i);
+            String item = personaBanco.getPerId()+ " - "+personaBanco.getPerNombre();
+            cbIdPersona.addItem(item);
+            //cbIdPersona.addItem(String.valueOf(listaPersonas.get(i).getPerId()));
         } 
         
     }
 
     public void llenadoDeComboTipoCuenta() {
-        clsTipoCuentas cuentas = new clsTipoCuentas();
-        List<clsTipoCuentas> listaTipoCuentas = cuentas.getListadoTipoCuentas();
+        clsTipoCuentas cuenta = new clsTipoCuentas();
+        List<clsTipoCuentas> listaTipoCuentas = cuenta.getListadoTipoCuentas();
         cbTipoCuenta.setAlignmentX(Component.CENTER_ALIGNMENT);
         cbTipoCuenta.addItem("Seleccionar...");
         for (int i = 0; i < listaTipoCuentas.size(); i++) {
-            cbTipoCuenta.addItem(String.valueOf(listaTipoCuentas.get(i).getTipoCueId()));
+            clsTipoCuentas cuentasbanco = listaTipoCuentas.get(i);
+            String item = cuentasbanco.getTipoCueId()+ " - "+cuentasbanco.getTipoCueDescripcion();
+            cbTipoCuenta.addItem(item);  
+            //cbTipoCuenta.addItem(String.valueOf(listaTipoCuentas.get(i).getTipoCueId()));
         } 
         
     }
-
+    
+    public void llenadoDeComboTipoMoneda() {
+        clsTipoMoneda monedas = new clsTipoMoneda();
+        List<clsTipoMoneda> listaTipoMoneda = monedas.getListadoMonedas();
+        cbMoneda.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbMoneda.addItem("Seleccionar...");
+        for (int i = 0; i < listaTipoMoneda.size(); i++) {
+            clsTipoMoneda tipoMoneda = listaTipoMoneda.get(i);
+            String item = tipoMoneda.getTipModId()+ " - "+tipoMoneda.getTipMondNombre();
+            cbMoneda.addItem(item);
+            //cbMoneda.addItem(String.valueOf(listaTipoMoneda.get(i).getTipModId()));
+        } 
+        
+    }
+    
+    public void llenadoDeComboBanco() {
+        clsBancoExterno banco = new clsBancoExterno();
+        List<clsBancoExterno> listaBanco = banco.getListadoBancosExternos();
+        cbBanco.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cbBanco.addItem("Seleccionar...");
+        for (int i = 0; i < listaBanco.size(); i++) {
+            clsBancoExterno bancoExterno = listaBanco.get(i);
+            String item = bancoExterno.getCodigoBanco()+ " - "+bancoExterno.getNombreBanco();
+            cbBanco.addItem(item);
+            //cbBanco.addItem(String.valueOf(listaBanco.get(i).getCodigoBanco()));
+        } 
+        
+    }
+    
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID Cuenta");
-        modelo.addColumn("Numero de Cuenta");
         modelo.addColumn("Saldo");
         modelo.addColumn("ID Persona");
         modelo.addColumn("Tipo Cuenta");
         modelo.addColumn("Estatus");
+        modelo.addColumn("Moneda");
+        modelo.addColumn("Banco");
         clsCuentasBancos cuenta = new clsCuentasBancos();
         
         //VendedorDAO vendedorDAO = new VendedorDAO();
         List<clsCuentasBancos> listaCuenta = cuenta.getListadoCuentas();
         tablaCuentas.setModel(modelo);
-        String[] dato = new String[6];
+        String[] dato = new String[7];
         for (int i = 0; i < listaCuenta.size(); i++) {
             dato[0] = Integer.toString(listaCuenta.get(i).getIdCuenta());
-            dato[1] = Integer.toString(listaCuenta.get(i).getNumeroCuenta());
-            dato[2] = Double.toString(listaCuenta.get(i).getSaldoCuenta());
-            dato[3] = Integer.toString(listaCuenta.get(i).getIdPersona());
-            dato[4] = Integer.toString(listaCuenta.get(i).getIdTipoCuenta());
-            dato[5] = listaCuenta.get(i).getEstatusCuenta();
+            dato[1] = Double.toString(listaCuenta.get(i).getSaldoCuenta());
+            dato[2] = Integer.toString(listaCuenta.get(i).getIdPersona());
+            dato[3] = Integer.toString(listaCuenta.get(i).getIdTipoCuenta());
+            dato[4] = listaCuenta.get(i).getEstatusCuenta().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
+            dato[5] = Integer.toString(listaCuenta.get(i).getTipModId());
+            dato[6] = Integer.toString(listaCuenta.get(i).getCodBanco());
             modelo.addRow(dato);
         }       
     }
@@ -81,6 +119,8 @@ int codigoAplicacion=5006;
         llenadoDeTablas();
         llenadoDeComboIdPersona();
         llenadoDeComboTipoCuenta();
+        llenadoDeComboTipoMoneda();
+        llenadoDeComboBanco();
     }
 
     /**
@@ -100,9 +140,7 @@ int codigoAplicacion=5006;
         btnBuscar = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JButton();
-        label3 = new javax.swing.JLabel();
         txtbuscado = new javax.swing.JTextField();
-        txtNumero = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCuentas = new javax.swing.JTable();
@@ -121,6 +159,11 @@ int codigoAplicacion=5006;
         cbTipoCuenta = new javax.swing.JComboBox<>();
         rbHabilitar = new javax.swing.JRadioButton();
         rbDeshabilitar = new javax.swing.JRadioButton();
+        label11 = new javax.swing.JLabel();
+        label12 = new javax.swing.JLabel();
+        cbMoneda = new javax.swing.JComboBox<>();
+        cbBanco = new javax.swing.JComboBox<>();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -161,13 +204,6 @@ int codigoAplicacion=5006;
                 btnModificarActionPerformed(evt);
             }
         });
-
-        label3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label3.setText("Numero Cuenta");
-
-        txtNumero.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtNumero.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtNumero.setOpaque(false);
 
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,6 +302,19 @@ int codigoAplicacion=5006;
         tipoEstatus.add(rbDeshabilitar);
         rbDeshabilitar.setText("Deshabilitado");
 
+        label11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label11.setText("Moneda");
+
+        label12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        label12.setText("Banco");
+
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -273,22 +322,11 @@ int codigoAplicacion=5006;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(label7)
-                                .addGap(84, 84, 84))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(label3)))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label7)
+                        .addGap(108, 108, 108)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -311,33 +349,47 @@ int codigoAplicacion=5006;
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(14, 14, 14)
-                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                            .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(406, 406, 406)
-                                .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label5)
+                                    .addComponent(label6))
+                                .addGap(58, 58, 58)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtSaldo)
+                                    .addComponent(cbIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label5)
-                                            .addComponent(label6))
-                                        .addGap(58, 58, 58)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                            .addComponent(cbIdPersona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(label8)
+                                .addGap(310, 310, 310))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(label10)
+                                            .addGap(83, 83, 83))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(label11)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label8)
-                                        .addGap(310, 310, 310))
+                                        .addComponent(label12)
+                                        .addGap(82, 82, 82)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label10)
-                                        .addGap(83, 83, 83)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(rbHabilitar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(rbDeshabilitar))
-                                            .addComponent(cbTipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(rbHabilitar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbDeshabilitar))
+                                    .addComponent(cbTipoCuenta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbMoneda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1)
@@ -357,11 +409,7 @@ int codigoAplicacion=5006;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label3)
-                            .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSaldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label5))
@@ -375,10 +423,20 @@ int codigoAplicacion=5006;
                             .addComponent(cbTipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(rbHabilitar)
-                                .addComponent(rbDeshabilitar))
-                            .addComponent(label10))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(label12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rbHabilitar)
+                                    .addComponent(rbDeshabilitar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar)
@@ -387,7 +445,8 @@ int codigoAplicacion=5006;
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(btnReportes))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -398,7 +457,7 @@ int codigoAplicacion=5006;
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnActualizar)
-                        .addContainerGap(106, Short.MAX_VALUE))))
+                        .addContainerGap(114, Short.MAX_VALUE))))
         );
 
         pack();
@@ -424,12 +483,6 @@ int codigoAplicacion=5006;
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         clsCuentasBancos cuenta = new clsCuentasBancos();
         
-        cuenta.setIdCuenta(Integer.parseInt(txtId.getText()));
-        cuenta.setNumeroCuenta(Integer.parseInt(txtNumero.getText()));
-        cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
-        cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
-        cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
-        
         if(rbHabilitar.isSelected()){
             cuenta.setEstatusCuenta("T");
         }
@@ -441,6 +494,33 @@ int codigoAplicacion=5006;
             JOptionPane.showMessageDialog(null, "Debe seleccionar un estatus.");
             return;
         }
+       
+        cuenta.setIdCuenta(Integer.parseInt(txtId.getText()));    
+        cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
+        
+        String selectedItem = cbIdPersona.getSelectedItem().toString();
+        int item = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setIdPersona(item);
+        
+        //cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
+        String selectedItem2 = cbTipoCuenta.getSelectedItem().toString();
+        int item2 = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setIdTipoCuenta(item);
+        
+        //cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
+
+       
+        String selectedItem3 = cbMoneda.getSelectedItem().toString();
+        int item3 = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setTipModId(item);
+        
+        //cuenta.setTipModId(Integer.parseInt(cbMoneda.getSelectedItem().toString()));
+        
+        String selectedItem4 = cbBanco.getSelectedItem().toString();
+        int item4 = Integer.parseInt(selectedItem.split(" - ")[0]);
+        cuenta.setCodBanco(item);
+        
+        //cuenta.setCodBanco(Integer.parseInt(cbBanco.getSelectedItem().toString()));
         
         cuenta.setIngresarCuenta(cuenta);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
@@ -462,7 +542,6 @@ int codigoAplicacion=5006;
         cuenta.setIdCuenta(Integer.parseInt(txtbuscado.getText()));        
         cuenta = cuenta.getBuscarInformacionCuentaPorId(cuenta);
         System.out.println("Cuenta retornado:" + cuenta);        
-        txtNumero.setText(Integer.toString(cuenta.getNumeroCuenta()));
         txtSaldo.setText(Double.toString(cuenta.getSaldoCuenta()));
         
         int IdPersona = cuenta.getIdPersona();
@@ -482,9 +561,27 @@ int codigoAplicacion=5006;
                 break;
             }
         }
-     
+   
         rbHabilitar.setSelected(cuenta.getEstatusCuenta().equals("T"));
         rbDeshabilitar.setSelected(cuenta.getEstatusCuenta().equals("F"));
+        
+        int TipModId = cuenta.getTipModId();
+        for (int i = 1; i < cbMoneda.getItemCount(); i++) {
+            int item = Integer.parseInt(cbMoneda.getItemAt(i).toString());
+            if (item == TipModId) {
+                cbMoneda.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        int CodBanco = cuenta.getCodBanco();
+        for (int i = 1; i < cbBanco.getItemCount(); i++) {
+            int item = Integer.parseInt(cbBanco.getItemAt(i).toString());
+            if (item == CodBanco) {
+                cbBanco.setSelectedIndex(i);
+                break;
+            }
+        }
         
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -495,12 +592,10 @@ int codigoAplicacion=5006;
         // TODO add your handling code here:
         clsCuentasBancos cuenta = new clsCuentasBancos();
         cuenta.setIdCuenta(Integer.parseInt(txtbuscado.getText()));
-        cuenta.setNumeroCuenta(Integer.parseInt(txtNumero.getText()));
         cuenta.setSaldoCuenta(Double.parseDouble(txtSaldo.getText()));
         cuenta.setIdPersona(Integer.parseInt(cbIdPersona.getSelectedItem().toString()));
         cuenta.setIdTipoCuenta(Integer.parseInt(cbTipoCuenta.getSelectedItem().toString()));
-        cuenta.setModificarCuenta(cuenta);
-        
+  
        int contador = 0;
             String estatusCuenta = rbHabilitar.isSelected() ? "T" : (rbDeshabilitar.isSelected() ? "F" : "");
             if (!estatusCuenta.isEmpty()) {
@@ -509,7 +604,11 @@ int codigoAplicacion=5006;
             }
             if (contador == 1) {
                 // Los dos botones de cada ButtonGroup están seleccionados
-                cuenta.setModificarCuenta(cuenta);
+                
+                cuenta.setTipModId(Integer.parseInt(cbMoneda.getSelectedItem().toString()));
+                cuenta.setCodBanco(Integer.parseInt(cbBanco.getSelectedItem().toString()));
+                cuenta.setModificarCuenta(cuenta);   
+        
                 JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
                 int resultadoBitacora=0;
@@ -533,11 +632,12 @@ int codigoAplicacion=5006;
     public void limpiarTextos()
     {
         txtId.setText("");
-        txtNumero.setText("");
         txtSaldo.setText("");
         txtbuscado.setText("");
         cbIdPersona.setSelectedIndex(0);
         cbTipoCuenta.setSelectedIndex(0);
+        cbMoneda.setSelectedIndex(0);
+        cbBanco.setSelectedIndex(0);
         tipoEstatus.clearSelection();
     }
     public void habilitarBotones()
@@ -561,18 +661,18 @@ int codigoAplicacion=5006;
     }   
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+try {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaCuentas.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaCuentas.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -597,6 +697,14 @@ int codigoAplicacion=5006;
         // TODO add your handling code here:
     }//GEN-LAST:event_rbHabilitarActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptCuentas.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -605,13 +713,17 @@ int codigoAplicacion=5006;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
+    private javax.swing.JComboBox<String> cbBanco;
     private javax.swing.JComboBox<String> cbIdPersona;
+    private javax.swing.JComboBox<String> cbMoneda;
     private javax.swing.JComboBox<String> cbTipoCuenta;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label10;
-    private javax.swing.JLabel label3;
+    private javax.swing.JLabel label11;
+    private javax.swing.JLabel label12;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
@@ -625,7 +737,6 @@ int codigoAplicacion=5006;
     private javax.swing.JTable tablaCuentas;
     private javax.swing.ButtonGroup tipoEstatus;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables

@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS tbl_pedidodetalle(
     pedTotalInd DOUBLE NOT NULL,
 	PRIMARY KEY (pedid, proCodigo),
 	FOREIGN KEY (pedid) references tbl_pedido (pedid),
-    FOREIGN KEY (proCodigo) references tbl_Productos (proCodigo))
+    FOREIGN KEY (proCodigo) references tbl_productos (proCodigo))
     ENGINE = InnoDB CHARACTER SET = latin1;
     
 CREATE TABLE IF NOT EXISTS tbl_cotizacion (
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS tbl_cotdetalle(
     cotTotalInd DOUBLE NOT NULL,
 	PRIMARY KEY (cotid, proCodigo),
 	FOREIGN KEY (cotid) references tbl_cotizacion (cotid),
-    FOREIGN KEY (proCodigo) references tbl_Productos (proCodigo))
+    FOREIGN KEY (proCodigo) references tbl_productos (proCodigo))
     ENGINE = InnoDB CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_tienda (
@@ -74,10 +74,11 @@ ENGINE = InnoDB CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_factura (
 	facid INT NOT NULL AUTO_INCREMENT,    
-    pedid INT NOT NULL,
+    pedid INT,
     clId INT NOT NULL,
     venid INT NOT NULL,
     tieid INT NOT NULL,
+    facfecha date NOT NULL,
 	facTotalGeneral DOUBLE NOT NULL,
 	PRIMARY KEY (facid),
     FOREIGN KEY (clId) REFERENCES tbl_cliente (clId),
@@ -88,14 +89,15 @@ ENGINE = InnoDB CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS tbl_facturadetalle (
     facid INT NOT NULL,
-    clId INT NOT NULL,
-    facfecha DATE NOT NULL,
+    proCodigo INT NOT NULL,
+    proPrecios double NOT NULL,
+    facprodcantidad double NOT NULL,
     factdescuento DOUBLE NOT NULL,
     facimpuestos DOUBLE NOT NULL,
     factotalInd DOUBLE NOT NULL,
-	PRIMARY KEY (facid, clId),
-	FOREIGN KEY (facid) REFERENCES tbl_factura (facid),
-    FOREIGN KEY (clId) REFERENCES tbl_cliente (clId))
+	PRIMARY KEY (facid, proCodigo),
+    FOREIGN KEY (proCodigo) references tbl_productos (proCodigo),
+	FOREIGN KEY (facid) REFERENCES tbl_factura (facid))
 ENGINE = InnoDB CHARACTER SET = latin1;
 
 

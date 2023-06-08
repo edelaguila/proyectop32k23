@@ -23,12 +23,12 @@ import java.util.List;
 public class daoClientes {
 
 
-private static final String SQL_SELECT = "SELECT clId, clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe FROM tbl_cliente";
-private static final String SQL_INSERT = "INSERT INTO tbl_cliente(clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe) VALUES(?, ?, ?, ?, ?, ?, ?)";
-private static final String SQL_UPDATE = "UPDATE tbl_cliente SET clNombre=?, cldireccion=?, cltelefono=?, clemail=?, clNit=?, clHaber=?, clDebe=? WHERE clId = ?";
+private static final String SQL_SELECT = "SELECT clId, clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe, clEstatus FROM tbl_cliente";
+private static final String SQL_INSERT = "INSERT INTO tbl_cliente(clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe, clEstatus) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+private static final String SQL_UPDATE = "UPDATE tbl_cliente SET clNombre=?, cldireccion=?, cltelefono=?, clemail=?, clNit=?, clHaber=?, clDebe=?, clEstatus=? WHERE clId = ?";
 private static final String SQL_DELETE = "DELETE FROM tbl_cliente WHERE clId=?";
-private static final String SQL_SELECT_NOMBRE = "SELECT clId, clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe FROM tbl_cliente WHERE clNombre = ?";
-private static final String SQL_SELECT_ID = "SELECT clId, clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe FROM tbl_cliente WHERE clId = ?";
+private static final String SQL_SELECT_NOMBRE = "SELECT clId, clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe, clEstatus FROM tbl_cliente WHERE clNombre = ?";
+private static final String SQL_SELECT_ID = "SELECT clId, clNombre, cldireccion, cltelefono, clemail, clNit, clHaber, clDebe, clEstatus FROM tbl_cliente WHERE clId = ?";
 
 public List<clsClientes> consultaCliente() {
 
@@ -53,6 +53,7 @@ public List<clsClientes> consultaCliente() {
                 String Nit = rs.getString("clNit");
                 double Haber = rs.getDouble("clHaber");
                 double Debe = rs.getDouble("clDebe");
+                String Estatus = rs.getString("clEstatus");
                 
                 clsClientes cliente = new clsClientes();
                 cliente.setIdCliente(Id);
@@ -63,6 +64,7 @@ public List<clsClientes> consultaCliente() {
                 cliente.setNitCliente(Nit);
                 cliente.setHaberCliente(Haber);
                 cliente.setDebeCliente(Debe);
+                cliente.setEstatusCliente2(Estatus);
                 clientes.add(cliente);
 
             }
@@ -94,6 +96,7 @@ public List<clsClientes> consultaCliente() {
             stmt.setString(5, cliente.getNitCliente());
             stmt.setDouble(6, cliente.getHaberCliente());
             stmt.setDouble(7, cliente.getDebeCliente());
+            stmt.setString(8, cliente.getEstatusCliente2());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -127,7 +130,8 @@ public List<clsClientes> consultaCliente() {
         stmt.setString(5, cliente.getNitCliente());
         stmt.setDouble(6, cliente.getHaberCliente());
         stmt.setDouble(7, cliente.getDebeCliente());
-        stmt.setInt(8, cliente.getIdCliente());
+        stmt.setString(8, cliente.getEstatusCliente2());
+        stmt.setInt(9, cliente.getIdCliente());
 
         rows = stmt.executeUpdate();
         System.out.println("Registros actualizado:" + rows);
@@ -191,6 +195,7 @@ public List<clsClientes> consultaCliente() {
             String nit = rs.getString("clNit");
             Double haber = rs.getDouble("clHaber");
             Double debe = rs.getDouble("clDebe");
+            String estatus = rs.getString("clEstatus");
 
             cliente.setIdCliente(id);
             cliente.setNombreCliente(nombre);
@@ -200,6 +205,7 @@ public List<clsClientes> consultaCliente() {
             cliente.setNitCliente(nit);
             cliente.setHaberCliente(haber);
             cliente.setDebeCliente(debe);
+            cliente.setEstatusCliente2(estatus);
 
             System.out.println("Registro consultado: " + cliente);                
 
@@ -240,6 +246,7 @@ try {
         String Nit = rs.getString("clNit");
         Double Haber = rs.getDouble("clHaber");
         Double Debe = rs.getDouble("clDebe");
+        String estatus = rs.getString("clEstatus");
 
         cliente.setIdCliente(Id);
         cliente.setNombreCliente(Nombre);
@@ -249,6 +256,7 @@ try {
         cliente.setNitCliente(Nit);
         cliente.setHaberCliente(Haber);
         cliente.setDebeCliente(Debe);
+        cliente.setEstatusCliente2(estatus);
 
         System.out.println("registro consultado: " + cliente);                
     }

@@ -12,7 +12,8 @@ import Bancos.Modelo.daoTipoMovimientoBancos;
  *
  * @author visitante
  */
- /*Creado por Alyson Rodríguez 9959-21-829 */
+
+//Hecho por Carlos González, 9959-20-6164
 
 public class clsTipoCuentas {
     private int tipoCueId;

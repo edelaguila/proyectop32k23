@@ -5,8 +5,20 @@
  */
 package Ventas.Vista;
 
+import Seguridad.Controlador.clsBitacora;
+import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.awt.Dimension;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -51,9 +63,37 @@ public class MdiVentas extends javax.swing.JFrame {
         mnuProcesosVentas = new javax.swing.JMenu();
         mnuCotizaciones = new javax.swing.JMenu();
         mnuNuevaCotizacion = new javax.swing.JCheckBoxMenuItem();
+        mnuPedidos = new javax.swing.JMenu();
+        mnuNuevoPed = new javax.swing.JCheckBoxMenuItem();
+        mnuPedCot = new javax.swing.JMenuItem();
+        mnuFacturas = new javax.swing.JMenu();
+        mnuNuevaFac = new javax.swing.JCheckBoxMenuItem();
+        mnuFacPed = new javax.swing.JMenuItem();
         mnuConsultasVentas = new javax.swing.JMenu();
+        mnuConCot = new javax.swing.JMenuItem();
+        mnuConPed = new javax.swing.JCheckBoxMenuItem();
+        mnuConFac = new javax.swing.JMenuItem();
+        mnuConsDev = new javax.swing.JMenuItem();
         mnuReportesVentas = new javax.swing.JMenu();
+        mnuRepCot = new javax.swing.JMenu();
+        repGenCot = new javax.swing.JMenuItem();
+        repCliCot = new javax.swing.JMenuItem();
+        repProCot = new javax.swing.JMenuItem();
+        repVenCot = new javax.swing.JMenuItem();
+        mnuRepPed = new javax.swing.JMenu();
+        repGenPed = new javax.swing.JMenuItem();
+        repCliPed = new javax.swing.JMenuItem();
+        repProPed = new javax.swing.JMenuItem();
+        mnuRepVentas = new javax.swing.JMenu();
+        repGenVen = new javax.swing.JMenuItem();
+        repDetVen = new javax.swing.JMenuItem();
+        repProVen = new javax.swing.JMenuItem();
+        repVendVen = new javax.swing.JMenuItem();
+        repCliVen = new javax.swing.JMenuItem();
+        repTieVen = new javax.swing.JMenuItem();
+        repDev = new javax.swing.JMenuItem();
         mnuAyudasVentas = new javax.swing.JMenu();
+        mnuAyudaMDIVentas = new javax.swing.JMenuItem();
 
         jMenuItem1MdiVentas.setText("jMenuItem1");
 
@@ -150,6 +190,53 @@ public class MdiVentas extends javax.swing.JFrame {
 
         mnuProcesosVentas.add(mnuCotizaciones);
 
+        mnuPedidos.setText("Pedidos");
+
+        mnuNuevoPed.setSelected(true);
+        mnuNuevoPed.setText("Nuevo Pedido");
+        mnuNuevoPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuNuevoPedActionPerformed(evt);
+            }
+        });
+        mnuPedidos.add(mnuNuevoPed);
+
+        mnuPedCot.setText("Realizar Pedidos desde Cotizaciones");
+        mnuPedCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuPedCotActionPerformed(evt);
+            }
+        });
+        mnuPedidos.add(mnuPedCot);
+
+        mnuProcesosVentas.add(mnuPedidos);
+
+        mnuFacturas.setText("Facturas");
+        mnuFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFacturasActionPerformed(evt);
+            }
+        });
+
+        mnuNuevaFac.setSelected(true);
+        mnuNuevaFac.setText("Nueva Factura");
+        mnuNuevaFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuNuevaFacActionPerformed(evt);
+            }
+        });
+        mnuFacturas.add(mnuNuevaFac);
+
+        mnuFacPed.setText("Facturar Pedido");
+        mnuFacPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuFacPedActionPerformed(evt);
+            }
+        });
+        mnuFacturas.add(mnuFacPed);
+
+        mnuProcesosVentas.add(mnuFacturas);
+
         mnuGeneralVentas.add(mnuProcesosVentas);
 
         mnuConsultasVentas.setText("Consultas");
@@ -158,12 +245,185 @@ public class MdiVentas extends javax.swing.JFrame {
                 mnuConsultasVentasActionPerformed(evt);
             }
         });
+
+        mnuConCot.setText("Consulta Cotizaciones");
+        mnuConCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConCotActionPerformed(evt);
+            }
+        });
+        mnuConsultasVentas.add(mnuConCot);
+
+        mnuConPed.setSelected(true);
+        mnuConPed.setText("Consulta Pedidos");
+        mnuConPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConPedActionPerformed(evt);
+            }
+        });
+        mnuConsultasVentas.add(mnuConPed);
+
+        mnuConFac.setText("Consulta Facturas");
+        mnuConFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConFacActionPerformed(evt);
+            }
+        });
+        mnuConsultasVentas.add(mnuConFac);
+
+        mnuConsDev.setText("Consulta Devoluciones");
+        mnuConsDev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuConsDevActionPerformed(evt);
+            }
+        });
+        mnuConsultasVentas.add(mnuConsDev);
+
         mnuGeneralVentas.add(mnuConsultasVentas);
 
         mnuReportesVentas.setText("Reportes");
+
+        mnuRepCot.setText("Cotizaciones");
+
+        repGenCot.setText("Reporte General");
+        repGenCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repGenCotActionPerformed(evt);
+            }
+        });
+        mnuRepCot.add(repGenCot);
+
+        repCliCot.setText("Reporte por Cliente");
+        repCliCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repCliCotActionPerformed(evt);
+            }
+        });
+        mnuRepCot.add(repCliCot);
+
+        repProCot.setText("Reporte por Producto");
+        repProCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repProCotActionPerformed(evt);
+            }
+        });
+        mnuRepCot.add(repProCot);
+
+        repVenCot.setText("Reporte por Vendedor");
+        repVenCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repVenCotActionPerformed(evt);
+            }
+        });
+        mnuRepCot.add(repVenCot);
+
+        mnuReportesVentas.add(mnuRepCot);
+
+        mnuRepPed.setText("Pedidos");
+
+        repGenPed.setText("Reporte General");
+        repGenPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repGenPedActionPerformed(evt);
+            }
+        });
+        mnuRepPed.add(repGenPed);
+
+        repCliPed.setText("Reporte por Cliente");
+        repCliPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repCliPedActionPerformed(evt);
+            }
+        });
+        mnuRepPed.add(repCliPed);
+
+        repProPed.setText("Reporte por Producto");
+        repProPed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repProPedActionPerformed(evt);
+            }
+        });
+        mnuRepPed.add(repProPed);
+
+        mnuReportesVentas.add(mnuRepPed);
+
+        mnuRepVentas.setText("Ventas");
+
+        repGenVen.setText("Reporte General");
+        repGenVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repGenVenActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repGenVen);
+
+        repDetVen.setText("Reporte Detalle");
+        repDetVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repDetVenActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repDetVen);
+
+        repProVen.setText("Reporte por Producto");
+        repProVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repProVenActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repProVen);
+
+        repVendVen.setText("Reporte por Vendedor");
+        repVendVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repVendVenActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repVendVen);
+
+        repCliVen.setText("Reporte por Cliente");
+        repCliVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repCliVenActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repCliVen);
+
+        repTieVen.setText("Reporte por Tienda");
+        repTieVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repTieVenActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repTieVen);
+
+        repDev.setText("Reporte Devoluciones");
+        repDev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repDevActionPerformed(evt);
+            }
+        });
+        mnuRepVentas.add(repDev);
+
+        mnuReportesVentas.add(mnuRepVentas);
+
         mnuGeneralVentas.add(mnuReportesVentas);
 
         mnuAyudasVentas.setText("Ayudas");
+        mnuAyudasVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAyudasVentasActionPerformed(evt);
+            }
+        });
+
+        mnuAyudaMDIVentas.setText("Ayuda MDI Ventas");
+        mnuAyudaMDIVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAyudaMDIVentasActionPerformed(evt);
+            }
+        });
+        mnuAyudasVentas.add(mnuAyudaMDIVentas);
+
         mnuGeneralVentas.add(mnuAyudasVentas);
 
         setJMenuBar(mnuGeneralVentas);
@@ -245,6 +505,471 @@ public class MdiVentas extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
     }//GEN-LAST:event_mnuNuevaCotizacionActionPerformed
 
+    private void mnuNuevoPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuNuevoPedActionPerformed
+        // TODO add your handling code here:
+        frmPedidos ventana = new frmPedidos();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuNuevoPedActionPerformed
+
+    private void mnuPedCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuPedCotActionPerformed
+        // TODO add your handling code here:
+        frmConsultaCotizacion ventana = new frmConsultaCotizacion();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuPedCotActionPerformed
+
+    private void mnuConCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConCotActionPerformed
+        // TODO add your handling code here:
+        frmConsultaCotizacion ventana = new frmConsultaCotizacion();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuConCotActionPerformed
+
+    private void mnuConPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConPedActionPerformed
+        // TODO add your handling code here:
+        frmConsultaPedido ventana = new frmConsultaPedido();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuConPedActionPerformed
+
+    private void mnuFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacturasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuFacturasActionPerformed
+
+    private void mnuNuevaFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuNuevaFacActionPerformed
+        // TODO add your handling code here:
+        frmFacturas ventana = new frmFacturas();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuNuevaFacActionPerformed
+
+    private void mnuConFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConFacActionPerformed
+        // TODO add your handling code here:
+        frmConsultaFacturas ventana = new frmConsultaFacturas();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuConFacActionPerformed
+
+    
+    private void repGenCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenCotActionPerformed
+        // TODO add your handling code here:
+        //Meyglin del Rosario Rosales Ochoa 
+        // 9959 - 21 - 4490 
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionGeneral.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Cotizaciones");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repGenCotActionPerformed
+
+    private void repCliCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliCotActionPerformed
+        // TODO add your handling code here:
+        //Meyglin del Rosario Rosales Ochoa 
+        // 9959 - 21 - 4490 
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionCliente.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Cotizaciones");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repCliCotActionPerformed
+
+    private void repProCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProCotActionPerformed
+        // TODO add your handling code here:
+        //Meyglin del Rosario Rosales Ochoa 
+        // 9959 - 21 - 4490 
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionProducto.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Cotizaciones");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repProCotActionPerformed
+
+    private void repVenCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repVenCotActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptCotizacionVendedor.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Cotizaciones");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repVenCotActionPerformed
+
+    private void repGenPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenPedActionPerformed
+        // TODO add your handling code here:
+        //María José Véliz Ochoa 
+        //9959-21-5909
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptPedidoGeneral1.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Pedidos");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repGenPedActionPerformed
+
+    private void repCliPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliPedActionPerformed
+        // TODO add your handling code here:
+        //María José Véliz Ochoa 
+        //9959-21-5909
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptPedidosPorCliente.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Pedidos");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repCliPedActionPerformed
+
+    private void repProPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProPedActionPerformed
+        // TODO add your handling code here:
+        //María José Véliz Ochoa 
+        //9959-21-5909
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptPedidosPorProducto.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Pedidos");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repProPedActionPerformed
+
+    private void repGenVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repGenVenActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptventasgeneral.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Ventas");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repGenVenActionPerformed
+
+    private void repDetVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repDetVenActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptventasdetalle.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Ventas");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repDetVenActionPerformed
+
+    private void repProVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repProVenActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptventasproducto.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Ventas");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repProVenActionPerformed
+
+    private void repVendVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repVendVenActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptventasvendedor.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Ventas");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repVendVenActionPerformed
+
+    private void repCliVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repCliVenActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptventasclientes.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Ventas");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repCliVenActionPerformed
+
+    private void repTieVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repTieVenActionPerformed
+        // TODO add your handling code here:
+        //Carlos Emanuel Hernandez Garcia
+        //9959-21-363
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptventastiendas.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Ventas");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repTieVenActionPerformed
+
+    private void mnuAyudasVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudasVentasActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_mnuAyudasVentasActionPerformed
+
+    private void mnuAyudaMDIVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAyudaMDIVentasActionPerformed
+        // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
+                try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\generalayudaventas.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\generalayudaventas.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_mnuAyudaMDIVentasActionPerformed
+
+    private void mnuFacPedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuFacPedActionPerformed
+        // TODO add your handling code here:
+        frmConsultaPedido ventana = new frmConsultaPedido();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuFacPedActionPerformed
+
+    private void mnuConsDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsDevActionPerformed
+        // TODO add your handling code here:
+        frmConsultaDevolucion ventana = new frmConsultaDevolucion();
+        jDesktopPaneVentas.add(ventana);
+        Dimension desktopSize = jDesktopPaneVentas.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+    }//GEN-LAST:event_mnuConsDevActionPerformed
+
+    private void repDevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repDevActionPerformed
+        // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
+        Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+
+                    + "/src/main/java/Ventas/Reportes/rptDevolciones.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Devoluciones");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                        int resultadoBitacora=0;
+                    clsBitacora bitacoraRegistro = new clsBitacora();
+                    resultadoBitacora = bitacoraRegistro.setIngresarBitacora(clsUsuarioConectado.getIdUsuario(),3009,"RPT"); 
+    }//GEN-LAST:event_repDevActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,15 +1019,43 @@ public class MdiVentas extends javax.swing.JFrame {
     private javax.swing.JMenuItem mantenimientoTiendas;
     private javax.swing.JMenuItem mantenimientoVendedores;
     private javax.swing.JMenu mnuArchivoVentas;
+    private javax.swing.JMenuItem mnuAyudaMDIVentas;
     private javax.swing.JMenu mnuAyudasVentas;
     private javax.swing.JMenu mnuCatalogosMantenimientosVentas;
     private javax.swing.JMenu mnuCatalogosVentas;
+    private javax.swing.JMenuItem mnuConCot;
+    private javax.swing.JMenuItem mnuConFac;
+    private javax.swing.JCheckBoxMenuItem mnuConPed;
+    private javax.swing.JMenuItem mnuConsDev;
     private javax.swing.JMenu mnuConsultasVentas;
     private javax.swing.JMenu mnuCotizaciones;
+    private javax.swing.JMenuItem mnuFacPed;
+    private javax.swing.JMenu mnuFacturas;
     private javax.swing.JMenuBar mnuGeneralVentas;
     private javax.swing.JCheckBoxMenuItem mnuNuevaCotizacion;
+    private javax.swing.JCheckBoxMenuItem mnuNuevaFac;
+    private javax.swing.JCheckBoxMenuItem mnuNuevoPed;
+    private javax.swing.JMenuItem mnuPedCot;
+    private javax.swing.JMenu mnuPedidos;
     private javax.swing.JMenu mnuProcesosVentas;
+    private javax.swing.JMenu mnuRepCot;
+    private javax.swing.JMenu mnuRepPed;
+    private javax.swing.JMenu mnuRepVentas;
     private javax.swing.JMenu mnuReportesVentas;
     private javax.swing.JCheckBoxMenuItem mnuSalirSistemaVentas;
+    private javax.swing.JMenuItem repCliCot;
+    private javax.swing.JMenuItem repCliPed;
+    private javax.swing.JMenuItem repCliVen;
+    private javax.swing.JMenuItem repDetVen;
+    private javax.swing.JMenuItem repDev;
+    private javax.swing.JMenuItem repGenCot;
+    private javax.swing.JMenuItem repGenPed;
+    private javax.swing.JMenuItem repGenVen;
+    private javax.swing.JMenuItem repProCot;
+    private javax.swing.JMenuItem repProPed;
+    private javax.swing.JMenuItem repProVen;
+    private javax.swing.JMenuItem repTieVen;
+    private javax.swing.JMenuItem repVenCot;
+    private javax.swing.JMenuItem repVendVen;
     // End of variables declaration//GEN-END:variables
 }
