@@ -5,9 +5,11 @@
  */
 package Bancos.Vista;
 
+//Hecho por Carlos González, 9959-20-6164
 
 import Seguridad.Controlador.clsBitacora;
 import Bancos.Controlador.clsConceptosBancos;
+import Bancos.Controlador.clsReportes;
 import Seguridad.Controlador.clsUsuarioConectado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -51,7 +53,7 @@ int codigoAplicacion=5001;
             dato[1] = listaConcepto.get(i).getNombreConcepto();
             dato[2] = listaConcepto.get(i).getDescripcionConcepto();
             dato[3] = listaConcepto.get(i).getEfectoConcepto();
-            dato[4] = listaConcepto.get(i).getEstatusConcepto();
+            dato[4] = listaConcepto.get(i).getEstatusConcepto().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }
@@ -100,6 +102,7 @@ int codigoAplicacion=5001;
         rbNegativo = new javax.swing.JRadioButton();
         rbHabilitado = new javax.swing.JRadioButton();
         rbDeshabilitado = new javax.swing.JRadioButton();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -232,6 +235,13 @@ int codigoAplicacion=5001;
         estatus.add(rbDeshabilitado);
         rbDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,7 +268,9 @@ int codigoAplicacion=5001;
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(14, 14, 14)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                    .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,7 +354,8 @@ int codigoAplicacion=5001;
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(btnReportes))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -501,15 +514,15 @@ int codigoAplicacion=5001;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaConcepto.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaConcepto.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -524,6 +537,14 @@ int codigoAplicacion=5001;
         // TODO add your handling code here:
     }//GEN-LAST:event_rbPositivoActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptConceptos.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -532,6 +553,7 @@ int codigoAplicacion=5001;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.ButtonGroup efectos;
     private javax.swing.ButtonGroup estatus;
     private javax.swing.JButton jButton2;

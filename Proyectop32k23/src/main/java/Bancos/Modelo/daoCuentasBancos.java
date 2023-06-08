@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class daoCuentasBancos {
 
-    private static final String SQL_SELECT = "SELECT cueId, cueNumero, cueSaldo, perId, cueTipoId, cueestatus FROM tbl_cuentasBancos";
-    private static final String SQL_INSERT = "INSERT INTO tbl_cuentasBancos(cueId, cueNumero, cueSaldo, perId, cueTipoId, cueestatus) VALUES(?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_cuentasBancos SET cueNumero=?, cueSaldo=?, perId=?, cueTipoId=?, cueestatus=? WHERE cueId = ?";
+    private static final String SQL_SELECT = "SELECT cueId, cueSaldo, perId, cueTipoId, cueestatus, tipModId, codBanco FROM tbl_cuentasBancos";
+    private static final String SQL_INSERT = "INSERT INTO tbl_cuentasBancos(cueId, cueSaldo, perId, cueTipoId, cueestatus, tipModId, codBanco) VALUES(?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_cuentasBancos SET cueSaldo=?, perId=?, cueTipoId=?, cueestatus=?, tipModId=?, codBanco=? WHERE cueId = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_cuentasBancos WHERE cueId=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT cueId, cueNumero, cueSaldo, perId, cueTipoId, cueestatus FROM tbl_cuentasBancos WHERE cueNumero = ?";
-    private static final String SQL_SELECT_ID = "SELECT cueId, cueNumero, cueSaldo, perId, cueTipoId, cueestatus FROM tbl_cuentasBancos WHERE cueId = ?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT cueId, cueSaldo, perId, cueTipoId, cueestatus, tipModId, codBanco FROM tbl_cuentasBancos WHERE perId = ?";
+    private static final String SQL_SELECT_ID = "SELECT cueId, cueSaldo, perId, cueTipoId, cueestatus, tipModId, codBanco FROM tbl_cuentasBancos WHERE cueId = ?";
      
 
     public List<clsCuentasBancos> consultaCuenta() {
@@ -38,17 +38,20 @@ public class daoCuentasBancos {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("cueId");
-                int cuentaN = rs.getInt("cueNumero");
                 double saldo = rs.getDouble("cueSaldo");
                 int persona = rs.getInt("perId");
                 int tipoC = rs.getInt("cueTipoId");
 		String estatus = rs.getString("cueEstatus");
+                int tipoMoneda = rs.getInt("tipModId");
+                int codigoBanco = rs.getInt("codBanco");
                 clsCuentasBancos cuenta = new clsCuentasBancos();
-                cuenta.setIdCuenta(id);
-                cuenta.setNumeroCuenta(cuentaN);
+                cuenta.setIdCuenta(id);    
                 cuenta.setSaldoCuenta(saldo);
+                cuenta.setIdPersona(persona);
                 cuenta.setIdTipoCuenta(tipoC);
                 cuenta.setEstatusCuenta(estatus);
+                cuenta.setTipModId(tipoMoneda);
+                cuenta.setCodBanco(codigoBanco);
                 cuentas.add(cuenta);
             }
         } catch (SQLException ex) {
@@ -69,11 +72,12 @@ public class daoCuentasBancos {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, cuenta.getIdCuenta());
-            stmt.setInt(2, cuenta.getNumeroCuenta());
-            stmt.setDouble(3, cuenta.getSaldoCuenta());
-            stmt.setInt(4, cuenta.getIdPersona());
-            stmt.setInt(5, cuenta.getIdTipoCuenta());
-            stmt.setString(6, cuenta.getEstatusCuenta());
+            stmt.setDouble(2, cuenta.getSaldoCuenta());
+            stmt.setInt(3, cuenta.getIdPersona());
+            stmt.setInt(4, cuenta.getIdTipoCuenta());
+            stmt.setString(5, cuenta.getEstatusCuenta());
+            stmt.setInt(6, cuenta.getTipModId());
+            stmt.setInt(7, cuenta.getCodBanco());
             
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -96,12 +100,13 @@ public class daoCuentasBancos {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setInt(1, cuenta.getNumeroCuenta());
-            stmt.setDouble(2, cuenta.getSaldoCuenta());
-            stmt.setInt(3, cuenta.getIdPersona());
-	    stmt.setInt(4, cuenta.getIdTipoCuenta());
-            stmt.setString(5, cuenta.getEstatusCuenta());
-            stmt.setInt(6, cuenta.getIdCuenta());
+            stmt.setDouble(1, cuenta.getSaldoCuenta());
+            stmt.setInt(2, cuenta.getIdPersona());
+	    stmt.setInt(3, cuenta.getIdTipoCuenta());
+            stmt.setString(4, cuenta.getEstatusCuenta());
+            stmt.setInt(5, cuenta.getTipModId());
+            stmt.setInt(6, cuenta.getCodBanco());
+            stmt.setInt(7, cuenta.getIdCuenta());
             
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -138,7 +143,7 @@ public class daoCuentasBancos {
         return rows;
     }
 
-    public clsCuentasBancos consultaNumeroCuenta(clsCuentasBancos cuenta) {
+    public clsCuentasBancos consultaPorIdPersona(clsCuentasBancos cuenta) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -147,22 +152,26 @@ public class daoCuentasBancos {
             System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + cuenta);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
             //stmt.setInt(1, usuario.getIdUsuario());            
-            stmt.setInt(1, cuenta.getNumeroCuenta());
+            stmt.setInt(1, cuenta.getIdPersona());
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("cueId");
-                int numero = rs.getInt("cueNumero");
                 double saldo = rs.getDouble("cueSaldo");
                 int persona = rs.getInt("perId");
                 int tipoC = rs.getInt("cueTipoId");
                 String estatus = rs.getString("cueEstatus");
+                int tipoMoneda = rs.getInt("tipModId");
+                int codigoBanco = rs.getInt("codBanco");
+                
                 //cuenta = new clsCuentaBancos();
                 cuenta.setIdCuenta(id);
-                cuenta.setNumeroCuenta(numero);
                 cuenta.setSaldoCuenta(saldo);
                 cuenta.setIdPersona(persona);
                 cuenta.setIdTipoCuenta(tipoC);
                 cuenta.setEstatusCuenta(estatus);
+                cuenta.setTipModId(tipoMoneda);
+                cuenta.setCodBanco(codigoBanco);
+                
                 System.out.println(" registro consultado: " + cuenta);                
             }
             //System.out.println("Registros buscado:" + persona);
@@ -190,18 +199,20 @@ public class daoCuentasBancos {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("cueId");
-                int numero = rs.getInt("cueNumero");
                 double saldo = rs.getDouble("cueSaldo");
                 int persona = rs.getInt("perId");
                 int tipoC = rs.getInt("cueTipoId");
 		String estatus = rs.getString("cueestatus");
+                int tipoMoneda = rs.getInt("tipModId");
+                int codigoBanco = rs.getInt("codBanco");
                 //usuario = new clsUsuario();
                 cuenta.setIdCuenta(id);
-                cuenta.setNumeroCuenta(numero);
                 cuenta.setSaldoCuenta(saldo);
                 cuenta.setIdPersona(persona);
                 cuenta.setIdTipoCuenta(tipoC);
                 cuenta.setEstatusCuenta(estatus);
+                cuenta.setTipModId(tipoMoneda);
+                cuenta.setCodBanco(codigoBanco);
                 System.out.println(" registro consultado: " + cuenta);                
             }
             //System.out.println("Registros buscado:" + persona);

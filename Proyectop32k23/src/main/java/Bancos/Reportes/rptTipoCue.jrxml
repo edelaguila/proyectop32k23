@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c29bb41a-aa76-443b-ab33-f58d25bebe49">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from tbl_tipoCuentasBancos]]>
+	</queryString>
+	<field name="cueTipoId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cueTipoDescripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cueTipoEstatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="670" y="0" width="82" height="79" uuid="6e052d2f-1f18-42f2-88d3-992e57cd48c4"/>
+				<imageExpression><![CDATA["src\\main\\java\\Bancos\\Reportes\\banco.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="670" height="79" backcolor="#000000" uuid="ac3a6c9d-2d61-4e19-97fd-ef5e1421fca3"/>
+				<staticText>
+					<reportElement x="201" y="15" width="315" height="44" forecolor="#FFFFFF" uuid="d17e12a3-6b35-452e-8025-11a5c46f2f5e"/>
+					<textElement>
+						<font size="32" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Bancos, Reportes]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="35" forecolor="#CC0033" backcolor="#CC0033" uuid="6e7ea76e-d4b8-40a3-a79f-4548335facce"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="0" width="236" height="35" forecolor="#FFFFFF" uuid="cdde1242-6b41-44ed-a60c-543980623cf0"/>
+				<textElement>
+					<font size="18" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tipos de Cuentas]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="23" y="15" width="156" height="20" forecolor="#FFFFFF" uuid="4d76426d-4a7d-4f84-8a40-508fb6cb7138"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="79" y="13" width="100" height="20" uuid="2c5044fe-8b1d-477b-8218-52b107c77069"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="13" width="251" height="20" uuid="5596adfb-d11a-4f0f-a8a2-1f6ebd50e6dd"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="599" y="13" width="100" height="20" uuid="8990e62a-a413-4139-b2b7-c6667b4a54de"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="79" y="15" width="100" height="20" uuid="e6287efa-4cb2-46f6-aa23-8da387b5168c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cueTipoId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="15" width="251" height="20" uuid="1c95957e-eba0-4867-8ef6-fc76d8ed2c98"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{cueTipoDescripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="599" y="15" width="100" height="20" uuid="8678e201-b91f-4f37-878d-9cf1a1d02456"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cueTipoEstatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="752" height="30" backcolor="#000000" uuid="626d76f2-b213-419c-9428-fe5efffaaf1b"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="7f77e660-0b05-43b3-bba1-37cff0b083be"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Página No. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="10" width="100" height="20" forecolor="#FFFFFF" uuid="9ed2fd5d-2be0-465b-85e7-abe5e869032e"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -5,7 +5,7 @@
  */
 package Bancos.Vista;
 
-
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsTipoMovimientoBancos;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -20,17 +20,9 @@ import javax.swing.JOptionPane;
  *
  * @author visitante
  */
+//Hecho por: Alyson Vannesa Rodríguez Quezada 9959-21-829
 public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalFrame {
     int codigoAplicacion= 5004;
-
-    public void llenadoDeCombos() {
-        /*EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-        List<Empleado> empleados = empleadoDAO.select();
-        cbox_empleado.addItem("Seleccione una opción");
-        for (int i = 0; i < empleados.size(); i++) {
-            cbox_empleado.addItem(empleados.get(i).getNombreEmpleado());
-        } */
-    }
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -48,7 +40,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         for (int i = 0; i < listadoTipoMovimientos.size(); i++) {
             dato[0] = Integer.toString(listadoTipoMovimientos.get(i).getTipoMovimientoId());
             dato[1] = listadoTipoMovimientos.get(i).getNombreMovimiento();
-            dato[2] = listadoTipoMovimientos.get(i).getEstatusMovimiento();
+            dato[2] = listadoTipoMovimientos.get(i).getEstatusMovimiento().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }
@@ -56,7 +48,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     public frmMantenimientoTipoMovimientoBancos() {
         initComponents();
         llenadoDeTablas();
-        llenadoDeCombos();
+        
     }
 
     /**
@@ -91,6 +83,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         txtTipoMovimiento = new javax.swing.JTextField();
         rbHabilitado = new javax.swing.JRadioButton();
         rbDeshabilitado = new javax.swing.JRadioButton();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -124,7 +117,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Usuarios");
+        label1.setText("Tipos de movimientos");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +203,13 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         tipoEstatus.add(rbDeshabilitado);
         rbDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,7 +256,9 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(14, 14, 14)
-                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                            .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(26, 26, 26)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -264,7 +266,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 566, Short.MAX_VALUE))
+                        .addGap(294, 488, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -277,7 +279,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lb)
                 .addGap(55, 55, 55)
@@ -301,7 +303,8 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnReportes))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
@@ -433,18 +436,18 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+try {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaTipoMovimiento.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaTipoMovimiento.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
-            ex.printStackTrace();
+            
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -461,6 +464,14 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
         // TODO add your handling code here:
     }//GEN-LAST:event_rbHabilitadoActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptTipoMov.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -469,6 +480,7 @@ public class frmMantenimientoTipoMovimientoBancos extends javax.swing.JInternalF
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;

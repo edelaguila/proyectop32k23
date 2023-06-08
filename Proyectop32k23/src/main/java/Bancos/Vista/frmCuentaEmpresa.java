@@ -1,14 +1,16 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Bancos.Vista;
 
+//Hecho por Carlos González, 9959-20-6164
 
 import Seguridad.Controlador.clsBitacora;
 import Bancos.Controlador.clsCuentaEmpresa;
 import Bancos.Controlador.clsBancoExterno;
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsTipoMoneda;
 import Bancos.Controlador.clsTipoCuentas;
 import Seguridad.Controlador.clsUsuarioConectado;
@@ -68,7 +70,7 @@ public void llenadoDeTablas() {
         dato[0] = Integer.toString(listaCuentaEmpresa.get(i).getIdCuentaEm());
         dato[1] = Integer.toString(listaCuentaEmpresa.get(i).getNumeroCuentaEm());
         dato[2] = Double.toString(listaCuentaEmpresa.get(i).getSaldoCuentaEm());
-        dato[3] = listaCuentaEmpresa.get(i).getEstatusCuentaEm();
+        dato[3] = listaCuentaEmpresa.get(i).getEstatusCuentaEm().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
         dato[4] = Integer.toString(listaCuentaEmpresa.get(i).getCodigoBanco());
         dato[5] = Integer.toString(listaCuentaEmpresa.get(i).getCueTipoId());
         modelo.addRow(dato);
@@ -121,6 +123,7 @@ public void llenadoDeTablas() {
         rbDeshabilitado = new javax.swing.JRadioButton();
         cbCodigo = new javax.swing.JComboBox<>();
         cbTipo = new javax.swing.JComboBox<>();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -249,6 +252,13 @@ public void llenadoDeTablas() {
         estatus.add(rbDeshabilitado);
         rbDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,7 +291,9 @@ public void llenadoDeTablas() {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGap(14, 14, 14)
-                                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                                .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(label5)
                                         .addGap(86, 86, 86)
@@ -364,7 +376,8 @@ public void llenadoDeTablas() {
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpiar)
-                            .addComponent(jButton2))
+                            .addComponent(jButton2)
+                            .addComponent(btnReportes))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
@@ -377,7 +390,7 @@ public void llenadoDeTablas() {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnActualizar)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -549,16 +562,16 @@ public void llenadoDeTablas() {
     }   
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+         try {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaCuentaEmpresa.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaCuentaEmpresa.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -573,6 +586,14 @@ public void llenadoDeTablas() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSaldoActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptCueEm.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -581,6 +602,7 @@ public void llenadoDeTablas() {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JComboBox<String> cbCodigo;
     private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.ButtonGroup estatus;

@@ -6,11 +6,13 @@
 package Bancos.Modelo;
 
 import Bancos.Controlador.clsMovimientoDetallesBancos;
+import Bancos.Controlador.clsMovimientosEncabezadoBancos;
 import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//NELSON JOSUÉ PINEDA CULAJAY 9959-21-10015
+//TODO dao Movmiento Detalles Bancos.
 /**
  *
  * @author visitante
@@ -19,10 +21,12 @@ public class daoMovimientoDetallesBancos {
     
 private static final String SQL_SELECT = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId FROM tbl_movimientosDetalleBancos";
 private static final String SQL_INSERT = "INSERT INTO tbl_movimientosDetalleBancos (movDetId, movId, movCosto, concId, movSaldo, tipModId) VALUES (?, ?, ?, ?, ?, ?)"; 
-private static final String SQL_UPDATE = "UPDATE tbl_movimientosDetalleBancos SET movCosto=?, movSaldo=?, movId=?, concId=?, tipModId=?  WHERE movDetId = ?";
+private static final String SQL_UPDATE = "UPDATE tbl_movimientosDetalleBancos SET movCosto=?, movSaldo=?, concId=?, tipModId=?  WHERE movDetId = ?";
 private static final String SQL_DELETE = "DELETE FROM tbl_movimientosDetalleBancos WHERE movDetId=?";
 private static final String SQL_SELECT_NOMBRE = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId  FROM tbl_movimientosDetalleBancos WHERE movId = ?";
-private static final String SQL_SELECT_ID = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId  FROM tbl_movimientosDetalleBancos WHERE movDetId = ?";  
+private static final String SQL_SELECT_ID = "SELECT movDetId, movId, movCosto, concId, movSaldo, tipModId  FROM tbl_movimientosDetalleBancos WHERE movDetId = ?"; 
+private static final String SQL_UPDATE_SALDO = "UPDATE tbl_cuentaempresabancos SET cueSaldoEm=? WHERE cueEmId = ?";
+private static final String SQL_SELECT_SALDO= "SELECT cueSaldoEm FROM tbl_cuentaempresabancos WHERE cueEmId = ?";
 
 
     public List<clsMovimientoDetallesBancos> consultaBancoMovimiento() {
@@ -98,10 +102,30 @@ private static final String SQL_SELECT_ID = "SELECT movDetId, movId, movCosto, c
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setFloat(1, banco.getMovimientoCosto());
             stmt.setFloat(2, banco.getMovimientoSaldo());
-            stmt.setInt(3, banco.getIdMovimiento());
-            stmt.setInt(4,banco.getIdConcepto()) ;
-            stmt.setInt(5, banco.getIdTipoMovimiento());
-            stmt.setInt(6, banco.getIdMovimientoDetalles());
+            stmt.setInt(3,banco.getIdConcepto()) ;
+            stmt.setInt(4, banco.getIdTipoMovimiento());
+            stmt.setInt(5, banco.getIdMovimientoDetalles());
+            rows = stmt.executeUpdate();
+            System.out.println("Registros actualizados:" + rows);
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return rows;
+    }
+     public int actualizaBancoSaldo(clsMovimientoDetallesBancos banco, clsMovimientosEncabezadoBancos encabezado) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("ejecutando query: " + SQL_UPDATE_SALDO);
+            stmt = conn.prepareStatement(SQL_UPDATE_SALDO);
+            stmt.setDouble(1, banco.getAbonoCargo());
+             stmt.setInt(2, encabezado.getCueEmId());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizados:" + rows);
         } catch (SQLException ex) {
@@ -200,6 +224,31 @@ private static final String SQL_SELECT_ID = "SELECT movDetId, movId, movCosto, c
                 banco.setIdTipoMovimiento(tipModId);
 
                 System.out.println("Registro consultado: " + banco);
+            } 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(stmt);
+            Conexion.close(conn);
+        }
+
+        return banco;
+    }
+    public clsMovimientoDetallesBancos consultaBancoPorTipoMovimientoSaldo(clsMovimientoDetallesBancos banco,  clsMovimientosEncabezadoBancos encabezado) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = Conexion.getConnection();
+            System.out.println("Ejecutando query:" + SQL_SELECT_SALDO + " objeto recibido: " +  encabezado);
+            stmt = conn.prepareStatement(SQL_SELECT_SALDO);
+            stmt.setInt(1, banco.getIdMovimientoDetalles());
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                double Saldo = rs.getDouble("cueSaldoEm");
+                banco.setAbonoCargo(Saldo);
+               System.out.println("Registro consultado: " + banco);
             } 
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

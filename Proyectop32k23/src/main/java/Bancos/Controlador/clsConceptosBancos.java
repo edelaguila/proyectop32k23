@@ -10,6 +10,9 @@ import Bancos.Modelo.daoConceptosBancos;
  *
  * @author visitante
  */
+
+//Hecho por Carlos González, 9959-20-6164
+
 public class clsConceptosBancos {
     private int IdConcepto;
     private String nombreConcepto;
