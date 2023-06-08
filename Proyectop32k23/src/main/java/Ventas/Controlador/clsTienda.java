@@ -20,6 +20,7 @@ public class clsTienda {
     private String NombreTienda;
     private String DireccionTienda;
     private String TipoTienda;
+    private String EstatusTienda;
     
     
     public int getIdTienda() {
@@ -36,6 +37,14 @@ public class clsTienda {
 
     public void setNombreTienda(String NombreTienda) {
         this.NombreTienda = NombreTienda;
+    }
+    
+    public String getEstatusTienda() {
+        return EstatusTienda;
+    }
+
+    public void setEstatusTienda(String EstatusTienda) {
+        this.EstatusTienda = EstatusTienda;
     }
 
     public String getDireccionTienda() {

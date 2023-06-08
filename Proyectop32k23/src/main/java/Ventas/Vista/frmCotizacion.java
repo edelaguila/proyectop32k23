@@ -82,6 +82,7 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
         lbInstCot = new javax.swing.JLabel();
         lbIdClienteCot = new javax.swing.JLabel();
         lbIdVendedorCot = new javax.swing.JLabel();
+        btnAyudaCot = new javax.swing.JButton();
 
         lb2Cotizacion.setForeground(new java.awt.Color(204, 204, 204));
         lb2Cotizacion.setText(".");
@@ -175,6 +176,13 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
 
         lbIdVendedorCot.setText("ID del Vendedor:");
 
+        btnAyudaCot.setText("Ayuda");
+        btnAyudaCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaCotActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,115 +190,123 @@ public class frmCotizacion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPaneProdDispCot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbInstCot)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbIdClienteCot)
+                                .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lbCantProdCot)
-                                        .addComponent(lbCodProdCot))
-                                    .addComponent(btnAgregarCot))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtCodProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtCantProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(btnModificarCot)
-                                        .addGap(51, 51, 51)
-                                        .addComponent(btnEliminarCot))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(lbCantProdCot1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(lbTotalCot)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                                    .addComponent(txtCodProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIdClienteCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lbCodProdCot)
+                                .addGap(247, 247, 247))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lbCotActual)
-                                .addGap(168, 168, 168))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGap(12, 12, 12)
-                                                .addComponent(lbIdVendedorCot)
-                                                .addGap(31, 31, 31)
-                                                .addComponent(txtIdVendedorCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbIdClienteCot)
-                                                .addGap(46, 46, 46)
-                                                .addComponent(txtIdClienteCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(lbInstCot))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnRegistrarCot)
-                                            .addGap(95, 95, 95)))
-                                    .addComponent(jScrollPaneCotActual, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(57, 57, 57))))))
+                                .addGap(11, 11, 11)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(lbIdVendedorCot)
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCantProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdVendedorCot, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(jScrollPaneProdDispCot, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbCantProdCot1)
+                        .addGap(174, 174, 174))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(btnAgregarCot)
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(btnModificarCot)
+                                .addGap(93, 93, 93)
+                                .addComponent(btnEliminarCot))
+                            .addComponent(lbCantProdCot)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRegistrarCot)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPaneCotActual, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(99, 99, 99)
+                                        .addComponent(lbTotalCot))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(125, 125, 125)
+                                        .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(130, 130, 130)
+                                        .addComponent(btnAyudaCot)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(lbInstCot)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbCantProdCot1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdClienteCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbIdClienteCot)
+                            .addComponent(txtIdVendedorCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbIdVendedorCot))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbCodProdCot)
-                            .addComponent(txtCodProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbCantProdCot)
-                            .addComponent(txtCantProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregarCot)
-                            .addComponent(btnModificarCot)
-                            .addComponent(btnEliminarCot)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbCotActual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneCotActual, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
+                            .addComponent(txtCodProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCantProdCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbCantProdCot)))
+                    .addComponent(jScrollPaneProdDispCot, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbTotalCot)
-                            .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbCantProdCot1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneProdDispCot, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(lbInstCot)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbIdClienteCot)
-                            .addComponent(txtIdClienteCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbIdVendedorCot)
-                            .addComponent(txtIdVendedorCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrarCot)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(btnAgregarCot)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEliminarCot)
+                        .addComponent(btnModificarCot)))
+                .addGap(31, 31, 31)
+                .addComponent(lbCotActual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneCotActual, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(64, 64, 64))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(lbTotalCot)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTotalCot, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(btnRegistrarCot)
+                .addGap(36, 36, 36)
+                .addComponent(btnAyudaCot)
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Carlos Emanuel Hernandez Garcia
+    //9959-21-363
     private void btnEliminarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCotActionPerformed
         // TODO add your handling code here:
 int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
@@ -322,7 +338,8 @@ txtTotalCot.setText(String.valueOf(suma));
 limpiarTextos(); 
 
     }//GEN-LAST:event_btnEliminarCotActionPerformed
-
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
      public void llenadoDeTablasProductos() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("proCodigo");
@@ -344,7 +361,8 @@ limpiarTextos();
 
 
     }                
-
+//Meyglin del Rosario Rosales Ochoa 
+// 9959 - 21 - 4490
     private void btnModificarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarCotActionPerformed
         // TODO add your handling code here:
         
@@ -402,6 +420,10 @@ limpiarTextos();
     {
         txtCantProdCot.setText("");
         txtCodProdCot.setText("");
+    }
+   
+      public void limpiarTextosCliente()
+    {
         txtIdClienteCot.setText("");
         txtIdVendedorCot.setText("");
     }
@@ -451,7 +473,8 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
     
     limpiarTextos();
     }//GEN-LAST:event_btnAgregarCotActionPerformed
-
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
     private void btnRegistrarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCotActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) tblCotActual.getModel();
@@ -475,6 +498,7 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
                 // Obtener los datos de la JTable tblCotActual y registrar en tbl_cotdetalle
                 cotizacion.registrarCotizacionDetalle(cotizacionId, modelo);
                 limpiarTextos();
+                limpiarTextosCliente();
                 int rowCount = modelo.getRowCount();
                 for (int i = 0; i < rowCount; i++) {
                 modelo.removeRow(i); // Eliminar la fila si se encuentra una coincidencia
@@ -489,6 +513,26 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
                 JOptionPane.showMessageDialog(null, "Cotización #" + cotizacionId + " ha sido registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 
     }//GEN-LAST:event_btnRegistrarCotActionPerformed
+//Carlos Javier Sandoval Catalán
+//9959-21-1324
+    private void btnAyudaCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaCotActionPerformed
+        // TODO add your handling code here:
+        //Carlos Javier Sandoval Catalán
+        //9959-21-1324
+        try {
+            if ((new File("src\\main\\java\\ventas\\ayuda\\ayudacot.chm")).exists()) {
+                Process p = Runtime
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ventas\\ayuda\\ayudacot.chm");
+                p.waitFor();
+            } else {
+                System.out.println("La ayuda no fue encontrada");
+            }
+            //System.out.println("Correcto");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAyudaCotActionPerformed
          
     
 
@@ -497,6 +541,7 @@ int codigoProducto = Integer.parseInt(txtCodProdCot.getText());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCot;
+    private javax.swing.JButton btnAyudaCot;
     private javax.swing.JButton btnEliminarCot;
     private javax.swing.JButton btnModificarCot;
     private javax.swing.JButton btnRegistrarCot;

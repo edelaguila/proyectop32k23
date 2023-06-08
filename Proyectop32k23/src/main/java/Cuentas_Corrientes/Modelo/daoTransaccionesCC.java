@@ -5,7 +5,7 @@
  */
 
 
-//Meyglin del Rosario Rosales Ochoa Carne: 9959-21-4490
+
 package Cuentas_Corrientes.Modelo;
 
 import Cuentas_Corrientes.Controlador.clsTransaccionesCC;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Hecho por: LUIS DIEGO CORTEZ MÉRIDA, 9959-20-7425
  * @author visitante
  */
 public class daoTransaccionesCC {

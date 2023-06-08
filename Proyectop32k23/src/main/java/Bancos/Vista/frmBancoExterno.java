@@ -156,7 +156,6 @@ int codigoAplicacion=5006;
 
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtNombre.setOpaque(false);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -175,7 +174,6 @@ int codigoAplicacion=5006;
 
         txtPais.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtPais.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtPais.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("País del Banco");
@@ -202,7 +200,6 @@ int codigoAplicacion=5006;
 
         txtCodigo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtCodigo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        txtCodigo.setOpaque(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -211,6 +208,12 @@ int codigoAplicacion=5006;
 
         label6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label6.setText("Código Banco");
+
+        cbTipoMoneda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoMonedaActionPerformed(evt);
+            }
+        });
 
         label8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label8.setText("Estatus");
@@ -527,6 +530,10 @@ int codigoAplicacion=5006;
         reporte.setReportPath(customReportPath);
         reporte.generateReport();
     }//GEN-LAST:event_btnReportesActionPerformed
+
+    private void cbTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoMonedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoMonedaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

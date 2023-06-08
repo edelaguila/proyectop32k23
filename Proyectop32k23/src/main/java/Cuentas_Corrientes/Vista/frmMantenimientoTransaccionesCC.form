@@ -41,62 +41,66 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
+                      <Component id="lb" min="-2" pref="13" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="label4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtbuscado" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnBuscar" min="-2" pref="95" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnRegistrar" min="-2" pref="95" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnModificar" min="-2" pref="95" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="label4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtbuscado" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnBuscar" min="-2" pref="95" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnRegistrar" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnModificar" min="-2" pref="95" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnLimpiar" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnLimpiar" min="-2" pref="95" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="btnEliminar" min="-2" pref="95" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="label2" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtEfecto" max="32767" attributes="0"/>
+                                  <Component id="txtContrasena" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNombre" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="btnEliminar" min="-2" pref="95" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="label6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtEfecto" pref="263" max="32767" attributes="0"/>
-                          <Component id="txtContrasena" alignment="0" pref="263" max="32767" attributes="0"/>
-                          <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lb" min="-2" pref="13" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnReporte" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="label1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="294" pref="612" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" pref="630" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="634" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -106,25 +110,22 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="label1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="303" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <Component id="lb" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Component id="label2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="lb" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="label5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -151,7 +152,10 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnReporte" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="50" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -181,14 +185,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="label1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Century Gothic" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Perfil"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
@@ -373,6 +369,22 @@
           <Font name="Century Gothic" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Efecto"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnReporte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reporte"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReporteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="label2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century Gothic" size="20" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Proveedores"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -240,7 +240,6 @@
             </MatteColorBorder>
           </Border>
         </Property>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
@@ -309,7 +308,6 @@
             </MatteColorBorder>
           </Border>
         </Property>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="label5">
@@ -364,7 +362,6 @@
             </MatteColorBorder>
           </Border>
         </Property>
-        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoActionPerformed"/>
@@ -379,6 +376,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbTipoMoneda">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbTipoMonedaActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

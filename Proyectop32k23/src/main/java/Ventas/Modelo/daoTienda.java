@@ -21,12 +21,12 @@ import java.util.List;
  * @author maria
  */
 public class daoTienda {
-   private static final String SQL_SELECT = "SELECT tieid, tienombre, tiedireccion, tietipo FROM tbl_tienda";
-    private static final String SQL_INSERT = "INSERT INTO tbl_tienda(tienombre, tiedireccion, tietipo) VALUES(?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_tienda SET tienombre=?, tiedireccion=?, tietipo=? WHERE tieid = ?";
+   private static final String SQL_SELECT = "SELECT tieid, tienombre, tiedireccion, tietipo, tieEstatus FROM tbl_tienda";
+    private static final String SQL_INSERT = "INSERT INTO tbl_tienda(tienombre, tiedireccion, tietipo, tieEstatus) VALUES(?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_tienda SET tienombre=?, tiedireccion=?, tietipo=?, tieEstatus=? WHERE tieid = ?";
     private static final String SQL_DELETE = "DELETE FROM tbl_tienda WHERE tieid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT tieid, tienombre, tiedireccion, tietipo FROM tbl_tienda WHERE tienombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT tieid, tienombre, tiedireccion, tietipo  FROM tbl_tienda WHERE tieid = ?";    
+    private static final String SQL_SELECT_NOMBRE = "SELECT tieid, tienombre, tiedireccion, tietipo, tieEstatus FROM tbl_tienda WHERE tienombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT tieid, tienombre, tiedireccion, tietipo, tieEstatus  FROM tbl_tienda WHERE tieid = ?";    
 
     public List<clsTienda> consultaTienda() {
 
@@ -46,11 +46,13 @@ public class daoTienda {
                 String nombre = rs.getString("tienombre");
                 String direccion = rs.getString("tiedireccion");
                 String tipo = rs.getString("tietipo");
+                String estatus = rs.getString("tieEstatus");
                 clsTienda tienda = new clsTienda();
                 tienda.setIdTienda(id);
                 tienda.setNombreTienda(nombre);
                 tienda.setDireccionTienda(direccion);
                 tienda.setTipoTienda(tipo);
+                tienda.setEstatusTienda(estatus);
                 tiendas.add(tienda);
 
             }
@@ -77,6 +79,7 @@ public class daoTienda {
             stmt.setString(1, tienda.getNombreTienda());
             stmt.setString(2, tienda.getDireccionTienda());
             stmt.setString(3, tienda.getTipoTienda());
+            stmt.setString(4, tienda.getEstatusTienda());
 
 
             System.out.println("ejecutando query:" + SQL_INSERT);
@@ -106,7 +109,9 @@ public class daoTienda {
             stmt.setString(1, tienda.getNombreTienda());
             stmt.setString(2, tienda.getDireccionTienda());
             stmt.setString(3, tienda.getTipoTienda());
-            stmt.setInt(4, tienda.getIdTienda());
+            stmt.setString(4, tienda.getEstatusTienda());
+            stmt.setInt(5, tienda.getIdTienda());
+            
 
 
             rows = stmt.executeUpdate();
@@ -167,12 +172,14 @@ public class daoTienda {
                 String nombre = rs.getString("tienombre");
                 String direccion = rs.getString("tiedireccion");
                 String tipo = rs.getString("tietipo");
+                String estatus = rs.getString("tieEstatus");
                 //perfil = new clsPerfil();
        
                 tienda.setIdTienda(id);
                 tienda.setNombreTienda(nombre);
                 tienda.setDireccionTienda(direccion);
                 tienda.setTipoTienda(tipo);
+                 tienda.setEstatusTienda(estatus);
                 System.out.println(" registro consultado: " + tienda);                
 
             }
@@ -207,11 +214,13 @@ public class daoTienda {
                 String nombre = rs.getString("tienombre");
                 String direccion = rs.getString("tiedireccion");
                 String tipo = rs.getString("tietipo");
+                String estatus = rs.getString("tieEstatus");
 
                 tienda.setIdTienda(id);
                 tienda.setNombreTienda(nombre);
                 tienda.setDireccionTienda(direccion);
                 tienda.setTipoTienda(tipo);
+                tienda.setEstatusTienda(estatus);
                 System.out.println(" registro consultado: " + tienda);                
 
             }

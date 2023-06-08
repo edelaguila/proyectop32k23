@@ -13,12 +13,21 @@ package Seguridad.Vista;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsPerfil;
 import Seguridad.Controlador.clsUsuarioConectado;
+import Seguridad.Modelo.Conexion;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -92,6 +101,7 @@ int codigoAplicacion = 40;
         jButton2 = new javax.swing.JButton();
         label4 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
+        btnReportePerfil = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -192,6 +202,13 @@ int codigoAplicacion = 40;
             }
         });
 
+        btnReportePerfil.setText("REPORTE ");
+        btnReportePerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportePerfilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,13 +227,6 @@ int codigoAplicacion = 40;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(label4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(52, 52, 52)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +239,17 @@ int codigoAplicacion = 40;
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(14, 14, 14)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnReportePerfil)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -275,9 +295,14 @@ int codigoAplicacion = 40;
                             .addComponent(btnBuscar)
                             .addComponent(txtbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnActualizar)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnReportePerfil)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -374,15 +399,15 @@ int codigoAplicacion = 40;
         // TODO add your handling code here:
   
         try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+            if ((new File("src\\main\\java\\seguridad\\ayuda\\ayudaperf.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\seguridad\\ayuda\\ayudaperf.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -392,6 +417,27 @@ int codigoAplicacion = 40;
         // TODO add your handling code here:
         llenadoDeTablas();
     }//GEN-LAST:event_btnActualizarActionPerformed
+// María José Véliz Ochoa 
+//9959-21-5909
+    private void btnReportePerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportePerfilActionPerformed
+        // TODO add your handling code here:
+                             Connection conn = null;        
+        Map p = new HashMap();
+        JasperReport report;
+        JasperPrint print;
+
+        try {
+            conn = Conexion.getConnection();
+            report = JasperCompileManager.compileReport(new File("").getAbsolutePath()
+                    + "/src/main/java/seguridad/reportes/rptPerfil.jrxml");
+	    print = JasperFillManager.fillReport(report, p, conn);
+            JasperViewer view = new JasperViewer(print, false);
+	    view.setTitle("Reporte Prueba");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnReportePerfilActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -401,6 +447,7 @@ int codigoAplicacion = 40;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportePerfil;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
