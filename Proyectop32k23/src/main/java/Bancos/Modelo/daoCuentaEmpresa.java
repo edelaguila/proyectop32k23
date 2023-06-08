@@ -15,6 +15,9 @@ import java.util.List;
  *
  * @author visitante
  */
+
+//Hecho por Carlos González, 9959-20-6164
+
 public class daoCuentaEmpresa {
 
     private static final String SQL_SELECT = "SELECT cueEmId, cueNumeroEm, cueSaldoEm, cueEstatusEm, codBanco, cueTipoId FROM tbl_cuentaempresabancos";

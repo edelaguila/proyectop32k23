@@ -6,8 +6,10 @@
 
 package Bancos.Vista;
 
+//Hecho por Carlos González, 9959-20-6164
 
 import Seguridad.Controlador.clsBitacora;
+import Bancos.Controlador.clsReportes;
 import Bancos.Controlador.clsBancoExterno;
 import Bancos.Controlador.clsTipoMoneda;
 import Bancos.Modelo.daoTipoMoneda;
@@ -19,7 +21,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
-
+import java.io.File;
 
 /**
  *
@@ -27,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class frmBancoExterno extends javax.swing.JInternalFrame {
     
-int codigoAplicacion=5009;
+int codigoAplicacion=5006;
 
     public void llenadoDeCombos() {
         clsTipoMoneda moneda = new clsTipoMoneda();
@@ -60,7 +62,7 @@ int codigoAplicacion=5009;
             dato[1] = listadoBanco.get(i).getNombreBanco();
             dato[2] = listadoBanco.get(i).getPaisBanco();
             dato[3] = Integer.toString(listadoBanco.get(i).getTipoMonedaId());
-            dato[4] = listadoBanco.get(i).getEstatus();
+            dato[4] = listadoBanco.get(i).getEstatus().equalsIgnoreCase("T") ? "Habilitado" : "Deshabilitado";
             modelo.addRow(dato);
         }       
     }
@@ -106,6 +108,7 @@ int codigoAplicacion=5009;
         label8 = new javax.swing.JLabel();
         rbHabilitado = new javax.swing.JRadioButton();
         rbDeshabilitado = new javax.swing.JRadioButton();
+        btnReportes = new javax.swing.JButton();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
         lb2.setText(".");
@@ -226,6 +229,13 @@ int codigoAplicacion=5009;
         estatus.add(rbDeshabilitado);
         rbDeshabilitado.setText("Deshabilitado");
 
+        btnReportes.setText("Reportes");
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,7 +280,9 @@ int codigoAplicacion=5009;
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(14, 14, 14)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                    .addComponent(btnReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 50, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +328,8 @@ int codigoAplicacion=5009;
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnReportes))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
@@ -330,7 +343,7 @@ int codigoAplicacion=5009;
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -479,15 +492,15 @@ int codigoAplicacion=5009;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try {
-            if ((new File("src\\main\\java\\ayudas\\ProcesoMayor.chm")).exists()) {
+            if ((new File("src\\main\\java\\bancos\\ayuda\\ayudaBancoExt.chm")).exists()) {
                 Process p = Runtime
-                        .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\ayudas\\ProcesoMayor.chm");
+                .getRuntime()
+                .exec("rundll32 url.dll,FileProtocolHandler src\\main\\java\\bancos\\ayuda\\ayudaBancoExt.chm");
                 p.waitFor();
             } else {
-                System.out.println("La ayuda no Fue encontrada");
+                System.out.println("La ayuda no fue encontrada");
             }
-            System.out.println("Correcto");
+            //System.out.println("Correcto");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -510,6 +523,14 @@ int codigoAplicacion=5009;
         // TODO add your handling code here:
     }//GEN-LAST:event_rbHabilitadoActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        // TODO add your handling code here:
+        clsReportes reporte = new clsReportes();
+        String customReportPath = "/src/main/java/bancos/reportes/rptBanExt.jrxml";
+        reporte.setReportPath(customReportPath);
+        reporte.generateReport();
+    }//GEN-LAST:event_btnReportesActionPerformed
+
     private void cbTipoMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoMonedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTipoMonedaActionPerformed
@@ -522,6 +543,7 @@ int codigoAplicacion=5009;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JComboBox<String> cbTipoMoneda;
     private javax.swing.ButtonGroup estatus;
     private javax.swing.JButton jButton2;

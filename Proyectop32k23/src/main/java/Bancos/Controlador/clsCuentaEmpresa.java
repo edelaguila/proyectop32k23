@@ -10,6 +10,9 @@ import Bancos.Modelo.daoCuentaEmpresa;
  *
  * @author visitante
  */
+
+//Hecho por Carlos González, 9959-20-6164
+
 public class clsCuentaEmpresa {
     private int IdCuentaEm;
     private int NumeroCuentaEm;

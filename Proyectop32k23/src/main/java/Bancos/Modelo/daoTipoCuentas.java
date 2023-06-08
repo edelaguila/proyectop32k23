@@ -14,6 +14,9 @@ import java.util.List;
  *
  * @author cdavi
  */
+
+//Hecho por Carlos González, 9959-20-6164
+
 public class daoTipoCuentas {
     private static final String SQL_SELECT = "SELECT cueTipoId , cueTipoDescripcion, cueTipoEstatus FROM tbl_tipoCuentasBancos";
     private static final String SQL_INSERT = "INSERT INTO tbl_tipoCuentasBancos(cueTipoId , cueTipoDescripcion, cueTipoEstatus) VALUES(?, ?, ?)";
@@ -84,7 +87,7 @@ public class daoTipoCuentas {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, cuenta.getEstatusTipoCue());
+            stmt.setString(1, cuenta.getTipoCueDescripcion());
             stmt.setString(2, cuenta.getEstatusTipoCue());
             stmt.setInt(3, cuenta.getTipoCueId());
 

@@ -13,11 +13,12 @@ import Bancos.Modelo.daoCuentasBancos;
  */
 public class clsCuentasBancos {
     private int IdCuenta;
-    private int NumeroCuenta;
     private double SaldoCuenta;
     private int IdPersona;
     private int IdTipoCuenta;
     private String EstatusCuenta;
+    private int tipModId;
+    private int codBanco;
 
     public clsCuentasBancos() {
     }
@@ -26,39 +27,49 @@ public class clsCuentasBancos {
         this.IdCuenta = IdCuenta;
     }
 
-    public clsCuentasBancos(int IdCuenta, int NumeroCuenta) {
+    public clsCuentasBancos(int IdCuenta, double SaldoCuenta) {
         this.IdCuenta = IdCuenta;
-        this.NumeroCuenta = NumeroCuenta;
-    }
-
-    public clsCuentasBancos(int IdCuenta, int NumeroCuenta, double SaldoCuenta) {
-        this.IdCuenta = IdCuenta;
-        this.NumeroCuenta = NumeroCuenta;
         this.SaldoCuenta = SaldoCuenta;
     }
 
-    public clsCuentasBancos(int IdCuenta, int NumeroCuenta, double SaldoCuenta, int IdPersona) {
+    public clsCuentasBancos(int IdCuenta, double SaldoCuenta, int IdPersona) {
         this.IdCuenta = IdCuenta;
-        this.NumeroCuenta = NumeroCuenta;
         this.SaldoCuenta = SaldoCuenta;
         this.IdPersona = IdPersona;
     }
 
-    public clsCuentasBancos(int IdCuenta, int NumeroCuenta, double SaldoCuenta, int IdPersona, int IdTipoCuenta) {
+    public clsCuentasBancos(int IdCuenta, double SaldoCuenta, int IdPersona, int IdTipoCuenta) {
         this.IdCuenta = IdCuenta;
-        this.NumeroCuenta = NumeroCuenta;
         this.SaldoCuenta = SaldoCuenta;
         this.IdPersona = IdPersona;
         this.IdTipoCuenta = IdTipoCuenta;
     }
 
-    public clsCuentasBancos(int IdCuenta, int NumeroCuenta, double SaldoCuenta, int IdPersona, int IdTipoCuenta, String EstatusCuenta) {
+    public clsCuentasBancos(int IdCuenta, double SaldoCuenta, int IdPersona, int IdTipoCuenta, String EstatusCuenta) {
         this.IdCuenta = IdCuenta;
-        this.NumeroCuenta = NumeroCuenta;
         this.SaldoCuenta = SaldoCuenta;
         this.IdPersona = IdPersona;
         this.IdTipoCuenta = IdTipoCuenta;
         this.EstatusCuenta = EstatusCuenta;
+    }
+
+    public clsCuentasBancos(int IdCuenta, double SaldoCuenta, int IdPersona, int IdTipoCuenta, String EstatusCuenta, int tipModId) {
+        this.IdCuenta = IdCuenta;
+        this.SaldoCuenta = SaldoCuenta;
+        this.IdPersona = IdPersona;
+        this.IdTipoCuenta = IdTipoCuenta;
+        this.EstatusCuenta = EstatusCuenta;
+        this.tipModId = tipModId;
+    }
+
+    public clsCuentasBancos(int IdCuenta, double SaldoCuenta, int IdPersona, int IdTipoCuenta, String EstatusCuenta, int tipModId, int codBanco) {
+        this.IdCuenta = IdCuenta;
+        this.SaldoCuenta = SaldoCuenta;
+        this.IdPersona = IdPersona;
+        this.IdTipoCuenta = IdTipoCuenta;
+        this.EstatusCuenta = EstatusCuenta;
+        this.tipModId = tipModId;
+        this.codBanco = codBanco;
     }
 
     public int getIdCuenta() {
@@ -67,14 +78,6 @@ public class clsCuentasBancos {
 
     public void setIdCuenta(int IdCuenta) {
         this.IdCuenta = IdCuenta;
-    }
-
-    public int getNumeroCuenta() {
-        return NumeroCuenta;
-    }
-
-    public void setNumeroCuenta(int NumeroCuenta) {
-        this.NumeroCuenta = NumeroCuenta;
     }
 
     public double getSaldoCuenta() {
@@ -109,17 +112,33 @@ public class clsCuentasBancos {
         this.EstatusCuenta = EstatusCuenta;
     }
 
+    public int getTipModId() {
+        return tipModId;
+    }
+
+    public void setTipModId(int tipModId) {
+        this.tipModId = tipModId;
+    }
+
+    public int getCodBanco() {
+        return codBanco;
+    }
+
+    public void setCodBanco(int codBanco) {
+        this.codBanco = codBanco;
+    }
+
     
     @Override
     public String toString() {
-        return "clsCuentas{" + "IdCuenta=" + IdCuenta + ", NumeroCuenta=" + NumeroCuenta + ", SaldoCuenta=" + SaldoCuenta + ", IdPersona=" + IdPersona + ", IdTipoCuenta=" + IdTipoCuenta + ", EstatusCuenta=" + EstatusCuenta + '}';
+        return "clsCuentas{" + "IdCuenta=" + IdCuenta + ", SaldoCuenta=" + SaldoCuenta + ", IdPersona=" + IdPersona + ", IdTipoCuenta=" + IdTipoCuenta + ", EstatusCuenta=" + EstatusCuenta + ", tipModId=" + tipModId + ", codBanco=" + codBanco + '}';
     }
     //Metodos de acceso a la capa controlador
     
-    public clsCuentasBancos getBuscarInformacionNumeroCuenta(clsCuentasBancos cuenta)
+    public clsCuentasBancos getBuscarInformacionPorIdPersona(clsCuentasBancos cuenta)
     {
         daoCuentasBancos daocuentas = new daoCuentasBancos();
-        return daocuentas.consultaNumeroCuenta(cuenta);
+        return daocuentas.consultaPorIdPersona(cuenta);
     }
     public clsCuentasBancos getBuscarInformacionCuentaPorId(clsCuentasBancos cuenta)
     {
